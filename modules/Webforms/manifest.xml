@@ -1,0 +1,85 @@
+<?xml version='1.0'?>
+<module>
+<name>Webforms</name>
+<label>Webforms</label>
+<parent></parent>
+<type>extension</type>
+<version>1.2</version>
+<dependencies>
+	<vtenext_version>4.2</vtenext_version>
+	<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_webforms</name>
+<sql>
+  <![CDATA[ <?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_webforms">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="id" type="R" size="19">
+		  <KEY/>
+		</field>
+		<field name="name" type="C" size="100"/>
+		<field name="publicid" type="C" size="100"/>
+		<field name="enabled" type="I" size="1">
+		  <DEFAULT value="1"/>
+		</field>
+		<field name="targetmodule" type="C" size="50"/>
+		<field name="description" type="C" size="250"/>
+		<field name="ownerid" type="I" size="19"/>
+		<field name="returnurl" type="C" size="250"/>
+		<index name="webformname">
+		  <UNIQUE/>
+		  <col>name</col>
+		</index>
+		<index name="publicid">
+		  <UNIQUE/>
+		  <col>id</col>
+		</index>
+		<index name="webforms_webforms_id_idx">
+		  <col>id</col>
+		</index>
+	</table>
+</schema>
+  ]]>
+</sql>
+</table>
+<table>
+<name>TABLEPREFIX_webforms_field</name>
+<sql>
+  <![CDATA[ <?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_webforms_field">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="id" type="R" size="19">
+		  <KEY/>
+		</field>
+		<field name="webformid" type="I" size="19"/>
+		<field name="fieldname" type="C" size="50"/>
+		<field name="neutralizedfield" type="C" size="50"/>
+		<field name="defaultvalue" type="C" size="200"/>
+		<field name="required" type="I" size="1">
+		  <DEFAULT value="0"/>
+		</field>
+		<field name="hidden" type="I" size="1">
+		  <DEFAULT value="0"/>
+		</field>
+		<index name="webforms_webforms_field_idx">
+		  <col>id</col>
+		</index>
+		<index name="fk_1_TABLEPREFIX_webforms_field">
+		  <col>webformid</col>
+		</index>
+		<index name="fk_2_TABLEPREFIX_webforms_field">
+		  <col>fieldname</col>
+		</index>
+	</table>
+</schema>
+  ]]> 
+</sql>
+</table>
+</tables>
+<crons>
+</crons>
+</module>

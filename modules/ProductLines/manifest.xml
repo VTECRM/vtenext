@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<module>
+<name>ProductLines</name>
+<label>ProductLines</label>
+<parent>Inventory</parent>
+<dependencies>
+<vtenext_version>4.9</vtenext_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_productlines</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_productlines">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="productlineid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="productlinename" type="C" size="255"/>
+	<field name="description" type="XL" />
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_productlinescf</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_productlinescf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="productlineid" type="I" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+</module>

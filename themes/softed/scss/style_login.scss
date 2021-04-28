@@ -1,0 +1,54 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors';
+
+input {
+	border:1px solid $vte-primary;
+}
+
+.logintbl {
+	background-color: $vte-submenu;
+	border: 1px solid $vte-primary;
+}
+
+.loginsubmit {
+	font-size:20px;
+	background-color: $vte-primary;
+	color: $white;
+	width:274px;
+	height:40px;
+	cursor:pointer;
+}
+
+.logininput {
+	font-size:24px;
+	padding:5px;
+	color:$grey-500;
+	border: 0px;
+	width:274px;
+}
+
+.logintxt {
+	font-size:9px;
+	line-height: 18px;
+	color:$vte-text-title;
+	text-decoration:none;
+	vertical-align: top;
+}
+
+#vte_footer {
+	padding:0px 5px 0px 5px;
+	position: absolute;
+	bottom: 0px;
+	
+	td {
+		font-size:9px;
+	}
+}

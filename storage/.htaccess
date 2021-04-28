@@ -1,0 +1,24 @@
+Options -Indexes
+
+# crmv@198833
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Allow upload and logo dirs
+	RewriteCond %{REQUEST_URI} !uploads_emails_ [NC]
+	RewriteCond %{REQUEST_URI} !images_uploaded/ [NC]
+	RewriteCond %{REQUEST_URI} !logo/.*\.(jpg|jpeg|png|gif)$ [NC]
+	
+	# check if path is a regular file
+	RewriteCond %{REQUEST_FILENAME} -f
+	
+	# redirect to php proxy
+	RewriteRule ^(.*)$ get.php?file=$1 [QSA]
+	
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+	# Fallback and deny all by default
+	Deny from all
+</IfModule>

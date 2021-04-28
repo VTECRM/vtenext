@@ -1,0 +1,134 @@
+/* fallback */
+@font-face {
+	font-family: 'Material Icons';
+	src: url('../fonts/MaterialIcons-Regular.eot');
+	src: local('Material Icons'), local('MaterialIcons-Regular'),
+	url('../fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/MaterialIcons-Regular.woff2') format('woff2'),
+	url('../fonts/MaterialIcons-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+}
+
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: 'liga';
+	font-feature-settings: 'liga'; /* crmv@122080 - Support for IE. */
+	-webkit-font-smoothing: antialiased;
+}
+
+ .icon_default:after {
+  font-family: "RobotoDraft", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  content: attr(data-first-letter);
+ }
+ .icon_accounts:after {
+     font-family: 'Material-Design-Icons';
+  content: "business";
+ }
+ .icon_assets:after {
+     font-family: 'Material-Design-Icons';
+  content: "vertical_align_bottom";
+ }
+ .icon_calendar:after {
+     font-family: 'Material-Design-Icons';
+  content: "event";
+ }
+ .icon_contacts:after {
+     font-family: 'Material-Design-Icons';
+  content: "person";
+ }
+ .icon_ddt:after {
+  font-family: 'Material-Design-Icons';
+  content: "description";
+ }
+ .icon_invoice:after {
+  font-family: 'Material-Design-Icons';
+  content: "description";
+ }
+ .icon_leads:after {
+  font-family: 'Material-Design-Icons';
+  content: "perm_identity";
+ }
+ .icon_helpdesk:after {
+  font-family: 'Material-Design-Icons';
+  content: "warning";
+ }
+ .icon_timecards:after {
+  font-family: 'Material-Design-Icons';
+  content: "business_center";
+ }
+ .icon_services:after {
+  font-family: 'Material-Design-Icons';
+  content: "build";
+ }
+ .icon_processes:after {
+  font-family: 'Material-Design-Icons';
+  content: "call_split";
+ }
+ .icon_pricebooks:after {
+  font-family: 'Material-Design-Icons';
+  content: "import_contacts";
+ }
+ .icon_products:after {
+  font-family: 'Material-Design-Icons';
+  content: "widgets";
+ }
+ .icon_projectmilestone:after {
+  font-family: 'Material-Design-Icons';
+  content: "event_busy";
+ }
+.icon_menu:after {
+	font-family: 'Material-Design-Icons';
+ 	 content: "menu";
+}
+.icon_highlight_off:after {
+ 	 font-family: 'Material-Design-Icons';
+ 	 content: "highlight_off";
+ }
+ .icon_new_ticket:after {
+  font-family: 'Material-Design-Icons';
+  content: "add_circle_outline";
+ } 
+ .icon_exit_to_app:after {
+ font-family: 'Material-Design-Icons';
+  content: "exit_to_app";
+ }
+ .icon_info:after {
+ 	font-family: 'Material-Design-Icons';
+    content: "info";
+ }
+ .icon_documents:after {
+ 	font-family: 'Material-Design-Icons';
+    content: "folder";
+ }
+  .icon_file_download:after {
+ 	font-family: 'Material-Design-Icons';
+    content: "file_download";
+    color: #777;
+    font-size: 18px;
+ }
+ .material-icons-download {
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}

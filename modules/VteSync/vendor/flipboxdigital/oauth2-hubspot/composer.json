@@ -1,0 +1,40 @@
+{
+    "name": "flipboxdigital/oauth2-hubspot",
+    "description": "HubSpot OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+    "version": "1.0.1",
+    "license": "MIT",
+    "keywords": [
+        "oauth",
+        "oauth2",
+        "client",
+        "authorization",
+        "authorisation",
+        "hubspot"
+    ],
+    "require": {
+        "league/oauth2-client": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "mockery/mockery": "~0.9",
+        "squizlabs/php_codesniffer": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flipbox\\OAuth2\\Client\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Flipbox\\OAuth2\\Client\\Test\\": "tests/src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

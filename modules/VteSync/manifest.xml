@@ -1,0 +1,103 @@
+<?xml version='1.0'?>
+<module>
+<name>VteSync</name>
+<label>VteSync</label>
+<parent></parent>
+<type>extension</type>
+<version>1.5</version><!-- crmv@190016 -->
+<dependencies>
+<vtenext_version>18.12</vtenext_version>
+<php_version>5.6</php_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_vtesync</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_vtesync">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="syncid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="typeid" type="I" size="19">
+		<NOTNULL/>
+	</field>
+    <field name="active" type="I" size="1">
+		<DEFAULT value="1"/>
+		<NOTNULL/>
+	</field>
+	<field name="createdtime" type="TS"/>
+	<field name="lastrun" type="TS">
+		<DEFAULT value="0000-00-00 00:00:00"/>
+	</field>
+	<field name="system_url" type="C" size="255"/>
+	<field name="authtype" type="C" size="31"/>
+	<field name="modconfig" type="XL"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_vtesync_types</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_vtesync_types">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="typeid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="type" type="C" size="63">
+		<NOTNULL/>
+		<UNIQUE/>
+	</field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_vtesync_types_mods</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_vtesync_types_mods">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="typeid" type="I" size="19">
+		<KEY/>
+    </field>
+    <field name="module" type="C" size="63">
+		<KEY/>
+	</field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_vtesync_auth</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_vtesync_auth">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="syncid" type="I" size="19">
+		<KEY/>
+    </field>
+	<field name="username" type="C" size="255" />
+	<field name="password" type="C" size="1000" />
+	<field name="client_id" type="C" size="255" />
+	<field name="client_secret" type="X" />
+	<field name="scope" type="C" size="255" />
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_vtesync_tokens</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_vtesync_tokens">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="syncid" type="I" size="19">
+		<KEY/>
+    </field>
+	<field name="token" type="C" size="2000" />
+	<field name="refresh_token" type="C" size="2000" />
+	<field name="instance_url" type="C" size="255" />
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+</module>

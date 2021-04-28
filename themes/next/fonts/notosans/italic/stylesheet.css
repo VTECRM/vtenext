@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('NotoSans-Italic-webfont.eot');
+    src: url('NotoSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('NotoSans-Italic-webfont.woff') format('woff'),
+         url('NotoSans-Italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}

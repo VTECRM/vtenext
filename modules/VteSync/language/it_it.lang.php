@@ -1,0 +1,43 @@
+<?php
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
+ * SPDX-License-Identifier: AGPL-3.0-only  
+ ************************************/
+$mod_strings = array (
+	'LBL_SYNC_SETTINGS' => 'Sincronizzazioni',
+	'LBL_SYNC_SETTINGS_DESC' => 'Configura sistemi esterni per la sincronizzazione dei dati',
+	'LBL_VTESYNC_SYNCLIST' => 'Sincronizzazioni configurate',
+	'LBL_VTESYNC_CREATE' => 'Crea sincronizzazione',
+	'LBL_VTESYNC_EDIT' => 'Modifica sincronizzazione',
+	'LBL_VTESYNC_TYPE' => 'Sistema esterno',
+	'LBL_VTESYNC_MODULES' => 'Moduli da sincronizzare',
+	'LBL_VTESYNC_TYPE_DESC' => 'Il sistema esterno a cui connettersi',
+	'LBL_VTESYNC_AVAILMODS' => 'Moduli disponibili',
+	'LBL_VTESYNC_SELECTEDMODS' => 'Moduli selezionati',
+	'LBL_VTESYNC_AUTH_SETTINGS' => 'Autenticazione',
+	'LBL_VTESYNC_AUTHTYPE' => 'Tipo',
+	'LBL_VTESYNC_AUTHTYPE_DESC' => 'Meccanismo di autenticazione da usare',
+	'LBL_VTESYNC_CLIENTID' => 'Client ID',
+	'LBL_VTESYNC_CLIENTID_DESC' => 'Client ID dell\'app creata',
+	'LBL_VTESYNC_CLIENTSECRET' => 'Client Secret',
+	'LBL_VTESYNC_CLIENTSECRET_DESC' => 'Chiave associata al Client ID',
+	'LBL_VTESYNC_AUTHORIZE' => 'Autorizza',
+	'LBL_VTESYNC_REVOKE' => 'Revoca autorizzazione',
+	'LBL_VTESYNC_AUTHORIZED' => 'Autorizzato',
+	'LBL_VTESYNC_NOT_AUTHORIZED' => 'Non autorizzato',
+	'LBL_VTESYNC_CONFIG_MODULE' => 'Configurazione modulo',
+	'LBL_VTESYNC_MODCFG_DIRECTION' => 'Direzione',
+	'LBL_VTESYNC_MODCFG_DIR_TO_VTE' => 'Da sistema esterno a VTE',
+	'LBL_VTESYNC_MODCFG_DIR_FROM_VTE' => 'Da VTE a sistema esterno',
+	'LBL_VTESYNC_MODCFG_DIR_BOTH' => 'Entrambe',
+	'LBL_VTESYNC_MODCFG_DELETIONS' => 'Propaga dati eliminati',
+	'LBL_VTESYNC_MODCFG_DEL_IN_VTE' => 'In VTE',
+	'LBL_VTESYNC_MODCFG_DEL_IN_EXT' => 'Nel sistema esterno',
+	'LBL_VTESYNC_MODCFG_DEL_NONE' => 'Nessuna',
+	'LBL_VTESYNC_MODCFG_SYNC_PLIST' => 'Sincronizza voci picklist',
+	'LBL_VTESYNC_DUP_TYPE' => 'Esiste già una sincronizzazione di questo tipo con lo stesso Client ID',
+	'LBL_VTESYNC_LAST_RUN' => 'Ultima esecuzione',
+	'LBL_VTESYNC_OAUTH_HELP_1' => 'Per ottenere un Client ID e la relativa chiave, seguire le istruzioni al link seguente:',
+	'LBL_VTESYNC_OAUTH_HELP_2' => 'usando come Callback URL il seguente:',
+	'LBL_VTESYNC_OAUTH_HELP_3' => 'e gli scope seguenti:',
+);

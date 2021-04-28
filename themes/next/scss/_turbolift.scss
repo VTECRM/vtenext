@@ -1,0 +1,136 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@201796 */
+
+.turboLiftRelationsContainer {
+	position: relative;
+}
+
+.turbolift {
+	margin-left: 2px;
+
+	&.nav-stacked li:first-child {
+		border-top: 1px solid $vte-button-border;
+	}
+	&.nav-stacked > li + li {
+		margin-top: 0px;
+	}
+	&.nav-stacked > li:last-child {
+		border-bottom: 0px none;
+	}
+}
+
+.turboliftInner {
+	margin: 5px;
+}
+
+.turboliftEntry,
+.turboliftEntrySelected,
+.turboliftEntry1,
+.turboliftEntry2 {
+	padding: 2px;
+	min-height: 30px;
+	cursor: pointer;
+	padding: 8px;
+
+	& .turboliftEntryInner {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+
+	& .turboliftIcon {
+		flex: 0.2;
+		text-align: left;
+	}
+
+	& .turboliftLabel {
+		flex: 0.6;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	& .turboliftBadge {
+		flex: 0.2;
+		text-align: right;
+
+		& .badge {
+			margin-top: 4px;
+		}
+	}
+}
+
+.turboliftEntry {
+	border-bottom: 1px solid $turbolift-border;
+	background-color: $turbolift-bg;
+	color: $turbolift-color;
+
+	.badge {
+		background-color: $turbolift-badge-bg;
+		color: $turbolift-badge-color;
+	}
+
+	.vteicon,
+	.vteicon2,
+	.icon-module {
+		color: $turbolift-icon-color;
+	}
+}
+
+.turboliftEntrySelected {
+	border-bottom: 1px solid $turbolift-selected-border;
+	border-left: 1px solid $turbolift-selected-border;
+	border-right: 1px solid $turbolift-selected-border;
+	background-color: $turbolift-selected-bg;
+	color: $turbolift-selected-color;
+
+	.badge {
+		background-color: $turbolift-selected-badge-bg;
+		color: $turbolift-selected-badge-color;
+	}
+	
+	.vteicon,
+	.vteicon2,
+	.icon-module {
+		color: $turbolift-selected-icon-color;
+	}
+}
+
+.turbolift-buttons {
+	padding: 5px;
+}
+
+.turbolift-buttons .crmbutton, 
+.turbolift-buttons .crmButton {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.turbolift-relations {
+	padding: 5px;
+	
+	& .turbolift-card {
+		width: 100%; 
+		margin-top: 5px;
+		box-shadow: none;
+	}
+}
+
+@media (max-width: 991px) {
+	.turboliftEntry,
+	.turboliftEntrySelected,
+	.turboliftEntry1,
+	.turboliftEntry2 {
+		& .turboliftIcon {
+			display: none;
+		}
+		& .turboliftLabel {
+			flex: 0.8;
+		}
+	}
+}

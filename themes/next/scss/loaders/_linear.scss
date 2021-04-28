@@ -1,0 +1,66 @@
+
+// crmv@163191
+
+.dataloader {
+	&[data-loader='linear'] {
+		position: fixed;
+		top: 0px;
+		width: 100%;
+		z-index: 1000;
+		
+		&>.wrap {
+			margin: 0 auto;
+			height: 4px;
+			text-align: left;
+			
+			&>.linearloader {
+				height: 4px;
+				position: absolute;
+				margin: 0 auto 3rem auto;
+				overflow: hidden;
+				&>div {
+					position: absolute;
+					height: 100%;
+					width: 100%;
+					left: 0;
+				}
+			}
+			
+			&>.bar {
+				width: 100%;
+				height: .2rem;
+				left: 0;
+				&>div {
+					transform: scaleX(1);
+					background-color: $linear-loader-bg;
+				}
+			}
+		}
+		
+		&>.go .linearloader.bar>div {
+			animation: loading-bar 2s infinite backwards ease-out;
+		}
+	}
+}
+
+@keyframes loading-bar {
+	0% {
+		transform: scaleX(0);
+		z-index: 15;
+	}
+	22% {
+		transform: scaleX(0);
+		z-index: 15;
+	}
+	50% {
+		transform: scaleX(1);
+	}
+	90% {
+		transform: scaleX(1);
+		z-index: 1;
+	}
+	100% {
+		transform: scaleX(1);
+		z-index: 0;
+	}
+}

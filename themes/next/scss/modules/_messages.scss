@@ -1,0 +1,343 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@2963m */
+
+#PageContents #Folders {
+	/*background-color: $vte-box-verylight-bg;*/
+}
+
+#PageContents #ListViewContents {
+	/*background-color: $vte-box-verylight-bg;*/
+	/*outline: 1px solid $grey-300;*/
+}
+
+#MessagesRowList {
+	table-layout: fixed;
+}
+
+#PageContents #TurboliftContents {
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-top: 0px;
+	background-color: $turbolift-content-bg;
+	border-left: 1px solid $turbolift-content-border;
+}
+
+.listMessageTitle {
+	color: $vte-text;
+	font-size: $vte_font_size;
+	text-decoration: none;
+	font-weight: bold;
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ellipsisbtn-100 {
+	width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.listMessageFrom {
+	color: $vte-text;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.listMessageSubject {
+	color: $vte-text;
+	font-size: $vte_font_size;
+	text-decoration: none;
+}
+
+.messages-list,
+.messages-folder-list,
+.messages-account-list {
+	background-color: $list-messages-bg;
+}
+
+.listMessageRowPrefix {
+	vertical-align: top;
+	border-bottom: 1px solid $list-messages-row-border;
+}
+
+.listMessageRow {
+	cursor: pointer;
+	border-bottom: 1px solid $list-messages-row-border;
+	border-right: 1px solid $list-messages-row-border;
+}
+
+.folderMessageRow {
+	height: 40px;
+	border-bottom: 1px solid $list-messages-row-border;
+	border-right: 1px solid $list-messages-row-border;
+}
+
+.previewEntity {
+	background-color: $preview-bg;
+	color: $preview-color;
+	cursor: pointer;
+	border: 1px solid $preview-border;
+	word-break: break-all;
+	margin-bottom: 10px;
+	box-shadow: none;
+}
+
+.previewEntitySelected {
+	background-color: $preview-active-bg;
+	color: $preview-color;
+	cursor: pointer;
+	border: 1px solid $preview-border;
+	word-break: break-all;
+	margin-bottom: 10px;
+	box-shadow: none;
+}
+
+.cardLabel {
+	padding: 5px;
+}
+
+.cardIcon {
+	padding: 5px;
+}
+
+.cardContent {
+	border-top: 1px solid #e0e0e0;
+	padding: 0px 2px;
+}
+
+.cardContent > table {
+	background-color: $white;
+	word-break: break-all;
+}
+
+.cardContent > table .fieldLabel {
+	font-size: 12px;
+}
+
+.cardContent > table .fieldValue {
+	font-size: 13px;
+}
+
+.lvtColDataHoverMessage {
+	background-color: $list-messages-row-hover;
+}
+
+.MessagePre {
+	width: 500px;
+	font-family: monospace;
+	margin: 0px;
+	white-space: pre;
+}
+
+.fieldLabel {
+	font-size: 10px;
+	color: gray;
+}
+
+.cpanel_div {
+	border: 1px solid $vte-button-border;
+
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+
+	padding: 10px;
+	margin: 10px;
+
+	min-height: 90px;
+	vertical-align: middle;
+
+	&:hover {
+		box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+	}
+}
+
+.cpanel_left_credits {
+	font-size: 20px;
+}
+
+/* crmv@2963me */
+
+.messages-detailview-container {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+.messages-detailview-container-inner {
+	@include vtecard();
+}
+
+.messages-detailview {
+	background-color: $messages-detailview-bg;
+	color: $messages-detailview-color;
+	padding: 5px;
+	border-radius: 5px;
+	overflow-x: hidden;
+	margin-bottom: 10px;
+	
+	& .messages-detailview-content {
+		overflow-x: auto;
+	}
+
+	& a {
+		color: $messages-detailview-link-color;
+
+		&:hover, &:focus {
+			color: $messages-detailview-link-color-hover;
+		}
+	}
+}
+
+.messages-talk-users-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	
+	& .messages-talk-users-methods-wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		
+		& .messages-talk-users-methods {
+			padding-left: 5px;
+			padding-right: 10px;
+		}
+	}
+	
+	& .messages-talk-users-list-wrapper {
+	}
+	
+	& .messages-talk-publish-wrapper {
+		margin-left: auto;
+	}
+}
+
+.sendingMethod {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 10px 0px;
+
+	& .sendingMethodOptions {
+		margin-left: auto;
+
+		& .radio {
+			display: inline-block;
+		}
+
+		& .radio + .radio {
+			margin-top: 4px;
+		}
+	}
+}
+
+/* Email Client Classes */
+
+.mailClient {
+	border-top: 0px solid $grey-300;
+	border-right: 0px solid $grey-300;
+	border-left: 0px solid $grey-300;
+	border-bottom: 0px solid $grey-300;
+}
+
+.mailClientBg {
+	background: $vte-submenu;
+	color: $vte-submenu-color;
+	border: 0;
+}
+
+.mailSubHeader {
+	padding: 4px;
+}
+
+.mailClientWriteEmailHeader {
+	padding: 10px;
+	font-size: 16px;
+	line-height: 24px;
+	color: $vte-text-title;
+	min-height: 50px;
+	text-indent: 10px;
+}
+
+.mailClientCSSButton {
+	/*
+	border-left: 1px solid $white;
+	border-top: 1px solid $white;
+	border-right: 1px solid $white;
+	border-bottom: 1px solid $white;
+	padding: 2px;
+	background-color: $white;
+	*/
+}
+
+.header-breadcrumbs {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.attachmentsEmail {
+	border: 1px solid $messages-compose-attachments-border;
+	border-radius: 4px 4px 4px 4px;
+	padding: 5px 5px 3px 5px;
+}
+
+/* Email Client Classes ends */
+
+.div_ical {
+	padding: 10px;
+}
+.ical_header {
+	font-weight: 700;
+	padding-top: 2px;
+	padding-bottom: 6px;
+}
+.ical_cell_title {
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #545454;
+	text-align: left;
+	height: 18px;
+}
+.ical_cell_value {
+}
+.table_segmented_buttons {
+	display: inline-block;
+	border: 1px solid $ical-buttons-border;
+	background-color: $ical-buttons-bg;
+}
+.td_segmented_button {
+	height: 26px;
+	min-width: 56px;
+	text-align: center;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-right: 1px solid $ical-buttons-border;
+	cursor: pointer;
+	color: $ical-button-color;
+}
+.td_segmented_button.td_segmented_button_last {
+	border-right: none;
+}
+.td_segmented_button:hover {
+	background-color: $ical-button-hover;
+}
+.td_segmented_button.green {
+	background-color: #64c61d;
+}
+.td_segmented_button.red {
+	background-color: #ff5238;
+}

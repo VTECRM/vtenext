@@ -1,0 +1,161 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+@import "utilities/_bootstrap_utilities";
+
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
+.icon-container {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.icon-container-icon {
+	display: table-cell;
+	width: 20%;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.icon-container-label {
+	display: table-cell;
+	width: 80%;
+	vertical-align: middle;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.nopadding {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.table-fixed {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.wrap-content {
+	word-wrap: break-word;
+	word-break: break-word; // crmv@104459
+}
+
+.divider {
+   margin: 5px auto;
+   height: 1px;
+   width: 100%;
+   background-color: $separator-color;
+}
+
+.table.borderless td, .table.borderless th {
+    border: 0 !important;
+}
+
+.table.borderless {
+    margin-bottom: 0px;
+}
+
+.table>tbody>tr>td.cell-vcenter, .table>tbody>tr>th.cell-vcenter {
+	vertical-align: middle;
+}
+
+@for $i from 1 through 100 {
+	@if $i % 10 == 0 {
+		.spacer-#{$i} {
+			height: unquote($i + 'px');
+			margin: 0 9px;
+		}
+	}
+}
+
+.no-gutter > [class*='col-'] {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+@mixin circle($cw, $ch, $cb, $clh, $cta, $cr) {
+    width: $cw;
+    height: $ch;
+    background-color: $cb;
+    line-height: $clh;
+    text-align: $cta;
+    border-radius: $cr;
+}
+
+.circle {
+	@include circle(30px, 30px, $primary, 30px, center, 50%);
+}
+
+.smallerCircle {
+	@include circle(30px, 30px, $primary, 30px, center, 50%);
+}
+
+.smallCircle {
+	@include circle(44px, 44px, $primary, 44px, center, 50%);
+}
+
+.mediumCircle {
+	@include circle(70px, 70px, $primary, 70px, center, 50%);
+}
+
+.bigCircle {
+	@include circle(100px, 100px, $primary, 100px, center, 50%);
+}
+
+.circleGreen {
+	@include circle(30px, 30px, $green-600, 30px, center, 50%);
+}
+
+.smallerCircleGreen {
+	@include circle(30px, 30px, $green-600, 30px, center, 50%);
+}
+
+.circle, .circleGreen, .smallerCircle, .smallerCircleGreen, .smallCircle, .mediumCircle, .bigCircle {
+	position: relative;
+	list-style-type: none;
+	
+	& .vteicon, & .vteicon2, & .icon-module {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-ms-transform: translate(-50%, -50%); /* IE 9 */
+	    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+	    transform: translate(-50%, -50%);
+		color: $white;
+		
+		&:hover:not(.disabled):not(.nohover) {
+			color: $grey-300;
+		}
+	}
+}
+
+.circle {
+	& .vteicon, & .vteicon2, & .icon-module {
+		font-size: 18px;
+	}
+}
+
+.vte-card {
+	@include vtecard();
+
+	& .vte-card {
+		box-shadow: none;
+	}
+
+	& .vtetable {
+		margin-bottom: 0;
+	}
+}
+
+.vte-tabs {
+	@include vtetabs();
+}

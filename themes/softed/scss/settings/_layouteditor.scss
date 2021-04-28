@@ -1,0 +1,34 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.layoutEditorFieldPicker {
+	width: 100%;
+	height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	overflow: auto;
+	border: 1px solid #cccccc;
+	text-align: left;
+
+	& .customMnu, & .newFieldMnu {
+		display: block;
+		padding: 5px;
+		text-decoration: none;
+		color: $vte-text;
+		
+		&.customMnuSelected, &.newFieldMnuSelected {
+			background-color: $vte-primary;
+			color: $white;
+
+			& .customMnuIcon, & .customMnuText {
+				color: $white;
+			}
+		}
+
+		& .customMnuIcon, & .customMnuText {
+			vertical-align: middle;
+		}
+	}
+}

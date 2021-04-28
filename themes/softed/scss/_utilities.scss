@@ -1,0 +1,85 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+@import "utilities/_bootstrap_utilities";
+
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
+.icon-container {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.icon-container-icon {
+	display: table-cell;
+	width: 20%;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.icon-container-label {
+	display: table-cell;
+	width: 80%;
+	vertical-align: middle;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.nopadding {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.table-fixed {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.wrap-content {
+	word-wrap: break-word;
+	word-break: break-word; // crmv@104459
+}
+
+.divider {
+	margin: 15px auto;
+	height: 1px;
+	width: 100%;
+	background-color: $vte-thin-border;
+}
+
+.table.borderless td,
+.table.borderless th {
+	border: 0 !important;
+}
+
+.table.borderless {
+	margin-bottom: 0px;
+}
+
+.table > tbody > tr > td.cell-vcenter,
+.table > tbody > tr > th.cell-vcenter {
+	vertical-align: middle;
+}
+
+@for $i from 1 through 100 {
+	@if $i % 10 == 0 {
+		.spacer-#{$i} {
+			height: unquote($i + "px");
+			margin: 0 9px;
+		}
+	}
+}
+
+.no-gutter > [class*="col-"] {
+	padding-right: 0;
+	padding-left: 0;
+}

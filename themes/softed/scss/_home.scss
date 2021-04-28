@@ -1,0 +1,83 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Home Page */
+/* crmv@20052 crmv@25551 crmv@61937 */
+
+.MatrixLayer{
+	width:31%;
+	visibility:visible;
+	margin:0.3%;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.MatrixLayerURL{
+	width:31%;
+	margin:0.3%;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.MatrixBorder{
+	border:1px solid $grey-300;
+	height:300px;
+	background: $white;
+	overflow: auto;
+}
+
+.MatrixBorderURL{
+	border:1px solid $grey-300;
+	height:500px;
+	background-color:$white;
+}
+
+.homePageMatrixHdr {
+	padding: 0px 10px 0px 10px;	/* crmv@61937 */
+}
+
+
+.homePageButtons{
+	padding-top: 5px;
+}
+
+#addWidgetDropDown{
+	background-color: $vte-submenu;
+	position:fixed;
+	display:none;
+	border:1px solid $grey-300;
+	left:0px;
+	top:0px;
+	overflow:visible;
+	z-index:5000;
+}
+
+.widgetDropDownList{
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top:0;
+	margin-bottom:0;
+	margin-right:0;
+}
+
+.twoColumnWidget{
+	padding-left:1px;
+	padding-right:1px;
+}
+
+.scrollLink{
+	padding-top: 10px;
+	padding-bottom: 10px
+}
+
+.topMarginHomepage{
+	margin-left: 10px;
+	margin-top: 10px;
+}

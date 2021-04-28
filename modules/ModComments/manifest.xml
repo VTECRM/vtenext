@@ -1,0 +1,316 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2010-04-27 15:17:37</exporttime>
+<name>ModComments</name>
+<label>Comments</label>
+<parent></parent>
+<version>1.1</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+  <name>TABLEPREFIX_modcomments</name>
+  <sql>
+  <![CDATA[ <?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_modcomments">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="modcommentsid" type="I" size="11">
+		<KEY/>
+    </field>
+    <field name="commentcontent" type="X"/>
+    <field name="related_to" type="C" size="100"/>
+    <field name="parent_comments" type="I" size="19"/>
+	<field name="visibility_comm" type="C" size="255"/>
+	<field name="lastchild" type="I" size="19"/>
+	<field name="related_to_perm" type="I" size="1">
+	  <DEFAULT value="0"/>
+    </field>
+	<index name="commentcontent_idx">
+      <col>commentcontent(255)</col>
+    </index>
+	<index name="parent_comments_idx">
+      <col>parent_comments</col>
+    </index>
+	<index name="related_to_visibility_idx">
+      <col>related_to</col>
+	  <col>visibility_comm</col>
+    </index>
+  </table>
+</schema>
+  ]]>
+  </sql>
+</table>
+<table>
+  <name>TABLEPREFIX_modcommentscf</name> 
+  <sql>
+  <![CDATA[ <?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_modcommentscf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="modcommentsid" type="R" size="11">
+      <KEY/>
+    </field>
+  </table>
+</schema>
+  ]]> 
+  </sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_MODCOMMENTS_INFORMATION</label>
+<fields>
+<field>
+<fieldname>commentcontent</fieldname>
+<uitype>19</uitype>
+<columnname>commentcontent</columnname>
+<tablename>TABLEPREFIX_modcomments</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Comment</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<entityidentifier>
+<entityidfield>modcommentsid</entityidfield>
+<entityidcolumn>modcommentsid</entityidcolumn>
+</entityidentifier>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_OTHER_INFORMATION</label>
+<fields>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>related_to</fieldname>
+<uitype>10</uitype>
+<columnname>related_to</columnname>
+<tablename>TABLEPREFIX_modcomments</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Related To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<relatedmodules>
+<relatedmodule>Leads</relatedmodule>
+<relatedmodule>Contacts</relatedmodule>
+<relatedmodule>Accounts</relatedmodule>
+</relatedmodules>
+</field>
+<field>
+<fieldname>creator</fieldname>
+<uitype>52</uitype>
+<columnname>smcreatorid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Creator</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>parent_comments</fieldname>
+<uitype>10</uitype>
+<columnname>parent_comments</columnname>
+<tablename>TABLEPREFIX_modcomments</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Related To Comments</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>7</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<relatedmodules>
+<relatedmodule>ModComments</relatedmodule>
+</relatedmodules>
+</field>
+<field>
+<fieldname>visibility_comm</fieldname>
+<uitype>15</uitype>
+<columnname>visibility_comm</columnname>
+<tablename>TABLEPREFIX_modcomments</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Visibility</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>8</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<picklistvalues>
+<picklistvalue>All</picklistvalue>
+<picklistvalue>Users</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>related_to_perm</fieldname>
+<uitype>1</uitype>
+<columnname>related_to_perm</columnname>
+<tablename>TABLEPREFIX_modcomments</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Related To Permissions</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>9</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_CUSTOM_INFORMATION</label>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>false</setdefault>
+<setmetrics>false</setmetrics>
+<setmobile>true</setmobile>
+<fields>
+<field>
+<fieldname>commentcontent</fieldname>
+<columnindex>0</columnindex>
+</field>
+<field>
+<fieldname>related_to</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<columnindex>2</columnindex>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<columnindex>3</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>public_readwritedelete</default>
+</sharingaccess>
+<customlinks>
+<customlink>
+<linktype>HEADERSCRIPT</linktype>
+<linklabel>ModCommentsCommonHeaderScript</linklabel>
+<linkurl><![CDATA[modules/ModComments/ModCommentsCommon.js]]></linkurl>
+<linkicon><![CDATA[]]></linkicon>
+<sequence>0</sequence>
+</customlink>
+</customlinks>
+</module>

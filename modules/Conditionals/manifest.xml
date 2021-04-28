@@ -1,0 +1,113 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2010-07-27 10:46:50</exporttime>
+<name>Conditionals</name>
+<label>Conditionals</label>
+<parent></parent>
+<type>extension</type>
+<version>1.0</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<migrations>	
+</migrations>
+<tables>
+<table>
+<name>tbl_s_conditionals</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_conditionals">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="ruleid" type="R" size="19">
+      <KEY/>
+    </field>
+    <field name="fieldid" type="R" size="19">
+      <KEY/>
+    </field>
+    <field name="sequence" type="I" size="19"/>
+    <field name="active" type="I" size="19"/>
+    <field name="description" type="C" size="255"/>
+    <field name="read_perm" type="I" size="1"/>
+    <field name="write_perm" type="I" size="1"/>
+    <field name="mandatory" type="I" size="1"/>
+    <field name="role_grp_check" type="C" size="255"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>tbl_s_transitions_fields</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_conditionals_rules">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="R" size="19">
+      <KEY/>
+    </field>
+    <field name="ruleid" type="I" size="19"/>
+    <field name="chk_fieldname" type="C" size="255"/>
+    <field name="chk_criteria_id" type="I" size="8"/>
+    <field name="chk_field_value" type="C" size="255"/>
+    <field name="module" type="C" size="25"/>
+    <index name="PK_tbl_s_conditionals_rules">
+      <col>ruleid</col>
+    </index>
+  </table> 
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_conditionals_versions</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_conditionals_versions">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="11">
+      <KEY/>
+    </field>
+    <field name="version" type="C" size="10"/>
+    <field name="createdtime" type="T"/>
+    <field name="createdby" type="I" size="19"/>
+    <field name="modifiedtime" type="T"/>
+    <field name="modifiedby" type="I" size="19"/>
+    <field name="closed" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="json" type="XL"/>
+    <index name="idx_version">
+      <col>version</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_conditionals_versions_import</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_conditionals_versions_import">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="version" type="C" size="10">
+      <KEY/>
+    </field>
+    <field name="sequence" type="I" size="10"/>
+    <field name="json" type="XL"/>
+    <field name="status" type="C" size="10"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_conditionals_versions_rel</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_conditionals_versions_rel">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="metalogid" type="I" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+</module>

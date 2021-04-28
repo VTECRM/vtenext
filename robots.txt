@@ -1,0 +1,9 @@
+# ------------------------------------------
+# VTENEXT -- http://www.vtenext.com
+# Robot Exclusion File -- robots.txt
+# Author: VTECRM Team
+# Last Updated: 24/10/17 
+# ------------------------------------------
+
+User-agent: *
+Disallow: /

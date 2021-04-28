@@ -1,0 +1,105 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@82419 */
+
+/* crmv@69398 */
+/* styles for progress bar with circles */
+.progressbar-circles {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.progressbar-circles table {
+	height: 32px;
+}
+
+.progressbar-circles .steps-border {
+	position: absolute;
+	left:0px;
+	top: 14px;
+	width:100%;
+	height: 22px;
+	border-radius: 16px;
+	border-left: none;
+	border: 1px solid $white;
+	background: $vte-box-verylight-bg;
+}
+
+.progressbar-circles .step-border {
+	position: absolute;
+	left: 0px;
+	width: 32px;
+	height: 32px;
+	text-align: center;
+	line-height: 32px;
+	border: 1px solid $grey-400;
+	border-radius: 16px;
+	background: $white;
+	padding: 0px;
+	display: inline-block;
+	position: relative;
+	box-sizing: content-box;
+}
+
+.progressbar-circles td:first-child .border {
+	border-left: none;
+}
+
+.progressbar-circles .step-num {
+	position: relative;
+	width: 28px;
+	height: 28px;
+	left: 0px;
+	text-align: center;
+	line-height: 28px;
+	border-radius: 14px;
+	background: $vte-primary;
+	margin: 2px;
+	padding: 0px;
+	display: inline-block;
+	color: $white;
+	font-weight:700;
+}
+
+.progressbar-circles .step-text {
+	position: relative;
+}
+
+/* active step */
+.progressbar-circles .active-step .step-text {
+	font-weight:700;
+	top: -2px;
+}
+
+.progressbar-circles .active-step .step-border {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+.progressbar-circles .active-step .step-num {
+	background: $vte-primary;
+	width: 46px;
+	height: 46px;
+	border-radius: 23px;
+	line-height: 46px;
+	font-size: 20px;
+}
+
+/* prev steps */
+.progressbar-circles .previous-step .step-num {
+	background: darken($vte-primary, 12%);
+}
+
+/* next steps */
+.progressbar-circles .next-step .step-num {
+	background: $vte-submenu;
+	color: $grey-800;
+}
+
+.progressbar-circles .next-step .step-text {
+	color: $grey-800;
+}

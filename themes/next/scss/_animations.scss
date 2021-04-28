@@ -1,0 +1,38 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.blink {
+	color: $vte-primary;
+	-webkit-animation: blink 1s infinite;
+	-moz-animation: blink 1s infinite;  
+	-ms-animation: blink 1s infinite;  
+	-o-animation: blink 1s infinite;  
+	animation: blink 1s infinite;   
+}
+
+@-webkit-keyframes blink {
+	from { color: red; }
+	to { color: $vte-primary; }
+}
+
+@-moz-keyframes blink {
+	from { color: red; }
+	to { color: $vte-primary; }
+}
+
+@-ms-keyframes blink {
+	from { color: red; }
+	to { color: $vte-primary; }
+}
+
+@-o-keyframes blink {
+	from { color: red; }
+	to { color: $vte-primary; }
+}
+
+@keyframes blink {
+	from { color: red; }
+	to { color: $vte-primary; }
+}

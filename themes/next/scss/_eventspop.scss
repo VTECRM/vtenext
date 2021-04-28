@@ -1,0 +1,79 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@103922 */
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors';
+
+/* Import mixins */
+@import 'vars/mixins';
+
+#events_calendar {
+	.ui-widget {
+	    font-family: $font-family-base;
+	}
+	.ui-datepicker {
+		padding: 0px;
+		border-radius: 4px !important;
+	}
+	.ui-corner-all {
+		border-radius: 0px;
+	}
+	.ui-datepicker-header {
+		color: $white;
+		font-weight: bold;
+		line-height: 30px;
+		background-color: $vte-primary;
+		background-image: none;
+		border: $vte-primary 1px solid;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+	}
+	.ui-datepicker .ui-datepicker-title {
+		line-height: 2.8em;
+	}
+	.ui-datepicker .ui-datepicker-next, .ui-datepicker .ui-datepicker-prev {
+		top: 8px;
+		background-color: $vte-primary !important;
+	}
+	.ui-datepicker-next-hover, .ui-datepicker-prev-hover {
+		border: $vte-primary 1px solid;
+		background-image: none;
+		color: $white;
+	}
+	.ui-state-default {
+		background-image: none;
+		border: 0px none;
+		font-size: 13px;
+		background-color: $white;
+		font-weight: normal;
+		color: #333;
+	}
+	.ui-state-hover {
+		background-color: #e3f2fd;
+	}
+	.ui-state-active {
+		font-weight: bold;
+	    color: $black;
+	    background-color: #e3f2fd;
+	    border: 1px solid #c0cdd7;
+	}
+	.ui-datepicker th {
+    	background-color: $vte-submenu;
+    	border-bottom: 1px solid #a3bad9;
+	}
+	.ui-state-highlight {
+		border: 1px solid #7c858b;
+	}
+	.ui-datepicker .ui-datepicker-next.ui-state-hover.ui-datepicker-next-hover span,
+	.ui-datepicker .ui-datepicker-prev.ui-state-hover.ui-datepicker-prev-hover span {
+	    background-image: url(vteimage('include/js/jquery_plugins/ui/images/ui-icons_ffffff_256x240.png', '../../../'));
+	    opacity: 0.6;
+	}
+}

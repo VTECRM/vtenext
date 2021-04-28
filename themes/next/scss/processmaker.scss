@@ -1,0 +1,82 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@154044 crmv@187568 */
+
+/* StartEvent task */
+*[data-element-id^="StartEvent_"] .djs-visual circle {
+	fill: #a5d6a7 !important;
+	stroke: #81c784 !important;
+}
+
+/* EndEvent task */
+*[data-element-id^="EndEvent_"] .djs-visual circle {
+	fill: #b0bec5 !important;
+	stroke: #90a4ae !important;
+}
+
+/* Task labels */
+*[data-element-id^="Task_"] .djs-visual .djs-label {
+	fill: #000000 !important;
+}
+
+/* Gateway */
+*[data-element-id^="ExclusiveGateway_"] .djs-visual polygon {
+	fill: #ffa726 !important;
+	stroke: #eeeeee !important;
+}
+
+/* SequenceFlow */
+*[data-element-id^="SequenceFlow_"] .djs-visual path {
+	stroke: #b0bec5 !important;
+}
+
+.djs-visual path {
+	stroke: black !important;
+}
+
+.djs-container {
+	background-color: #eeeeee;
+}
+
+.djs-palette {
+	border-radius: 2px;
+	box-shadow: none;
+}
+
+.djs-palette [class^="bpmn-icon-"]:before, .djs-palette [class*=" bpmn-icon-"]:before {
+	line-height: 46px;
+}
+
+.djs-context-pad .entry {
+	width: 30px;
+	box-shadow: none;
+}
+
+.highlights-shape:not(.djs-connection) .djs-visual > :nth-child(1) {
+	stroke: #283593 !important;
+}
+
+.current-shape:not(.djs-connection) .djs-visual > :nth-child(1) {
+	stroke: #283593 !important;
+}
+
+.executer-shape:not(.djs-connection) .djs-visual > :nth-child(1) {
+	stroke: #ff7043 !important;
+}
+
+// crmv@177151
+.processes_btn_div {
+	input[type=button], button {
+		background-color: white !important;
+	}
+}
+// crmv@177151e
+
+//crmv@100972
+.bjs-powered-by {
+	opacity: 0.1;
+}
+//crmv@100972e

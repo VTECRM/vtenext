@@ -1,0 +1,86 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* For Report PDF */
+
+/*  crmv@98764 */
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors';
+
+/* Import mixins */
+@import 'vars/mixins';
+
+body {
+	font-family: $font-family-base;
+	font-size:12px;
+}
+
+$report-border-color: #ddd;
+$report-border-color-dark: #ddd;
+
+// mpdf doesn't support advanced css selectors, so define here a simpler version
+
+.rptTable {
+
+	width: 95%;
+	border:1px solid $report-border-color;
+	border-collapse: collapse;
+	vertical-align: top;
+}
+
+th {
+	text-align: left;
+	background-color: $white;
+	
+	border-bottom:2px solid $report-border-color-dark;
+	border-left:1px solid $report-border-color-dark;
+	border-top:1px solid $report-border-color-dark;
+	border-right:1px solid $report-border-color-dark;
+	
+	padding: 8px;
+
+}
+
+td {
+	padding: 4px;
+}
+
+tr:nth-child(odd) {
+	background-color: #f9f9f9;
+}
+tr:nth-child(even) {
+	background-color: $white;
+}
+	
+.rptData {
+	border:1px solid $report-border-color;
+}
+
+.rptAction {
+	border:1px solid $report-border-color;
+}
+
+
+.rptTotal {
+	border:1px solid $report-border-color;
+}
+
+.rptGrpHead {
+	border-top:1px solid $report-border-color;
+	border-left:1px solid $report-border-color;
+	border-right:1px solid $report-border-color;
+}
+
+.rptEmptyGrp {
+	background-color: $white;
+	
+	border-left:1px solid $report-border-color;
+	border-right:1px solid $report-border-color;
+}
+

@@ -1,0 +1,246 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@194723 */
+
+.calendar-resources-table {
+	&.table {
+		table-layout: fixed;
+		background-color: #ffffff;
+	}
+	
+	&.table>tbody>tr>td, 
+	&.table>tbody>tr>th, 
+	&.table>tfoot>tr>td, 
+	&.table>tfoot>tr>th, 
+	&.table>thead>tr>td, 
+	&.table>thead>tr>th {
+		position: relative;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	&.table>tbody>tr>td {
+		vertical-align: top;
+		height: 100px;
+		max-height: 100px;
+	}
+	
+	&.table td:first-of-type, 
+	&.table th:first-of-type {
+		padding-left: 24px;
+		text-align: left;
+		vertical-align: middle;
+	}
+	
+	&.table .slot-date-holiday {
+		background-color: #f1f1f1;
+	}
+	
+	&.table .week-num {
+    	text-align: center;
+    }
+    
+    & .day-cell {
+    	cursor: pointer;
+    }
+    
+	& .event-chip {
+		display: block;
+		min-height: 18px;
+		line-height: 13px;
+		padding: 3px 12px;
+		border: 0;
+		background-color: #dedede;
+		color: rgba(0,0,0,.87);
+		margin: 2px 0;
+		width: 100%;
+		text-align: left;
+		font-size: 11px;
+		overflow: hidden;
+		position: relative;
+		cursor: pointer;
+		padding: 3px 2px;
+    	padding-left: 15px;
+    	border-radius: 8px;
+	}
+	
+	& .event-chip-color {
+		position: absolute;
+		top: 0;
+	 	left: 0;
+	 	max-width: 16px;
+	 	padding: 3px;
+	 	height: 100%;
+	}
+	
+	& .event-chip-type {
+		font-size: 12px;
+		vertical-align: middle;
+		margin-top: 2px;
+		color: #333333;
+		display: block;
+	}
+	
+	& .event-chip-text {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		word-break: break-all;
+		white-space: pre-wrap;
+		padding: 0 3px;
+	}
+	
+	& .event-chip-hour {
+		width: 40px;
+		margin-right: 2px;
+		line-height: 13px;
+		text-align: center;
+		border-radius: 2px;
+		margin-top: 0px;
+		white-space: nowrap;
+	}
+	
+	& .event-chip-hour span {
+		font-weight: bold;
+		display: block;
+	}
+	
+	& .event-chip-title {
+		flex: 0.75;
+	}
+	
+	& .event-containers {
+		max-height: 100px;
+		overflow-y: auto;
+		min-width: 160px;
+		min-height: 85px;
+		padding: 2px;
+	}
+	
+	& .event-slot-date {
+		font-size: 11px;
+		font-weight: bold;
+		background-color: $vte-primary;
+		color: white;
+		text-align: center;
+		padding: 2px 0;
+		width: 100%;
+	}
+	
+	& .user-actions {
+		position: absolute;
+		right: 0;
+		top: 0;
+		max-width: 32px;
+		height: 100%;
+		position: absolute;
+		display: flex;
+	    flex-direction: row;
+	    justify-content: flex-start;
+	    align-items: flex-start;
+	    padding: 4px;
+	}
+	
+	& .user-action {
+		cursor: pointer;
+	}
+	
+	& .user-color {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 10px;
+		height: 100%;
+	}
+	
+	& .user-avatar {
+		vertical-align: middle;
+		margin-right: 4px;
+	}
+	
+	& .user-text {
+		vertical-align: middle;
+		display: inline-block;
+		line-height: 20px;
+		margin-left: 10px;
+		max-width: 150px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	& .user-username {
+		font-size: 16px;
+		font-weight: bold;
+	}
+	
+	& .user-completename {
+		color: #6c757d;
+	}
+	
+	& .ui-state-highlight-disabled {
+	    background-color: transparent;
+	    border: 0 none;
+	}
+}
+
+/* Roles Modal */
+	
+#rolesModal {
+	& .close {
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    background-color: red;
+	    opacity: 1;
+	    color: white;
+	    padding: 4px 6px;
+	    font-size: 16px;
+	    font-weight: normal;
+	    text-shadow: none;
+	}
+	
+	& .modal-dialog {
+		width: 90%;
+	}
+	
+	& .modal-content .modal-body+.modal-footer {
+		padding-top: 7px;
+	}
+	
+	& .alert {
+		padding: 10px;
+	}
+	
+	& .alert .vteicon {
+		color: inherit;
+		margin-right: 3px;
+	}
+	
+	& .uil {
+		list-style-type: none;
+	}
+	
+	& .uil .checkbox .checkbox-material {
+	    vertical-align: middle;
+	    position: relative;
+	    top: 0px;
+	    margin-left: 2px;
+	    margin-right: 5px;
+	}
+	
+	& .uil .checkbox label {
+		padding-left: 20px;
+	}
+	
+	& .uil .checkbox input[type=checkbox][disabled]:not(:checked) ~ .checkbox-material .check {
+		border: 1px solid #6c757d;
+	}
+	
+	& .uil .useritem-disabled {
+		color: #6c757d;
+	}
+}

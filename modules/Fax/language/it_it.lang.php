@@ -1,0 +1,47 @@
+<?php
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
+ * SPDX-License-Identifier: AGPL-3.0-only  
+ ************************************/
+$mod_strings = array (
+'TITLE_VTECRM_FAX' => 'vteCRM Fax',
+'TITLE_COMPOSE_FAX' => 'Componi Fax',
+'LBL_CONF_EXTENSION_ERROR'=>'Il file selezionato ha una estensione non supportata, le estensioni riconosciute sono le seguenti:PDF,TIFF,PS',
+'LBL_FAXSELECT_INFO'=>'ha i seguenti campi Fax associati.Seleziona il campo Fax al quale deve essere spedito il fax',
+'LBL_NO_RECORDS' => 'Nessun record trovato',
+'LBL_NO_RCPTS_FAX_ERROR'=>'Nessun destinatario specificato',
+'LBL_CONF_FAXSERVER_ERROR'=>'Configura il server di fax seguendo il link nel pannello Impostazioni---> Server di fax in uscita',
+'LBL_FAXSELECT_INFO3'=>'Non hai i permessi di utilizzare i campi Fax del/dei record selezionato/i.',
+'LBL_PLEASE_ATTACH' => 'Seleziona un file valido e riprova!',
+'LBL_KINDLY_UPLOAD' => 'Configura la variabile <font color="red">upload_tmp_dir</font> nel file php.ini.',
+'LBL_EXCEED_MAX' => 'Il file selezionato eccede il massimo consentito dalla applicazione. Prova con un file piu` piccolo di ',
+'LBL_BYTES' => ' byte',
+'LBL_CHECK_USER_FAXID' => 'Controlla il campo fax dell`utente corrente.Dovrebbe essere un numero di fax valido per poter mandare un fax',
+'LBL_TO'=>'A:',
+'LBL_COMPOSE_FAX'=>'Componi Fax',
+'LBL_MODULE_NAME'=>'Fax',
+'LBL_FORWARD_BUTTON'=>'Inoltra',
+'LBL_LIST_RELATED_TO' => 'Collegato a',
+'LBL_LIST_DATE' => 'Data invio',
+'LBL_SUBJECT' => 'Descrizione breve',
+'LBL_DETAILVIEW_FAX'=>'Fax', 
+'LBL_COMPOSE'=>'Componi',
+'MESSAGE_FAX_COULD_NOT_BE_SEND_TO_THIS_FAXID' => 'Il fax non puo essere spedito a questo indirizzo fax',
+'MESSAGE_PLEASE_CHECK_THE_FROM_FAXID' => 'Controllare l`indirizzo fax del mittente',
+'MESSAGE_CHECK_FAX_SERVER_NAME' => 'Controlla le impostazioni del Server di Fax',
+'LBL_FAXSELECT_INFO1'=>'I seguenti campi fax sono associati al(ai) record selezionato(i)',
+'LBL_FAXSELECT_INFO2'=>'Seleziona i campi fax ai quali mandare il fax',
+'SELECT_FAX' => 'Seleziona numeri di Fax',
+'LBL_MULTIPLE' => 'Multiplo',
+'EXTERNAL_RECEIVER'=>'Ricevitore Esterno',
+'Assigned To'=>'Assegnato A',
+'Subject'=>'Descrizione breve',
+'Attachment'=>'Allegato',
+'Document'=>'Documento(i)',
+'MESSAGE_NO_SUBJECT' => 'Non hai specificato nessuna descrizione breve per questo fax. Se vuoi inserirne una,scivila in questo box',
+'LBL_NO_SUBJECT' => '(Nessuna descrizione)',
+'SINGLE_fax'=>'Fax',
+'LBL_NO_RCPTS_EMAIL_ERROR'=>'Nessun destinatario specificato',
+'LBL_CONF_MAILSERVER_ERROR'=>'Prego configura il server di fax in uscita da -> Impostazioni---> Server Fax in Uscita',
+);
+?>

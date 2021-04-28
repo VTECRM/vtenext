@@ -1,0 +1,405 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors';
+
+/* Import mixins */
+@import 'vars/mixins';
+
+/* bootstrap font */ // crmv@96742
+$icon-font-path: 'fonts/glyphicons-halflings/';
+
+/* Import Bootstrap engine */
+/* TODO: import only what's needed */
+@import 'bootstrap/_bootstrap.scss';
+
+// prevent the underline when hovering links
+a:hover {
+	text-decoration: none;
+}
+
+/* In VTE there are still a lot of tables, keep the default padding */
+td {
+	padding: 2px;
+}
+
+table.lvtBg > tbody > tr > td {
+	padding: 0px;
+}
+div#contentwrap_ModCommentsDetailViewBlockCommentWidget > table > tbody > tr > td {
+	padding: 0px;
+}
+div.ModCommAnswerBox > table > tbody > tr > td {
+	padding: 0px;
+}
+
+div.checkbox span.checkbox-material span.check {
+	border: 1px solid $vte-text-title;
+	width: 18px;
+    height: 18px;
+}
+
+// crmv@109116
+#alert-dialog-content, #confirm-dialog-content {
+	// enable newlines in alerts
+	white-space: pre-wrap;
+}
+// crmv@109116e
+
+/* Detail View */
+
+.btn-group.detail-view-topbar-group {
+	margin: 0px;
+	box-shadow: none;
+	box-sizing: border-box;
+}
+
+.btn-group.detail-view-topbar-group:active:not(.btn-link) {
+	box-shadow: none;
+}
+
+.btn-group.detail-view-topbar-group .btn {
+	padding: 5px 10px;
+}
+
+/* Tracking button */
+
+.messagesTurboliftEntry.btn {
+	width: 100%;
+	margin: 0px;
+    padding: 0px 15px;
+    text-transform: none;
+    border: 1px solid $vte-button-border;
+}
+
+/* Other buttons, Turbolift buttons */
+
+.turboliftEntry1.btn {
+	width: 100%;
+	text-transform: none;
+	margin: 5px 1px;
+	text-align: left;
+	border: 1px solid $vte-button-border;
+}
+
+.turboliftEntry1.btn, .turboliftEntry.turboliftEntryWithImage.btn, .turboliftEntry1.turboliftEntryWithImage.btn {
+	width: 100%;
+	text-transform: none;
+	text-align: left;
+	border: 1px solid $vte-button-border;
+	margin: 0px;
+	padding: 7px 15px;
+    margin-top: 5px;
+}
+
+.turboliftEntry1.btn {
+	padding: 10px 15px;
+}
+
+.turboliftEntry1:hover {
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* TODO: extends class btn */
+.turboliftTracking {
+	margin: 5px 1px;
+	border: 1px solid $vte-button-border;
+	border-radius: 2px;
+}
+
+/* Track */
+
+.btn-group.detail-view-topbar-group .btn.track-button {
+	padding: 8px 5px;
+}
+
+.track-label {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 8px 10px;
+}
+
+.btn-group.detail-view-topbar-group .track-label {
+	@extend .track-label;
+}
+
+/* Others */
+
+.message-compose-border {
+	border: 1px solid #EAEAEA;
+}
+
+ul.pagination > li > a {
+	float: none;
+	margin-left: -5px;
+	border: none;
+}
+
+ul.pagination-sm > li > a {
+	font-size: 12px;
+}
+
+.crmbutton:not(.btn-link):not(.btn-flat):not(.delete):not(.save):not(.cancel),
+.crmButton:not(.btn-link):not(.btn-flat):not(.delete):not(.save):not(.cancel) {
+	border: 1px solid $vte-button-border;
+}
+
+.crmbutton.btn-arrow-right {
+	border-right: none !important;
+	z-index: 1;
+}
+
+.crmbutton.btn-arrow-left {
+	border-left: none !important;
+	z-index: 1;
+}
+
+.btn-arrow-right:before,
+.btn-arrow-left:before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    background: $white;
+    border: 1px solid $vte-button-border;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 2px;
+    z-index: -1;
+}
+
+.btn-arrow-right:before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+
+.btn-arrow-left:before {
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+}
+
+.btn-arrow-right:before {
+    right: -10px;
+}
+
+.btn-arrow-left:before {
+    left: -10px;
+}
+
+.btn-arrow-left:before,
+.btn-arrow-right:before {
+    background-color: $white;
+}
+
+.backButtonSave {
+	background-color: $vte-button-save;
+	background: linear-gradient(135deg,transparent 10px,$vte-button-save 0) top left,linear-gradient(45deg,transparent 10px,$vte-button-save 0) bottom left;
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    border: 0px none !important;
+    padding-left: 25px !important;
+	color: rgba(255,255,255,0.84) !important;
+}
+
+.backButtonSave:active {
+	box-shadow: none !important;
+}
+
+.backButtonSave:hover {
+	box-shadow: none !important;
+    color: rgba(0,0,0,0.84) !important;
+}
+
+/* crmv@170412 */
+.modal-content {
+	&.modal-content-transparent {
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
+.modal-backdrop.backdrop-dark {
+	background: rgba(0, 0, 0, 0.8);
+}
+.modal-backdrop.backdrop-dark.in {
+	opacity: 1;
+}
+/* crmv@170412e */
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog,
+.modal.top .modal-dialog,
+.modal.bottom .modal-dialog {
+	position: fixed;
+	margin: auto;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+	width: 320px;
+	height: 100%;
+}
+
+.modal.top .modal-dialog,
+.modal.bottom .modal-dialog {
+	left: 0px;
+	width: 100%;
+	height: 320px;
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content,
+.modal.top .modal-content,
+.modal.bottom .modal-content {
+	height: 100%;
+	overflow-y: auto;
+	border-radius: 0;
+	border: none;
+}
+
+/* Left */
+.modal.left.fade .modal-dialog {
+	left: -320px;
+	-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+	        transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+	left: 0px;
+}
+
+/* Right */
+.modal.right.fade .modal-dialog {
+	right: -320px;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+	        transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+	
+.modal.right.fade.in .modal-dialog {
+	right: 0px;
+}
+
+/* Top */
+.modal.top.fade .modal-dialog {
+	top: -320px;
+	-webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+	        transition: opacity 0.3s linear, top 0.3s ease-out;
+}
+	
+.modal.top.fade.in .modal-dialog {
+	top: 0;
+}
+
+/* Bottom */
+.modal.bottom.fade .modal-dialog {
+	bottom: -320px;
+	-webkit-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+	        transition: opacity 0.3s linear, bottom 0.3s ease-out;
+}
+	
+.modal.bottom.fade.in .modal-dialog {
+	bottom: 0;
+}
+
+.vtetable {
+	@extend .table;
+	
+	& > tbody > tr {
+		background-color: $vte-table-row-bg;
+	}
+	
+	&:not(.vtetable-props) > tbody > tr:hover {
+		background-color: $vte-table-row-active-bg;
+	}
+
+	& > tbody > tr.sep1 > td {
+		background-color: $vte-table-row-bg;
+	}
+	
+	& > tbody > tr.sep2 > td {
+		background-color: $vte-table-row-active-bg;
+	}
+	
+	&.vtetable-props {
+		& > tbody > tr:first-child > th,
+		& > tbody > tr:first-child > td {
+			border-top: 0 none;
+		}
+
+		& .cellLabel {
+			width: 20%;
+			vertical-align: top;
+			text-align: right;
+			padding: 5px 0;
+			padding-right: 10px;
+			font-weight: bold;
+		}
+		
+		& .cellText {
+			width: 80%;
+			vertical-align: top;
+			text-align: left;
+			padding: 5px 0;
+			padding-left: 10px;
+		}
+	}
+}
+
+.row-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	
+	& .col-header-left {
+		text-align: left;
+	}
+	
+	& .col-header-right {
+		text-align: right;
+	}
+}
+
+.col-header {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+	& .col-title {
+	    font-size: 16px;
+    	font-weight: bold;
+	}
+}
+
+// crmv@187622
+.vte-btn-group {
+	@extend .btn-group;
+
+	& > .crmbutton, & > .crmButton {
+		@extend .btn;
+	}
+}
+// crmv@187622e

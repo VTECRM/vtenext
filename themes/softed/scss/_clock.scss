@@ -1,0 +1,74 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Clock */
+
+.citystyle {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	text-align: left;
+}
+
+#theClockLayer {
+	position: relative;
+	height: 180px;
+	left: 20px;
+	text-align: center;
+}
+
+.handsanddotsstyle {
+	margin-top: 10px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 2px;
+	height: 2px;
+	font-size: 2px;
+	background-color: $black;
+}
+
+.facestyle {
+	margin-top: 10px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	font-size: 10px;
+	color: $vte-text;
+}
+
+.datestyle {
+	margin-top: 20px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100px;
+	text-align: center;
+	font-size: 10px;
+	color: $vte-text;
+}
+
+.ampmstyle {
+	margin-top: 23px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 20px;
+	text-align: center;
+	font-size: 10px;
+	color: $vte-text;
+}
+
+#wclock {
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	display: none;
+	background-color: $grey-400;
+	width: 175px;
+}

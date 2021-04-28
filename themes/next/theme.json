@@ -1,0 +1,47 @@
+{
+	"name": "Next",
+	"version": "1.2",
+	"description": "Theme Next for VTE",
+	"author": "VTECRM",
+	
+	"includes": {
+		"css": [
+			{"active": true, "darkmode": true, "file":"vte_bootstrap.css", "media":"screen"},
+			{"active": true, "file":"bootstrap-select.css", "media":"screen"},
+			{"active": true, "file":"ripples.min.css", "media":"screen"},
+			{"active": true, "file":"datetimepicker.css", "media":"screen"},
+			{"active": true, "file":"jquery.dropdown.css", "media":"screen"},
+			{"active": true, "file":"jquery-ui.css", "media":"screen"},
+			{"active": true, "darkmode": true, "file":"style.css", "media":"screen"},
+			{"active": true, "file":"style_print.css", "media":"print"},
+			{"active": true, "darkmode": true, "file":"vte_materialize.css", "media":"screen"}
+		],
+		"js": [
+			"js/bootstrap/bootstrap.min.js",
+			"js/bootstrap/bs_conflicts.js",
+			"js/arrive.min.js",
+			"js/moment-l18n.js",
+			"js/material/ripples.js",
+			"js/material/material.js",
+			"js/material/datetimepicker.js",
+			"js/jquery.dropdown.js",
+			"js/bootstrap-select/bootstrap-select.js",
+			"js/bootstrap-select/i18n/defaults-it_IT.js",
+			"js/bootstrap-select/i18n/defaults-en_US.js",
+			"js/velocity/velocity.min.js",
+			"js/materialize/global.js",
+			"js/materialize/tabs.js",
+			"js/LateralMenu.js",
+			"js/body-scroll-lock/bodyScrollLock.min.js",
+			"js/FastPanel.js",
+			"js/AllMenu.js",
+			"index.js"
+		]
+	},
+	
+	"body": {
+		"insert": [
+			"next.tpl"
+		]
+	}
+}

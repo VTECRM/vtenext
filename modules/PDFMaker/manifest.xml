@@ -1,0 +1,266 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2011-12-08 10:54:52</exporttime>
+<name>PDFMaker</name>
+<label>PDF Maker</label>
+<parent>Tools</parent>
+<type>extension</type>
+<version>521.30</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_pdfmaker</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="templateid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="filename" type="C" size="100"/>
+    <field name="module" type="C" size="255"/>
+    <field name="body" type="XL"/>
+    <field name="description" type="X"/>
+    <field name="deleted" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_settings</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_settings">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="templateid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="margin_top" type="N" size="12,1"/>
+    <field name="margin_bottom" type="N" size="12,1"/>
+    <field name="margin_left" type="N" size="12,1"/>
+    <field name="margin_right" type="N" size="12,1"/>
+    <field name="format" type="C" size="255">
+      <DEFAULT value="A4"/>
+    </field>
+    <field name="orientation" type="C" size="255">
+      <DEFAULT value="portrait"/>
+    </field>
+    <field name="decimals" type="I" size="2"/>
+    <field name="decimal_point" type="C" size="2"/>
+    <field name="thousands_separator" type="C" size="2"/>
+    <field name="header" type="X"/>
+    <field name="footer" type="X"/>
+    <field name="encoding" type="C" size="20">
+      <DEFAULT value="auto"/>
+    </field>
+    <field name="file_name" type="C" size="255"/>
+    <field name="compliance" type="C" size="4">
+      <DEFAULT value=""/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_breakline</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_breakline">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="crmid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="productid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="sequence" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="show_header" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="show_subtotal" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_images</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_images">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="crmid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="productid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="sequence" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="attachmentid" type="I" size="11"/>
+    <field name="width" type="I" size="11"/>
+    <field name="height" type="I" size="11"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_prodbloc_tpl</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_prodbloc_tpl">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="name" type="C" size="255"/>
+    <field name="body" type="XL"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_ignpickvals</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_ignpickvals">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="value" type="C" size="100">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_releases</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_releases">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="version" type="C" size="10"/>
+    <field name="date" type="T"/>
+    <field name="updated" type="I" size="1"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_userstatus</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_userstatus">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="templateid" type="R" size="11">
+      <KEY/>
+    </field>
+	<field name="userid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="is_active" type="I" size="1"/>
+	<field name="is_default" type="I" size="1"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_relblocks</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_relblocks">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="relblockid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="name" type="C" size="255"/>
+	<field name="module" type="C" size="255"/>
+	<field name="secmodule" type="C" size="255"/>
+	<field name="block" type="XL"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_relblockcol</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_relblockcol">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="colid" type="R" size="19">
+      <KEY/>
+    </field>
+	<field name="relblockid" type="R" size="19">
+      <KEY/>
+    </field>
+    <field name="columnname" type="C" size="250"/>
+	<field name="sortorder" type="C" size="250"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_relblckcri</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_relblckcri">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="relblockid" type="R" size="11">
+      <KEY/>
+    </field>
+	<field name="colid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="columnname" type="C" size="250"/>
+	<field name="comparator" type="C" size="250"/>
+	<field name="value" type="C" size="250"/>
+	<field name="groupid" type="I" size="11"/>
+	<field name="column_condition" type="C" size="250"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_relblckcri_g</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_relblckcri_g">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="groupid" type="R" size="11">
+      <KEY/>
+    </field>
+	<field name="relblockid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="group_condition" type="C" size="250"/>
+	<field name="condition_expression" type="C" size="250"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_pdfmaker_relblckdfilt</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_pdfmaker_relblckdfilt">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="datefilterid" type="R" size="11">
+      <KEY/>
+    </field>
+    <field name="datecolumnname" type="C" size="250"/>
+	<field name="datefilter" type="C" size="250"/>
+	<field name="startdate" type="D"/>
+	<field name="enddate" type="D"/>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<customlinks>
+<customlink>
+<linktype>HEADERSCRIPT</linktype>
+<linklabel>PDFMakerJS</linklabel>
+<linkurl><![CDATA[modules/PDFMaker/PDFMakerActions.js]]></linkurl>
+<linkicon><![CDATA[]]></linkicon>
+<sequence>1</sequence>
+</customlink>
+</customlinks>
+</module>

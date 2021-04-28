@@ -1,0 +1,221 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@98866 */
+ 
+/* Import icons from material and awesome */
+
+$fa-font-size-base: 20px;
+$material-font-size-base: 24px;
+@import 'font-awesome/font-awesome';
+@import 'vars/icons';
+
+/* Use this class for the standard Material Icons */
+.vteicon {
+	@extend .material-icons;
+
+	font-size: $material-font-size-base;
+}
+
+/* Use this class for the Font-Awesome icons */
+.vteicon2 {
+	@extend .fa;
+	
+	font-size: $fa-font-size-base;
+}
+
+.vteicon, .vteicon2, %genericIcon {	
+	color: $vte-primary;
+	text-shadow: 1px 1px 2px $grey-400;
+	
+	// disable selection
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+	
+	&.spacer {
+		width: 24px;
+		
+		&.md-14, &.md-xsm { width: 14px; }
+		&.md-18, &.md-sm { width: 18px; }
+		&.md-36, &.md-lg { width: 36px; }
+		&.md-48, &.md-xlg { width: 48px; }
+	}
+	
+	&.md-link {
+		cursor: pointer;
+	}
+	
+	&.disabled {
+		color: $grey-400;
+		text-shadow: none;
+		cursor: default;
+	}
+	
+	&.nohover {
+		cursor: default;
+	}
+	
+	&.checkok {
+		color: $success;
+	}
+	
+	&.checkko {
+		color: $danger;
+	}
+	
+	&.colorinh {
+		color: inherit;
+	}
+	
+	// crmv@167019
+	&.valign-top {
+		vertical-align: top;
+	}
+	
+	&.valign-middle {
+		vertical-align: middle;
+	}
+	// crmv@167019e
+	
+	// crmv@97692
+	&.valign-bottom {
+		vertical-align: bottom;
+	}
+	// crmv@97692e
+	
+	&.md-text {
+		color: $vte-text-title;
+		vertical-align: middle;
+		
+		&.checkok {
+			color: $success;
+		}
+		
+		&.checkko {
+			color: $danger;
+		}
+		
+		&:hover:not(.disabled):not(.nohover) {
+			color: $vte-primary;
+		}
+	}
+	
+	&:hover:not(.disabled):not(.nohover) {
+		color: $vte-text-title;
+	}
+	
+}
+
+.vtesorticon {
+	display: initial;
+	vertical-align: sub;
+	height: 15px;
+	line-height:15px;
+}
+
+.stackedicon {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	
+	width:24px;
+	height:24px;
+	line-height:1;
+	
+	&.md-lg {
+		width:36px;
+		height:36px;
+	}
+	
+	&:hover:not(.disabled) {
+		.vteicon, .vteicon2, .icon-module {
+			color: $vte-text-title;
+		}
+	}
+	
+	.vteicon, .vteicon2, .icon-module {
+		position: relative;
+		line-height: inherit;
+		position: absolute;
+		left: 0;
+		
+		&:hover {
+			color: inherit;
+		}
+		
+		&.md-pedix {
+			top: initial;
+			bottom: 0;
+			font-size:16px;
+			text-shadow: 
+				-1px -1px 0 $white,
+				1px -1px 0 $white,
+				-1px 1px 0 $white,
+				1px 1px 0 $white;
+		}
+		
+		&.md-lg.md-pedix {
+			font-size:24px;
+		}
+		
+		&.md-bottom {
+			top: initial;
+			bottom: 0;
+		}
+		
+		&.md-right {
+			left: initial;
+			right: 0;
+		}
+		
+	}
+	
+	&.maximize {
+		width: 36px;
+		top: -5px;
+	}
+}
+
+.dvtCellInfoM, .dvtCellInfoMOn {
+	.vteicon, .vteicon2, .icon-module {
+		color: $red-600;
+		
+		&:hover:not(.disabled) {
+			color: $red-800;
+		}
+	}
+}
+
+.icon-module {
+	@extend %genericIcon;
+	font-size: $material-font-size-base;
+}
+
+.icon-module:before {
+	font-family: $font-family-base;
+	content: attr(data-first-letter);
+	padding: 0 4px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+@each $name, $icon in $vte-material-icons {
+	.icon-module.icon-#{$name}:before {
+		@include material-icons();
+		content: icon-content($icon);
+		padding: 0;
+	}
+}
+
+@each $name, $icon in $vte-fa-icons {
+	.icon-module.icon-#{$name}:before {
+		@include fa-icon();
+		content: icon-content($icon);
+		padding: 0 2px;
+	}
+}

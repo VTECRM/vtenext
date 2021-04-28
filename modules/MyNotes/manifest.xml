@@ -1,0 +1,209 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2013-10-08 16:56:15</exporttime>
+<name>MyNotes</name>
+<label>MyNotes</label>
+<parent></parent>
+<dependencies>
+<vtenext_version>4.9</vtenext_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_mynotes</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_mynotes">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="mynotesid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="subject" type="C" size="255"/>
+	<field name="description" type="XL" />
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_mynotescf</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_mynotescf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="mynotesid" type="I" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_MYNOTES_INFORMATION</label>
+<fields>
+<field>
+<fieldname>subject</fieldname>
+<uitype>1</uitype>
+<columnname>subject</columnname>
+<tablename>TABLEPREFIX_mynotes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Subject</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>1</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<entityidentifier>
+<entityidfield>mynotesid</entityidfield>
+<entityidcolumn>mynotesid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>description</fieldname>
+<uitype>19</uitype>
+<columnname>description</columnname>
+<tablename>TABLEPREFIX_mynotes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Description</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>2</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>3</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence>4</quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>user_and_time</fieldname>
+<uitype>214</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>99</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>5</quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<setmobile>true</setmobile>
+<fields>
+<field>
+<fieldname>subject</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<columnindex>2</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>private</default>
+</sharingaccess>
+<actions>
+<action>
+<name><![CDATA[Import]]></name>
+<status>disabled</status>
+</action>
+<action>
+<name><![CDATA[Export]]></name>
+<status>disabled</status>
+</action>
+<action>
+<name><![CDATA[Merge]]></name>
+<status>disabled</status>
+</action>
+</actions>
+</module>

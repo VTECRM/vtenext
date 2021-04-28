@@ -1,0 +1,17 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+// This file contains the default variables of the theme
+
+$vte_font_size: 13px !default;
+$vte-field-border: true !default;
+$vte-box-border-radius: 5px !default;
+$vte-icon-shadow: false !default;
+$vte-btn-outline: true !default;
+$vte-btn-border-radius: 30px !default;
+
+// Bootstrap variables
+$font-family-sans-serif: 'Noto Sans', sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;

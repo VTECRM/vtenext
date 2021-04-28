@@ -1,0 +1,22 @@
+.mCSB_container {
+	width: auto;
+	margin: 0px;
+	overflow: hidden;
+}
+.mCSB_draggerRail {
+	display: none;
+}
+.mCS_disabled > .mCustomScrollBox > .mCSB_container.mCS_no_scrollbar,
+.mCS_destroyed > .mCustomScrollBox > .mCSB_container.mCS_no_scrollbar {
+	margin: 0px;
+}
+.mCustomScrollBox > .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+	width: 7px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	opacity: 0.4;
+}
+.slimScrollBar:hover {
+	cursor: pointer;
+}

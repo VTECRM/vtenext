@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-02-23 20:17+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:83
+msgid "View"
+msgstr ""
+
+#: tnef.php:89
+msgid "Viewing TNEF attachment"
+msgstr ""
+
+#: tnef.php:93
+msgid "Mail Info:"
+msgstr ""
+
+#: tnef.php:116
+msgid "Subject:"
+msgstr ""
+
+#: tnef.php:122
+msgid "Topic:"
+msgstr ""
+
+#: tnef.php:128 tnef.php:202
+msgid "Name:"
+msgstr ""
+
+#: tnef.php:134
+msgid "Email:"
+msgstr ""
+
+#: tnef.php:140
+msgid "Date:"
+msgstr ""
+
+#: tnef.php:148
+msgid "Attachments:"
+msgstr ""
+
+#: tnef.php:163
+msgid "Download"
+msgstr ""
+
+#: tnef.php:183
+#, php-format
+msgid "Contact Information for %s"
+msgstr ""
+
+#: tnef.php:209
+msgid "Company:"
+msgstr ""
+
+#: tnef.php:236
+msgid "E-mail:"
+msgstr ""
+
+#: tnef.php:256
+msgid "Invalid TNEF part id."
+msgstr ""
+
+#: class/tnef_vcard.php:142
+msgid "Primary Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:143
+msgid "Home Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:144
+msgid "Second Home Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:145
+msgid "Business Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:146
+msgid "Second Business Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:147
+msgid "Mobile Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:148
+msgid "Radio Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:149
+msgid "Car Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:150
+msgid "Other Phone"
+msgstr ""
+
+#: class/tnef_vcard.php:151
+msgid "Pager"
+msgstr ""
+
+#: class/tnef_vcard.php:152
+msgid "Primary Fax"
+msgstr ""
+
+#: class/tnef_vcard.php:153
+msgid "Business Fax"
+msgstr ""
+
+#: class/tnef_vcard.php:154
+msgid "Home Fax"
+msgstr ""
+
+#: class/tnef_vcard.php:183 class/tnef_vcard.php:184 class/tnef_vcard.php:185
+#: class/tnef_vcard.php:186
+msgid "eMail 1"
+msgstr ""
+
+#: class/tnef_vcard.php:187 class/tnef_vcard.php:188 class/tnef_vcard.php:189
+#: class/tnef_vcard.php:190
+msgid "eMail 2"
+msgstr ""
+
+#: class/tnef_vcard.php:191 class/tnef_vcard.php:192 class/tnef_vcard.php:193
+#: class/tnef_vcard.php:194
+msgid "eMail 3"
+msgstr ""
+
+#: class/tnef_vcard.php:223 class/tnef_vcard.php:225 class/tnef_vcard.php:227
+#: class/tnef_vcard.php:229 class/tnef_vcard.php:231 class/tnef_vcard.php:233
+msgid "Address"
+msgstr ""
+
+#: class/tnef_vcard.php:224 class/tnef_vcard.php:236 class/tnef_vcard.php:248
+msgid "City"
+msgstr ""
+
+#: class/tnef_vcard.php:226 class/tnef_vcard.php:238 class/tnef_vcard.php:250
+msgid "Country"
+msgstr ""
+
+#: class/tnef_vcard.php:228 class/tnef_vcard.php:240 class/tnef_vcard.php:252
+msgid "Zip"
+msgstr ""
+
+#: class/tnef_vcard.php:230 class/tnef_vcard.php:242 class/tnef_vcard.php:254
+msgid "State"
+msgstr ""
+
+#: class/tnef_vcard.php:232 class/tnef_vcard.php:244 class/tnef_vcard.php:256
+msgid "Street"
+msgstr ""
+
+#: class/tnef_vcard.php:234 class/tnef_vcard.php:246 class/tnef_vcard.php:258
+msgid "PO Box"
+msgstr ""
+
+#: class/tnef_vcard.php:235 class/tnef_vcard.php:237 class/tnef_vcard.php:239
+#: class/tnef_vcard.php:241 class/tnef_vcard.php:243 class/tnef_vcard.php:245
+msgid "Home Address"
+msgstr ""
+
+#: class/tnef_vcard.php:247 class/tnef_vcard.php:249 class/tnef_vcard.php:251
+#: class/tnef_vcard.php:253 class/tnef_vcard.php:255 class/tnef_vcard.php:257
+msgid "Other Address"
+msgstr ""
+
+#: class/tnef_vcard.php:286
+msgid "Personal Homepage"
+msgstr ""
+
+#: class/tnef_vcard.php:287
+msgid "Business Homepage"
+msgstr ""
+
+#: class/tnef_vcard.php:288
+msgid "Other Homepage"
+msgstr ""

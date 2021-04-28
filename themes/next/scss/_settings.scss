@@ -1,0 +1,214 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@120738 */
+
+/* Lateral Menu */
+$lateralWidth: 220px;
+
+.settingsList {
+	margin: 0;
+	padding: 0;
+	width: $lateralWidth;
+	list-style-type: none;
+}
+
+.settingsList > li {
+	padding: 0;
+}
+
+.settingsList > li i, .settingsList > li i.vteicon {
+	color: $vte-lateral-menu-item-icon-color;
+}
+
+.settingsList {
+	& .subMenu > a {
+		display: block;
+		padding: 15px 18px;
+		position: relative;
+		color: $vte-lateral-menu-item-text-color;
+		font-size: 16px;
+		outline: none;
+	}
+	
+	& .subMenu > a .expandButton {
+		width: 10px;
+		height: 10px;
+		position: relative;
+		display: inline-block;
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+	}
+	
+   & .subMenu > a .expandButton:before,
+   & .subMenu > a .expandButton:after {
+       content: "";
+       position: absolute;
+       background-color: $vte-lateral-menu-item-text-color;
+       transition: transform 0.25s ease-out;
+   }
+
+   /* Vertical line */
+   & .subMenu > a .expandButton:before {
+       top: 0;
+       left: 50%;
+       width: 2px;
+       height: 100%;
+       margin-left: -1px;
+   }
+
+   /* Horizontal line */
+   & .subMenu > a .expandButton:after {
+       top: 50%;
+       left: 0;
+       width: 100%;
+       height: 2px;
+       margin-top: -1px;
+   }
+  
+   & .subMenu.toggled > a .expandButton {
+      	cursor: pointer;
+   }
+   
+	& .subMenu.toggled > a .expandButton:before { transform: rotate(90deg); }
+	& .subMenu.toggled > a .expandButton:after { transform: rotate(180deg); }
+  
+	& .subMenu ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		font-size: 15px;
+		background-color: $vte-primary;
+	}
+	
+	& .subMenu ul > li {
+		position: relative;
+	}
+	
+	& .subMenu ul > li:last-child {
+		border-bottom: 0px none;
+	}
+	
+	& .subMenu ul > li.active {
+		background-color: $vte-lateral-menu-active-item-background;
+	}
+	
+	& .subMenu ul > li:hover {
+		background-color: $vte-lateral-menu-active-item-background;
+	}
+	
+	& .subMenu ul > li > a {
+	    padding: 8px 20px 8px 50px;
+	    font-weight: 400;
+	    display: block;
+	    color: $vte-lateral-menu-item-text-color;
+	}
+	
+	& .subMenu ul > li.active a {
+		color: $vte-lateral-menu-active-item-text-color;
+	}
+	
+	& .subMenu ul > li > a:hover {
+		color: $vte-lateral-menu-active-item-text-color;
+	}
+	
+	& .subMenu ul > li .subIcon {
+		display: none;
+	}
+	
+	& > .subMenu.active, & > .subMenu.toggled {
+		& > a {
+			color: $vte-lateral-menu-active-item-text-color;
+		}
+		
+		& > a .expandButton:before,
+		& > a .expandButton:after {
+			background-color: $vte-lateral-menu-active-item-text-color;
+		}
+	}
+	
+	& > .subMenu.active {
+		& > a i.subIcon,
+		& > a i.vteicon,
+		& > a i.vteicon2,
+		& > a i.icon-module {
+			color: $vte-lateral-menu-active-item-icon-color;
+		}
+	}
+	
+	& .backButton {
+		background-color: $vte-lateral-menu-active-item-background;
+		color: $white;
+		
+		i.vteicon, i.vteicon2, i.icon-module {
+			color: $white;
+		}
+	}
+	
+	& .backButton .subLabel {
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 13px;
+		color: $white;
+	}
+}
+
+#leftPanel[data-minified="enabled"] .subMenu ul > li .subLabel,
+#leftPanel[data-minified="enabled"] .settingsList > li .subLabel,
+#leftPanel[data-minified="enabled"] .settingsList > li .expandButton {
+	display: none;
+}
+
+#leftPanel[data-minified="enabled"] .subMenu ul > li.active .subIcon {
+	display: inline-block;
+	margin-left: -10px;
+}
+
+#leftPanel[data-minified="enabled"] .subMenu ul > li:not(.active) {
+	display: none;
+}
+
+#leftPanel[data-minified="enabled"] .subMenu ul > li a {
+	display: inline-block;
+    padding: 8px 20px 8px 35px;
+}
+
+#leftPanel[data-minified="enabled"] .settingsList > li a {
+	display: inline-block;
+    padding: 15px 18px;
+}
+
+#btnScrollTop {
+	position: fixed;
+	bottom: 50px;
+	right: 120px;
+	height: 40px;
+    min-width: 40px;
+    width: 40px;
+    display: none;
+    background-color: $vte-primary;
+    cursor: pointer;
+    
+    & i {
+    	transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-o-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+    	top: 50%;
+    	left: 50%;
+    	color: $white;
+    	position: absolute;
+    	cursor: pointer;
+    }
+}
+
+@import 'settings/_settings';

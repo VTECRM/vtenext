@@ -1,0 +1,36 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.pdf-template-content {
+	background-color: $vte-pdf-template-content-bg;
+	color: $vte-pdf-template-content-color;
+}
+
+.pdfmakerTemplateList {
+	overflow: auto;
+}
+
+.pdfActionWrap {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.pdfActionImage {
+	float: left;
+	width: 20%;
+	display: table;
+	height: 100%;
+}
+.pdfActionText {
+	float: right;
+	width: 80%;
+	height: 100%;
+	display: table;
+}
+.pdfActionImage a,
+.pdfActionText a {
+	display: table-cell;
+	vertical-align: middle;
+}

@@ -1,0 +1,121 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* For Report HTML Generation*/
+
+/* crmv@29686 crmv@96742 crmv@98894 */
+
+.rptChainContainer {
+	
+	.chainFirst {
+		float:left;
+	}
+	
+	.chainArrow {
+		padding-left:8px;
+		padding-right:8px;
+	}
+	
+	.chainOthers {
+	}
+	
+	.chainModule {
+		min-width:150px;
+		max-width:250px;
+	}
+}
+
+.selectedField {
+	display: inline-block;
+	padding: 0px;
+	
+	min-width:150px;
+	vertical-align: top;
+	
+	background-color: $report-selected-field-cell-bg;
+	cursor: pointer;
+	
+	border: 1px solid $report-selected-field-cell-border;
+	
+	td.fieldname {
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	&:not(:first-child) {
+		margin-left: -1px;	/* to make overlapping borders */
+	}
+}
+
+
+.advFilterGroupBox {
+	border:1px solid $vte-box-light-border;
+}
+
+.rptTable {
+	
+	& > tbody > tr > td {
+
+		&.rptEmptyGrp {
+			border-top: none;
+			border-right: 1px solid $grey-300;
+			
+		}
+	}
+	
+}
+
+
+.dataTables_filter input {
+	min-width: 250px;
+}
+.dataTables_length, .dataTables_info {
+	text-align:left;
+}
+table.dataTable thead .sorting:after {
+	bottom: initial;
+	top: 8px;
+}
+table.dataTable thead .sorting_asc:after {
+	bottom: initial;
+	top: 8px;
+}
+table.dataTable thead .sorting_desc:after {
+	bottom: initial;
+	top: 8px;
+}
+table.dataTable thead th {
+	vertical-align: top;
+}
+
+.table thead th input {
+	&.detailedViewTextBox {
+		font-weight: normal;
+	}
+}
+
+// here you can change the report appearance with other classes
+
+.reportRowTitle {
+}
+
+.rptCellLabel {
+}
+
+.rptTable {
+}
+
+.rptData {
+}
+
+.rptGrpHead {
+}
+
+.rptTotal {
+}
+
+.rptEmptyGrp {
+}

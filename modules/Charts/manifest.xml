@@ -1,0 +1,515 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2012-09-24 15:11:00</exporttime>
+<name>Charts</name>
+<label>Charts</label>
+<parent>Tools</parent>
+<dependencies>
+	<vtenext_version>4.2</vtenext_version>
+	<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_charts</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_charts">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="chartid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="chartname" type="C" size="255"/>
+	<field name="description" type="XL" />
+    <field name="reportid" type="I" size="19"/>
+	<field name="folderid" type="I" size="19"/>
+    <field name="chart_type" type="C" size="100"/>
+    <field name="chart_legend" type="I" size="1"/>
+    <field name="chart_labels" type="I" size="1"/>
+    <field name="chart_exploded" type="I" size="1"/>
+    <field name="chart_values" type="C" size="100"/>
+    <field name="chart_order_data" type="C" size="100"/>
+    <field name="chart_merge_small" type="I" size="1"/>
+    <field name="chart_report_lev" type="C" size="100"/>
+    <field name="chart_palette" type="C" size="100"/>
+	<field name="chart_formula" type="C" size="100"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_chartscf</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_chartscf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="chartid" type="I" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_chartscache</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_chartscache">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="chartid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="chart_filename" type="C" size="255"/>
+    <field name="chart_file_home" type="C" size="255"/>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_CHARTS_INFORMATION</label>
+<fields>
+<field>
+<fieldname>chartname</fieldname>
+<uitype>1</uitype>
+<columnname>chartname</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<entityidentifier>
+<entityidfield>chartid</entityidfield>
+<entityidcolumn>chartid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~M</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>reportid</fieldname>
+<uitype>206</uitype>
+<columnname>reportid</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Report</fieldlabel>
+<readonly>99</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~M</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>folderid</fieldname>
+<uitype>26</uitype>
+<columnname>folderid</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Folder Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>chart_type</fieldname>
+<uitype>15</uitype>
+<columnname>chart_type</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Type</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>BarVertical</picklistvalue>
+<picklistvalue>BarHorizontal</picklistvalue>
+<picklistvalue>Line</picklistvalue>
+<picklistvalue>Pie</picklistvalue>
+<picklistvalue>Ring</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>chart_legend</fieldname>
+<uitype>56</uitype>
+<columnname>chart_legend</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Legend</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>chart_labels</fieldname>
+<uitype>56</uitype>
+<columnname>chart_labels</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Labels</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>7</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>chart_exploded</fieldname>
+<uitype>56</uitype>
+<columnname>chart_exploded</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Exploded</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>8</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>chart_values</fieldname>
+<uitype>15</uitype>
+<columnname>chart_values</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Values</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>9</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>ChartValuesNone</picklistvalue>
+<picklistvalue>ChartValuesRaw</picklistvalue>
+<picklistvalue>ChartValuesPercent</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>chart_order_data</fieldname>
+<uitype>15</uitype>
+<columnname>chart_order_data</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Order</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>10</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>OrderNone</picklistvalue>
+<picklistvalue>OrderAsc</picklistvalue>
+<picklistvalue>OrderDesc</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>chart_merge_small</fieldname>
+<uitype>56</uitype>
+<columnname>chart_merge_small</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Merge</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>11</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>chart_report_lev</fieldname>
+<uitype>15</uitype>
+<columnname>chart_report_lev</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Level</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>12</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<picklistvalues>
+<picklistvalue>Level1</picklistvalue>
+<picklistvalue>Level2</picklistvalue>
+<picklistvalue>Level3</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>chart_filename</fieldname>
+<uitype>1</uitype>
+<columnname>chart_filename</columnname>
+<tablename>TABLEPREFIX_chartscache</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Filename</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>13</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>chart_palette</fieldname>
+<uitype>15</uitype>
+<columnname>chart_palette</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Palette</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>14</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<picklistvalues>
+<picklistvalue>default</picklistvalue>
+<picklistvalue>bw</picklistvalue>
+<picklistvalue>grey16</picklistvalue>
+<picklistvalue>bluered16</picklistvalue>
+<picklistvalue>redyellow16</picklistvalue>
+<picklistvalue>vtetheme</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>chart_formula</fieldname>
+<uitype>15</uitype>
+<columnname>chart_formula</columnname>
+<tablename>TABLEPREFIX_charts</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Formula</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>COUNT</picklistvalue>
+<picklistvalue>SUM</picklistvalue>
+<picklistvalue>AVG</picklistvalue>
+<picklistvalue>MIN</picklistvalue>
+<picklistvalue>MAX</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>chart_file_home</fieldname>
+<uitype>1</uitype>
+<columnname>chart_file_home</columnname>
+<tablename>TABLEPREFIX_chartscache</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Chart Filename</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>16</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>creator</fieldname>
+<uitype>52</uitype>
+<columnname>smcreatorid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Creator</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>17</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+</fields>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<setmobile>false</setmobile>
+<fields>
+<field>
+<fieldname>chartname</fieldname>
+<columnindex>0</columnindex>
+</field>
+<field>
+<fieldname>reportid</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>chart_type</fieldname>
+<columnindex>2</columnindex>
+</field>
+<field>
+<fieldname>chart_order_data</fieldname>
+<columnindex>3</columnindex>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<columnindex>4</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>private</default>
+</sharingaccess>
+<actions>
+<action>
+<name><![CDATA[Import]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[Export]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[DuplicatesHandling]]></name>
+<status>enabled</status>
+</action>
+</actions>
+<customlinks>
+<customlink>
+<linktype>DETAILVIEWWIDGET</linktype>
+<linklabel>DetailViewBlockChartWidget</linklabel>
+<linkurl><![CDATA[block://Charts:modules/Charts/Charts.php]]></linkurl>
+<linkicon><![CDATA[]]></linkicon>
+<sequence>0</sequence>
+<size>2</size>
+</customlink>
+</customlinks>
+</module>

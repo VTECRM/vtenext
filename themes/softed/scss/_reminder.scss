@@ -1,0 +1,96 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@98866 */
+
+#ActivityRemindercallback-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 2px;
+}
+
+#ActivityRemindercallback-fixed-header, #ActivityRemindercallback-fixed-footer {
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	height: 50px;
+	left: 0px;
+	background-color: $white;
+}
+
+#ActivityRemindercallback-fixed-header {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	top: 0px;
+}
+
+#ActivityRemindercallback-fixed-footer {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	bottom: 0px;
+}
+
+#ActivityRemindercallback-fixed-header table:first-child {
+	border-bottom: 1px solid #CCCCCC;
+	height: 100%;
+	width: 100%;
+}
+
+#ActivityRemindercallback-fixed-footer table:first-child {
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid #CCCCCC;
+	table-layout: fixed;
+}
+
+#ActivityRemindercallback-content {
+	height: 300px;
+	z-index: 1;
+	background-color: $white;
+	position: absolute;
+	width: 100%;
+	top: 50px;
+	overflow-y: auto;
+}
+
+.reminder-popup {
+	background-color: $white;
+	line-height: 1.5rem;
+	margin: 0;
+	width: 100%;
+	position: relative;
+	border-bottom: 1px solid #EAEAEA;
+	padding: 1rem 0 1rem 0;
+}
+
+#ActivityRemindercallback {
+	width: 600px;
+	height: 400px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);  
+	border: 1px solid #BDBDBD;
+	background-color: $white;
+	box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	border-radius: 2px;
+} 
+
+.big_circle {
+	font-size: 18px;
+	color: $white;
+	background-color: $vte-primary;
+	text-align: center;
+	border-radius: 50%;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	cursor: default;
+}

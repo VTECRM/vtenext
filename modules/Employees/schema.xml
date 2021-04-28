@@ -1,0 +1,53 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vte_employees</name>
+			<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_employees">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="employeesid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="lastname" type="C" size="200"/>
+    <field name="firstname" type="C" size="200"/>
+    <field name="employee_type" type="C" size="50"/>
+    <field name="parent_id" type="I" size="19"/>
+    <field name="username" type="C" size="200"/>
+    <field name="role" type="C" size="200"/>
+    <field name="title" type="C" size="200"/>
+    <field name="department" type="C" size="200"/>
+    <field name="active" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+	<field name="email" type="C" size="50"/>
+	<field name="other_email" type="C" size="50"/>
+	<field name="mobile" type="C" size="30"/>
+	<field name="office_phone" type="C" size="30"/>
+    <field name="fax" type="C" size="200"/>
+    <field name="home_phone" type="C" size="30"/>
+    <field name="other_phone" type="C" size="30"/>
+    <field name="street" type="C" size="200"/>
+    <field name="city" type="C" size="200"/>
+    <field name="state" type="C" size="200"/>
+    <field name="postalcode" type="C" size="200"/>
+    <field name="country" type="C" size="200"/>
+    <field name="description" type="XL"/>
+  </table>
+</schema>]]></sql>
+		</table>
+		<table>
+			<name>vte_employeescf</name>
+			<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_employeescf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="employeesid" type="I" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+		</table>
+	</tables>
+</schema>

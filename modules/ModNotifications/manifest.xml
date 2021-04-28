@@ -1,0 +1,148 @@
+<?xml version='1.0'?>
+<module>
+<name>ModNotifications</name>
+<label>ModNotifications</label>
+<parent></parent>
+<type>extension</type>
+<dependencies>
+<vtenext_version>4.2</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_modnotifications</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_modnotifications">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="modnotificationsid" type="I" size="19">
+		<KEY/>
+    </field>
+	<field name="smcreatorid" type="I" size="19"/>
+	<field name="smownerid" type="I" size="19"/>
+	<field name="createdtime" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="modifiedtime" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="related_to" type="I" size="19"/>
+    <field name="mod_not_type" type="C" size="255"/>
+    <field name="seen" type="I" size="1"/>
+	<field name="description" type="XL" />
+    <field name="subject" type="C" size="255"/>
+    <field name="from_email" type="C" size="255"/>
+    <field name="from_email_name" type="C" size="255"/>
+	<field name="sent_summary_not" type="I" size="1"/>
+	<index name="NewIndex1">
+      <col>related_to</col>
+    </index>
+	<index name="NewIndex2">
+      <col>mod_not_type</col>
+    </index>
+	<index name="modnotifications_seen_idx">
+      <col>seen</col>
+    </index>
+	<index name="modnot_owner_time_idx">
+      <col>smownerid</col>
+	  <col>createdtime</col>
+    </index>
+	<index name="modnot_modtime_idx">
+      <col>modifiedtime</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>vte_modnotifications_follow</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_modnotifications_follow">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="userid" type="I" size="19">
+      <KEY/>
+    </field>
+	<field name="record" type="I" size="19">
+      <KEY/>
+    </field>
+	<index name="userid_idx">
+      <col>userid</col>
+    </index>
+	<index name="record_idx">
+      <col>record</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>vte_modnotifications_modules</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_modnotifications_modules">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="userid" type="I" size="19">
+      <KEY/>
+    </field>
+	<field name="module" type="C" size="255">
+      <KEY/>
+    </field>
+	<field name="notify_create" type="I" size="1" />
+	<field name="notify_edit" type="I" size="1" />
+	<index name="modnotifications_module_idx">
+		<col>module</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>vte_modnot_follow_cv</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_modnot_follow_cv">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+	<field name="cvid" type="I" size="19">
+	  <KEY/>
+	</field>
+	<field name="userid" type="I" size="19">
+	  <KEY/>
+	</field>
+	<field name="count" type="I" size="19"/>
+	<field name="modifiedtime" type="T"/>
+	<field name="last_processed" type="T"/>
+	<index name="cvid_idx">
+	  <col>cvid</col>
+	</index>
+	<index name="userid_idx">
+	  <col>userid</col>
+	</index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_modnotifications_types</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_modnotifications_types">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+	<field name="id" type="I" size="19">
+	  <key/>
+	</field>
+	<field name="type" type="C" size="50"/>
+	<field name="action" type="C" size="50"/>
+	<field name="custom" type="I">
+	  <DEFAULT value="1"/>
+	</field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<customlinks>
+<customlink>
+<linktype>HEADERSCRIPT</linktype>
+<linklabel>ModNotificationsCommonScript</linklabel>
+<linkurl><![CDATA[modules/ModNotifications/ModNotificationsCommon.js]]></linkurl>
+<linkicon><![CDATA[]]></linkicon>
+<sequence>0</sequence>
+</customlink>
+</customlinks>
+</module>

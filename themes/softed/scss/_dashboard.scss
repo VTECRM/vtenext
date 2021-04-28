@@ -1,0 +1,82 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Dashboard CSS */
+
+a.dash_href {
+	display: block;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	margin-top: 10px;
+}
+
+.dashHeading {
+	font-size: 14px;
+	font-weight: bold;
+	color: $grey-800;
+}
+
+.dash_top {
+	background-color: $white;
+	background-repeat: repeat-x;
+	height: 36px;
+	vertical-align: middle;
+}
+
+.dash_white {
+	background-color: $white;
+	padding: 5px 10px 5px 10px;
+}
+
+.dash_bdr_btm {
+	border-bottom: 2px dotted $grey-500;
+}
+
+.dash_count {
+	font-size: 36px;
+	font-weight: bold;
+	text-decoration: none;
+	color: $vte-text;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.dash_switch {
+	cursor: pointer;
+	width: 26px;
+	height: 26px;
+}
+
+.dash_row_sel {
+	background-image: url(vteimage("themes/images/dash_sel_chart.jpg", "../../"));
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 26px;
+	height: 26px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+.dash_row_unsel {
+	background-image: url(vteimage("themes/images/dash_unsel_chart.jpg", "../../"));
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 26px;
+	height: 26px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: normal;
+	font-size: 10px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.dash_chart_btm {
+	border-bottom: 2px solid $black;
+}

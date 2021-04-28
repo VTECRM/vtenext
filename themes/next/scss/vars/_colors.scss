@@ -1,0 +1,431 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Colors definitions */ 
+
+/* Import Material Colors */
+@import '../material/colors';
+
+/* Named colors */
+
+$red: #ff0000;
+$green: #00ff00;
+$blue: #0000ff;
+$yellow: #ffff00;
+$cyan: #00ffff;
+$magenta: #ff00ff;
+
+/* Import overrides */
+@import 'sdk_overrides';
+
+$darkbg-text: rgba(255, 255, 255, 0.84) !default;
+$lightbg-text: rgba(0, 0, 0, 0.84) !default;
+
+/* Theme colors */
+$vte-body-bg: #f6f8f9 !default;
+$vte-body-light-bg: $white !default;
+$vte-primary: #16556F !default;				/* colore menu principale */
+$vte-primary-very-light: #e8eef1 !default;
+
+/* General */
+$vte-thin-border: #d2d2d2 !default;
+$unseen: $grey-300;
+$separator-color: $vte-thin-border !default;
+
+/* Text */
+$vte-text: $lightbg-text !default;					/* colore per testo normale */
+$vte-text-title: #16556F !default;			/* colore per titoli vari */
+$vte-text-title-hover: darken($vte-text-title, 10%) !default;
+$vte-text-record: #16556F !default;			/* colore per titolo record (detaiview, editview, createview) */
+
+/* Menu */
+$vte-menusep: #16556F !default;				/* colore 2 separatore menu */
+$vte-submenu: #E2E2E2 !default;				/* colore 3 sotto menu */
+$vte-submenu-color: $vte-text !default;
+$vte-submenusep: #d2e2ef !default;			/* colore 4 separatore sotto menu */
+$vte-navbar-bg: $white !default;
+$vte-navbar-color: $vte-text !default;
+$vte-fastpanel-bg: $white !default;
+
+/* Icons */
+$vte-icon-color: $vte-primary !default;
+$vte-icon-color-hover: $vte-text-title !default;
+$vte-icon-ok-color: #2E7D32 !default;
+$vte-icon-ko-color: #fe0000 !default;
+
+/* Buttons */
+$vte-button-bg: $white !default;
+$vte-button-bg-very-light: $white !default;
+$vte-button-text: $lightbg-text !default;
+$vte-button-border: #bcbcbc !default;
+
+$vte-button-delete: #fe0000 !default;		/* colore per pulsante elimina */
+$vte-button-delete-very-light: #ffe6e6 !default;
+$vte-button-delete-text: $darkbg-text !default;
+
+$vte-button-save: $vte-primary !default;	/* colore per pulsante salva */
+$vte-button-save-very-light: $vte-primary-very-light !default;
+$vte-button-save-text: $darkbg-text !default;
+
+$vte-button-cancel: $vte-button-delete !default;
+$vte-button-cancel-very-light: $vte-button-delete-very-light !default;
+$vte-button-cancel-text: $darkbg-text !default;
+
+$vte-button-success: #2E7D32 !default;
+$vte-button-success-very-light: #edf7ee !default;
+$vte-button-success-text: $darkbg-text !default;
+
+$vte-button-warning: $orange !default;
+$vte-button-warning-very-light: #fff5e6 !default;
+$vte-button-warning-text: $darkbg-text !default;
+
+$vte-button-info: $light-blue !default;
+$vte-button-info-very-light: #e6f6fe !default;
+$vte-button-info-text: $darkbg-text !default;
+
+$vte-button-save-detail: $vte-button-save !default;
+$vte-button-cancel-detail: $vte-button-delete !default;
+
+$vte-button-alpha-bg: $vte-button-bg !default;
+$vte-button-alpha-color: $vte-button-text !default;
+$vte-button-alpha-border: $vte-thin-border !default;
+$vte-button-alpha-selected-bg: $vte-primary !default;
+$vte-button-alpha-selected-color: $darkbg-text !default;
+$vte-button-alpha-selected-border: $vte-thin-border !default;
+
+/* Checkbox */
+$vte-checkbox-color: #4caf50 !default;
+
+/* Radio */
+$vte-radio-color: $vte-primary !default;
+
+/* Fields */
+$vte-field: $vte-thin-border !default;				/* colore per campi */
+$vte-field-bg: $white !default;
+$vte-field-label: $grey-600 !default;		/* colore per etichette campi */
+$vte-field-disabled: $grey-100 !default;	/* colore per campi non modificabili */
+$vte-field-mandatory: #cedfe6 !default;		/* colore per campi obbligatori */
+$vte-field-mandatory-options-color: $vte-text !default;
+
+/* DetailView */
+$vte-detailview-inner-header-bg: $white !default;
+$vte-detailview-inner-header-color: $vte-text !default;
+
+/* Boxes */
+$vte-box-verylight-bg: #F6F9FC !default;						/* Sfondo ultra leggero per varie box (azzurro) */
+$vte-box-light-bg: #eeeefe !default;							/* Sfondo leggero per varie box (azzurro) */
+$vte-box-light-border: lighten($vte-primary, 35%) !default;		/* Bordo per box leggero */
+$vte-box-light-bg2: #fffeee !default;							/* Sfondo leggero per varie box (giallo) */
+$vte-box-medium-bg: $grey-300 !default;							/* Sfondo medio, per varie box */
+$vte-box-medium-border: #4A9FB0 !default;						/* Bordo per il box medio */
+$vte-help-box-border: $yellow !default;
+$vte-help-box: lighten($yellow, 40%) !default;
+$vte-card-bg: $white !default;
+
+/* Wizards */
+$vte-wizard-tab: #F1F1F1 !default;
+$vte-wizard-tab-selected: darken($vte-wizard-tab, 10%) !default;
+
+/* Tabs */
+$vte-tab-bg: transparent !default;
+$vte-tab-color: $vte-text !default;
+$vte-tab-hover: $vte-box-verylight-bg !default;
+$vte-tab-selected-bg: $vte-tab-bg !default;
+$vte-tab-selected-border: $vte-primary !default;
+$vte-tab-selected-color: $vte-text !default;
+$vte-tab-disable-color: $grey-400 !default;
+
+/* Tables */
+$vte-table-bg: $white !default;
+$vte-table-row-bg: $white !default;
+$vte-table-row-active-bg: $vte-box-verylight-bg !default;
+$vte-table-cell-color-dark: $lightbg-text !default;
+$vte-table-cell-bg-dark: $vte-box-light-bg !default;
+$vte-table-cell-link-color-dark: $vte-text-title !default;
+$vte-table-cell-link-color-dark-hover: $vte-text-title-hover !default;
+$vte-table-cell-bg-light: $white !default;
+$vte-table-cell-color-light: $lightbg-text !default;
+$vte-table-cell-link-color-light: $vte-text-title !default;
+$vte-table-cell-link-color-light-hover: $vte-text-title-hover !default;
+$vte-table-props-border: $vte-box-verylight-bg !default;
+
+/* Dropdowns */
+$vte-dropdown-bg: $white !default;
+$vte-dropdown-border: $vte-dropdown-bg !default;
+
+/* Modals */
+$vte-modal-bg: $white !default;
+$vte-modal-backdrop-bg: rgba(0, 0, 0, 0.3) !default;
+
+/* Turbolift */
+$turbolift-bg: $white !default;
+$turbolift-color: $vte-text !default;
+$turbolift-icon-color: $vte-primary !default;
+$turbolift-border: $vte-thin-border !default;
+$turbolift-badge-bg: $vte-primary !default;
+$turbolift-badge-color: $white !default;
+$turbolift-selected-bg: $vte-primary !default;
+$turbolift-selected-color: $white !default;
+$turbolift-selected-icon-color: $white !default;
+$turbolift-selected-border: $vte-thin-border !default;
+$turbolift-selected-badge-bg: $white !default;
+$turbolift-selected-badge-color: $vte-primary !default;
+$turbolift-content-bg: $white !default;
+$turbolift-content-border: #e0e0e0 !default;
+
+/* MyNotes */
+$mynotes-right-border: #e0e0e0 !default;
+$mynotes-list-bg: $white !default;
+$notes-container-background: #f1f1f1 !default;
+$notes-header-color: $vte-submenu !default;
+$notes-text-color: #333333 !default;
+$notes-operation-text-color: #666666 !default;
+$notes-timestamp-text-color: #bbbbbb !default;
+$notes-field-background: #efefef !default;
+$notes-field-color: $vte-text !default;
+$notes-empty-circle-background: #cccccc !default;
+$notes-create-background: $white !default;
+$notes-header-btn: #666666 !default;
+$notes-header-btn-active: #bbbbbb !default;
+$notes-element-btn: #666666 !default;
+$notes-element-background: $white !default;
+
+/* List View Folder */
+$lvf-pencil-background: #F5F5F5 !default;
+$lvf-pencil-color: $vte-text !default;
+
+/* Simple ListView */
+$slv-item-bg: $white !default;
+$slv-item-border: #e0e0e0 !default;
+$slv-item-hover: #e0e0e0 !default;
+$slv-item-selected: #e0e0e0 !default;
+
+/* Messages */
+$list-messages-bg: $white !default;
+$list-messages-row-border: $vte-thin-border !default;
+$list-messages-row-hover: $vte-box-medium-bg;
+$messages-detailview-container-bg: $vte-box-verylight-bg !default;
+$messages-detailview-bg: $white !default;
+$messages-detailview-color: $black !default;
+$messages-detailview-link-color: $vte-text-title !default;
+$messages-detailview-link-color-hover: $vte-text-title-hover !default;
+$messages-compose-attachments-border: $vte-thin-border !default;
+
+/* Ical */
+$ical-buttons-bg: #f1f1f1 !default;
+$ical-buttons-border: #e0e0e0 !default;
+$ical-button-hover: #e7e7e7 !default;
+$ical-button-color: $lightbg-text !default;
+
+/* PDFMaker */
+$vte-pdf-template-content-bg: $white !default;
+$vte-pdf-template-content-color: $black !default;
+
+/* Popup */
+$list-modules-row-bg: $white !default;
+$list-modules-row-border: $vte-thin-border !default;
+$list-modules-row-hover: rgba(0, 0, 0, 0.05) !default;
+$list-modules-row-selected: rgba(0, 0, 0, 0.05) !default;
+$list-modules-row-icon-color: $black !default;
+$list-modules-border: $vte-thin-border !default;
+
+/* Wizard */
+$wizard-steps-row-bg: $white !default;
+$wizard-steps-row-circle-bg: $grey-300 !default;
+$wizard-steps-row-circle-color: $vte-text !default;
+$wizard-steps-row-border: $vte-thin-border !default;
+$wizard-steps-row-hover: rgba(0, 0, 0, 0.05) !default;
+$wizard-steps-row-selected: rgba(0, 0, 0, 0.05) !default;
+$wizard-steps-row-selected-circle-bg: $vte-primary !default;
+$wizard-steps-row-selected-circle-color: $white !default;
+$wizard-steps-border: $vte-thin-border !default;
+
+/* Reports */
+$edit-report-row-bg: $white !default;
+$edit-report-row-border: $vte-thin-border !default;
+$edit-report-row-hover: rgba(0, 0, 0, 0.05) !default;
+$edit-report-row-selected: rgba(0, 0, 0, 0.05) !default;
+$report-selected-field-cell-bg: $vte-box-verylight-bg !default;
+$report-selected-field-cell-border: $grey-400 !default;
+
+/* Entity preview */
+$preview-bg: $vte-box-verylight-bg;
+$preview-color: $vte-text !default;
+$preview-border: $grey-400;
+$preview-active-bg: $vte-box-medium-bg;
+
+/* Widgets */
+$widget-bg: $white !default;
+$widget-color: $vte-text !default;
+$widget-border: rgba(0, 0, 0, 0.125) !default;
+$widget-header-bg: $white !default;
+
+/* Kanban */
+$kanban-bg: $white !default;
+$kanban-color: $vte-text !default;
+$kanban-item-bg: $white !default;
+$kanban-item-border: $grey-200 !default;
+$kanban-item-placeholder-bg: $grey-50 !default;
+$kanban-item-placeholder-border: $grey-400 !default;
+
+/* Activity reminder */
+$activity-reminder-content: $white !default;
+$activity-reminder-content-border: #bdbdbd !default;
+$activity-reminder-header-bg: $white !default;
+$activity-reminder-header-border: #CCCCCC !default;
+$activity-reminder-item-bg: $white !default;
+$activity-reminder-item-border: #eaeaea !default;
+
+/* Inventory */
+$inventory-border: $vte-thin-border !default;
+$inventory-row-border: $vte-thin-border !default;
+$inventory-line-top: $grey-500 !default;
+
+/* Autocomplete */
+$autocomplete-bg: $white !default;
+$autocomplete-color: #333333 !default;
+$autocomplete-border: #dddddd !default;
+$autocomplete-item-bg: $vte-submenu !default;
+$autocomplete-item-border: $vte-primary !default;
+$autocomplete-item-color: $vte-text-title !default;
+$autocomplete-bubble-bg: $vte-submenu !default;
+$autocomplete-bubble-border: $grey-500 !default;
+$autocomplete-bubble-color: $lightbg-text !default;
+
+/* Widgets */
+$vte-widget-container-bg: $white !default;
+
+/* Wdcalendar plugin, Calendar Resources */
+$calendar-main-bg: $white !default;
+$calendar-grid-border: #e5e5e5 !default;
+$calendar-grid-dual-border: #f1f1f1 !default;
+$calendar-today-bg: #fbfbfb !default;
+$calendar-button-task-bg: #fafafa !default;
+$calendar-button-task-color: $vte-text !default;
+$calendar-button-task-hover-bg: #f5f5f5 !default;
+$calendar-button-task-hover-color: $vte-text !default;
+$calendar-allday-bg: #fafafa !default;
+$calendar-allday-border: #e7e3e4 !default;
+$calendar-right-border: #e7e3e4 !default;
+$calendar-month-head-bg: #eeeeee !default;
+$calendar-month-head-color: $vte-text !default;
+$calendar-nomonth-head-bg: #f5f5f5 !default;
+$calendar-nomonth-head-color: #aaaaaa !default;
+$calendar-month-today-bg: #fff9c4 !default;
+$calendar-month-today-head-bg: #bdbdbd !default;
+$calendar-holiday-bg: #f1f1f1 !default;
+$calendar-month-other-bg: $white !default;
+$calendar-month-other-border: gray !default;
+$calendar-resources-holiday-bg: $calendar-holiday-bg !default;
+
+/* Dp plugin */
+$dp-main-bg: $white !default;
+$dp-main-border: $vte-thin-border !default;
+$dp-header-item-bg: #ebf2f8 !default;
+$dp-header-item-color: $vte-text !default;
+$dp-header-item-border: #a3bad9 !default;
+$dp-grid-item-color: $vte-text !default;
+$dp-grid-item-border: $white !default;
+$dp-grid-item-hover: #e3f2fd !default;
+$dp-grid-item-hover-color: $lightbg-text !default;
+$dp-grid-selected-item-bg: #e3f2fd !default;
+$dp-grid-selected-item-border: #c0cdd7 !default;
+$dp-buttons-container-bg: #ebf2f8 !default;
+$dp-buttons-container-border: #e0e0e0 !default;
+$dp-today: #7c858b !default;
+
+/* Plupload */
+$plupload-bg: $white !default;
+$plupload-button-bg: #f1f1f1 !default;
+$plupload-button-color: #404040 !default;
+$plupload-button-border: #f1f1f1 !default;
+
+/* Lateral menu */
+$vte-lateral-menu-background: $vte-primary !default;
+$vte-lateral-menu-item-background: $vte-primary !default;
+$vte-lateral-menu-active-item-background: #114156 !default;
+$vte-lateral-menu-item-text-color: $grey-400 !default;
+$vte-lateral-menu-active-item-text-color: $white !default;
+$vte-lateral-menu-item-icon-color: $grey-400 !default;
+$vte-lateral-menu-active-item-icon-color: #D38600 !default;
+
+/* Right menu */
+$vte-right-menu-background: #EFEFEF !default;
+$vte-right-menu-active-background: #D1D1D1 !default;
+$vte-right-menu-icon-color: $vte-primary !default;
+$vte-right-menu-active-icon-color: #D38600 !default;
+$vte-right-menu-badge-background: #ef5350 !default;
+$vte-right-menu-profile-menu-color: $vte-primary !default;
+$vte-right-menu-profile-menu-active-color: $vte-primary !default;
+$vte-right-menu-profile-menu-background: #EFEFEF !default;
+$vte-right-menu-profile-active-background: #D1D1D1 !default;
+
+/* Loaders */
+$veil-dark-bg: rgba(0, 0, 0, 0.3) !default;
+$veil-dark-color: $white !default;
+$veil-dark-outer-color: rgba(255, 255, 255, 0.2) !default;
+$veil-light-bg: rgba(255, 255, 255, 1) !default;
+$veil-light-color: $vte-primary !default;
+$veil-light-outer-color: rgb(235, 235, 235) !default;
+$linear-loader-bg: $vte-primary !default;
+$circle-loader-bg: $vte-primary !default;
+$circle-loader-light-bg: $vte-box-light-bg !default;
+$circle-loader-light-outer-bg: $vte-primary !default;
+
+/* Mark */
+$vte-mark-bg: #fcf8e3 !default;
+$vte-mark-color: $vte-text !default;
+
+/* Override colors for Materialize theme */
+$primary: $vte-primary !default;
+$success: $vte-button-save !default;
+$warning: $vte-button-warning !default;
+$danger: $vte-button-delete !default;
+$info: $vte-button-info !default;
+$primary-color: $vte-primary !default;
+$secondary-color: $vte-submenu !default;
+$success-color: $vte-button-save !default;
+$error-color: $vte-button-delete !default;
+$link-color: $vte-text-record !default;
+$input-underline-primary: $vte-primary !default;
+$input-underline-color: $vte-field !default;
+$collection-border-color: $separator-color !default;
+
+/* Tables */
+$table-bg-hover: $vte-table-row-active-bg !default;
+
+/* Dropdowns */
+$dropdown-bg: $vte-dropdown-bg !default;
+$border-radius-base: $vte-box-border-radius !default;
+$dropdown-link-color: lighten($black, 20%) !default;
+$dropdown-link-hover-color: darken($black, 5%) !default;
+$dropdown-link-hover-bg: #f5f5f5 !default;
+$dropdown-link-active-color: $white !default;
+$dropdown-link-active-bg: $vte-primary !default;
+
+/* Modals */
+$modal-content-bg: $vte-modal-bg !default;
+$modal-backdrop-opacity: 0.5 !default;
+
+/* Pagination */
+
+/* Tabs */
+
+/* Collection */
+$collection-bg-color: $white !default;
+$collection-icon-color: $white !default;
+
+/* Inputs */
+$input-bg: $vte-field-bg !default;
+$input-bg-disabled: $vte-field-disabled !default;
+$input-color: $vte-text !default;
+$input-border: $vte-field !default;
+
+/* Navs */
+$nav-link-hover-bg: $vte-primary !default;
+$nav-pills-active-link-hover-color: $darkbg-text !default;
+$nav-pills-active-link-hover-bg: $nav-link-hover-bg !default;
+
+$hr-border: $separator-color !default;

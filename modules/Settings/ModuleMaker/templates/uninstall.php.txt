@@ -1,0 +1,536 @@
+<?php
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+ 
+/* crmv@64542 */
+
+/*@ DEL
+
+	This is a template file for the ModuleMaker
+	There are some special values in this file:
+	
+	1. Any comment starting with /*@ is treated as a special comment and the next characters
+	on that line specifies a command:
+		DEL: remove all the comment until the closing tag (which has the @ sign as well)
+		REPLACE: the comment is replaced with a standard comment, with some other text inside
+		
+	2. All the variables that begin with $TPL_ are replaced with other values/variables
+	
+@*/
+
+/* Automatic installation script */
+/* This file must be placed in the VTEROOT/storage/custom_modules folder */
+
+// security check
+if (php_sapi_name() != "cli" && !defined('MODULEMAKERSCRIPT')) {
+	throw new UninstallException("You are not allowed to invoke this script in this way!");
+}
+
+$configInc = '../../config.inc.php';
+if (!is_readable($configInc)) throw new UninstallException("File $configInc not found. Ensure this file is in the storage/custom_modules folder");
+
+/* Includes */
+require($configInc);
+chdir($root_directory);
+require('vteversion.php'); // crmv@181168
+
+require_once('include/utils/utils.php');
+require_once('modules/Update/Update.php');
+require_once('vtlib/Vtecrm/Utils.php');
+require_once('vtlib/Vtecrm/Field.php');
+require_once('vtlib/Vtecrm/Module.php');
+
+/* Globals */
+global $adb, $table_prefix, $vtlib_Utils_Log, $current_user;
+$vtlib_Utils_Log = true;
+
+// missing current_user, when invoking from CLI
+if (!isset($current_user)) {
+	$current_user = CRMEntity::getInstance('Users');
+	$current_user->id = 1;
+}
+
+/* Script class */
+$MMS = new ModuleMakerScriptUninstall();
+
+
+/* Basic variables */
+$module_name = $TPL_MODULENAME;
+
+$module_dest_dir = "modules/$module_name";
+
+
+/* Module variables */
+
+// other fields to remove
+$module_other_fields = $TPL_OTHERFIELDS;
+
+// relations NtoN to remove
+$module_relations = $TPL_RELATIONS;
+
+// relations 1toN to existing fields to remove
+$module_addrelations = $TPL_ADDRELATIONS;
+
+// labels to remove
+$labels = $TPL_LANGUAGES;
+
+
+// ----------------- SCRIPT START -------------------
+
+
+// check destination directory
+if (!is_writable('modules')) {
+	throw new InstallException("The modules folder is not writable, please fix the permissions");
+}
+
+// instance to the module
+$newModule = Vtecrm_Module::getInstance($module_name);
+
+
+// remove other labels
+if (is_array($labels)) {
+	foreach ($labels as $module=>$modlang) {
+		foreach ($modlang as $lang=>$translist) {
+			foreach ($translist as $label=>$translabel) {
+				SDK::deleteLanguageEntry($module, $lang, $label);
+			}
+		}
+	}
+}
+
+// relations NtoN (couple of related lists)
+if (is_array($module_relations)) {
+	foreach ($module_relations as $rel) {
+		$relinst = Vtecrm_Module::getInstance($rel['module']);
+		if ($relinst) {
+			if (!empty($rel['function'])) {
+				$func = $rel['function'];
+			} elseif ($rel['module'] == 'Messages') {
+				$func = 'get_messages_list';
+			} elseif ($rel['module'] == 'Documents') {
+				$func = 'get_attachments';
+			} else {
+				$func = 'get_related_list';
+			}
+			// check the inverse relation function
+			if (!empty($rel['reverse_function'])) {
+				$func2 = $rel['reverse_function'];
+			} elseif ($rel['module'] == 'Documents') {
+				$func2 = 'get_documents_dependents_list';
+			} else {
+				$func2 = $func;
+			}
+			$relinst->unsetRelatedList($newModule, $module_name, $func2);
+			if ($newModule) $newModule->unsetRelatedList($relinst, $rel['module'], $func);
+		}
+	}
+}
+
+// relations 1toN with fields not to remove
+if (is_array($module_addrelations)) {
+	foreach ($module_addrelations as $rel) {
+		$relinst = Vtecrm_Module::getInstance($rel['module']);
+		if ($relinst) {
+			$label = $rel['module'];
+			if (!empty($rel['function'])) {
+				$func = $rel['function'];
+			} elseif ($rel['module'] == 'Calendar') {
+				$func = 'get_activities';
+			} else {
+				$func = 'get_dependents_list';
+			}
+			if ($func == 'get_activities') {
+				$label = 'Activities';
+			}
+			if ($newModule) $newModule->unsetRelatedList($relinst, $label, $func);
+			if ($rel['field']) {
+				$field = @Vtecrm_Field::getInstance($rel['field'], $relinst);
+				if ($field) {
+					$field->unsetRelatedModules(array($module_name));
+				}
+			}
+		}
+	}
+}
+
+// remove other modules fields
+if (is_array($module_other_fields)) {
+	foreach ($module_other_fields as $field) {
+		$name = $field['name'];
+		$mod = $field['module'];
+		$modInst = Vtecrm_Module::getInstance($mod);
+		if (empty($modInst)) {
+			$MMS->warn("The module $mod was not found while removing the field $name");
+			continue;
+		}
+		$field = @Vtecrm_Field::getInstance($name, $modInst);
+		if ($field) {
+			$field->delete();
+		}
+	}
+}
+
+
+// now delete all
+$r = $MMS->deleteModuleData($module_name);
+if (!$r) throw new UninstallException("Error during module removal");
+		
+$r = $MMS->deleteModuleFiles($module_name);
+if (!$r) throw new UninstallException("Error during module files removal");
+
+// and just to be sure, regenerate the tabdata
+create_tab_data_file();
+
+// crmv@104956
+// clear some caches
+if (class_exists('Cache')) {
+	$cache = Cache::getInstance('getQuickCreateModules');
+	if ($cache) $cache->clear();
+}
+// crmv@104956e
+
+
+// ----------------------------------- CLASSES ---------------------------------------
+
+class UninstallException extends Exception { }
+
+// some useful functions for the uninstall
+class ModuleMakerScriptUninstall {
+
+	public $enableLog = true;
+	protected static $dbtables = array(); // crmv@167431
+	
+	public function warn($s) {
+		return $this->log('[WARNING] '.$s);
+	}
+	
+	public function log($s) {
+		if ($this->enableLog) echo $s."\n";
+	}
+
+	/**
+	 * Remove ALL the record and metadata for the specified custom module
+	 */
+	public function deleteModuleData($modname) {
+		global $adb, $table_prefix;
+		
+		// crmv@108984
+		$module = Vtecrm_Module::getInstance($modname);
+		if ($module) {
+			$tabid = $module->id;
+		} else {
+			$tabid = getTabid($modname);
+		}
+		
+		// crmv@69568
+		// remove some accessory data
+		$this->deleteReports($modname);
+		$this->deleteWorkflows($modname);
+		$this->deletePicklists($modname);
+		// crmv@69568e
+		
+		// remove the module tables
+		$this->dropModuleTables($modname);
+		
+		// delete module with vtlib
+		if ($module) $module->__delete();
+		// crmv@108984e
+		
+		// removes all the rows with references to this module
+		if ($tabid > 0) {
+			$this->deleteRowsWithColumnValue('tabid', $tabid, true);
+		}
+		$this->deleteRowsWithColumnValue('entitytype', $modname, false);
+		$this->deleteRowsWithColumnValue('entity_type', $modname, false);
+		$this->deleteRowsWithColumnValue('setype', $modname, false);
+		$this->deleteRowsWithColumnValue('module', $modname, false);
+		$this->deleteRowsWithColumnValue('relmodule', $modname, false);
+		$this->deleteRowsWithColumnValue('semodule', $modname, false);
+		// crmv@80117
+		if (Vtecrm_Utils::CheckTable($table_prefix.'_fieldformulas')) {
+			$adb->pquery("DELETE FROM {$table_prefix}_fieldformulas WHERE modulename = ?", array($modname));
+		}
+		// crmv@80117e
+		//crmv@85638 - these shouldn't be necessary, but sometimes the deleteRowsWithColumnValue doesn't work (?)
+		if ($tabid > 0) {
+			$adb->pquery("DELETE FROM {$table_prefix}_profile2standardperm WHERE tabid = ?", array($tabid));
+			$adb->pquery("DELETE FROM {$table_prefix}_org_share_action2tab WHERE tabid = ?", array($tabid));
+		}
+		//crmv@85638e
+
+		// TODO: maybe there are other tables/columns?
+		
+		return true;
+	}
+	
+	// crmv@69568
+	
+	//crmv@95610
+	// delete all the workflows with this primary module
+	protected function deleteWorkflows($modname) {
+		global $adb, $table_prefix;
+		
+		require_once("modules/com_workflow/VTWorkflowApplication.inc");
+		require_once("modules/com_workflow/VTWorkflowManager.inc");
+		require_once("modules/com_workflow/VTWorkflowUtils.php");
+		
+		$this->log('Deleting all workflows...');
+		
+		$res = $adb->pquery("SELECT w.workflow_id
+			FROM com_{$table_prefix}_workflows w
+			WHERE w.module_name = ?", array($modname));
+		if ($res && $adb->num_rows($res) > 0) {
+			$wm = new VTWorkflowManager($adb);
+			while ($row = $adb->FetchByAssoc($res, -1, false)) {
+				$id = intval($row['workflow_id']);
+				if ($id > 0) $wm->delete($id);
+			}
+		}
+	}
+	//crmv@95610e
+	
+	// crmv@99794
+	// delete all the reports with this primary module
+	protected function deleteReports($modname) {
+		global $adb, $table_prefix;
+		
+		require_once('modules/Reports/Reports.php');
+		$reports = Reports::getInstance();
+		
+		$this->log('Deleting all reports...');
+		
+		$res = $adb->pquery("SELECT r.reportid
+			FROM {$table_prefix}_report r
+			INNER JOIN {$table_prefix}_reportconfig rc ON rc.reportid = r.reportid
+			WHERE rc.module = ?", array($modname));
+		if ($res && $adb->num_rows($res) > 0) {
+			while ($row = $adb->FetchByAssoc($res, -1, false)) {
+				$id = intval($row['reportid']);
+				if ($id > 0) $reports->deleteReport($id);
+			}
+		}
+	}
+	// crmv@99794e
+	
+	protected function deletePicklists($modname) {
+		global $adb, $table_prefix;
+		
+		$this->log('Dropping all picklist values and tables...');
+		
+		// search for picklist fields and remove their tables
+		$res = $adb->pquery("SELECT fieldid, fieldname, p.picklistid
+			FROM {$table_prefix}_field f
+			INNER JOIN {$table_prefix}_tab t ON t.tabid = f.tabid
+			LEFT JOIN {$table_prefix}_picklist p ON p.name = f.fieldname
+			WHERE t.name = ? AND f.uitype IN (?,?,?,?) ", array($modname, 15, 16, 1015, 300));
+		if ($res && $adb->num_rows($res) > 0) {
+			while ($row = $adb->FetchByAssoc($res, -1, false)) {
+				$fieldid = $row['fieldid'];
+				$pickid = intval($row['picklistid']);
+				// delete the values
+				if ($pickid > 0) {
+					$adb->pquery("DELETE FROM {$table_prefix}_picklist WHERE picklistid = ?", array($pickid));
+					$adb->pquery("DELETE FROM {$table_prefix}_role2picklist WHERE picklistid = ?", array($pickid));
+				}
+				
+				// drop the tables
+				$tab = $table_prefix.'_'.$row['fieldname'];
+				if (Vtecrm_Utils::CheckTable($tab)) {
+					$dropq = $adb->datadict->DropTableSQL($tab);
+					$adb->datadict->ExecuteSQLArray($dropq);
+				}
+				$tab_seq = $table_prefix.'_'.$row['fieldname'].'_seq';
+				if (Vtecrm_Utils::CheckTable($tab_seq)) {
+					$dropq = $adb->datadict->DropTableSQL($tab_seq);
+					$adb->datadict->ExecuteSQLArray($dropq);
+				}
+			}
+		}
+	}
+	// crmv@69568e
+	
+	protected function dropModuleTables($modname) {
+		global $adb, $table_prefix;
+		
+		$this->log('Dropping module tables...');
+		
+		$tables = array();
+		@include_once("modules/$modname/{$modname}.php");
+		if (class_exists($modname)) {
+			$instance = CRMEntity::getInstance($modname);
+			if ($instance) {
+				$tables[] = $instance->table_name;
+				$tables[] = $instance->customFieldTable[0];
+			}
+		}
+		$tables = array_filter($tables);
+		if (count($tables) > 0) {
+			foreach ($tables as $modTable) {
+				if (Vtecrm_Utils::CheckTable($modTable)) {
+					$dropq = $adb->datadict->DropTableSQL($modTable);
+					$adb->datadict->ExecuteSQLArray($dropq);
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	
+	/**
+	 * Delete all the files for the specified custom module.
+	 */
+	public function deleteModuleFiles($modname) {
+		global $adb, $table_prefix;
+		
+		$this->log('Removing module files...');
+		
+		$this->rrmdir("modules/$modname");
+		$this->rrmdir("cron/modules/$modname");
+		$this->rrmdir("Smarty/templates/modules/$modname");
+		
+		return true;
+	}
+	
+	protected function rrmdir($dir) { 
+		if (is_dir($dir)) { 
+			$objects = scandir($dir); 
+			foreach ($objects as $object) { 
+				if ($object != "." && $object != "..") { 
+					$subpath = $dir.DIRECTORY_SEPARATOR.$object;
+					if (filetype($subpath) == "dir") $this->rrmdir($subpath); else unlink($subpath); 
+				} 
+			} 
+			reset($objects); 
+			rmdir($dir); 
+		} elseif (is_file($dir)) {
+			unlink($dir);
+		}
+	}
+	
+	protected function deleteRowsWithColumnValue($column, $value, $fuzzy = false) {
+		global $adb, $table_prefix;
+		
+		$list = $this->getTablesWithColumn($column, $fuzzy);
+		if ($list && is_array($list)) {
+			foreach ($list as $table) {
+				if ($fuzzy) {
+					list($tablename, $columnname) = explode('.', $table, 2);
+				} else {
+					$tablename = $table;
+					$columnname = $column;
+				}
+				$adb->format_columns($columnname);
+				$q = "DELETE FROM $tablename WHERE $columnname = ?";
+				$adb->pquery($q, array($value));
+			}
+		}
+		
+		return true;
+	}
+	
+	// use only alphanumeric names for the column
+	protected function getTablesWithColumn($column, $fuzzy = false) {
+		global $adb, $dbconfig;
+		
+		$dbname = $dbconfig['db_name'];
+		$params = array();
+		
+		// crmv@167431
+		// crmv@73504
+		if ($adb->isMysql()) {
+			// use a faster method
+			$list = array();
+			$tables = $this->getMysqlTables();
+			foreach ($tables as $tablename=>$tablefields) {
+				if ($fuzzy) {
+					foreach ($tablefields as $colfield) {
+						if (stripos($colfield,$column) !== false) $list[] = $tablename.'.'.$colfield;
+					}
+				} else {
+					if (in_array($column,$tablefields)) $list[] = $tablename;
+				}
+			}
+			return $list;
+		} elseif ($adb->isPostgres()) {
+		// crmv@167431e
+			// crmv@140072
+			if ($fuzzy) {
+				$query = "SELECT table_name, column_name FROM information_schema.columns INNER JOIN information_schema.tables USING (table_schema,table_name) WHERE table_schema = '$dbname' AND column_name LIKE '%$column%' AND table_type = 'BASE TABLE'";
+			} else {
+				$query = "SELECT table_name FROM information_schema.columns INNER JOIN information_schema.tables USING (table_schema,table_name) WHERE table_schema = '$dbname' AND column_name = ? AND table_type = 'BASE TABLE'";
+				$params = array($column);
+			}
+			// crmv@140072e
+		} elseif ($adb->isMssql()) {
+			if ($fuzzy) {
+				$query = "SELECT table_name, column_name FROM information_schema.columns WHERE table_catalog = '$dbname' AND table_schema = 'dbo' AND column_name LIKE '%$column%'";
+			} else {
+				$query = "SELECT table_name FROM information_schema.columns WHERE table_catalog = '$dbname' AND table_schema = 'dbo' AND column_name = ?";
+				$params = array($column);
+			}
+		// crmv@73504e
+		} elseif ($adb->isOracle()) {
+			if ($fuzzy) {
+				$query = 
+					"SELECT object_name AS table_name, user_tab_cols.column_name
+						FROM user_objects 
+						INNER JOIN user_tab_cols ON user_objects.object_name = user_tab_cols.table_name 
+					WHERE user_objects.object_type = 'TABLE' AND user_tab_cols.column_name LIKE '%$column%'";
+			} else {
+				$query = 
+					"SELECT object_name AS table_name
+						FROM user_objects 
+						INNER JOIN user_tab_cols ON user_objects.object_name = user_tab_cols.table_name 
+					WHERE user_objects.object_type = 'TABLE' AND user_tab_cols.column_name = ?";
+				$params = array(strtoupper($column));
+			}
+		} else {
+			// database type not supported
+			return false;
+		}
+		
+		$list = array();
+		$res = $adb->pquery($query, $params);
+		if ($res && $adb->num_rows($res) > 0) {
+			while ($row = $adb->FetchByAssoc($res,-1, false)) {
+				if ($fuzzy) {
+					$col = $row['table_name'].'.'.$row['column_name'];
+				} else {
+					$col = $row['table_name'];
+				}
+				$list[] = $col;
+			}
+		}
+		return $list;
+	}
+	
+	// crmv@167431
+	protected function getMysqlTables(){
+		global $adb;
+		
+		if (empty(self::$dbtables)){
+			$res = $adb->query("SHOW TABLES");
+			if ($res && $adb->num_rows($res) > 0) {
+				while ($row = $adb->fetch_array_no_html($res)) {
+					$table = $row[0];
+					//get column definition
+					$tablefields = array();
+					$res1 = $adb->query("DESCRIBE `{$table}`"); // crmv@205759
+					if ($res1 && $adb->num_rows($res1) > 0) {
+						while ($row1 = $adb->fetch_array_no_html($res1)) {
+							$tablefields[]=$row1[0];
+						}
+						self::$dbtables[$table] = $tablefields;
+					}
+				}
+			}
+		}
+		return self::$dbtables;
+	}
+	// crmv@167431e
+	
+
+}

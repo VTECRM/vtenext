@@ -1,0 +1,99 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.ui-autocomplete-loading {
+	animation: indeterminate 1500ms infinite linear;
+}
+
+@keyframes indeterminate {
+	0% {
+	    background-position: -100% bottom;
+		background-size: 20% 2px, 100% 1px;
+	}
+	20% {
+	    background-position: -40% bottom;
+		background-size: 20% 2px, 100% 1px;
+	}
+	40% {
+	    background-position: 0% bottom;
+		background-size: 50% 2px, 100% 1px;
+	}
+	60% {
+	    background-position: right bottom;
+		background-size: 70% 2px, 100% 1px;
+	}
+	80% {
+	    background-position: right bottom;
+		background-size: 0% 2px, 100% 1px;
+	}
+	100% {
+	    background-position: -100% bottom;
+		background-size: 0% 2px, 100% 1px;
+	}
+}
+
+.ui-autocomplete {
+	max-width: 250px;
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+	&.ui-widget {
+		font-family: $font-family-base;
+	}
+	
+	&.ui-widget-content {
+		background: none;
+		background-color: $autocomplete-bg;
+		color: $autocomplete-color;
+		border: 1px solid $autocomplete-border;
+	}
+	
+	&.ui-menu {
+		.ui-menu-item {
+			border-color: $autocomplete-item-border;
+			font-size: 13px;
+			
+			&.ui-state-focus {
+				background: $autocomplete-item-bg;
+				color: $autocomplete-item-color;
+				font-weight: normal;
+			}
+		}
+	}
+}
+
+#to_mail {
+}
+.addrBubble, .invBubble {
+	overflow: visible;
+	position: static;
+	background-color: $autocomplete-bubble-bg;
+	border: 1px solid $autocomplete-bubble-border;
+    border-radius: 4px;
+    color: $autocomplete-bubble-color;
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-left: 3px;
+    padding: 1px 3px;
+}
+.invBubble {
+	height: 50px;
+}
+.ImgBubbleDelete {
+	display:inline-block;
+	cursor:pointer;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.ui-menu  {
+	font-size: 11px;
+}
+.detailedViewReference {
+	width: 77%;
+}
+.detailedViewReferenceRO {
+	background: none repeat scroll 0 0 #C3D9FF;
+}

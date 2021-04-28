@@ -1,0 +1,114 @@
+body{
+	background: #fff !important;
+}
+a{
+	font-size:16px;
+}
+a:hover{
+	text-decoration:none;
+}
+#logo{
+	padding: 30px 50px 30px 50px;;
+}
+.form-login{
+	padding: 5% 5% 10% 5%;
+	position: relative;
+}
+#download-app{
+	margin-top: 100px;
+	text-align: center;
+}
+/* crmv@80218 
+#form-input{
+	margin-top: 20%;
+} crmv@80218e */
+.separation{
+	margin: 0px auto;
+	position: relative;
+	width: 1px;
+	height: 250px;
+	background-color: #ccc;
+}
+.separation:before{
+	content: 'OR';
+	position:absolute;
+	top: 40%;
+	left: -11px;
+	padding: 5px 0;
+	font-size: 16px;
+	color: #ccc;
+	background-color: #333;
+}
+input[type="text"], input[type="password"], input[type="email"]{
+	padding: 10px 0 10px 10px;
+	margin-bottom: 20px;
+}
+.logintxt{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 9px;
+}
+
+.col-centered {
+    display:inline-block;
+    float:center;
+    text-align:left;
+    margin-right:-4px;
+}
+
+.row-centered{
+	text-align: center;
+}
+.or{
+	margin: 10px 0 10px 0px;
+	color: #FFF;
+}
+@media (max-width: 1000px){
+	.form-login{
+		padding: 15% 5% 10% 5%;
+	}
+}
+@media (max-width: 767px){
+	.separation{
+		width: 100%;
+		height: 1px;
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	.separation:before{
+		content: 'OR';
+		top: -11px;
+		left: 46%;
+		padding: 0 5px;
+	}
+	.form-login{
+		/*crmv
+		padding: 50px 50px 100px 50px;*/
+		padding: 10% 5% 10% 5%;
+	}
+	#form-input{
+		margin-top: auto;
+	}
+	#download-app{
+		margin-top: auto;
+	}
+	#logo{
+		padding: 15px 0px;
+	}
+	.img-responsive{
+		min-width:300px;
+	}
+	.form-login{
+		padding: 25% 5% 10% 5%;
+	}
+}
+@media (max-width: 550px){
+	.img-responsive{
+		min-width:200px;
+	}
+}
+@media (max-width: 450px){
+	.form-login{
+		padding: 50% 5% 10% 5%;
+	}
+}

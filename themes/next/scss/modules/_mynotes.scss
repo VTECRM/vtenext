@@ -1,0 +1,400 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@168573 */
+
+.popup-mynotes {
+	height: 100%;
+	
+	#PageContents #ListViewContents {
+		border-right: 1px solid $mynotes-right-border;
+	}
+	
+	.mynotes-list {
+		background-color: $mynotes-list-bg;
+	}
+	
+	#DetailViewContents {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
+	.popupLinkListDataRow {
+		height: 40px;
+	}
+	
+	.popupLinkListDataCell {
+		padding: 15px 25px;
+	}
+	
+	form[name="basicSearch"] {
+		padding: 5px;
+	}
+	
+	.noteTitle {
+		font-size: 14px;
+		color: $vte-text;
+		font-weight: bold;
+	}
+	
+	.noteTimestamp {
+		font-size: 12px;
+		color: #a6a6a6;
+	}
+}
+
+/* Widget */
+
+.notes-wrapper {
+	overflow: hidden;
+	position: relative;
+	height: 450px;
+	max-height: 450px;
+	border-radius: $vte-box-border-radius;
+}
+
+.notes-list-container {
+	position: absolute;
+	background: $notes-container-background;
+	border-radius: 3px;
+	padding: 10px;
+	top: 60px;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	height: calc(100% - 60px);
+}
+
+.notes-list {
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 100%;
+}
+
+.note-element {
+	position: relative;
+	padding: 10px;
+	background-color: $notes-element-background;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+	margin-bottom: 8px;
+	min-height: 20px;
+	box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
+}
+
+.note-element-title {
+	font-weight: bold;
+	padding: 5px;
+	font-size: 18px;
+	color: $notes-text-color;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notes-slider .note-element-title {
+	white-space: nowrap;
+}
+
+.note-element-description {
+	padding: 5px;
+	margin-bottom: 16px;
+	font-size: 14px;
+	color: $notes-text-color;
+	overflow: hidden;
+}
+
+.notes-slider .note-element-description {
+	max-height: 180px;
+	overflow-y: auto;
+}
+
+.note-element-operation {
+	border-radius: 3px;
+	opacity: .8;
+	padding: 4px;
+	right: 12px;
+	bottom: 12px;
+}
+
+.note-element-btn {
+	border-radius: 3px;
+	color: $notes-element-btn;
+	display: block;
+	float: left;
+	margin-right: 4px;
+	min-width: 21px;
+	height: 21px;
+	line-height: 21px;
+	padding: 0;
+}
+
+.note-element-picture {
+	flex: 0 1 auto;
+	padding: 5px;
+}
+
+.note-element-user {
+	font-weight: bold;
+	font-size: 14px;
+	color: $notes-text-color;
+}
+
+.note-element-timestamp {
+	font-style: italic;
+	font-size: 13px;
+	color: $notes-timestamp-text-color;
+}
+
+.notes-list-header {
+	padding: 10px 8px 8px;
+	position: absolute;
+	height: 60px;
+	min-height: 60px;
+	background-color: $notes-header-color;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 5;
+}
+
+.notes-list-header-content {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.notes-header-left {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: stretch;
+	align-items: center;
+	height: 100%;
+	max-height: 100%;
+	position: absolute;
+	left: 0;
+}
+
+.notes-header-title {
+	font-weight: bold;
+	font-size: 16px;
+	margin: 0px auto;
+	color: $notes-text-color;
+}
+
+.note-header-btn {
+	flex: 0 1 auto;
+	align-self: auto;
+	color: $notes-header-btn;
+	opacity: 0.6;
+	margin-right: 8px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.note-header-btn.active {
+	opacity: 1;
+	background-color: $notes-header-btn-active;
+	border-radius: 50%;
+}
+
+.note-action-btn {
+	position: absolute;
+	right: 20px;
+	top: 30px;
+	margin: 0px;
+    padding: 8px 20px;
+}
+
+.note-action-btn i {
+	color: $white;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.note-action-btn span {
+	color: $white;
+}
+
+.notes-slider {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	height: 100%;
+}
+
+.notes-slider .carousel-inner {
+	height: 100%;
+}
+
+.notes-slider .carousel-inner .item {
+	padding: 30px 40px;
+}
+
+.notes-slider .carousel-control {
+	color: $notes-operation-text-color;
+	text-shadow: none;
+	width: 5%;
+}
+
+.notes-slider .carousel-control.left {
+	background-image: none;
+	background-repeat: no-repeat;
+}
+
+.notes-slider .carousel-control.right {
+	background-image: none;
+	background-repeat: no-repeat;
+}
+
+.notes-slider .carousel-indicators {
+	z-index: 2;
+	bottom: 0;
+}
+
+.notes-slider .carousel-indicators li {
+	border: 1px solid $notes-operation-text-color;
+}
+
+.notes-slider .carousel-indicators .active {
+	background-color: $notes-operation-text-color;
+}
+
+.notes-create-view {
+	padding: 18px;
+	position: absolute;
+	background-color: $notes-create-background;
+	width: 100%;
+	overflow-y: auto;
+	left: 0;
+	top: 100%;
+	height: 100%;
+	z-index: 3;
+	transform: translateY(0px);
+}
+
+.close-create-view {
+	cursor: pointer;
+	position: relative;
+}
+
+.notes-create-title {
+	padding: 5px;
+	font-size: 26px;
+	text-align: left;
+	padding: 10px 0px;
+}
+
+.notes-description-field {
+	height: 225px;
+	min-height: 225px;
+	border: 0px none;
+	font-size: 14px;
+	background-color: $notes-field-background;
+	color: $notes-field-color;
+	box-shadow: none;
+	resize: vertical;
+}
+
+.notes-subject-field {
+	font-size: 14px;
+	background-color: $notes-field-background;
+	color: $notes-field-color;
+	height: 40px;
+}
+	
+.notes-create-content {
+	padding: 5px;
+}
+
+.note-element-footer {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: space-between;
+}
+
+.note-element-user-timestamp {
+	flex: 1 0 auto;
+	padding-left: 5px;
+}
+
+.vte-collection-empty.empty-notes .collection-item .circle {
+	display: flex;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	background-color: $notes-empty-circle-background;
+	line-height: 200px;
+	text-align: center;
+	border-radius: 200px;
+}
+
+.vte-collection-empty.empty-notes .collection-item .circle {
+	.vteicon, .vteicon2, .icon-module {
+		font-size: 140px;
+	}
+}
+
+.notes-loader {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.7);
+	z-index: 6;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+
+.lds-ring {
+	display: inline-block;
+	position: relative;
+	width: 64px;
+	height: 64px;
+}
+
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 51px;
+	height: 51px;
+	margin: 6px;
+	border: 6px solid $vte-primary;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: $vte-primary transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+	
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

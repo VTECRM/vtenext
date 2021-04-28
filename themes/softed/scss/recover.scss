@@ -1,0 +1,43 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors';
+
+body {
+	background-image: url(../../include/install/images/back.jpg);
+}
+#main-container {
+	padding-top: 80px;
+}
+#header {
+	height: 80px;
+}
+#header-inner-cont {
+	padding: 15px;
+}
+#content-inner-cont {
+	border: 1px solid $vte-thin-border;
+	background-color: $white;
+	box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	border-radius: 2px;
+}
+.content-padding {
+	padding: 15px;
+}
+#config-title {
+	text-align: center;
+	font-weight: bold;
+}
+#nav-bar-inner {
+	margin: 0px auto;
+	padding: 20px 0px;
+}
+#footer-inner a {
+	color: $white;
+}

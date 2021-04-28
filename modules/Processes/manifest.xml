@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+<exporttime>2016-03-30 12:39:12</exporttime>
+<name>Processes</name>
+<label>Processes</label>
+<parent>Tools</parent>
+<dependencies>
+<vtenext_version>15.10</vtenext_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_processes</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_processes">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="processesid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="process_name" type="C" size="200"/>
+	<field name="description" type="XL" />
+    <field name="expiration" type="D"/>
+    <field name="related_to" type="I" size="19"/>
+    <field name="requested_action" type="XL"/>
+    <field name="processmaker" type="I" size="19"/>
+    <field name="running_process" type="I" size="19"/>
+    <field name="father" type="I" size="19"/>
+    <field name="process_actor" type="C" size="255"/>
+    <field name="process_status" type="C" size="255"/>
+    <field name="smownerid" type="I" size="19"/>
+    <field name="createdtime" type="T">
+      <NOTNULL/>
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="modifiedtime" type="T">
+      <NOTNULL/>
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="deleted" type="I" size="1">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+    <index name="running_process_idx">
+      <col>running_process</col>
+    </index>
+    <index name="getprocessesrelatedto_idx">
+      <col>related_to</col>
+      <col>running_process</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_processmaker</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_processmaker">
+	<opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="name" type="C" size="100"/>
+    <field name="description" type="XL"/>
+    <field name="version" type="C" size="10"/>
+    <field name="active" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="creatorid" type="I" size="1">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+    <field name="createdtime" type="T">
+      <NOTNULL/>
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="xml_version" type="I" size="19">
+      <DEFAULT value="1"/>
+    </field>
+    <field name="pending_changes" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="xml" type="XL"/>
+    <field name="vte_metadata" type="XL"/>
+    <field name="structure" type="XL"/>
+    <field name="helper" type="XL"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_processmaker_conditionals</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_processmaker_conditionals">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="running_process" type="I" size="19"/>
+    <field name="crmid" type="I" size="19"/>
+    <field name="elementid" type="C" size="255"/>
+    <index name="processmaker_conditionals_running_process_idx">
+      <col>running_process</col>
+    </index>
+    <index name="getallconditionals_idx">
+      <col>crmid</col>
+      <col>running_process</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_processmaker_metarec</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_processmaker_metarec">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="processid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="elementid" type="C" size="255"/>
+    <field name="text" type="C" size="255"/>
+    <field name="type" type="C" size="50"/>
+    <field name="module" type="C" size="50"/>
+    <field name="action" type="I" size="19"/>
+    <field name="start" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_processmaker_rec</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_processmaker_rec">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="crmid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="running_process" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="current" type="C" size="255"/>
+    <index name="processmaker_rec_crmid_idx">
+      <col>crmid</col>
+    </index>
+    <index name="processmaker_rec_running_process_idx">
+      <col>running_process</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_running_processes</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_running_processes">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="processmakerid" type="I" size="19"/>
+    <field name="current" type="C" size="255"/>
+    <field name="current_dynaform" type="C" size="255"/>
+    <field name="end" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="father" type="I" size="19"/>
+    <field name="active" type="I" size="1">
+      <DEFAULT value="1"/>
+    </field>
+    <field name="xml_version" type="I" size="11"/>
+    <field name="version_chosen" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="xml_version_forced" type="I" size="11"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_running_processes_nl</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_running_processes_nl">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="newsletterid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="processmakerid" type="I" size="19"/>
+    <field name="running_process" type="I" size="19"/>
+    <field name="elementid" type="C" size="100"/>
+    <field name="actionid" type="I" size="19"/>
+    <field name="subject" type="C" size="100"/>
+    <field name="body" type="XL"/>
+    <index name="running_proc_nl_pmaker_idx">
+		<col>processmakerid</col>
+		<col>elementid</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_running_processes_logs</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_running_processes_logs">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="running_process" type="I" size="19"/>
+    <field name="prev_elementid" type="C" size="255"/>
+    <field name="elementid" type="C" size="255"/>
+    <field name="userid" type="I" size="19"/>
+    <field name="logtime" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="rollbck" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <index name="running_processes_logs_idx">
+	  <col>running_process</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_running_processes_logsi</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_running_processes_logsi">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+	<field name="running_process" type="I" size="19"/>
+	<field name="elementid" type="C" size="255"/>
+    <field name="info" type="XL"/>
+    <index name="running_processes_logsi_idx">
+		<col>running_process</col>
+		<col>elementid</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_gateway_req</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_process_gateway_req">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="running_process" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="gateway_elementid" type="C" size="255">
+      <KEY/>
+    </field>
+    <field name="prev_elementid" type="C" size="255">
+      <KEY/>
+    </field>
+    <field name="next_elementid" type="C" size="255"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_dynaform</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_process_dynaform">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="running_process" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="metaid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="form" type="XL"/>
+    <field name="done" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_dynaform_meta</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_process_dynaform_meta">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="processid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="elementid" type="C" size="255"/>
+    <field name="text" type="C" size="255"/>
+    <field name="type" type="C" size="255"/>
+    <index name="dynaform_index1">
+      <col>processid</col>
+      <col>elementid</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_running_processes_timer</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_running_processes_timer">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="mode" type="C" size="20"/>
+    <field name="timer" type="DT">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="running_process" type="I" size="19"/>
+    <field name="prev_elementid" type="C" size="255"/>
+    <field name="elementid" type="C" size="255"/>
+    <field name="executed" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="occurrence" type="I" size="19">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="info" type="X"/>
+    <index name="running_process_timer_cron">
+      <col>executed</col>
+    </index>
+    <index name="running_process_timer_check">
+      <col>mode</col>
+      <col>running_process</col>
+      <col>prev_elementid</col>
+    </index>
+    <index name="running_process_timer_check_boundary">
+      <col>mode</col>
+      <col>running_process</col>
+      <col>elementid</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_subprocesses</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_subprocesses">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="processid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="elementid" type="C" size="255">
+      <KEY/>
+    </field>
+    <field name="subprocess" type="I" size="19"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_processmaker_rel</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_processmaker_rel">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="processid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="related" type="I" size="19"/>
+    <field name="related_role" type="C" size="50"/>
+    <field name="elementid" type="C" size="255"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_adv_permissions</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_process_adv_permissions">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="running_process" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="crmid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="resource" type="I" size="19">
+      <KEY/>
+    </field>
+	<field name="resource_type" type="C" size="1"/>
+    <field name="elementid" type="C" size="255"/>
+    <field name="read_perm" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="write_perm" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_processmaker_versions</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_processmaker_versions">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="processmakerid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="xml_version" type="I" size="19">
+	      <KEY/>
+	    </field>
+		<field name="userid" type="I" size="19"/>
+	    <field name="date_version" type="T">
+	      <DEFAULT value="0000-00-00 00:00:00"/>
+	    </field>
+	    <field name="version" type="C" size="10"/>
+	    <field name="xml" type="XL"/>
+	    <field name="vte_metadata" type="XL"/>
+	    <field name="structure" type="XL"/>
+    	<field name="helper" type="XL"/>
+    	<field name="system_versions" type="X"/>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_dynaform_cl</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_process_dynaform_cl">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="running_process" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="metaid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="seq" type="I" size="19">
+	      <DEFAULT value="0"/>
+	      <KEY/>
+	    </field>
+		<field name="userid" type="I" size="19"/>
+	    <field name="change_date" type="T">
+	      <DEFAULT value="0000-00-00 00:00:00"/>
+	    </field>
+	    <field name="form" type="XL"/>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_gateway_conn</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_process_gateway_conn">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="running_process" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="elementid" type="C" size="255">
+	      <KEY/>
+	    </field>
+	    <field name="flow" type="C" size="255">
+	      <KEY/>
+	    </field>
+	    <field name="seq" type="I" size="19">
+	      <DEFAULT value="0"/>
+	    </field>
+		<field name="bpmn_type" type="C" size="50"/>
+		<field name="elementsons" type="XL"/>
+		<field name="conditionssons" type="XL"/>
+		<field name="processesid" type="I" size="19"/>
+		<field name="casperid" type="I" size="19"/>
+		<field name="primary_processesid" type="I" size="19"/>
+		<field name="current_dynaform" type="C" size="50"/>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_adv_perm_tmp</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_process_adv_perm_tmp">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="userid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="crmid" type="I" size="19">
+			<KEY/>
+		</field>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_actor_running_processes</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_actor_running_processes">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="userid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="running_process" type="I" size="19">
+			<KEY/>
+		</field>
+		<index name="running_process_idx">
+			<col>running_process</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_assigned_running_processes</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_assigned_running_processes">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="assigned" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="running_process" type="I" size="19">
+			<KEY/>
+		</field>
+		<index name="running_process_idx">
+			<col>running_process</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_extws</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_process_extws">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="running_process" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="metaid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="results" type="XL" />
+		<field name="done" type="I" size="1" />
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_process_extws_meta</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_process_extws_meta">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="id" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="processid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="elementid" type="C" size="255" />
+		<field name="text" type="C" size="255" />
+		<field name="type" type="C" size="50" />
+		<field name="extwsid" type="I" size="19" />
+		<index name="process_extws_m_pid_idx">
+			<col>processid</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_PROCESSES_INFORMATION</label>
+<fields>
+<field>
+<fieldname>process_name</fieldname>
+<uitype>1</uitype>
+<columnname>process_name</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Process Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>1</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<entityidentifier>
+<entityidfield>processesid</entityidfield>
+<entityidcolumn>processesid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>2</quickcreate>
+<quickcreatesequence>2</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>expiration</fieldname>
+<uitype>5</uitype>
+<columnname>expiration</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Expiration</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>D~O</typeofdata>
+<quickcreate>2</quickcreate>
+<quickcreatesequence>3</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>related_to</fieldname>
+<uitype>10</uitype>
+<columnname>related_to</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Related to</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>2</quickcreate>
+<quickcreatesequence>4</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<relatedmodules>
+<relatedmodule>HelpDesk</relatedmodule>
+<relatedmodule>Accounts</relatedmodule>
+<relatedmodule>Campaigns</relatedmodule>
+<relatedmodule>Contacts</relatedmodule>
+<relatedmodule>Ddt</relatedmodule>
+<relatedmodule>Invoice</relatedmodule>
+<relatedmodule>Vendors</relatedmodule>
+<relatedmodule>Assets</relatedmodule>
+<relatedmodule>Leads</relatedmodule>
+<relatedmodule>ProductLines</relatedmodule>
+<relatedmodule>ProjectTask</relatedmodule>
+<relatedmodule>Potentials</relatedmodule>
+<relatedmodule>PurchaseOrder</relatedmodule>
+<relatedmodule>SalesOrder</relatedmodule>
+<relatedmodule>ProjectPlan</relatedmodule>
+<relatedmodule>Quotes</relatedmodule>
+<relatedmodule>Products</relatedmodule>
+<relatedmodule>Visitreport</relatedmodule>
+<relatedmodule>PBXManager</relatedmodule>
+<relatedmodule>Calendar</relatedmodule>
+<relatedmodule>Faq</relatedmodule>
+<relatedmodule>PriceBooks</relatedmodule>
+<relatedmodule>Services</relatedmodule>
+<relatedmodule>Timecards</relatedmodule>
+<relatedmodule>ProjectMilestone</relatedmodule>
+<relatedmodule>ServiceContracts</relatedmodule>
+<relatedmodule>Targets</relatedmodule>
+<relatedmodule>Newsletter</relatedmodule>
+</relatedmodules>
+</field>
+<field>
+<fieldname>requested_action</fieldname>
+<uitype>21</uitype>
+<columnname>requested_action</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Requested action</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>8</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>2</quickcreate>
+<quickcreatesequence>6</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>processmaker</fieldname>
+<uitype>1</uitype>
+<columnname>processmaker</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Process Maker</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>9</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>7</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>running_process</fieldname>
+<uitype>1</uitype>
+<columnname>running_process</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Running Process</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>10</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>8</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>father</fieldname>
+<uitype>10</uitype>
+<columnname>father</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Father process</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>11</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>9</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<relatedmodules>
+<relatedmodule>Processes</relatedmodule>
+</relatedmodules>
+</field>
+<field>
+<fieldname>process_actor</fieldname>
+<uitype>51</uitype>
+<columnname>process_actor</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Actor</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>12</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>10</quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>process_status</fieldname>
+<uitype>15</uitype>
+<columnname>process_status</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Status</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>13</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>11</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<picklistvalues>
+<picklistvalue>Running</picklistvalue>
+<picklistvalue>Waiting</picklistvalue>
+<picklistvalue>Ended</picklistvalue>
+</picklistvalues>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_CUSTOM_INFORMATION</label>
+</block>
+<block>
+<label>LBL_DESCRIPTION_INFORMATION</label>
+<fields>
+<field>
+<fieldname>description</fieldname>
+<uitype>19</uitype>
+<columnname>description</columnname>
+<tablename>TABLEPREFIX_processes</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Description</fieldlabel>
+<readonly>1</readonly>
+<presence>1</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<setmobile>true</setmobile>
+<fields>
+<field>
+<fieldname>process_name</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>related_to</fieldname>
+<columnindex>2</columnindex>
+</field>
+<field>
+<fieldname>requested_action</fieldname>
+<columnindex>3</columnindex>
+</field>
+<field>
+<fieldname>process_status</fieldname>
+<columnindex>4</columnindex>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<columnindex>5</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>private</default>
+</sharingaccess>
+<actions>
+<action>
+<name><![CDATA[Import]]></name>
+<status>disabled</status>
+</action>
+<action>
+<name><![CDATA[Export]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[DuplicatesHandling]]></name>
+<status>disabled</status>
+</action>
+</actions>
+<relatedlists>
+<relatedlist>
+<function>get_messages_list</function>
+<label>Messages</label>
+<sequence>2</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+</actions>
+<relatedmodule>Messages</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_attachments</function>
+<label>Documents</label>
+<sequence>3</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+</actions>
+<relatedmodule>Documents</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_activities</function>
+<label>Activities</label>
+<sequence>4</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+</actions>
+<relatedmodule>Calendar</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_children</function>
+<label>Processes Children</label>
+<sequence>5</sequence>
+<presence>0</presence>
+<actions>
+</actions>
+<relatedmodule>Processes</relatedmodule>
+</relatedlist>
+</relatedlists>
+<customlinks>
+</customlinks>
+<sdk>
+<popup_queries>
+</popup_queries>
+<popup_return_functs>
+</popup_return_functs>
+<uitypes>
+</uitypes>
+</sdk>
+</module>

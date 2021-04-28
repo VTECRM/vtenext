@@ -1,0 +1,136 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+// crmv@186404
+
+.listview-container {
+	display: flex;
+	flex-direction: column;
+    justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+	padding: 5px;
+}
+
+.listview-header, .listview-footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 5px 5px;
+	min-height: 50px;
+}
+
+.listview-entries {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+
+	&.vte-card {
+		margin-bottom: 0;
+	}
+}
+
+.listview-entries .vtetable {
+	&>thead>tr>th,
+	&>thead>tr>td,
+	&>tbody>tr>td {
+		vertical-align: middle;
+		padding: 3px 4px;
+	    padding-left: 15px;
+	}
+	
+	&>tbody>tr:nth-child(1)>td {
+		border-top: 0px none;
+	}
+	
+	&>tbody>tr:last-child:not([id^="row_"])>td {
+		border-top: 0px none;
+	}
+	
+	& #gridSrc>td {
+		border-top: 0px none;
+	}
+}
+
+.listview-dropdown {
+	& .listview-menu-dropdown.crmvDiv {
+		padding: 5px;
+		min-width: 250px;
+		max-height: 500px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		
+		& .crmbutton-turbolift:first-child {
+			margin-top: 2px;
+		}
+	}
+}
+
+.listview-emptylist-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 340px;
+	position: relative;
+	
+	& .listview-emptylist {
+	    width: 450px;
+		padding: 10px;
+	}
+	
+	& .listview-emptylist-message {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		
+		& .listview-emptylist-icon {
+			margin-right: 10px;
+
+			& .vteicon, & .vteicon2, & .icon-module {
+				font-size: 72px;
+			}
+		}
+		
+		& .listview-emptylist-message-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: start;
+			align-items: start;
+			
+			& .listview-emptylist-message-not-found {
+				width: 100%;
+				padding-bottom: 5px;
+				border-bottom: 1px solid rgb(204, 204, 204);
+				font-size: 18px;
+			}
+
+			& .listview-emptylist-message-action {
+				width: 100%;
+				padding-top: 5px;
+			}
+		}
+	}
+}
+
+.listview-entries.listview-entries-rb .vtetable {
+	&>thead>tr>th,
+	&>thead>tr>td,
+	&>tbody>tr>td {
+		padding: 6px 4px;
+	}
+}
+
+.listview-entries-rb .listview-emptylist-container {
+	& .listview-emptylist {
+	    width: 500px;
+	}
+}

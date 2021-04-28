@@ -1,0 +1,21 @@
+    **********************************
+    * TNEF Attachment Decoder plugin *
+    * Release Notes                  *
+    * Version: 0.7.nsm               *
+    **********************************
+
+This plugin version contains SquirrelMail attachment_tnef plugin ported to 
+NaSMail. It includes code cleanup, various performance updates and small 
+bugfixes.
+
+Requirements
+------------
+Plugin requires NaSMail 1.4. Older NaSMail versions can be used, if 
+Compatibility 1.6 plugin is installed.
+
+Known Bugs
+----------
+NaSMail peak memory usage is increased when large RTF parts are processed inside
+tnef attachments. Use of PHP cache and increase of PHP memory limits is
+recommended. Even when PHP cache is used, peak memory usage can be 5 times higher
+than max email size accepted by email server.

@@ -1,0 +1,244 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+html.popup-newsletter-wizard {
+	height: 100%;
+}
+
+body.popup-newsletter-wizard {
+	padding-top: 60px;
+	min-height: 100%;
+}
+
+.popup-newsletter-wizard {
+	#nlWizMainTab {
+		z-index: -10;
+		width: 100%;
+	}
+	#nlWizLeftPane {
+		width: 20%;
+		min-width: 200px;
+		border-right: 1px solid $wizard-steps-border;
+		vertical-align: top;
+		padding: 0px;
+	}
+	#nlWizRightPane {
+		min-width: 400px;
+		vertical-align: top;
+		padding: 8px;
+	}
+	#nlWizStepTable {
+		width: 100%;
+	}
+	.nlWizStepCell {
+		margin: 2px;
+		padding: 15px;
+		font-weight: 700;
+		cursor: pointer;
+		background-color: $wizard-steps-row-bg;
+		border-bottom: 1px solid $wizard-steps-row-border;
+
+		& .circleIndicator {
+			background-color: $wizard-steps-row-circle-bg;
+			color: $wizard-steps-row-circle-color;
+		}
+	}
+	.nlWizStepCell:hover {
+		background-color: $wizard-steps-row-hover;
+	}
+	.nlWizStepCellSelected {
+		background-color: $wizard-steps-row-selected;
+
+		& .circleIndicator.circleEnabled {
+			background-color: $wizard-steps-row-selected-circle-bg;
+			color: $wizard-steps-row-selected-circle-color;
+		}
+	}
+	.nlWizTargetList {
+		border-bottom: 1px solid #e0e0e0;
+		padding-bottom: 4px;
+		margin-bottom: 10px;
+		height: 300px;
+		overflow: auto;
+	}
+	#nlw_templatePreviewCont {
+		min-height: 200px;
+		overflow-y: auto;
+		width: 100%;
+		padding: 3px;
+		border: 1px solid #d0d0d0;
+		margin: 3px;
+	}
+	#nlw_templatePreviewBody {
+	}
+	.mailClientWriteEmailHeader {
+		font-size: 16px;
+		line-height: 24px;
+		color: rgb(43, 87, 124);
+		text-indent: 0px;
+		height: 59px;
+	}
+	.menuSeparation,
+	.level3Bg {
+		border-bottom: 0px none;
+	}
+	.vte_menu_white {
+		height: 60px;
+	}
+	& .navbar.vte-newsletter-wizard-navbar {
+		background-color: $vte-primary;
+	}
+	& .progressbar-circles {
+		position: relative;
+		margin: 5px;
+	}
+	& .progressbar-circles .steps-border {
+		top: 50%;
+		margin-top: -11px;
+		height: 22px;
+		background-color: mix(white, $vte-primary, 15%);
+	}
+	& .progressbar-circles .step-border {
+		background-color: mix(white, $vte-primary, 15%);
+		border: 0 none;
+	}
+	& .progressbar-circles .steps-border {
+		border: 0 none;
+	}
+	& .progressbar-circles .step-table .step-cell .step-text {
+		display: none;
+	}
+	& .progressbar-circles .step-table .step-cell.active-step .step-text {
+		display: inline-block;
+		color: $white;
+	}
+	& .header__bg {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: 400px;
+		background-color: $vte-primary;
+	}
+	& .nlWizStepCell {
+		margin: 0;
+		padding: 0;
+		font-weight: initial;
+		cursor: initial;
+		background-color: initial;
+		border-bottom: initial;
+		padding: 0 5px;
+	}
+	& .nlWizStepCell:hover {
+		background-color: transparent;
+	}
+	& #nlw_templatePreviewCont {
+		min-height: 200px;
+		overflow-y: auto;
+		width: 100%;
+		padding: 0;
+		border: 0px none;
+		margin: 0;
+	}
+	& .nav-pills-newsletter {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		border: 0;
+		border-radius: 4px;
+	}
+	& .nav-pills-newsletter .nav-pills-item {
+		line-height: 24px;
+		text-transform: uppercase;
+		font-size: 12px;
+		font-weight: 500;
+		min-width: 100px;
+		text-align: center;
+		transition: all 0.3s;
+		border-radius: 30px;
+		padding: 10px 15px;
+		border-radius: 4px;
+
+		& > a {
+			&:hover,
+			&:focus {
+				color: $nav-pills-active-link-hover-color;
+
+				& .vteicon,
+				& .vteicon2,
+				& .icon-module {
+					color: $nav-pills-active-link-hover-color;
+				}
+			}
+		}
+
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				color: $nav-pills-active-link-hover-color;
+
+				& .vteicon,
+				& .vteicon2,
+				& .icon-module {
+					color: $nav-pills-active-link-hover-color;
+				}
+			}
+		}
+	}
+}
+
+.popup-newsletter-preview {
+}
+
+.template-preview-body {
+	background-color: $vte-pdf-template-content-bg;
+	color: $vte-pdf-template-content-color;
+	overflow: auto;
+}
+
+img[src="$custom||organization_logo$"] {
+	position: relative;
+	min-height: 50px;
+	min-width: 150px;
+
+	&:before {
+		content: " ";
+		display: block;
+		position: absolute;
+		top: -10px;
+		left: 0;
+		height: calc(100% + 10px);
+		width: 100%;
+		background-color: rgb(230, 230, 230);
+		border: 2px dotted rgb(200, 200, 200);
+		border-radius: 5px;
+	}
+
+	&:after {
+		content: "\f0c1"attr(alt);
+		display: block;
+		font-size: 16px;
+		font-style: normal;
+		font-family: FontAwesome;
+		color: rgb(100, 100, 100);
+		position: absolute;
+		top: 5px;
+		left: 0;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* crmv@197575 */
+tr.w_colored_row > td {
+	background-color: $vte-primary;
+}
+.w_colored_row {
+	color: $darkbg-text;
+}

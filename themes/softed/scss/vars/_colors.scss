@@ -1,0 +1,155 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Colors definitions */ 
+
+/* Import Material Colors */
+@import '../material/colors';
+
+/* Named colors */
+
+$red: #ff0000;
+$green: #00ff00;
+$blue: #0000ff;
+$yellow: #ffff00;
+$cyan: #00ffff;
+$magenta: #ff00ff;
+
+/* Import overrides */
+@import 'sdk_overrides';
+
+$darkbg-text: rgba(255, 255, 255, 0.84) !default;
+$lightbg-text: rgba(0, 0, 0, 0.84) !default;
+
+/* Theme colors */
+$vte-body-bg: $white !default;
+$vte-primary: #2c80c8 !default;				/* colore menu principale */
+$vte-menusep: #2f76b4 !default;				/* colore 2 separatore menu */
+$vte-submenu: #ebf2f8 !default;				/* colore 3 sotto menu */
+$vte-submenusep: #d2e2ef !default;			/* colore 4 separatore sotto menu */
+$vte-thin-border: $grey-300 !default;
+
+/* Text */
+$vte-text: $lightbg-text !default;					/* colore per testo normale */
+$vte-text-title: #2b577c !default;			/* colore per titoli vari */
+$vte-text-record: #fe0000 !default;			/* colore per titolo record (detaiview, editview, createview) */
+
+/* Buttons */
+$vte-button-bg: $white !default;
+$vte-button-text: $lightbg-text !default;
+$vte-button-border: #d2d2d2 !default;
+$vte-button-delete: #fe0000 !default;		/* colore per pulsante elimina */
+$vte-button-delete-text: $white !default;
+$vte-button-save: #66871a !default;			/* colore per pulsante salva */
+$vte-button-save-text: $white !default;
+$vte-button-cancel: $vte-button-delete !default;
+$vte-button-cancel-text: $white !default;
+$vte-button-success-bg: #66871a !default;
+$vte-button-success-text: $white !default;
+$vte-button-warning: $orange !default;
+$vte-button-warning-text: $white !default;
+$vte-button-alpha-bg: $vte-button-bg !default;
+$vte-button-alpha-color: $vte-button-text !default;
+$vte-button-alpha-border: $vte-button-border !default;
+$vte-button-alpha-selected-bg: $vte-primary !default;
+$vte-button-alpha-selected-color: $white !default;
+$vte-button-alpha-selected-border: $vte-button-border !default;
+
+/* Fields */
+$vte-field: $grey-300 !default;				/* colore per campi */
+$vte-field-label: $grey-600 !default;		/* colore per etichette campi */
+$vte-field-disabled: $grey-100 !default;	/* colore per campi non modificabili */
+$vte-field-mandatory: #EFD5D5 !default;		/* colore per campi obbligatori */
+
+/* Boxes */
+$vte-box-verylight-bg: #F6F9FC !default;						/* Sfondo ultra leggero per varie box (azzurro) */
+$vte-box-light-bg: #eeeefe !default;							/* Sfondo leggero per varie box (azzurro) */
+$vte-box-light-border: lighten($vte-primary, 35%) !default;		/* Bordo per box leggero */
+$vte-box-light-bg2: #fffeee !default;							/* Sfondo leggero per varie box (giallo) */
+$vte-box-medium-bg: lighten($vte-primary, 40%) !default;		/* Sfondo medio, per varie box */
+$vte-box-medium-border: lighten($vte-primary, 30%) !default;	/* Bordo per il box medio */
+$vte-help-box-border: $yellow !default;
+$vte-help-box: lighten($yellow, 40%) !default;
+$vte-card-bg: $white !default;
+
+/* Wizards */
+$vte-wizard-tab: $grey-200 !default;
+$vte-wizard-tab-selected: darken($vte-wizard-tab, 10%) !default;
+
+/* Tabs */
+$vte-tab-bg: $white !default;
+$vte-tab-color: $vte-text !default;
+$vte-tab-hover: $vte-box-verylight-bg !default;
+$vte-tab-selected-bg: $vte-tab-bg !default;
+$vte-tab-selected-border: $vte-primary !default;
+$vte-tab-selected-color: $vte-text !default;
+$vte-tab-disable-color: $grey-400 !default;
+
+/* Tables */
+$vte-table-bg: $white !default;
+$vte-table-row-bg: $white !default;
+$vte-table-row-active-bg: $vte-box-verylight-bg !default;
+
+/* MyNotes */
+$mynotes-right-border: #e0e0e0 !default;
+$mynotes-list-bg: $white !default;
+
+/* Messages */
+$messages-detailview-container-bg: $vte-box-verylight-bg !default;
+$messages-detailview-bg: $white !default;
+$messages-detailview-color: $black !default;
+
+/* PDFMaker */
+$vte-pdf-template-content-bg: $white !default;
+$vte-pdf-template-content-color: $black !default;
+
+/* Popup */
+$list-modules-row-bg: $white !default;
+$list-modules-row-border: $vte-button-border !default;
+$list-modules-row-hover: rgba(0, 0, 0, 0.05) !default;
+$list-modules-row-selected: rgba(0, 0, 0, 0.05) !default;
+$list-modules-row-icon-color: $black !default;
+$list-modules-border: #d2d2d2 !default;
+
+/* Dropdowns */
+$vte-dropdown-bg: $white !default;
+
+/* Wdcalendar */
+$calendar-main-bg: $white !default;
+$calendar-grid-border: #e5e5e5 !default;
+$calendar-grid-dual-border: #f1f1f1 !default;
+$calendar-today-bg: #fbfbfb !default;
+$calendar-button-task-bg: #fafafa !default;
+$calendar-button-task-color: $vte-text !default;
+$calendar-button-task-hover-bg: #f5f5f5 !default;
+$calendar-button-task-hover-color: $vte-text !default;
+$calendar-allday-bg: #fafafa !default;
+$calendar-allday-border: #e7e3e4 !default;
+$calendar-right-border: #e7e3e4 !default;
+$calendar-month-head-bg: #eeeeee !default;
+$calendar-month-head-color: $vte-text !default;
+$calendar-nomonth-head-bg: #f5f5f5 !default;
+$calendar-nomonth-head-color: #aaaaaa !default;
+$calendar-month-today-bg: #fff9c4 !default;
+$calendar-month-today-head-bg: #bdbdbd !default;
+$calendar-holiday-bg: #f1f1f1 !default;
+$calendar-month-other-bg: $white !default;
+$calendar-month-other-border: gray !default;
+
+$separator-color: $grey-300 !default;
+
+/* Override colors for Materialize theme */
+$primary: $vte-primary;
+$success: $vte-button-save;
+$warning: $vte-button-warning;
+$danger: $vte-button-delete;
+
+/* Dropdowns */
+$dropdown-bg: $vte-dropdown-bg !default;
+
+/* Navs */
+$nav-link-hover-bg: $vte-primary !default;
+$nav-pills-active-link-hover-color: $darkbg-text !default;
+$nav-pills-active-link-hover-bg: $nav-link-hover-bg !default;

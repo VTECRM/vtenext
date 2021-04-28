@@ -1,0 +1,42 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vte_myfiles</name>
+			<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_myfiles">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="myfilesid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="myfiles_no" type="C" size="90"/>
+    <field name="title" type="C" size="90"/>
+	<field name="description" type="XL" />
+    <field name="folder" type="C" size="90"/>
+    <field name="folderid" type="I" size="10"/>
+    <field name="filename" type="C" size="255"/>
+    <field name="filetype" type="C" size="150"/>
+    <field name="filesize" type="I" size="10"/>
+    <field name="fileversion" type="C" size="150"/>
+    <field name="filestatus" type="I" size="1"/>
+    <field name="filedownloadcount" type="I" size="1"/>
+    <field name="filelocationtype" type="C" size="5"/>
+	<field name="backend_name" type="C" size="63"/>
+  </table>
+</schema>]]></sql>
+		</table>
+		<table>
+			<name>vte_myfilescf</name>
+			<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="vte_myfilescf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="myfilesid" type="I" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+		</table>
+	</tables>
+</schema>

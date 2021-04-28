@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+<module>
+<name>ChangeLog</name>
+<label>ChangeLog</label>
+<parent></parent>
+<type>extension</type>
+<dependencies>
+	<vtenext_version>4.2</vtenext_version>
+	<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_changelog</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_changelog">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="changelogid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="audit_no" type="N" size="3,1"/>
+    <field name="parent_id" type="I" size="19"/>
+    <field name="user_name" type="C" size="20"/>
+	<field name="user_id" type="I" size="19"/>
+	<field name="display_id" type="I" size="19" />
+	<field name="display_module" type="C" size="63" />
+	<field name="display_name" type="C" size="255" />
+    <field name="modified_date" type="C" size="20"/>
+	<field name="request_id" type="C" size="63"/>
+	<field name="description" type="XL" />
+    <field name="hide" type="I">
+	  <DEFAULT value="0"/>
+	</field>
+	<index name="changelog_parent_id_idx">
+      <col>parent_id</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+</module>

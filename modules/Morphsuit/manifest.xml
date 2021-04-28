@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2011-03-01 09:00:00</exporttime>
+<name>Morphsuit</name>
+<label>Morphsuit</label>
+<parent></parent>
+<type>extension</type>
+<version>1.0</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>tbl_s_morphsuit</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_morphsuit">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="morphsuit" type="X"/>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+</module>

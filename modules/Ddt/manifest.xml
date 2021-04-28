@@ -1,0 +1,664 @@
+<?xml version='1.0'?>
+<module>
+<name>Ddt</name>
+<label>Ddt</label>
+<parent>Sales</parent>
+<version>1.0</version>
+<dependencies>
+	<vtenext_version>3.0</vtenext_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_ddt</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_ddt">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="ddtid" type="I" size="19">
+		<KEY/>
+    </field>
+	<field name="description" type="XL" />
+    <field name="subject" type="C" size="100"/>
+    <field name="ddt_no" type="C" size="100"/>
+    <field name="ddt_data" type="D"/>
+    <field name="salesorderid" type="I" size="19"/>
+    <field name="customerno" type="C" size="100"/>
+    <field name="ddtcausale" type="C" size="255"/>
+    <field name="ddttrasporto" type="C" size="255"/>
+    <field name="ddtcondcons" type="C" size="255"/>
+    <field name="accountid" type="C" size="255"/>
+	<field name="adjustment" type="N" size="25,3"/>
+	<field name="total" type="N" size="25,3"/>
+    <field name="subtotal" type="N" size="25,3"/>
+    <field name="taxtype" type="C" size="25"/>
+    <field name="discount_percent" type="C" size="127"/>
+    <field name="discount_amount" type="N" size="25,3"/>
+    <field name="s_h_amount" type="N" size="25,3"/>
+	<field name="currency_id" type="I" size="19">
+      <DEFAULT value="1"/>
+    </field>
+    <field name="conversion_rate" type="N" size="10,3">
+      <DEFAULT value="1.000"/>
+    </field>
+	<field name="terms_conditions" type="X"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_ddtcf</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_ddtcf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="ddtid" type="R" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_DDT_INFORMATION</label>
+<fields>
+<field>
+<fieldname>subject</fieldname>
+<uitype>1</uitype>
+<columnname>subject</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Subject</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>1</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>ddt_no</fieldname>
+<uitype>4</uitype>
+<columnname>ddt_no</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Ddt No</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>2</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<entityidentifier>
+<entityidfield>ddtid</entityidfield>
+<entityidcolumn>ddtid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>ddt_data</fieldname>
+<uitype>5</uitype>
+<columnname>ddt_data</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Data Ddt</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>D~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>3</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>salesorderid</fieldname>
+<uitype>10</uitype>
+<columnname>salesorderid</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Sales Order</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<relatedmodules>
+<relatedmodule>SalesOrder</relatedmodule>
+</relatedmodules>
+</field>
+<field>
+<fieldname>customerno</fieldname>
+<uitype>1</uitype>
+<columnname>customerno</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Customer No</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>ddtcausale</fieldname>
+<uitype>15</uitype>
+<columnname>ddtcausale</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Causale</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>7</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>--None--</picklistvalue>
+<picklistvalue>Conto deposito</picklistvalue>
+<picklistvalue>Reso da conto deposito</picklistvalue>
+<picklistvalue>Conto lavorazione</picklistvalue>
+<picklistvalue>Reso da conto lavorazione</picklistvalue>
+<picklistvalue>Prestito d uso</picklistvalue>
+<picklistvalue>Reso da prestito d uso</picklistvalue>
+<picklistvalue>Conto riparazione</picklistvalue>
+<picklistvalue>Reso da conto riparazione</picklistvalue>
+<picklistvalue>Conto manutenzione</picklistvalue>
+<picklistvalue>Reso da conto manutenzione</picklistvalue>
+<picklistvalue>Conto visione</picklistvalue>
+<picklistvalue>Reso da conto visione</picklistvalue>
+<picklistvalue>Omaggio</picklistvalue>
+<picklistvalue>Campionario</picklistvalue>
+<picklistvalue>Vendita</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>ddttrasporto</fieldname>
+<uitype>15</uitype>
+<columnname>ddttrasporto</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Trasporto</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>8</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>--None--</picklistvalue>
+<picklistvalue>Porto franco</picklistvalue>
+<picklistvalue>Porto assegnato</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>ddtcondcons</fieldname>
+<uitype>15</uitype>
+<columnname>ddtcondcons</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Condizione di Consegna</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>9</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>--None--</picklistvalue>
+<picklistvalue>Franco magazzino venditore</picklistvalue>
+<picklistvalue>Franco magazzino compratore</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>accountid</fieldname>
+<uitype>10</uitype>
+<columnname>accountid</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Account</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>10</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<relatedmodules>
+<relatedmodule>Accounts</relatedmodule>
+</relatedmodules>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>11</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>4</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>12</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>ModifiedTime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>13</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>txtAdjustment</fieldname>
+<uitype>1</uitype>
+<columnname>adjustment</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Adjustment</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>12</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>NN~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnGrandTotal</fieldname>
+<uitype>1</uitype>
+<columnname>total</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Total</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>14</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnSubTotal</fieldname>
+<uitype>1</uitype>
+<columnname>subtotal</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Sub Total</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnTaxType</fieldname>
+<uitype>16</uitype>
+<columnname>taxtype</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Tax Type</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnDiscountPercent</fieldname>
+<uitype>1</uitype>
+<columnname>discount_percent</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Discount Percent</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo>LBL_DISCOUNT_PERCENT_INFO</helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnDiscountAmount</fieldname>
+<uitype>1</uitype>
+<columnname>discount_amount</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Discount Amount</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnS_H_Amount</fieldname>
+<uitype>1</uitype>
+<columnname>s_h_amount</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>S&amp;H Amount</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>currency_id</fieldname>
+<uitype>117</uitype>
+<columnname>currency_id</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Currency</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>1</selected>
+<sequence>20</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>conversion_rate</fieldname>
+<uitype>1</uitype>
+<columnname>conversion_rate</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Conversion Rate</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>1</selected>
+<sequence>21</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>creator</fieldname>
+<uitype>52</uitype>
+<columnname>smcreatorid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Creator</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>22</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_CUSTOM_INFORMATION</label>
+</block>
+<block>
+<label>LBL_TERMS_INFORMATION</label>
+<fields>
+<field>
+<fieldname>terms_conditions</fieldname>
+<uitype>19</uitype>
+<columnname>terms_conditions</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Terms &amp; Conditions</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_DESCRIPTION_INFORMATION</label>
+<fields>
+<field>
+<fieldname>description</fieldname>
+<uitype>19</uitype>
+<columnname>description</columnname>
+<tablename>TABLEPREFIX_ddt</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Description</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_RELATED_PRODUCTS</label>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<setmobile>true</setmobile>
+<fields>
+<field>
+<fieldname>subject</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<columnindex>2</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>public_readwritedelete</default>
+</sharingaccess>
+<actions>
+<action>
+<name><![CDATA[Import]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[Export]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[Merge]]></name>
+<status>enabled</status>
+</action>
+</actions>
+<relatedlists>
+<relatedlist>
+<function>get_related_list</function>
+<label>Documents</label>
+<sequence>2</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+</actions>
+<relatedmodule>Documents</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_related_list</function>
+<label>Invoice</label>
+<sequence>2</sequence>
+<presence>0</presence>
+<actions>
+<action> </action>
+</actions>
+<relatedmodule>Invoice</relatedmodule>
+</relatedlist>
+</relatedlists>
+</module>

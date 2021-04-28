@@ -1,0 +1,84 @@
+/* tables */
+table.tablesorter thead tr .header {
+	background: url(../images/un.gif);
+	background-repeat: no-repeat;
+	background-position: center left;
+	cursor: pointer;
+	font-weight:bold;
+}
+
+thead {
+	text-align:left;
+}
+	
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(../images/asc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(../images/desc.gif);
+}
+
+table.tablesorter {
+	background:#EEE;
+}
+
+table.tablesorter thead th {
+	padding-left:20px;
+}
+
+table.tablesorter tbody td {
+
+}
+
+table.tablesorter tbody tr {
+	color: #3D3D3D;
+	padding: 4px;
+	vertical-align: top;
+}
+
+tr.odd {
+	background:#F8F8F8;
+}
+
+tr.even {
+	background:white;
+}
+
+#mySortable {
+	border-collapse: collapse;
+	border-width: 0px; 
+	clear:both;
+}
+
+#mySortable td {
+	border-bottom:1px solid #EEEEEE;
+	font-size:14px;
+	text-align:left;
+	padding:5px;
+	width:110px;
+}
+
+#mySortable td input {
+	width:100px;
+}
+
+#mySortable tbody tr:hover {
+	background:aliceBlue;
+}
+
+#updatemessage {
+	color:green;
+	height:15px;
+}
+
+#content {
+	margin-top:100px;
+	margin-left:100px;
+	width:800px;
+}
+
+button {
+	margin-bottom:5px;
+	float:right;
+}

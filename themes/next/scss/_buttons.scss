@@ -1,0 +1,413 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/*  Buttons */
+
+a.crmButton,
+a.crmbutton {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.crmButton,
+.crmbutton {
+	@extend .btn;
+	@extend .btn-default;
+	margin: 2px;
+	padding: 4px 20px;
+	font-size: 13px;
+	
+	&.with-icon {
+		font-size: 11px;
+	}
+	
+	&.only-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 36px;
+		padding: 7px;
+		
+		& .vteicon, & .vteicon2, & .icon-module {
+			font-size: 20px;
+		}
+	}
+	
+	& .vteicon, & .vteicon2, & .icon-module {
+		&,
+		&:hover:not(.disabled):not(.nohover) {
+			color: inherit;
+		}
+	}
+}
+
+// crmv@187622
+.vte-btn-group {
+	@extend .btn-group;
+	margin: 2px;
+	box-shadow: none;
+	top: -1px;
+
+	& > .crmbutton:first-child:not(:last-child):not(.dropdown-toggle) {
+		padding: 8px 20px;
+	}
+	
+	& > .crmbutton, & > .crmButton {
+		@extend .btn;
+		font-size: 13px;
+
+		&.dropdown-toggle {
+			padding: 15px 10px;
+			border-left: 1px solid #fafafa;
+
+			& .caret {
+				position: relative;
+				left: -5px;	
+			}
+		}
+	}
+}
+// crmv@187622e
+
+/* crmv@26807 */
+.picklistButton {
+	background: $white url(vteimage("themes/softed/images/movecol_down.gif", "../../")) right center no-repeat;
+	background-color: $grey-300;
+	text-align: left;
+}
+/* crmv@26807e */
+
+.crmButton,
+.crmbutton {
+	border: 1px solid $vte-button-border;
+	 
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&, 
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-border;
+				background-color: $vte-button-bg-very-light;
+				color: $vte-button-text;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-bg;
+				color: $vte-button-text;
+			}
+		}
+	}
+}
+
+.crmButton.delete,
+.crmbutton.delete {
+	@extend .btn-danger;
+	border: 0px none;
+	
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&,
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-delete;
+				background-color: $vte-button-delete-very-light;
+				color: $vte-button-delete;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-delete;
+				color: $vte-button-delete-text;
+			}
+		}
+	}
+}
+
+.crmButton.save,
+.crmbutton.save {
+	@extend .btn-success;
+	border: 0px none;
+	
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&,
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-save;
+				background-color: $vte-button-save-very-light;
+				color: $vte-button-save;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-save;
+				color: $vte-button-save-text;
+			}
+		}
+	}
+}
+
+.crmButton.cancel,
+.crmbutton.cancel {
+	@extend .btn-danger;
+	border: 0px none;
+	
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&,
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-delete;
+				background-color: $vte-button-delete-very-light;
+				color: $vte-button-delete;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-delete;
+				color: $vte-button-delete-text;
+			}
+		}
+	}
+}
+
+.crmButton.success,
+.crmbutton.success {
+	@extend .btn-success;
+	border: 0px none;
+	
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&,
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-success;
+				background-color: $vte-button-success-very-light;
+				color: $vte-button-success;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-success;
+				color: $vte-button-success-text;
+			}
+		}
+	}
+}
+
+.crmButton.info,
+.crmbutton.info {
+	@extend .btn-info;
+	border: 0px none;
+	
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&,
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-info;
+				background-color: $vte-button-info-very-light;
+				color: $vte-button-info;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-info;
+				color: $vte-button-success-text;
+			}
+		}
+	}
+}
+
+.crmButton.warning,
+.crmbutton.warning {
+	@extend .btn-warning;
+	border: 0px none;
+	
+	&:not(.btn-link):not(.btn-flat) {
+		@if $vte-btn-outline == true {
+			&,
+			&:active,
+			&:hover {
+				border: 1px solid $vte-button-warning;
+				background-color: $vte-button-warning-very-light;
+				color: $vte-button-warning;
+			}
+		} @else {
+			&,
+			&:active,
+			&:hover {
+				background-color: $vte-button-warning;
+				color: $vte-button-warning-text;
+			}
+		}
+	}
+}
+
+.crmbutton.btn-arrow-right {
+	z-index: 1;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	margin-right: 15px;
+}
+
+.crmbutton.btn-arrow-left {
+	z-index: 1;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	margin-left: 15px;
+}
+
+.crmbutton.btn-arrow-right:before,
+.crmbutton.btn-arrow-left:before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	width: 22px;
+	height: 22px;
+	background-color: inherit;
+	border: inherit;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	z-index: -1;
+}
+
+.crmbutton.btn-arrow-right:before {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+}
+
+.crmbutton.btn-arrow-left:before {
+	transform: rotate(225deg);
+	-webkit-transform: rotate(225deg);
+	-moz-transform: rotate(225deg);
+	-o-transform: rotate(225deg);
+	-ms-transform: rotate(225deg);
+}
+
+.crmbutton.btn-arrow-right:before {
+	right: -11px;
+}
+
+.crmbutton.btn-arrow-left:before {
+	left: -11px;
+}
+
+.crmbutton.btn-arrow-left:before,
+.crmbutton.btn-arrow-right:before {
+	background-color: inherit;
+}
+
+.backButtonSave {
+}
+
+.crmbutton-nav {
+	margin: 5px 0px;
+}
+
+/* Turbolift buttons */
+
+.crmbutton.crmbutton-turbolift,
+.crmButton.crmbutton-turbolift {
+	width: 100%;
+	margin-top: 5px;
+	margin-left: 0;
+	margin-right: 0;
+	font-size: 12px;
+	
+	&:not(.with-icon) {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+}
+
+.messagesTurboliftEntry.btn {
+	/*
+	width: 100%;
+	margin: 0px;
+	padding: 0px 15px;
+	text-transform: none;
+	border: 1px solid $vte-button-border;
+	*/
+}
+
+.turboliftEntry1.btn {
+	/*
+	width: 100%;
+	text-transform: none;
+	margin: 5px 1px;
+	text-align: left;
+	border: 1px solid $vte-button-border;
+	padding: 10px 15px;
+	*/
+}
+
+.turboliftEntry1.btn,
+.turboliftEntry.turboliftEntryWithImage.btn,
+.turboliftEntry1.turboliftEntryWithImage.btn {
+	/*
+	width: 100%;
+	text-transform: none;
+	text-align: left;
+	border: 1px solid $vte-button-border;
+	margin: 0px;
+	padding: 7px 15px;
+	margin-top: 5px;
+	*/
+}
+
+.turboliftEntry1:hover {
+	/*
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+	*/
+}
+
+.turboliftTracking {
+	/*
+	margin: 5px 1px;
+	border: 1px solid $vte-button-border;
+	border-radius: 2px;
+	*/
+}
+
+/* crmv@98866 */
+.searchAlph {
+	width: 100%;
+	margin: 0;
+	border: 1px solid $vte-button-alpha-border;
+	
+	&.crmbutton,
+	&.crmButton {
+		&:not(.btn-link):not(.btn-flat) {
+			background-color: $vte-button-alpha-bg;
+			color: $vte-button-alpha-color;
+		}
+	}
+}
+
+.crmbutton.searchAlphselected {
+	width: 100%;
+	margin: 0;
+	font-weight: 700;
+	border: 1px solid $vte-button-alpha-selected-border;
+	
+	&.crmbutton,
+	&.crmButton {
+		&:not(.btn-link):not(.btn-flat) {
+			background-color: $vte-button-alpha-selected-bg;
+			color: $vte-button-alpha-selected-color;
+		}
+	}
+}
+/* crmv@98866 end */

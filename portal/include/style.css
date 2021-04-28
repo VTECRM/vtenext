@@ -1,0 +1,43 @@
+
+
+input {
+	border:1px solid #999999;
+}
+.logintbl {
+	background-color:#ebf2f8;
+	border: 1px solid #2C80C8;
+}
+.loginsubmit {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:20px;
+	background-color:#2C80C8;
+	color:#FFFFFF;
+	width:274px;
+	height:40px;
+	cursor:pointer;
+}
+.logininput {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:24px;
+	padding:5px;
+	color:#999999;
+	border: 0px;
+	width:274px;
+}
+.logintxt {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:9px;
+	line-height: 18px;
+	color:#35608a;
+	text-decoration:none;
+	vertical-align: top;
+}
+#vte_footer {
+	padding:0px 5px 0px 5px;
+	position: absolute;
+	bottom: 0px;
+}
+#vte_footer td {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:9px;
+}

@@ -1,0 +1,1557 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* SOFTED - COLOR THEME */
+
+/* crmv@82419 */
+
+/* Import fonts */
+@import "fonts";
+
+/* crmv@16131m crmv@23344 */
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: $vte-body-bg;
+	font-family: $font-family-base;
+	font-weight: 400;
+	min-height: 100%;
+
+	&.body-light {
+		background-color: $vte-body-light-bg;
+	}
+}
+
+@import "lateralmenu";
+@import "settings";
+
+a {
+	text-decoration: none;
+	color: $vte-text-title;
+	outline: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $vte-text-title-hover;
+		outline: none;
+	}
+}
+
+.badge {
+	// change the default appearence of badges
+	&.vte-top-badge {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		z-index: 2;
+		font-size: 10px;
+		cursor: pointer;
+		background-color: $vte-button-delete;
+	}
+}
+
+div.fixedLay1 {
+	position: fixed;
+}
+
+/* morphsuit activation */
+.morphsuitactivationbody {
+	background-color: $vte-box-light-bg;
+}
+.morphsuittable {
+	background-color: $white;
+	border-bottom: 1px solid $grey-500;
+	border-left: 1px solid $grey-500;
+	border-right: 1px solid $grey-500;
+	line-height: 23px;
+}
+.morphsuittab {
+	background: url(vteimage("themes/softed/images/headermorphsuit.png", "../../"));
+	height: 52px;
+	cursor: pointer;
+}
+.morphsuitlink {
+	color: $white;
+}
+#logoMorphsuit {
+	display: none;
+}
+/* end morphsuit activation */
+
+#lv_user_id,
+#viewname {
+	width: 100px;
+}
+
+#winMax {
+	text-align: center;
+	z-index: 0;
+	text-decoration: none;
+	width: 100%;
+	background-image: url(vteimage("themes/softed/images/bg_minimizer.png", "../../"));
+}
+
+.margintop {
+	margin-top: 3px;
+}
+
+.small {
+	font-size: $vte_font_size;
+	color: $vte-text;
+}
+
+.big {
+	font-size: $vte_font_size;
+	line-height: 18px;
+	color: $vte-text;
+	font-weight: bold;
+}
+
+.componentName {
+	font-size: 18px;
+	line-height: 18px;
+	color: $vte-text-title;
+	padding: 10px;
+}
+
+.genHeaderBig {
+	font-size: 16px;
+	line-height: 19px;
+	color: $vte-text;
+	font-weight: bold;
+}
+
+.genHeaderSmall {
+	font-size: 14px;
+	line-height: 16px;
+	color: $vte-text;
+	font-weight: bold;
+}
+
+.moduleName {
+	font-size: 14px;
+	color: $vte-text-title;
+}
+
+.hdrNameBg {
+	/* background-color: $white; */
+}
+
+/* header style - start */
+
+div#vte_menu {
+	z-index: 20;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+}
+
+.hdrBg {
+	background-color: $vte-primary;
+}
+
+.hdrBg table {
+	height: 34px;
+}
+
+.menuSeparation {
+	border-bottom: 1px solid $separator-color;
+}
+
+.level2Bg {
+	color: $vte-submenu-color;
+	/* font-size: 11px; */
+	background-color: $vte-submenu;
+}
+
+.page-heading {
+	background-color: $vte-submenu;
+	border-bottom: 1px solid $separator-color;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.level2Bg a {
+	/* color: $vte-submenu-color; */
+}
+
+.level2SelTab {
+	font-weight: bold;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.level2UnSelTab {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.level3Bg {
+	/* font-size: 11px; */
+	background-color: $vte-navbar-bg;
+	color: $vte-navbar-color;
+	border-bottom: 1px solid $separator-color;
+}
+
+.level4Bg {
+	/* font-size: 11px; */
+	background-color: $vte-navbar-bg;
+	color: $vte-navbar-color;
+}
+
+/* header style - end */
+
+.userAvatar {
+	width: 32px;
+	-webkit-border-radius: 32px;
+	-moz-border-radius: 32px;
+	border-radius: 32px;
+}
+
+.sep1 {
+	background: $white;
+	padding-left: 1px;
+}
+
+.showPanelBg {
+}
+
+.hdrLink {
+	font-size: 14px;
+	text-decoration: none;
+	color: $vte-text-title;
+}
+
+#showPanelTopLeft {
+	visibility: hidden;
+}
+#showPanelTopRight {
+	visibility: hidden;
+}
+
+.moduleSearch,
+.basicSearch {
+	position: relative;
+
+	.cancelIcon {
+		cursor: pointer;
+		position: absolute;
+		right: 20px;
+		top: 1px;
+
+		img {
+			vertical-align: middle;
+		}
+
+		.vteicon,
+		.vteicon2,
+		.icon-module {
+			vertical-align: middle;
+			color: $grey-400;
+			text-shadow: none;
+
+			&:hover {
+				color: $grey-500;
+			}
+		}
+	}
+
+	.searchIcon {
+		cursor: pointer;
+		position: absolute;
+		right: 0px;
+		top: 2px;
+
+		img {
+			vertical-align: middle;
+		}
+	}
+
+	&.advIconSearch {
+		.advSearchIcon {
+			cursor: pointer;
+			position: absolute;
+			top: 2px;
+			right: 0px;
+		}
+		.searchIcon {
+			right: 20px;
+		}
+		.cancelIcon {
+			right: 40px;
+		}
+	}
+}
+
+.basicSearch {
+	// stupid fix for basic search
+	margin-bottom: 0px;
+}
+
+.folderBasicSearch {
+	margin: 10px 1px;
+}
+
+.globalSearch {
+	padding-right: 5px;
+	position: relative;
+	text-align: center;
+	width: 40%;
+
+	.searchIcon {
+		cursor: pointer;
+		position: absolute;
+		right: 0px;
+		top: 2px;
+
+		img {
+			vertical-align: middle;
+		}
+	}
+}
+
+.searchBox {
+	/*border: 0px;
+	 * font-size: 11px;
+	 * padding-left:2px;
+	 * width:180px;
+	 * background-color:$white;
+	 */
+	width: 180px;
+	height: 25px;
+}
+
+.searchBoxMessages {
+	width: 100%;
+	height: 25px;
+}
+
+@import "tables";
+
+@import "detailview";
+
+.advSearch {
+	padding: 10px;
+	border-left: 1px solid $grey-200;
+	border-right: 1px solid $grey-200;
+	border-bottom: 1px solid $grey-200;
+	overflow: auto;
+	width: 600px;
+	height: 150px;
+	background-color: $vte-box-light-bg2;
+}
+
+.textbox {
+	border: 1px solid $grey-500;
+	background-color: $white;
+
+	font-size: 11px;
+	width: 120px;
+	padding: 2px;
+}
+
+.calDayHour {
+	border: 1px solid $vte-box-light-border;
+	background-color: $vte-box-light-bg;
+}
+
+.calAddEvent {
+	position: absolute;
+	z-index: 10000;
+	width: 500px;
+	left: 200px;
+	top: 150px;
+	background-color: $white;
+}
+.addEventInnerBox {
+	border: 1px dotted $grey-300;
+}
+
+.thumbnail {
+	background-color: $white;
+	padding: 7px;
+	border: 1px solid $grey-300;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 15px;
+}
+
+.padTab {
+	vertical-align: top;
+}
+
+#user {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	display: block;
+}
+
+#communication {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	display: block;
+}
+
+#config {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	display: block;
+}
+
+#userTab {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	display: none;
+}
+
+#one {
+	position: relative;
+	display: block;
+	width: 245px;
+}
+
+#mnuTab1 {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	display: none;
+}
+
+#mnuTab2 {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	display: none;
+}
+
+/* End of Settings */
+
+.bggray {
+	background-color: $grey-300;
+}
+
+.bgwhite {
+	background-color: $white;
+}
+
+.copy {
+	font-size: 9px;
+}
+
+#basicTab {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	display: block;
+}
+
+#moreTab {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	display: none;
+}
+
+/* Added for Advanced Search*/
+
+#one {
+	position: relative;
+	display: block;
+	width: 245px;
+}
+
+/*  menu */
+
+a.submenu {
+	font-size: 11px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom: 1px solid $grey-400;
+	background-color: $grey-200;
+	color: $vte-text;
+	text-align: left;
+	text-decoration: none;
+	display: block;
+}
+
+a.submenu:hover {
+	background-color: $grey-300;
+
+	font-size: 11px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom: 1px solid $grey-400;
+	color: $vte-text;
+	text-align: left;
+	text-decoration: none;
+	display: block;
+}
+
+@import "clock";
+
+.leftFormBorder1 {
+	border: 1px solid $vte-box-medium-border;
+	background-color: $vte-box-medium-bg;
+}
+
+@import "calculator";
+
+/*  New Styles */
+.mnuTab {
+	font-size: $vte_font_size;
+	color: $vte-text;
+	width: 100%;
+	border: 0px solid $black;
+}
+
+.mnuTab tr td {
+	border-bottom: 1px solid $grey-200;
+	padding-left: 5px;
+	vertical-align: middle;
+}
+/* profile */
+
+.prvPrfBigText {
+	font-size: 14px;
+}
+
+.prvPrfTopBg {
+	background-color: $grey-200;
+}
+
+.prvPrfBottomBg {
+	background-color: $grey-200;
+}
+
+.prvPrfOutline {
+	border: 1px solid $grey-200;
+}
+
+.prvPrfTexture {
+	background: url(vteimage("themes/images/prvPrfTexture1.gif", "../../"));
+}
+
+.prvPrfHoverOn {
+	background-color: $vte-box-light-bg2;
+}
+
+/*  Organization */
+
+/* Groups */
+.groupli {
+	margin-left: 20px;
+
+	font-weight: normal;
+	font-size: $vte_font_size;
+	text-decoration: none;
+	color: $grey-900;
+	list-style-type: none;
+	text-align: left;
+}
+
+/* tree menu */
+
+/*Oraganization Edit Features */
+
+#orgLay {
+	font-size: 11px;
+	text-align: left;
+	width: 500px;
+	border: 3px solid $grey-400;
+	background-color: $white;
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 21;
+}
+
+/*  Role */
+
+#roleLay {
+	font-size: 11px;
+	text-align: left;
+	width: 300px;
+	display: none;
+	position: absolute;
+}
+
+.classBtn {
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 10px;
+	background-color: $grey-300;
+	border-bottom: 2px solid $grey-500;
+	border-right: 2px solid $grey-500;
+	border-top: 2px solid $grey-100;
+	border-left: 2px solid $grey-100;
+	color: $vte-text;
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.txtBox {
+	width: 85%;
+	border: 1px solid $grey-700;
+	font-size: 11px;
+}
+
+/* crmv@25356 */
+.txtBox1 {
+	border: 1px solid $grey-300;
+	min-height: 20px;
+	width: 100%;
+}
+/* crmv@25356e */
+
+/*  IMPORT LEADS */
+
+.leadTable {
+	border: 3px solid $grey-400;
+	border-collapse: collapse;
+}
+
+.leadTable tr td {
+}
+
+.genHeaderGray {
+	font-size: 14px;
+	line-height: 16px;
+	color: $grey-600;
+	font-weight: bold;
+}
+
+.genHeaderGrayBig {
+	font-size: 18px;
+	line-height: 16px;
+	color: $grey-600;
+	font-weight: bold;
+}
+
+.importBox {
+	width: 125px;
+	border: 1px solid $grey-700;
+
+	font-size: 11px;
+}
+
+/* PICK LIST */
+ul li {
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+/* MY PREFERENCES */
+
+/* CSS FOR REPORTS */
+
+/* crmv@29686 */
+.reportRowTitle {
+	color: $white;
+	background-color: lighten(desaturate($vte-primary, 20%), 20%);
+}
+
+.reportRow0 {
+	background-color: $vte-submenu;
+	color: $vte-submenu-color;
+}
+
+.reportRow1 {
+	background-color: $white;
+}
+/* crmv@29686e */
+
+#reportLay {
+	width: 300px;
+	border: 1px solid $grey-300;
+	padding-top: 5px;
+	position: absolute;
+	display: none;
+	z-index: 2000;
+}
+
+#locateMap {
+	width: 150px;
+	background-color: $grey-400;
+	border: 1px solid $grey-300;
+	padding-top: 5px;
+	position: absolute;
+	display: none;
+	z-index: 2000;
+}
+
+#Generate {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	display: none;
+}
+/* END OF REPORT */
+
+/* WEB MAIL */
+a.webMnu {
+	font-size: $vte_font_size;
+	color: $vte-text-title;
+	text-decoration: none;
+}
+
+a.webMnu:hover {
+	font-size: $vte_font_size;
+	color: $vte-text-title;
+	text-decoration: none;
+	background-color: $vte-box-light-bg;
+}
+
+/*  END OF WEB MAIL */
+
+/* POPUP */
+
+a.alpha {
+	font-size: 11px;
+	color: gray;
+	text-decoration: none;
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px dotted $grey-400;
+	background-color: $vte-help-box;
+}
+
+a.alpha:hover {
+	font-size: 11px;
+	color: gray;
+	text-decoration: underline;
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px dotted $grey-400;
+	background-color: $vte-help-box;
+}
+
+.fontBold {
+	font-size: $vte_font_size;
+	color: $vte-text;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.style_Gray {
+	color: gray;
+}
+
+/* End of Home Page */
+
+@import "listview";
+
+/* Calendar */
+
+.calHdr {
+	background-image: url(vteimage("themes/softed/images/light-bg-cal.gif", "../../"));
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+
+a.calMnu {
+	font-size: 11px;
+	color: $vte-text-title;
+	text-decoration: none;
+	display: block;
+	height: 20px;
+	padding-left: 5px;
+	padding-top: 3px;
+}
+
+a.calMnu:hover {
+	font-size: 11px;
+	color: $vte-text-title;
+	text-decoration: underline;
+	display: block;
+	height: 20px;
+	padding-left: 5px;
+	padding-top: 3px;
+}
+
+.bgwhite {
+	background-color: $white;
+}
+.copy {
+	font-size: 9px;
+}
+
+#mnuTab {
+	position: relative;
+	width: 100%;
+	display: block;
+}
+
+#mnuTab2 {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	display: none;
+}
+.style1 {
+	color: $red;
+}
+
+.event {
+	background-color: $vte-primary;
+	border: 2px solid $grey-300;
+	text-align: left;
+	width: 100%;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	vertical-align: middle;
+	padding: 1px;
+}
+
+#hrView {
+	display: block;
+}
+
+#addEventDropDown {
+	position: absolute;
+	display: none;
+	width: 150px;
+	border: 1px solid $grey-300;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+	z-index: 5000;
+}
+
+.calAction {
+	width: 175px;
+	background-color: $grey-400;
+	border: 1px solid $grey-300;
+	padding-top: 5px;
+	position: absolute;
+	display: none;
+	z-index: 2000;
+}
+
+.calSettings {
+	position: absolute;
+	z-index: 20000;
+	width: 500px;
+	left: 200px;
+	top: 150px;
+	background-color: $white;
+}
+
+.outer {
+	border-bottom: 1px solid $grey-400;
+	border-left: 1px solid $grey-400;
+	border-right: 1px solid $grey-400;
+}
+
+.calTxt {
+	width: 50%;
+	border: 1px solid $grey-400;
+
+	font-size: 11px;
+	text-align: left;
+	padding-left: 5px;
+}
+
+#leadLay {
+	position: relative;
+	width: 100%;
+	float: left;
+	visibility: hidden;
+	padding: 5px;
+	z-index: 10000;
+}
+
+/* End of Calendar */
+
+/* Level 2 Menu Selected*/
+
+.level2Sel {
+	color: $vte-text;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#DeleteLay {
+}
+
+#CurrencyDeleteLay {
+	font-size: 11px;
+	text-align: left;
+	width: 450px; /* crmv@42266 */
+}
+
+.statechange {
+	position: absolute;
+	visibility: hidden;
+	left: 10px;
+	top: 20px;
+	width: 300px;
+	border: 3px solid $grey-400;
+	background-color: $white;
+}
+
+#PopupLay {
+	position: absolute;
+
+	font-size: 11px;
+	text-align: left;
+	width: 500px;
+	border: 3px solid $grey-400;
+	background-color: $white;
+	padding: 5px;
+	display: none;
+	left: 100px;
+	top: 100px;
+}
+
+/* MY SITES */
+
+.h2 {
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.gray {
+	color: gray;
+}
+
+ul {
+	list-style: circle;
+	line-height: 20px;
+	padding-left: 5px;
+	margin-left: 20px;
+	font-weight: normal;
+}
+
+.heading2 {
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	color: $vte-text;
+}
+
+/* crmv@30683 */
+.settingsUI {
+	text-align: left;
+}
+
+.settingsTabHeader {
+	text-align: left;
+	font-size: $vte_font_size;
+	line-height: 30px;
+	font-weight: bold;
+	color: $vte-submenu-color;
+	background-color: $vte-submenu;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-top: $black;
+}
+
+.settingsTabList {
+	text-align: left;
+	font-size: 11px;
+	color: $vte-text;
+	background-color: $vte-wizard-tab;
+	/*border: 1px solid $white;*/
+
+	&.settingsTabListMouse:hover {
+		background-color: lighten($vte-wizard-tab, 2%);
+	}
+
+	margin: 2px;
+	cursor: pointer;
+	line-height: 3rem;
+	padding: 1rem 1rem;
+	font-weight: normal;
+	padding-left: 15px;
+	border: 1px solid #ffffff;
+}
+
+.settingsTabSelected {
+	text-align: left;
+	font-size: 11px;
+	color: $vte-text;
+	background-color: $vte-wizard-tab-selected;
+
+	&.settingsTabListMouse:hover {
+		background-color: lighten($vte-wizard-tab-selected, 2%);
+	}
+
+	margin: 2px;
+	cursor: pointer;
+	line-height: 3rem;
+	padding: 1rem 1rem;
+	font-weight: normal;
+	padding-left: 15px;
+	border: 1px solid #ffffff;
+}
+/* crmv@30683e */
+
+.settingsSelectedUI {
+	padding-bottom: 5px;
+	padding: 5px 10px;
+}
+
+.settingsIconDisplay {
+	font-size: 11px;
+	line-height: 14px;
+	padding: 10px;
+	color: $vte-text;
+	background-color: $white;
+	padding-left: 10px;
+}
+
+.settingsSelUITopLine {
+}
+
+.tableHeading {
+	/* background:$white url(vteimage('themes/softed/images/level2Bg.gif', '../../')) repeat-x scroll center bottom; */
+}
+
+.colHeader {
+	background-color: $white;
+	background-repeat: repeat-x;
+	background-image: url(vteimage("themes/softed/images/mailSubHeaderBg-grey.gif", "../../"));
+	border-left: 1px solid $white;
+	border-top: 1px solid $grey-300;
+	border-right: 1px solid $grey-300;
+	border-bottom: 1px solid $grey-300;
+	font-weight: bold;
+}
+
+.listTable {
+	border-left: 1px solid $grey-400;
+	border-right: 1px solid $grey-400;
+	border-bottom: 1px solid $grey-400;
+}
+
+.listTableRow {
+	border-bottom: 1px solid $grey-200;
+	border-right: 1px solid $grey-200;
+	border-bottom: 1px solid $grey-200;
+	border-bottom: 1px solid $grey-200;
+}
+
+.listRow {
+	border-bottom: 2px solid $grey-200;
+}
+
+.listTableTopButtons {
+	background: $white;
+}
+
+@import "buttons";
+
+.message-compose-border {
+	border: 1px solid #eaeaea;
+}
+
+//crmv@104533
+.search {
+	@extend .btn-primary;
+}
+//crmv@104533e
+
+/*
+.inactive {
+	color:$grey-500;
+}
+
+.active {
+	color: $success;
+}
+*/
+
+.simpleSave {
+	color: $vte-button-save-detail;
+}
+
+.simpleCancel {
+	color: $vte-button-cancel-detail;
+}
+
+/* Buttons ends */
+
+.cellBottomDotLine {
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;
+	border-bottom-color: $grey-400;
+	background-color: $grey-200;
+}
+
+.crmFormList {
+	border: 1px solid $grey-400;
+	width: 90%;
+	height: 120px;
+}
+
+.cellBottomDotLinePlain {
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;
+	border-bottom-color: $grey-400;
+}
+
+.thickBorder {
+	border: 2px solid $grey-500;
+}
+
+.trackerHeading {
+	background-color: $grey-200;
+}
+
+.trackerListBullet {
+	border-right: 1px dotted $grey-400;
+	background-color: $grey-50;
+}
+
+.trackerList {
+	border-bottom: 1px solid $grey-200;
+}
+
+/* Table Definitions */
+.crmTable {
+	border: 1px solid $inventory-border;
+}
+
+.crmTableRow {
+	border-bottom: 1px dotted $inventory-row-border;
+	border-right: 1px dotted $inventory-row-border;
+}
+
+/* Inventory */
+.lineOnTop {
+	border-top: 1px solid $inventory-line-top;
+}
+
+.discountUI {
+	width: 350px; /* crmv@42024 */
+	position: absolute;
+	display: none;
+}
+
+.TaxShow {
+	border: 3px;
+}
+
+.TaxHide {
+	display: none;
+}
+
+/* Layer Popup */
+.layerPopup {
+	position: absolute;
+}
+
+.layerPopupHeading {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.layerHeadingULine {
+	border-bottom: 2px solid $vte-text-title;
+}
+
+.layerPopupTransport {
+}
+
+.reportCreateBottom {
+	background-color: $vte-submenu;
+	color: $vte-submenu-color;
+}
+
+.importLeadUI {
+	/* background-color:white; */
+}
+
+/* Drop Down Menu */
+.drop_mnu_all {
+	position: fixed;
+	z-index: 1000000001;
+	min-width: 300px;
+	display: none;
+	padding: 0px;
+	text-align: left;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	margin-top: 0px;
+	border-top: 0px;
+	border-left: 1px solid $vte-submenusep;
+	border-right: 1px solid $vte-submenusep;
+	border-bottom: 1px solid $vte-submenusep;
+	background-color: $vte-submenu;
+	color: $vte-submenu-color;
+}
+
+.drop_mnu {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	z-index: 1000000001;
+	border-left: 1px solid $vte-submenusep;
+	border-right: 1px solid $vte-submenusep;
+	border-bottom: 1px solid $vte-submenusep;
+	width: 150px;
+	display: none;
+	padding: 0px;
+	text-align: left;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: $vte-submenu;
+	color: $vte-submenu-color;
+	margin-top: 0px;
+}
+
+a.drop_down {
+	width: 150px;
+	text-align: left;
+	font-size: 11px;
+	line-height: 20px;
+	font-weight: normal;
+	padding: 2px 5px 2px 5px;
+	display: block;
+}
+
+a.drop_down:hover,
+a.drop_down_hover {
+	padding: 2px 5px 2px 5px;
+	width: 150px;
+	text-align: left;
+	font-weight: normal;
+	text-decoration: none;
+	color: $white;
+	background-color: $vte-menusep;
+}
+
+.bgwhite {
+	background-color: $white;
+}
+
+/* crmv@91082 */
+
+/* crmv@170412 */
+.login_overlay {
+}
+#mask_login {
+}
+/* crmv@170412e */
+
+#logout_reason_msg {
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+	position: absolute;
+}
+/* crmv@91082e */
+
+.options {
+	vertical-align: middle;
+	margin-left: 25%;
+	margin-top: 16%;
+	width: 650px;
+	background-color: $white;
+	border: 2px solid $grey-900;
+	position: relative;
+	text-align: left;
+	z-index: 80000;
+}
+
+.options h2 {
+	border-bottom: 1px solid $vte-text-title;
+	margin: 0;
+	font-weight: normal;
+}
+
+/* Recalculate Disable Ends */
+
+.groupname {
+	width: 125px;
+}
+
+/*added for the hanlder of the div in the home page */
+.headerrow {
+	cursor: move;
+}
+
+.repBox {
+	width: 100px;
+	border: 1px solid $grey-700;
+	font-size: 11px;
+}
+
+.repBox1 {
+	width: 200px;
+	border: 1px solid $grey-700;
+	font-size: 11px;
+}
+
+.warning {
+	color: $vte-text-title;
+}
+
+.colData {
+	border-right: 1px solid $grey-300;
+}
+
+/* feedback or help message */
+.helpmessagebox {
+	padding: 2px;
+	margin: 0 0 2px 0;
+	// crmv@104568
+	//background-color: $vte-help-box;
+	//border: 1px solid $vte-help-box-border;
+	// crmv@104568e
+}
+
+/* crmv@26986 */
+.crmvDiv,
+.discountUI,
+.layerPopup {
+	background-color: $vte-dropdown-bg;
+	@include shadow-z-2();
+	border-radius: $border-radius-base;
+	padding: 5px;
+	border: 1px solid $vte-dropdown-border;
+}
+
+.layerPopup {
+	/* padding: 0px; */
+}
+
+.crmvDivContent {
+	max-height: 500px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.closebutton,
+a.fancybox-close {
+	position: absolute;
+	top: -15px;
+	left: -15px;
+	width: 30px;
+	height: 30px;
+	background: transparent url(vteimage("include/js/jquery_plugins/fancybox/fancybox.png", "../../")) -40px 0px;
+	cursor: pointer;
+	display: block;
+}
+/* crmv@26986e */
+
+/* crmv@48501 */
+.notTbl {
+	border: 1px solid $grey-300;
+	background: $vte-box-light-bg2;
+}
+/* crmv@48501e */
+
+.disabled {
+	color: gray;
+}
+
+.ButtonsListContestualSmall,
+.ButtonsListContestualLarge {
+	margin-left: 5px;
+	padding-left: 5px;
+	white-space: nowrap;
+	border-left: 1px solid $vte-submenusep;
+}
+
+@import "turbolift";
+
+.highlighted {
+	color: $white;
+	background-color: $vte-menusep;
+}
+/* crmv@45561 */
+.errorString {
+	font-weight: bold;
+	color: red;
+}
+/* crmv@45561e */
+
+#txtdatetimeshow_new {
+	border: 0px none;
+}
+
+//crmv@100495
+i.button-image.vteicon,
+i.button-image.vteicon2,
+i.button-image.icon-module {
+	color: $white;
+	font-size: 17px;
+	vertical-align: middle;
+}
+//crmv@100495e
+
+// crmv@187568 moved crmv@100972 in processmaker.scss
+
+//crmv@93990
+.editoptions select {
+	max-width: 400px;
+}
+//crmv@93990e
+
+// crmv@102879
+.tablefield_table {
+	//border-bottom: 1px solid $grey-400;
+}
+
+.tablefield_cell {
+	padding: 4px;
+	/*border-right: 1px solid $grey-400;
+	
+	&:last-child {
+		border-right: none;
+	}*/
+}
+
+.tablefield_hcell {
+	padding: 4px;
+	/*border-bottom: 1px solid $grey-400;
+	border-right: 1px solid $grey-400;
+	
+	&:last-child {
+		border-right: none;
+	}*/
+}
+
+// crmv@102879e
+
+@import "history";
+
+#AllMenuAreaTabContent,
+#OtherModuleListTabContent {
+	padding: 10px;
+
+	#OtherModuleListContent > tbody > tr {
+		& > td {
+			vertical-align: middle;
+		}
+	}
+}
+
+.circleIndicator {
+	display: inline-block;
+	text-align: center;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	cursor: default;
+	margin-right: 16px;
+	background-color: $grey-300;
+	color: $black;
+}
+
+.circleIndicator.circleEnabled {
+	background-color: $vte-primary;
+	color: $white;
+}
+
+.vteUlTable {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	width: 100%;
+	text-align: left;
+
+	& > li {
+		padding: 3px;
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&:before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
+
+	& .btn.btn-round {
+		margin: 0px 1px;
+	}
+}
+
+#reportContents {
+	padding: 10px;
+}
+
+.MainMatrix {
+	padding: 0px;
+	margin: 10px;
+	overflow-y: auto;
+}
+
+.listViewCounts {
+	display: none;
+}
+
+.qcform {
+	& .modal-content .modal-body {
+		padding: 10px;
+	}
+}
+
+.customViewContainer {
+	padding-top: 15px;
+}
+
+@import "modules/_modules";
+
+@import "utilities";
+
+@import "fancybox";
+
+@import "reminder";
+
+@import "simplelistview";
+
+@import "progressbar";
+
+@import "kanban";
+
+@import "autocomplete"; // crmv@94525
+
+@import "loaders/_loaders";
+
+@import "icons";
+
+@import "eventspop"; /* crmv@103922 */
+
+@import "notification"; /* crmv@164368 */
+
+@import "droparea"; /* crmv@167019 */
+
+@import "popup";
+
+@import "wizard";
+
+@import "editreport";
+
+@import "animations";
+
+@import "plugins/_plugins";

@@ -1,0 +1,77 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@83340 */
+
+.popupLinkTitleRow {
+}
+.popupLinkListTitleRow {
+}
+.popupLinkListTitleCell {
+	padding: 4px;
+	font-weight: 700;
+	border-bottom: 1px solid #b0b0b0;
+	text-align: left;
+}
+.popupLinkListDataRow {
+	cursor: pointer;
+	border-bottom: 1px solid $grey-200;
+	text-align: left;
+	height: 24px;
+}
+.popupLinkListDataRow0, .popupLinkListDataRow1 {
+	background-color: $white;
+	
+	&.lvtColDataHoverMessage {
+		background-color: $vte-box-medium-bg;
+	}
+	
+	&.popupLinkListDataRow:not(.lvtColDataHoverMessage):hover, 
+	&.popupLinkListDataRow:not(.lvtColDataHoverMessage).hovered {
+		background-color: $vte-box-light-bg;
+	}
+}
+.popupLinkListDataExtraRow {
+	padding: 6px;
+}
+.popupLinkListDataExtraCell {
+	color:#606060;
+	border-bottom:1px solid #d0d0d0;
+	padding-bottom: 6px !important;
+}
+.popupLinkListDataCell {
+	padding: 2px;
+}
+.popupLinkListCboxCell {
+	width:20px;
+}
+.popupLinkTitle {
+	font-weight: 700;
+	padding: 4px;
+}
+.popupLinkList {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.popupLinkListLoading {
+}
+.popupLinkListNoData {
+	width: 90%;
+	text-align: center;
+	padding: 10px;
+	font-style: italic;
+}
+.navigationBtn {
+	cursor: pointer;
+}
+.SLVGreyLayer {
+	background-color: rgba(250,250,250,0.5);
+	left: 0px;
+	top: 0px;
+	z-index: 100;
+}
+.slv-container ul {
+	margin: 5px 0px;
+}

@@ -1,0 +1,94 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2012-05-17 15:47:41</exporttime>
+<name>WSAPP</name>
+<label>WSAPP</label>
+<parent></parent>
+<type>extension</type>
+<version>3.2</version>
+<dependencies>
+<vtenext_version>4.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_wsapp</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_wsapp">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="appid" type="I" size="11">
+      <KEY/>
+    </field>
+    <field name="name" type="C" size="20"/>
+    <field name="appkey" type="C" size="255"/>
+    <field name="type" type="C" size="100"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_wsapp_recordmapping</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_wsapp_recordmapping">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="serverid" type="C" size="10"/>
+    <field name="clientid" type="C" size="255"/>
+    <field name="clientmodifiedtime" type="T"/>
+    <field name="appid" type="I" size="11"/>
+    <field name="servermodifiedtime" type="T"/>
+    <field name="serverappid" type="I" size="11"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_wsapp_handlerdetails</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_wsapp_handlerdetails">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="type" type="C" size="20"/>
+    <field name="handlerclass" type="C" size="100"/>
+    <field name="handlerpath" type="C" size="300"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_wsapp_queuerecords</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_wsapp_queuerecords">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="syncserverid" type="I" size="19"/>
+    <field name="details" type="C" size="2000"/>
+    <field name="flag" type="C" size="100"/>
+    <field name="appid" type="I" size="19"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_wsapp_sync_state</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_wsapp_sync_state">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="name" type="C" size="200"/>
+    <field name="stateencodedvalues" type="C" size="300"/>
+    <field name="userid" type="I" size="19"/>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<sdk>
+<popup_queries>
+</popup_queries>
+<uitypes>
+</uitypes>
+</sdk>
+</module>

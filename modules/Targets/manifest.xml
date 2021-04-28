@@ -1,0 +1,489 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2011-09-23 12:00:00</exporttime>
+<name>Targets</name>
+<label>Targets</label>
+<parent>Marketing</parent>
+<version>1.0</version>
+<dependencies>
+<vtenext_version>4.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_targets</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_targets">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="targetsid" type="R" size="19">
+      <KEY/>
+    </field>
+	<field name="targetname" type="C" size="255"/>
+	<field name="target_no" type="C" size="255"/>
+	<field name="description" type="XL" />
+	<field name="target_type" type="C" size="255"/>
+	<field name="listhash" type="C" size="63"/>
+	<field name="target_sync_type" type="C" size="63"/>
+	<field name="target_state" type="C" size="255"/>
+	<field name="target_endtime" type="D"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_targetscf</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_targetscf">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="targetsid" type="R" size="19">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_targets_cvrel</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_targets_cvrel">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="targetid" type="I" size="19">
+		<KEY/>
+    </field>
+	<field name="objectid" type="I" size="19">
+		<KEY/>
+	</field>
+	<field name="cvtype" type="C" size="31">
+		<KEY/>
+    </field>
+    <field name="formodule" type="C" size="31">
+		<KEY/>
+    </field>
+    <field name="status" type="I" size="19">
+		<DEFAULT value="0"/>
+	</field>
+    <field name="last_sync" type="T">
+		<default value="0000-00-00 00:00:00"/>
+    </field>
+	<index name="targets_cvrel_type_idx">
+      <col>cvtype</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_targets_cvrel_sync</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_targets_cvrel_sync">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="targetid" type="I" size="19">
+		<KEY/>
+    </field>
+    <field name="formodule" type="C" size="31">
+		<KEY/>
+    </field>
+    <field name="crmid" type="I" size="19">
+		<KEY/>
+	</field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_TARGETS_INFORMATION</label>
+<fields>
+<field>
+<fieldname>targetname</fieldname>
+<uitype>1</uitype>
+<columnname>targetname</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Target Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>1</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<entityidentifier>
+<entityidfield>targetsid</entityidfield>
+<entityidcolumn>targetsid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>target_no</fieldname>
+<uitype>4</uitype>
+<columnname>target_no</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Target No</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>target_type</fieldname>
+<uitype>15</uitype>
+<columnname>target_type</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Target Type</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>-- Nessuno --</picklistvalue>
+<picklistvalue>TargetTypeDynamic</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>target_sync_type</fieldname>
+<uitype>15</uitype>
+<columnname>target_sync_type</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>TargetSyncType</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[LBL_TARGETS_SYNC_TYPE_INFO]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>TargetSyncIncremental</picklistvalue>
+<picklistvalue>TargetSyncComplete</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>target_state</fieldname>
+<uitype>15</uitype>
+<columnname>target_state</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Target State</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+<picklistvalue>-- Nessuno --</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>target_endtime</fieldname>
+<uitype>5</uitype>
+<columnname>target_endtime</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>End Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>D~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>7</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>2</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>8</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>9</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>creator</fieldname>
+<uitype>52</uitype>
+<columnname>smcreatorid</columnname>
+<tablename>TABLEPREFIX_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Creator</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>10</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>listhash</fieldname>
+<uitype>1</uitype>
+<columnname>listhash</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>ListHash</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>11</sequence>
+<maximumlength>64</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_CUSTOM_INFORMATION</label>
+</block>
+<block>
+<label>LBL_DESCRIPTION_INFORMATION</label>
+<fields>
+<field>
+<fieldname>description</fieldname>
+<uitype>19</uitype>
+<columnname>description</columnname>
+<tablename>TABLEPREFIX_targets</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Description</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<setmobile>true</setmobile>
+<fields>
+<field>
+<fieldname>target_no</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>targetname</fieldname>
+<columnindex>2</columnindex>
+</field>
+<field>
+<fieldname>target_type</fieldname>
+<columnindex>3</columnindex>
+</field>
+<field>
+<fieldname>target_state</fieldname>
+<columnindex>4</columnindex>
+</field>
+<field>
+<fieldname>target_endtime</fieldname>
+<columnindex>5</columnindex>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<columnindex>6</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>public_readwritedelete</default>
+</sharingaccess>
+<actions>
+<action>
+<name><![CDATA[Import]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[Export]]></name>
+<status>enabled</status>
+</action>
+<action>
+<name><![CDATA[Merge]]></name>
+<status>enabled</status>
+</action>
+</actions>
+<relatedlists>
+<relatedlist>
+<function>get_related_list_target</function>
+<label>Accounts</label>
+<sequence>1</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+<action>LOAD</action>
+</actions>
+<relatedmodule>Accounts</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_related_list_target</function>
+<label>Contacts</label>
+<sequence>2</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+<action>LOAD</action>
+</actions>
+<relatedmodule>Contacts</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_related_list_target</function>
+<label>Leads</label>
+<sequence>3</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+<action>LOAD</action>
+</actions>
+<relatedmodule>Leads</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_related_list</function>
+<label>Campaigns</label>
+<sequence>4</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+</actions>
+<relatedmodule>Campaigns</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_parents_list</function>
+<label>Parent Targets</label>
+<sequence>5</sequence>
+<presence>0</presence>
+<actions>
+</actions>
+<relatedmodule>Targets</relatedmodule>
+</relatedlist>
+<relatedlist>
+<function>get_children_list</function>
+<label>Included Targets</label>
+<sequence>6</sequence>
+<presence>0</presence>
+<actions>
+<action>ADD</action>
+<action>SELECT</action>
+</actions>
+<relatedmodule>Targets</relatedmodule>
+</relatedlist>
+</relatedlists>
+</module>

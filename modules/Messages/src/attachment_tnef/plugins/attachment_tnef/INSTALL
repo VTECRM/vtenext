@@ -1,0 +1,16 @@
+    **********************************
+    * TNEF Attachment Decoder plugin *
+    * Installation                   *
+    **********************************
+
+1. Unpack plugin in NaSMail plugins directory
+
+   $ cd /var/www/nasmail/plugins
+   $ tar -xzvf /home/archives/nasmail_plugin_attachment_tnef-0.7.nsm-1.4.tar.gz
+
+4. Enable plugin in NaSMail configuration
+    $ cd /var/www/nasmail/config
+    $ ./conf.pl --install-plugin attachment_tnef
+
+If you can't use conf.pl utility, check NaSMail documentation about other
+configuration options.

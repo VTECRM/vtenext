@@ -1,0 +1,408 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Detailed View classes starts */
+
+// crmv@199229
+
+.dvHeaderText {
+	font-size: $vte_font_size;
+	color: $vte-text-title;
+	font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	line-height: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	&.dvHeaderTextInline {
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	&.dvHeaderTextMultiLine {
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+
+	& .recordTitleName {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	& .updateInfo {
+		font-weight: normal;
+		font-style: italic;
+		font-size: 12px;
+	}
+}
+
+.dvHeaderTextMin {
+	display: none;
+}
+
+@media (max-width: 991.98px) {
+	.dvHeaderText {
+		display: none;	
+	}
+	.dvHeaderTextMin {
+		display: block;
+	}
+}
+
+.dvInnerHeader,
+.detailedViewHeader {
+	padding: 5px 0;
+	color: $vte-submenu-color;
+	background-color: $vte-detailview-inner-header-bg;
+}
+
+div.dvInnerHeader,
+div.detailedViewHeader {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	
+	& .dvInnerHeaderTitle {
+		width: 100%;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	
+	& .dvInnerHeaderRight {
+		margin-left: auto;
+	}
+}
+
+.recordTitle1 {
+	font-size: $vte_font_size;
+	font-weight: bold;
+	color: $vte-text-record;
+}
+
+.detailViewTabs {
+	@include vtetabs();
+}
+
+/* crmv@98866 */
+.dvtSelectedCell {
+	padding: 10px 20px;
+	font-weight: bold;
+	line-height: 20px;
+	border-bottom: 4px solid $vte-tab-selected-border;
+	background-color: $vte-tab-selected-bg;
+	cursor: pointer;
+}
+
+.dvtSelectedCell a {
+	text-decoration: none;
+	color: $vte-tab-selected-color;
+	font-size: 14px;
+}
+
+.dvtSelectedCellBottom {
+	border-left: 1px solid $vte-thin-border;
+	border-bottom: 1px solid $vte-thin-border;
+	border-top: none;
+	border-right: 1px solid $vte-thin-border;
+	padding-left: 20px;
+	padding-right: 20px;
+	background: $white url(vteimage("themes/softed/images/tab.gif", "../../")) bottom repeat-x;
+	font-weight: bold;
+	color: black;
+	line-height: 20px;
+}
+
+.dvtUnSelectedCell {
+	padding: 10px 20px;
+	background: $vte-tab-bg;
+	cursor: pointer;
+	color: $vte-tab-color;
+}
+
+.dvtUnSelectedCell a {
+	color: #bbbbbb !important;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+/* crmv@26896 */
+.dvtUnSelectedCell:hover {
+	background-color: $vte-tab-hover;
+}
+/* crmv@26896e */
+
+.dvtTabCache {
+}
+/* crmv@98866 end */
+
+.dvtTabCacheBottom {
+	border-top: 1px solid $vte-thin-border;
+}
+
+.dvtTabCacheBottom {
+	border-top: 1px solid $vte-thin-border;
+}
+
+.dvtContentSpace {
+	padding-left: 0px;
+}
+
+.fieldCont {
+	padding-top: 5px;
+	
+	&.fieldContLeft {
+		padding-right: 15px;
+	}
+	&.fieldContRight {
+		padding-left: 15px;
+	}
+}
+
+/* crmv@3085m */
+.dvtCellLabel {
+}
+
+.cellLabel {
+}
+
+.dvtCellInfo,
+.cellInfo,
+.dvtCellInfoOn,
+.dvtCellInfoM,
+.dvtCellInfoMOn,
+.dvtCellInfoOff {
+}
+
+.dvtCellInfo,
+.dvtCellInfoOn {
+	&.field-horiz {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+	    
+		& .field-horiz-input-prefix {
+			flex: 0.25;
+		}
+	    
+		& .field-horiz-input {
+			flex: 1;
+		}
+		
+		> input {
+			display: inline-block;
+		}
+
+		.dropdownjs {
+			display: inline-block;
+		}
+	}
+}
+
+.detailCellInfo {
+	border-bottom: 1px solid $vte-field;
+	border-spacing: 2px;
+}
+
+.dvtCellInfo {
+}
+
+.dvtCellInfo:hover {
+}
+
+.dvtCellInfoOn {
+	border-bottom: 0px none;
+}
+
+.dvtCellInfoOff {
+	background-color: $vte-field-disabled;
+
+	& input,
+	& select,
+	& textarea {
+		background-color: $vte-field-disabled;
+	}
+}
+
+.dvtCellInfoM,
+.dvtCellInfoMOn {
+	background-color: $vte-field-mandatory;
+
+	& input,
+	& select,
+	& textarea {
+		background-color: $vte-field-mandatory;
+	}
+	
+	& select option {
+		color: $vte-field-mandatory-options-color;
+	}
+}
+
+.dvtCellInfoM:hover {
+	background-color: saturate($vte-field-mandatory, 5%);
+
+	& input,
+	& select,
+	& textarea {
+		background-color: saturate($vte-field-mandatory, 5%);
+	}
+}
+
+.dvtCellInfoImgLx {
+	top: 2px;
+	left: 5px;
+	position: absolute;
+}
+
+.dvtCellInfoImgRx {
+	top: 2px;
+	right: 5px;
+	position: absolute;
+}
+/* crmv@3085me */
+
+/* crmv@57221 */
+.dvtCellInfoOldStyle {
+	width: auto;
+	overflow: auto;
+}
+/* crmv@57221e */
+
+.rightMailMerge {
+	border: 1px solid $grey-300;
+}
+
+.rightMailMergeHeader {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.rightMailMergeContent {
+	padding: 5px;
+}
+
+/* crmv@15771 */
+.detailedViewTextBoxHour,
+.detailedViewTextBoxOneHour,
+.detailedViewTextBoxOneHourOnlyRead {
+	font-size: 11px;
+	color: $vte-text;
+	border: 1px solid $grey-400;
+	padding-left: 5px;
+	width: 90%;
+	background-color: $white;
+}
+/* crmv@15771e */
+
+/* crmv@3085m */
+.detailedViewTextBox,
+.detailedViewTextBoxOn {
+	width: 100%;
+	
+	&.input-inline {
+		width: auto;
+	}
+}
+
+.detailedViewTextBox[readonly] {
+	border: 0;
+	background-image: none;
+}
+
+.dvtCellInfoOff {
+	background-image: none;
+	position: relative;
+}
+
+textarea.detailedViewTextBox.vertical {
+	resize: vertical;
+}
+
+.detailBlockContent {
+	overflow: auto;
+	margin-bottom: 15px;
+}
+
+.editBlock {
+	margin-bottom: 15px;
+}
+
+.detailBlock, .editBlock {
+	& .crmTable {
+		border: 0px none;
+	}
+}
+/* crmv@3085me */
+
+.cellLabel {
+}
+
+.cellText {
+}
+
+.detailview-dropdown {
+	& .detailview-menu-dropdown {
+		& .crmvDiv {
+			padding: 5px;
+			min-width: 250px;
+			max-height: 500px;
+			overflow-y: auto;
+			overflow-x: hidden;
+			
+			& .crmbutton-turbolift:first-child {
+				margin-top: 2px;
+			}
+		}
+	}
+}
+
+.DetailViewWidget {
+	background-color: $vte-widget-container-bg;
+	border-radius: 5px;
+}
+
+.detailViewWidget {
+	@include vtecard();
+	
+	&.detailViewWidgetLeft {
+		margin-right: 15px;
+	}
+	&.detailViewWidgetRight {
+		margin-left: 15px;
+	}
+	&.detailViewWidgetPlain {
+		padding: 0;
+		
+		& .detailViewWidgetContent {
+			max-height: 450px;
+			height: 450px;
+		}
+	}
+	
+	& .detailViewWidgetContent {
+		max-height: 395px;
+		height: 395px;
+		overflow-y: auto;
+	}
+}
+
+.dropdown-menu.detailview-menu-dropdown {
+	min-width: 250px;
+}
+
+.relatedListDataContainer {
+	@include vtecard();
+	overflow-x: auto;
+}

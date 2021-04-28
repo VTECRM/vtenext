@@ -1,0 +1,3 @@
+- Creare un file header contenente tutta la parte script/css da includere in ogni file
+- Sistemare alcuni file che sono senza il file header.php
+- Trasformare il tutto in file Smarty

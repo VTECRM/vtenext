@@ -1,0 +1,43 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@98866 */
+
+.popup-edit-report,
+.popup-edit-cluster {
+	height: 95%;
+	
+	#leftPane {
+		padding: 0px;
+		border-right: 1px solid $separator-color;
+	}
+	
+	.reportStepCell {
+		margin: 2px;
+		padding: 10px;
+		font-weight: 700;
+		cursor: pointer;
+	    line-height: 3rem;
+	    padding: 1rem 1rem;
+	    background-color: $edit-report-row-bg;
+	    border-bottom: 1px solid $edit-report-row-border;
+	    
+	    &:hover {
+	    	background-color: $edit-report-row-hover;
+	    }
+	}
+	
+	.reportStepCellSelected {
+	    background-color: $edit-report-row-selected;
+	}
+	
+	.stepTitle .genHeaderGray {
+		padding-left: 10px;
+	}
+	
+	.stepTitle .genHeaderGray ~ span {
+		padding-left: 10px;
+	}
+}

@@ -1,0 +1,46 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* ANYTHEME - PRINTING */
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors';
+
+/* Import fonts */
+@import 'fonts';
+
+body {
+	font-family: $font-family-base;
+}
+
+/* crmv@27236 */
+#winMax {
+    display:none;
+}
+
+#winMaxImg {
+    display:none;
+}
+
+div#orange {
+	display:none;
+}
+
+div#vte_menu {
+	position: absolute;
+	width:100%;
+	top: 0px;
+	left: 0px;
+}
+/* crmv@27236e */
+
+/* crmv@42801 */
+#header_detail_large_link, #header_detail_small_link, .header_detail_options, .DetailViewWidget {
+	display:none;
+}
+/* crmv@42801e */

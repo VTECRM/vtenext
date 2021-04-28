@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<module>
+<name>Geolocalization</name>
+<label>Geolocalization</label>
+<parent></parent>
+<type>extension</type>
+<version>1.0</version>
+<dependencies>
+<vtenext_version>16.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_geocoding</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="TABLEPREFIX_geocoding">
+    <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="crmid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="setype" type="C" size="30"/>
+    <field name="latitude" type="N" size="20,6"/>
+    <field name="longitude" type="N" size="20,6"/>
+    <index name="geocoding_setype_idx">
+      <col>setype</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+<events>
+	<event>
+		<eventname>vte.entity.beforesave</eventname>
+		<classname><![CDATA[GeolocalizationHandler]]></classname>
+		<filename><![CDATA[modules/Geolocalization/GeolocalizationHandler.php]]></filename>
+	</event>
+	<event>
+		<eventname>vte.entity.aftersave</eventname>
+		<classname><![CDATA[GeolocalizationHandler]]></classname>
+		<filename><![CDATA[modules/Geolocalization/GeolocalizationHandler.php]]></filename>
+	</event>
+</events>
+</module>

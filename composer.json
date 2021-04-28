@@ -1,0 +1,41 @@
+{
+    "name": "vtecrm/vtenext",
+    "type": "project",
+    "description": "Open Source CRM + BPM solution for the complete management of leads, contacts, customers and more",
+    "keywords": ["vte", "vtenext", "crm", "bpm", "bpmn"],
+    "homepage": "https://www.vtenext.com/",
+    "config": {
+		"optimize-autoloader": true
+	},
+    "require": {
+        "php": ">=7.0",
+        
+        "ext-curl": "*",
+        "ext-imap": "*",
+        "ext-xml": "*",
+        "ext-gd": "*",
+        "ext-json": "*",
+        "ext-bcmath": "*",
+        "ext-mbstring": "*",
+        "ext-zip": "*",
+        
+        "zendframework/zend-http": "2.2.*",
+        "zendframework/zend-mail": "2.2.*",
+        
+        "videlalvaro/php-amqplib": "2.*",
+        "phpoffice/phpspreadsheet": "1.8.*",
+        "ezyang/htmlpurifier": "4.*",
+        "smarty/smarty": "3.*",
+        "phpmailer/phpmailer": "6.*",
+        "league/iso3166": "2.*",
+        "guzzlehttp/guzzle": "6.*",
+        "stevenmaguire/oauth2-microsoft": "2.*",
+        "league/oauth2-client": "^2.6"
+
+    },
+    "suggest": {
+		"ext-imagick": "To view tiff attachment in messages",
+		"ext-apcu": "To speed up caching",
+		"ext-memcached": "To speed up caching"
+    }
+}

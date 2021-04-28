@@ -1,0 +1,47 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* List View Table classes */
+
+.lvt {
+	background-color: $vte-table-bg;
+
+	.checkbox {
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+}
+
+.lvtBg {
+}
+
+.lvtHeaderText {
+	font-size: $vte_font_size;
+	color: $vte-text-title;
+	font-weight: bold;
+}
+
+.lvtCol {
+	border-top: 0px solid $white;
+	border-left: 0px solid $grey-300;
+	border-right: 0px solid $white;
+	border-bottom: 0px solid $white;
+	font-weight: bold;
+}
+
+.lvtColData {
+	background-color: $vte-table-row-bg;
+}
+
+.lvtColDataHover {
+	background-color: $vte-table-row-active-bg;
+}
+
+.lvtNav ul,
+.relLvtNav ul {
+	margin: 10px 0px;
+}
+
+/* List View Table classes ends */

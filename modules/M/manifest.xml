@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2012-05-17 15:52:11</exporttime>
+<name>M</name>
+<label>M</label>
+<parent></parent>
+<type>extension</type>
+<version>1.2</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+</dependencies>
+<tables>
+</tables>
+<sdk>
+<popup_queries>
+</popup_queries>
+<uitypes>
+</uitypes>
+</sdk>
+</module>

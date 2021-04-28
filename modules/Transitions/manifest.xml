@@ -1,0 +1,103 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2010-07-27 10:46:50</exporttime>
+<name>Transitions</name>
+<label>Transitions</label>
+<parent></parent>
+<type>extension</type>
+<version>1.0</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<migrations>	
+</migrations>
+<tables>
+<table>
+<name>tbl_s_transitions</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_transitions">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="ruleid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="module" type="C" size="20"/>
+    <field name="field" type="C" size="30"/>
+    <field name="status" type="C" size="80"/>
+    <field name="next_status" type="C" size="80"/>
+    <field name="enable" type="I" size="1">
+      <DEFAULT value="1"/>
+    </field>
+    <field name="sequence" type="I" size="19"/>
+    <field name="roleid" type="C" size="16"/>
+    <index name="NewIndex1">
+      <UNIQUE/>
+      <col>module</col>
+      <col>field</col>
+      <col>status</col>
+      <col>next_status</col>
+      <col>roleid</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>tbl_s_transitions_fields</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_transitions_fields">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="module" type="C" size="20">
+      <KEY/>
+    </field>
+    <field name="field" type="C" size="20"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>tbl_s_transitions_history</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_transitions_history">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="historyid" type="R" size="19">
+      <KEY/>
+    </field>
+    <field name="entity_id" type="I" size="19"/>
+    <field name="tabid" type="I" size="19"/>
+    <field name="field" type="C" size="20"/>
+    <field name="old_status" type="C" size="100"/>
+    <field name="new_status" type="C" size="100"/>
+    <field name="userid" type="I" size="19"/>
+    <field name="motivation" type="X"/>
+    <field name="changetime" type="T"/>
+	<index name="tbl_trans_hist_idx">
+      <col>tabid</col>
+	  <col>field</col>
+      <col>entity_id</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>tbl_s_transitions_init_fields</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="tbl_s_transitions_init_fields">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="field" type="C" size="20">
+      <KEY/>
+    </field>
+    <field name="initial_value" type="C" size="80"/>
+    <field name="roleid" type="C" size="16">
+      <KEY/>
+    </field>
+    <field name="module" type="C" size="20">
+      <KEY/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+</tables>
+</module>

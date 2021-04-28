@@ -1,0 +1,5 @@
+<IfModule prefork.c>
+	php_flag zlib.output_compression Off
+	php_flag output_buffering Off
+	php_value output_handler None
+</IfModule>

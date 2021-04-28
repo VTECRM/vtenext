@@ -1,0 +1,70 @@
+============================
+Features not yet implemented
+============================
+
+
+Globally
+--------
+. mapping owners without having to sync users moudule
+. handle other uitypes and their special formats (date, datetime, ...)
+. implement also "user mode" (for private modules, like calendar) instead of only "global mode"
+. at the first sync try to find existing records somehow
+. sync uitype10 with cycles or to same module
+. check if notifications are sent when creating/updating records in global mode (and deactivate them)
+. sync users avatar
+. handle better uitype10 with several modules
+. N-N relations
+
+
+For specific connectors
+-----------------------
+
+SalesForce:
+. export users from VTE to SF
+. when saving in SF, duplicates are checked. Find a way to handle it gracefully
+
+
+Jira:
+. when changing an issue to an epic in Jira, in VTE a new task is created, but the old ticket is not deleted
+. formatting, colors, mentions, links in jira comments are not supported in vte
+. deleting a projectTask in vte doesn't delete the related tickets, whereas in jira issues are deleted
+. in jira issue statuses can be different for each project, in vte they are always the same
+. field related_to not mapped from vte, since there are no accounts/contacts/leads
+. encrypted fields from vte not supported
+
+
+HubSpot:
+. Only some values for picklists in accounts, potentials and tickets are supported
+. Removing a contact from a Target is not propagated to the VTE and viceversa
+
+
+Vtiger:
+. Ticket comments are not supported
+. html descriptions are not supported
+. some modules in vtiger have more required fields, so the sync will fail if they are not populated in vte
+. In Contacts module, the first non empty between primary or secondary is mapped to email
+. Only active modules in Vtiger can be synchronized
+
+
+========================
+Performance improvements
+========================
+
+
+Globally
+--------
+. sync meta using last modification time
+. push down etag check directly in the connector
+. avoid to download the full record at the beginning, only when it's sure it has to be synced
+
+
+For specific connectors
+-----------------------
+
+SalesForce:
+. use bulk requests for VTE or SF
+
+
+HubSpot:
+. synchronize contacts-targets with list of ids, not one by one
+. synchronize contacts-targets using a date of last sync, not all of them

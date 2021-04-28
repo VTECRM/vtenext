@@ -1,0 +1,76 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Import variables */
+@import 'vars/variables';
+
+/* Import colors */
+@import 'vars/colors_dm';
+
+/* Import mixins */
+@import 'vars/mixins';
+
+/* Import material theme */
+@import 'vte_material';
+
+/* Import general style */
+@import 'vte_style';
+
+/* Change scrollbar colors only for dark mode, works only in Safari/Chrome */
+
+$scrollbar-primary: #646464;
+$scrollbar-secondary: #666666;
+
+html {
+	scrollbar-face-color: $scrollbar-primary;
+	scrollbar-base-color: $scrollbar-primary;
+	scrollbar-3dlight-color: $scrollbar-primary;
+	scrollbar-highlight-color: $scrollbar-primary;
+	scrollbar-track-color: $black;
+	scrollbar-arrow-color: $black;
+	scrollbar-shadow-color: $scrollbar-primary;
+}
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-button {
+	background-color: $scrollbar-secondary;
+}
+::-webkit-scrollbar-track {
+	background-color: $scrollbar-primary;
+}
+::-webkit-scrollbar-track-piece {
+	background-color: $black;
+}
+::-webkit-scrollbar-thumb {
+	height: 50px;
+	background-color: $scrollbar-secondary; 
+	border-radius: 3px;
+}
+::-webkit-scrollbar-corner {
+	background-color: $scrollbar-primary;
+}
+::-webkit-resizer {
+	background-color: $scrollbar-secondary;
+}
+
+/* Force dark mode when the user session has expired */
+
+.loginBox {
+	background-color: $dp04 !important;
+}
+.inputContainer input:focus ~ label, .inputContainer input:valid ~ label {
+	color: $vte-text !important;
+}
+.inputContainer input:focus ~ i, .inputContainer input:valid ~ i {
+	color: $vte-text !important;
+}
+.recoverContainer a {
+	color: $vte-text-title !important;
+}
+#logout_reason_msg > .alert-danger {
+	background-color: rgba(229, 57, 53, 0.5);
+}

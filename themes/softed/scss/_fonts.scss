@@ -1,0 +1,35 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+@font-face { 
+	font-family: 'VTEFont';
+	src: url('fonts/roboto/regular/Roboto-Regular-webfont.eot');
+	src: url('fonts/roboto/regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
+	url('fonts/roboto/regular/Roboto-Regular-webfont.woff') format('woff'),
+	url('fonts/roboto/regular/Roboto-Regular-webfont.ttf') format('truetype'),
+	url('fonts/roboto/regular/Roboto-Regular-webfont.svg#webfont') format('svg');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'VTEFont';
+	src: url('fonts/roboto/bold/Roboto-Bold-webfont.eot');
+	src: url('fonts/roboto/bold/Roboto-Bold-webfont.eot?iefix') format('eot'),
+	url('fonts/roboto/bold/Roboto-Bold-webfont.woff') format('woff'),
+	url('fonts/roboto/bold/Roboto-Bold-webfont.ttf') format('truetype'),
+	url('fonts/roboto/bold/Roboto-Bold-webfont.svg#webfont') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'VTEFont';
+    src: url('fonts/roboto/italic/Roboto-Italic-webfont.eot');
+	src: url('fonts/roboto/italic/Roboto-Italic-webfont.eot?iefix') format('eot'),
+	url('fonts/roboto/italic/Roboto-Italic-webfont.woff') format('woff'),
+	url('fonts/roboto/italic/Roboto-Italic-webfont.ttf') format('truetype'),
+	url('fonts/roboto/italic/Roboto-Italic-webfont.svg#webfont') format('svg');
+	font-style: italic;
+}

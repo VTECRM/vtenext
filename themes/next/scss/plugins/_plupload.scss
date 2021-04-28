@@ -1,0 +1,38 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.plupload_wrapper {
+	font: unset !important;
+	font-family: $font-family-base !important;
+}
+
+.plupload_container {
+	background-image: none !important;
+	background-color: $plupload-bg !important;
+}
+
+.plupload_droptext {
+	font-size: 16px;	
+}
+
+.plupload_filelist {
+    border-color: $grey-200 !important;
+}
+
+.plupload_button {
+    font-family: $font-family-base !important;
+    color: $plupload-button-color !important;
+    border: 1px solid $plupload-button-border !important;
+    background-color: $plupload-button-bg !important;
+}
+
+.plupload_filelist_header, .plupload_filelist_footer {
+	border-top: 0px none !important;
+    color: $vte-text !important;	
+}
+
+.plupload_file_status span {
+	color: $vte-text !important;
+}

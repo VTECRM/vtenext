@@ -1,0 +1,19 @@
+/* crmv@82419 */
+
+.NotificationDiv {
+	display: none;
+	position: absolute;
+	cursor: pointer;
+	top: -2px;
+	left: 14px;
+	z-index: 10;
+}
+.NotificationCount {
+	background-image: url('../../../../themes/images/notification_center.png');
+	color: #FFFFFF;
+}
+
+.NotificationDiv td {
+	padding: 0px;
+}
+

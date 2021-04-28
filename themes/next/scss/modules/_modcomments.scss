@@ -1,0 +1,89 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.detailedViewModCommTextBox,
+.detailedViewModCommTextBoxOn,
+#editareaModComm,
+.detailedViewModCommTextBox,
+.tbl_ModCommReplies {
+	width: 100%;
+}
+
+textarea.detailedViewModCommTextBox {
+	height: 28px;
+}
+
+textarea.detailedViewModCommTextBoxOn {
+	height: 70px;
+}
+
+.dataField,
+.dataFieldReply {
+	padding-top: 5px;
+}
+
+.dataLabel,
+.dataLabelReply {
+	padding-bottom: 5px;
+}
+
+.dataField,
+.dataLabel,
+.dataContent {
+	/*background: $vte-submenu;*/
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.dataFieldReply,
+.dataLabelReply {
+	/* background: $white; */
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.dataImg,
+.dataImgReply {
+	vertical-align: top;
+	text-align: center;
+	width: 32px;
+	padding: 2px;
+}
+
+.dataImg {
+	/*background: $vte-submenu;*/
+}
+
+.dataImgReply {
+	/* background: $white; */
+}
+
+.ModCommAnswerBox,
+.ModCommReplies {
+	/*background: $vte-submenu;*/
+}
+
+.ModCommUnseen {
+	background: $unseen;
+}
+
+#ModComments_sub {
+}
+
+.dataId {
+	display: none;
+}
+
+.notificationItem {
+	font-size: $vte_font_size;
+}
+
+.notificationItem:not(:first-child) {
+	border-top: 1px solid $vte-thin-border;
+}
+
+.notificationItem td {
+	padding: 0px;
+}

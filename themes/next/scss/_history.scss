@@ -1,0 +1,56 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+//crmv@104566
+
+.history_line {
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.history_line_title {
+	min-height: 30px;
+	position: relative;
+}
+
+.history_line_title:before {
+	content: "";
+	background: $vte-submenu;
+	color: $vte-submenu-color;
+	height: 100%;
+	width: 2px;
+	position: absolute;
+	left: -20px;
+	top: 30px;
+	bottom: 0;
+	margin-left: -1px;
+}
+
+.history_line_img {
+	float: left;
+	width: 30px;
+}
+
+.history_line_info {
+	margin-left: 30px;
+}
+
+.history_line_user_img,
+.history_line_user_name {
+	float: left;
+	padding-right: 5px;
+	font-weight: bold;
+}
+
+.history_line_date {
+	position: relative;
+	top: -5px;
+}
+
+.history_line_details {
+	word-break: break-all;
+}
+
+//crmv@104566e

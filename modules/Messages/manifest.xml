@@ -1,0 +1,1871 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2013-05-14 11:24:52</exporttime>
+<name>Messages</name>
+<label>Messages</label>
+<parent>My Home Page</parent>
+<dependencies>
+<vtenext_version>4.4.1</vtenext_version>
+<vtenext_max_version>16.*</vtenext_max_version>
+</dependencies>
+<tables>
+<table>
+<name>TABLEPREFIX_messages</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="messagesid" type="I" size="19">
+      <KEY/>
+      <DEFAULT value="0"/>
+    </field>
+    <field name="subject" type="C" size="255"/>
+	<field name="description" type="XL"/>
+	<field name="cleaned_body" type="XL"/>
+	<field name="content_ids" type="C" size="255"/>
+    <field name="mdate" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="mfrom" type="C" size="255"/>
+    <field name="mto" type="XL"/>
+    <field name="mcc" type="XL"/>
+    <field name="mreplyto" type="C" size="255"/>
+    <field name="messageid" type="C" size="255"/>
+    <field name="xmailer" type="C" size="255"/>
+    <field name="mbcc" type="XL"/>
+    <field name="xuid" type="N" size="10"/>
+    <field name="folder" type="C" size="255"/>
+    <field name="seen" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="answered" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="forwarded" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="flagged" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="draft" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="mfrom_n" type="C" size="255"/>
+    <field name="mfrom_f" type="C" size="255"/>
+    <field name="mto_n" type="XL"/>
+    <field name="mto_f" type="XL"/>
+    <field name="mcc_n" type="XL"/>
+    <field name="mcc_f" type="XL"/>
+    <field name="mbcc_n" type="XL"/>
+    <field name="mbcc_f" type="XL"/>
+    <field name="mreplyto_n" type="C" size="255"/>
+    <field name="mreplyto_f" type="C" size="255"/>
+    <field name="messagehash" type="C" size="64"/>
+    <field name="mtype" type="C" size="100"/>
+    <field name="in_reply_to" type="C" size="255"/>
+    <field name="mreferences" type="XL"/>
+    <field name="thread_index" type="C" size="255"/>
+    <field name="lastson" type="I" size="19"/>
+    <field name="send_mode" type="C" size="50"/>
+    <field name="account" type="I" size="10"/>
+    <field name="mvisibility" type="C" size="50"/>
+    <field name="smownerid" type="I" size="19"/>
+    <field name="createdtime" type="T">
+      <NOTNULL/>
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="modifiedtime" type="T">
+      <NOTNULL/>
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="deleted" type="I" size="1">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+    <index name="TABLEPREFIX_messages_messageid_idx">
+      <col>deleted</col>
+      <col>messageid</col>
+    </index>
+    <index name="TABLEPREFIX_messages_folder_idx">
+      <col>folder</col>
+    </index>
+    <index name="TABLEPREFIX_messages_folder_idx">
+      <col>deleted</col>
+      <col>smownerid</col>
+      <col>folder</col>
+    </index>
+    <index name="TABLEPREFIX_messages_accfolddate">
+      <col>account</col>
+	  <col>folder</col>
+	  <col>mdate</col>
+    </index>
+    <index name="TABLEPREFIX_messages_mtype_idx">
+      <col>deleted</col>
+      <col>smownerid</col>
+      <col>mtype</col>
+    </index>
+    <index name="TABLEPREFIX_messages_lastson_idx">
+      <col>lastson</col>
+    </index>
+    <index name="TABLEPREFIX_messages_seen_idx">
+      <col>deleted</col>
+      <col>smownerid</col>
+      <col>seen</col>
+    </index>
+    <index name="TABLEPREFIX_messages_acc_list_idx">
+      <col>deleted</col>
+      <col>smownerid</col>
+      <col>account</col>
+      <col>folder</col>
+      <col>mtype</col>
+      <col>seen</col>
+    </index>
+    <index name="TABLEPREFIX_messages_mdate_idx">
+      <col>mdate</col>
+    </index>
+    <index name="TABLEPREFIX_messages_xuid_idx">
+      <col>xuid</col>
+    </index>
+    <index name="TABLEPREFIX_messages_checkflagchanges_idx">
+      <col>deleted</col>
+      <col>smownerid</col>
+      <col>mdate</col>
+      <col>mtype</col>
+      <col>account</col>
+      <col>folder</col>
+      <col>xuid</col>
+      <col>seen</col>
+      <col>answered</col>
+      <col>flagged</col>
+      <col>forwarded</col>
+    </index>
+    <index name="TABLEPREFIX_messages_flaggedcount_idx">
+      <col>deleted</col>
+      <col>smownerid</col>
+      <col>mtype</col>
+      <col>account</col>
+      <col>flagged</col>
+    </index>
+	<index name="TABLEPREFIX_messages_modifiedtime_idx">
+      <col>modifiedtime</col>
+    </index>
+	<index name="TABLEPREFIX_messages_messagehash_idx">
+      <col>messagehash</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messagesrel</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messagesrel">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+	<field name="messagehash" type="C" size="64">
+		<KEY />
+	</field>
+	<field name="crmid" type="I" size="19">
+		<KEY />
+	</field>
+	<field name="module" type="C" size="128" />
+	<index name="TABLEPREFIX_messagesrel_mod_idx">
+		<col>module</col>
+	</index>
+	<index name="TABLEPREFIX_messagesrel_crmid_idx">
+		<col>crmid</col>
+	</index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_attach</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_attach">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="messagesid" type="I" size="19">
+		  <KEY/>
+		</field>
+		<field name="contentid" type="I" size="19">
+		  <KEY/>
+		</field>
+		<field name="content_id" type="C" size="100"/>
+		<field name="contentname" type="C" size="200"/>
+		<field name="contenttype" type="C" size="200"/>
+		<field name="contentdisposition" type="C" size="200"/>
+		<field name="contentcharset" type="C" size="200"/>
+		<field name="contentencoding" type="C" size="200"/>
+		<field name="contentmethod" type="C" size="63"/>
+		<field name="document" type="I" size="19"/>
+		<field name="size" type="I" size="19">
+	      <DEFAULT value="0"/>
+	    </field>
+		<index name="TABLEPREFIX_messages_attach_messagesid_idx">
+		  <col>messagesid</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_ical</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_ical">
+			<opt platform="mysql">ENGINE=InnoDB</opt>
+			<field name="messagesid" type="I" size="19">
+				<key/>
+			</field>
+			<field name="sequence" type="I" size="19">
+				<key/>
+			</field>
+			<field name="uuid" type="C" size="127" />
+			<field name="recurring_idx" type="I" size="11">
+				<DEFAULT value="0"/>
+			</field>
+			<field name="method" type="C" size="31" />
+			<field name="partecipation" type="I" size="2">
+				<DEFAULT value="0"/>
+			</field>
+			<field name="content" type="XL" />
+			<index name="messages_ical_uuid_idx">
+				<col>uuid</col>
+			</index>
+		</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_drafts</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_drafts">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="id" type="C" size="100">
+		  <KEY/>
+		</field>
+		<field name="messagehash" type="C" size="64">
+		  <KEY/>
+		</field>
+		<field name="userid" type="I" size="19"/>
+		<index name="TABLEPREFIX_messages_drafts_id_idx">
+		  <col>id</col>
+		</index>
+		<index name="TABLEPREFIX_messages_drafts_idxs">
+		  <col>messagehash</col>
+		  <col>userid</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_th</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_th">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="folder" type="C" size="255">
+		  <KEY/>
+		</field>
+		<field name="father" type="I" size="19">
+		  <KEY/>
+		</field>
+		<field name="son" type="I" size="19">
+		  <KEY/>
+		</field>
+		<index name="TABLEPREFIX_messages_th_folder_idx">
+		  <col>folder</col>
+		</index>
+		<index name="TABLEPREFIX_messages_th_father_idx">
+		  <col>father</col>
+		</index>
+		<index name="TABLEPREFIX_messages_th_son_idx">
+		  <col>son</col>
+		</index>
+	  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_sfolders</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_sfolders">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="userid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="accountid" type="I" size="10">
+	      <KEY/>
+	    </field>
+	    <field name="special" type="C" size="50">
+	      <KEY/>
+	    </field>
+	    <field name="folder" type="C" size="255"/>
+	  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_folders</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_folders">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="userid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="accountid" type="I" size="10">
+	      <KEY/>
+	    </field>
+	    <field name="globalname" type="C" size="255">
+	      <KEY/>
+	    </field>
+	    <field name="localname" type="C" size="255"/>
+	    <field name="depth" type="I" size="10">
+	      <DEFAULT value="0"/>
+	    </field>
+	    <field name="selectable" type="I" size="1">
+	      <DEFAULT value="0"/>
+	    </field>
+	    <field name="count" type="I" size="10">
+	      <DEFAULT value="0"/>
+	    </field>
+	    <field name="sequence" type="I" size="10">
+	      <DEFAULT value="0"/>
+	    </field>
+	    <index name="idx_messages_folders_u">
+	      <col>userid</col>
+	    </index>
+	    <index name="idx_messages_folders_a">
+	      <col>accountid</col>
+	    </index>
+	    <index name="idx_messages_folders_l">
+	      <col>localname</col>
+	    </index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_filters</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_filters">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="userid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="accountid" type="I" size="10">
+	      <KEY/>
+	    </field>
+	    <field name="sequence" type="I" size="10">
+	      <KEY/>
+	      <DEFAULT value="0"/>
+	    </field>
+	    <field name="filter_where" type="C" size="50"/>
+	    <field name="filter_what" type="C" size="200"/>
+	    <field name="filter_folder" type="C" size="255"/>
+	  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_pop3</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_pop3">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="id" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="userid" type="I" size="19"/>
+	    <field name="server" type="C" size="200"/>
+	    <field name="port" type="C" size="10"/>
+	    <field name="username" type="C" size="200"/>
+	    <field name="password" type="C" size="500"/>
+	    <field name="secure" type="C" size="3"/>
+	    <field name="accountid" type="I" size="10"/>
+	    <field name="folder" type="C" size="255"/>
+	    <field name="lmos" type="I" size="1">
+	      <DEFAULT value="1"/>
+	    </field>
+	    <field name="active" type="I" size="1">
+	      <DEFAULT value="1"/>
+	    </field>
+	    <field name="uidl" type="C" size="200"/>
+	    <index name="TABLEPREFIX_messages_pop3_act_idx">
+	      <col>active</col>
+	    </index>
+	    <index name="TABLEPREFIX_messages_pop3_usr_idx">
+	      <col>userid</col>
+	    </index>
+	  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_pop3_uids</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_pop3_uids">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="pop3" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="uid" type="C" size="200">
+	      <KEY/>
+	    </field>
+	    <index name="TABLEPREFIX_messages_pop3_uids_idx">
+	      <col>pop3</col>
+	    </index>
+	  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_recipients</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_recipients">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="messagesid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="id" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="fieldid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <index name="TABLEPREFIX_messages_recipients_messagesid_idx">
+	      <col>messagesid</col>
+	    </index>
+	    <index name="TABLEPREFIX_messages_recipients_id_idx">
+	      <col>id</col>
+	    </index>
+	  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_account</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_account">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="10">
+      <KEY/>
+    </field>
+    <field name="userid" type="I" size="11"/>
+    <field name="account" type="C" size="50"/>
+    <field name="username" type="C" size="100"/>
+    <field name="email" type="C" size="100"/>
+    <field name="password" type="C" size="255"/>
+    <field name="main" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="description" type="C" size="200"/>
+    <field name="server" type="C" size="100"/>
+    <field name="port" type="I" size="19"/>
+    <field name="ssl_tls" type="C" size="5"/>
+    <field name="domain" type="C" size="20"/>
+	<field name="smtp_account" type="C" size="30"/>
+	<field name="smtp_server" type="C" size="100"/>
+    <field name="smtp_port" type="I" size="5"/>
+	<field name="smtp_username" type="C" size="100"/>
+    <field name="smtp_password" type="C" size="255"/>
+	<field name="smtp_auth" type="C" size="5"/>
+    <field name="signature" type="X"/>
+	<field name="error" type="C" size="50"/>
+    <field name="attempts" type="I" size="5">
+      <DEFAULT value="0"/>
+    </field>
+	<field name="folder_separator" type="C" size="1"/>
+	<field name="authentication" type="C" size="10"/>
+	<field name="token" type="C" size="2000"/>
+	<field name="refresh_token" type="C" size="2000"/>
+    <field name="expires" type="I" size="10"/>
+	<index name="TABLEPREFIX_mess_acc_user_idx">
+	  <col>userid</col>
+	</index>
+	<index name="mess_acc_email_idx">
+	  <col>email</col>
+	</index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_layout</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_layout">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+	<field name="userid" type="I" size="19">
+		<KEY />
+	</field>
+	<field name="list_descr_preview" type="I" size="1" />
+	<field name="thread" type="I" size="1" />
+	<field name="merge_account_folders" type="I" size="1" />
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_cron_news</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_cron_news">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+	<field name="userid" type="I" size="19">
+		<KEY />
+	</field>
+	<field name="accountid" type="I" size="19">
+		<KEY />
+	</field>
+	<field name="folder" type="I" size="19">
+		<KEY />
+	</field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_prop2imap</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_prop2imap">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="sequence" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="operation" type="C" size="50"/>
+    <field name="params" type="XL"/>
+    <field name="status" type="I" size="11"/>
+    <field name="attempts" type="I" size="11"/>
+    <field name="max_attempts" type="I" size="11"/>
+    <field name="error" type="C" size="200"/>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_emails_send_queue</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_emails_send_queue">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="userid" type="I" size="19"/>
+    <field name="method" type="C" size="50"/>
+    <field name="request" type="XL"/>
+    <field name="status" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="s_send" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="s_append" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="s_clean_pupload_attach" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="s_clean_drafts" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="send_attempts" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="error" type="C" size="200"/>
+    <field name="date" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="scheduled" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="messagesid" type="I" size="19">
+      <DEFAULT value="0"/>
+    </field>
+    <index name="TABLEPREFIX_emails_send_queue_u_idx">
+      <col>userid</col>
+    </index>
+    <index name="TABLEPREFIX_emails_send_queue_m_idx">
+      <col>method</col>
+    </index>
+    <index name="TABLEPREFIX_emails_send_queue_s_idx">
+      <col>status</col>
+    </index>
+    <index name="TABLEPREFIX_emails_send_queue_scheduled_idx">
+      <col>method</col>
+      <col>userid</col>
+      <col>scheduled</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_emails_not_send_queue</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_emails_not_send_queue">
+  <opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="id" type="I" size="19">
+      <KEY/>
+    </field>
+	<field name="to_email" type="X"/>
+	<field name="from_name" type="C" size="200" />
+	<field name="from_email" type="C" size="200" />
+	<field name="subject" type="C" size="200" />
+    <field name="other_params" type="XL"/>
+	<field name="send_after" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+	<field name="queue_date" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+	<field name="send_date" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="status" type="I" size="11"/>
+	<field name="error" type="C" size="200" />
+    <index name="emails_not_send_queue_status_idx">
+      <col>status</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_cron_uid</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_cron_uid">
+	<opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="sequence" type="I" size="19"/>
+    <field name="userid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="accountid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="folder" type="C" size="255">
+      <KEY/>
+    </field>
+    <field name="uid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="date" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="action" type="C" size="10"/>
+    <field name="status" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="cdate" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="attempts" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <index name="TABLEPREFIX_messages_cron_uid_accountid_idx">
+      <col>accountid</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uid_folder_idx">
+      <col>folder</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uid_date_idx">
+      <col>date</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uid_sequence_idx">
+      <col>sequence</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uid_status_idx">
+      <col>status</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_cron_uidi</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_cron_uidi">
+	<opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="sequence" type="I" size="19"/>
+    <field name="userid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="accountid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="folder" type="C" size="50">
+      <KEY/>
+    </field>
+    <field name="uid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="date" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="action" type="C" size="10"/>
+    <field name="status" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="cdate" type="T">
+      <DEFAULT value="0000-00-00 00:00:00"/>
+    </field>
+    <field name="attempts" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <index name="TABLEPREFIX_messages_cron_uidi_userid_idx">
+      <col>userid</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uidi_accountid_idx">
+      <col>accountid</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uidi_folder_idx">
+      <col>folder</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uidi_date_idx">
+      <col>date</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uidi_sequence_idx">
+      <col>sequence</col>
+    </index>
+    <index name="TABLEPREFIX_messages_cron_uidi_status_idx">
+      <col>status</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_sync_all</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_sync_all">
+	<opt platform="mysql">ENGINE=InnoDB</opt>
+    <field name="userid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="accountid" type="I" size="19">
+      <KEY/>
+    </field>
+    <field name="inbox" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+    <field name="other" type="I" size="1">
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_tmp_prel</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+  <table name="TABLEPREFIX_messages_tmp_prel">
+	<opt platform="mysql">ENGINE=InnoDB</opt>
+	<field name="sequence" type="I" size="19">
+	  <KEY/>
+	  <NOTNULL/>
+	  <AUTOINCREMENT/>
+    </field>
+    <field name="userid" type="I" size="19">
+      <NOTNULL/>
+    </field>
+    <field name="tabid" type="I" size="19">
+      <NOTNULL/>
+    </field>
+    <field name="id" type="I" size="19">
+	  <NOTNULL/>
+    </field>
+    <index name="vte_messages_poprel_idx">
+      <UNIQUE/>
+      <col>userid</col>
+      <col>tabid</col>
+      <col>id</col>
+    </index>
+  </table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_tmp_rlist</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_tmp_rlist">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="userid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="parentid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="id" type="I" size="19">
+			<KEY/>
+		</field>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_deflist</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_deflist">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="userid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="parentid" type="I" size="19">
+			<KEY/>
+		</field>
+		<field name="id" type="I" size="19">
+			<KEY/>
+		</field>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_mref</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_mref">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="messagesid" type="I" size="19">
+			<NOTNULL/>
+			<key/>
+		</field>
+		<field name="mreference" type="C" size="127">
+			<NOTNULL/>
+			<key/>
+		</field>
+		<index name="messages_mref_idx">
+			<col>mreference</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_ntel</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_ntel">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+		<field name="messagesid" type="I" size="19" />
+		<field name="phone" type="C" size="63" />
+		<field name="type" type="C" size="15" />
+		<index name="messages_ntel_idx">
+			<col>messagesid</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_inline_cache</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_inline_cache">
+		<opt platform="mysql">ENGINE=InnoDB</opt>
+ 		<field name="messagesid" type="I" size="19">
+ 		  <KEY/>
+ 		</field>
+ 		<field name="contentid" type="I" size="19">
+ 		  <KEY/>
+ 		</field>
+	    <field name="cachedate" type="T">
+	      <DEFAULT value="0000-00-00 00:00:00"/>
+	    </field>
+		<field name="content" type="B"/>
+		<field name="parameters" type="X"/>
+		<index name="cachedate_idx">
+			<col>cachedate</col>
+		</index>
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_outofo_q</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_outofo_q">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="id" type="I" size="19">
+	      <KEY/>
+	    </field>
+		<field name="from_email" type="C" size="255" />
+		<field name="to_email" type="C" size="255" />
+		<field name="subject" type="C" size="255" />
+		<field name="body" type="XL"/>
+		<field name="date" type="T">
+	      <DEFAULT value="0000-00-00 00:00:00"/>
+	    </field>
+	    <field name="in_reply_to" type="I" size="19"/>
+	    <field name="status" type="I" size="1">
+	      <DEFAULT value="0"/>
+	    </field>
+	    <field name="attempts" type="I" size="5">
+	      <DEFAULT value="0"/>
+	    </field>
+		<field name="error" type="C" size="200" />
+	</table>
+</schema>]]></sql>
+</table>
+<table>
+<name>TABLEPREFIX_messages_outofo_s</name>
+<sql><![CDATA[<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="TABLEPREFIX_messages_outofo_s">
+	  <opt platform="mysql">ENGINE=InnoDB</opt>
+	    <field name="userid" type="I" size="19">
+	      <KEY/>
+	    </field>
+	    <field name="active" type="I" size="1">
+	      <DEFAULT value="0"/>
+	    </field>
+		<field name="message_subject" type="C" size="255" />
+		<field name="message_body" type="XL"/>
+	    <field name="start_date_allday" type="I" size="1">
+	      <DEFAULT value="0"/>
+	    </field>
+		<field name="start_date" type="D"/>
+		<field name="start_time" type="C" size="5" />
+	    <field name="end_date_active" type="I" size="1">
+	      <DEFAULT value="0"/>
+	    </field>
+		<field name="end_date" type="D"/>
+		<field name="end_time" type="C" size="5" />
+	    <field name="only_known_addresses_active" type="I" size="1">
+	      <DEFAULT value="0"/>
+	    </field>
+		<field name="accounts" type="X"/>
+	</table>
+</schema>]]></sql>
+</table>
+</tables>
+<panels>
+<panel>
+<label>LBL_TAB_MAIN</label>
+<blocks>
+<block>
+<label>LBL_MESSAGE_INFORMATION</label>
+<fields>
+<field>
+<fieldname>subject</fieldname>
+<uitype>1</uitype>
+<columnname>subject</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Subject</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<entityidentifier>
+<entityidfield>messagesid</entityidfield>
+<entityidcolumn>messagesid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>mdate</fieldname>
+<uitype>70</uitype>
+<columnname>mdate</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Date</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>mfrom</fieldname>
+<uitype>1</uitype>
+<columnname>mfrom</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>From</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>mto</fieldname>
+<uitype>21</uitype>
+<columnname>mto</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>mcc</fieldname>
+<uitype>1</uitype>
+<columnname>mcc</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Cc</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>mreplyto</fieldname>
+<uitype>1</uitype>
+<columnname>mreplyto</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Reply To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>7</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>messageid</fieldname>
+<uitype>1</uitype>
+<columnname>messageid</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Messageid</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>9</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>xmailer</fieldname>
+<uitype>1</uitype>
+<columnname>xmailer</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Xmailer</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>10</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>mbcc</fieldname>
+<uitype>1</uitype>
+<columnname>mbcc</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Bcc</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>6</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>1</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>xuid</fieldname>
+<uitype>7</uitype>
+<columnname>xuid</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Uid</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>8</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>2</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>folder</fieldname>
+<uitype>1</uitype>
+<columnname>folder</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Folder</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>11</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>3</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mfrom_n</fieldname>
+<uitype>1</uitype>
+<columnname>mfrom_n</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>From Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>12</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>7</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mfrom_f</fieldname>
+<uitype>1</uitype>
+<columnname>mfrom_f</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>From Full</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>13</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>8</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mto_n</fieldname>
+<uitype>1</uitype>
+<columnname>mto_n</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>To Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>14</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>9</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mto_f</fieldname>
+<uitype>1</uitype>
+<columnname>mto_f</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>To Full</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>10</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mcc_n</fieldname>
+<uitype>1</uitype>
+<columnname>mcc_n</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Cc Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>16</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>11</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mcc_f</fieldname>
+<uitype>1</uitype>
+<columnname>mcc_f</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Cc Full</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>17</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>12</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mbcc_n</fieldname>
+<uitype>1</uitype>
+<columnname>mbcc_n</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Bcc Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>18</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>13</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mbcc_f</fieldname>
+<uitype>1</uitype>
+<columnname>mbcc_f</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Bcc Full</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>19</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>14</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mreplyto_n</fieldname>
+<uitype>1</uitype>
+<columnname>mreplyto_n</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Reply To Name</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>20</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>15</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mreplyto_f</fieldname>
+<uitype>1</uitype>
+<columnname>mreplyto_f</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Reply To Full</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>21</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>16</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>messagehash</fieldname>
+<uitype>1</uitype>
+<columnname>messagehash</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Message Hash</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>22</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>18</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mtype</fieldname>
+<uitype>1</uitype>
+<columnname>mtype</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Type</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>23</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>19</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>in_reply_to</fieldname>
+<uitype>1</uitype>
+<columnname>in_reply_to</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>In-Reply-To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>24</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>20</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mreferences</fieldname>
+<uitype>1</uitype>
+<columnname>mreferences</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>References</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>25</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>21</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>thread_index</fieldname>
+<uitype>1</uitype>
+<columnname>thread_index</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Thread-Index</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>26</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>22</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>lastson</fieldname>
+<uitype>1</uitype>
+<columnname>lastson</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Last Son</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>27</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>23</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>send_mode</fieldname>
+<uitype>15</uitype>
+<columnname>send_mode</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Send Mode</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>28</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>24</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<picklistvalues>
+<picklistvalue>single</picklistvalue>
+<picklistvalue>multiple</picklistvalue>
+</picklistvalues>
+</field>
+<field>
+<fieldname>account</fieldname>
+<uitype>1</uitype>
+<columnname>account</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Account</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>29</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>25</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>mvisibility</fieldname>
+<uitype>15</uitype>
+<columnname>mvisibility</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Visibility</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>30</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>26</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<picklistvalues>
+<picklistvalue></picklistvalue>
+<picklistvalue>Public</picklistvalue>
+</picklistvalues>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_FLAGS</label>
+<fields>
+<field>
+<fieldname>seen</fieldname>
+<uitype>56</uitype>
+<columnname>seen</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Seen</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>4</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>answered</fieldname>
+<uitype>56</uitype>
+<columnname>answered</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Answered</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>5</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>forwarded</fieldname>
+<uitype>56</uitype>
+<columnname>forwarded</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Forwarded</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>6</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>flagged</fieldname>
+<uitype>56</uitype>
+<columnname>flagged</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Flagged</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>4</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>17</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>draft</fieldname>
+<uitype>56</uitype>
+<columnname>draft</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Draft</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>5</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>C~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>27</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_DESCRIPTION_INFORMATION</label>
+<fields>
+<field>
+<fieldname>description</fieldname>
+<uitype>19</uitype>
+<columnname>description</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Body</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>cleaned_body</fieldname>
+<uitype>19</uitype>
+<columnname>cleaned_body</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Body</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>content_ids</fieldname>
+<uitype>1</uitype>
+<columnname>content_ids</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>ContentIds</fieldlabel>
+<readonly>100</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_OTHER_INFORMATION</label>
+<fields>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>TABLEPREFIX_messages</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+</blocks>
+</panel>
+</panels>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<fields>
+<field>
+<fieldname>subject</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>mdate</fieldname>
+<columnindex>2</columnindex>
+</field>
+<field>
+<fieldname>mfrom</fieldname>
+<columnindex>3</columnindex>
+</field>
+<field>
+<fieldname>mto</fieldname>
+<columnindex>4</columnindex>
+</field>
+<field>
+<fieldname>cleaned_body</fieldname>
+<columnindex>5</columnindex>
+</field>
+<field>
+<fieldname>seen</fieldname>
+<columnindex>6</columnindex>
+</field>
+<field>
+<fieldname>answered</fieldname>
+<columnindex>7</columnindex>
+</field>
+<field>
+<fieldname>forwarded</fieldname>
+<columnindex>8</columnindex>
+</field>
+<field>
+<fieldname>mfrom_n</fieldname>
+<columnindex>9</columnindex>
+</field>
+<field>
+<fieldname>flagged</fieldname>
+<columnindex>10</columnindex>
+</field>
+<field>
+<fieldname>mfrom_f</fieldname>
+<columnindex>11</columnindex>
+</field>
+<field>
+<fieldname>mto_f</fieldname>
+<columnindex>12</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>private</default>
+</sharingaccess>
+<actions>
+<action>
+<name><![CDATA[Import]]></name>
+<status>disabled</status>
+</action>
+<action>
+<name><![CDATA[Export]]></name>
+<status>disabled</status>
+</action>
+<action>
+<name><![CDATA[Merge]]></name>
+<status>disabled</status>
+</action>
+<action>
+<name><![CDATA[DuplicatesHandling]]></name>
+<status>disabled</status>
+</action>
+</actions>
+</module>

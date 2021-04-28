@@ -1,0 +1,72 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@98866 */
+
+.popup-wizard {
+	height: 95%;
+
+	#nlWizMainTab {
+		z-index: -10;
+		width: 100%;
+		height: 100%;
+	}
+	#nlWizLeftPane {
+		width: 20%;
+		min-width: 200px;
+		border-right: 1px solid $wizard-steps-border;
+		vertical-align: top;
+		padding: 0px;
+	}
+	#nlWizRightPane {
+		min-width: 400px;
+		vertical-align: top;
+		padding: 8px;
+	}
+	#nlWizStepTable {
+		width: 100%;
+	}
+	.nlWizStepCell {
+		margin: 2px;
+		padding: 15px;
+		font-weight: 700;
+		cursor: pointer;
+		background-color: $wizard-steps-row-bg;
+		border-bottom: 1px solid $wizard-steps-row-border;
+
+		& .circleIndicator {
+			background-color: $wizard-steps-row-circle-bg;
+			color: $wizard-steps-row-circle-color;
+		}
+	}
+	.nlWizStepCell:hover {
+		background-color: $wizard-steps-row-hover;
+	}
+	.nlWizStepCellSelected {
+		background-color: $wizard-steps-row-selected;
+
+		& .circleIndicator.circleEnabled {
+			background-color: $wizard-steps-row-selected-circle-bg;
+			color: $wizard-steps-row-selected-circle-color;
+		}
+	}
+	.nlWizTargetList {
+		padding-bottom: 4px;
+		margin-bottom: 10px;
+		height: 300px;
+		overflow: auto;
+	}
+	#nlw_templatePreviewCont {
+		min-height: 200px;
+		overflow-y: auto;
+		width: 98%;
+		padding: 3px;
+		border: 1px solid #d0d0d0;
+		margin: 3px;
+	}
+	.level3Bg {
+		border-bottom: 0px none;
+	}
+}

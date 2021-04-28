@@ -1,0 +1,797 @@
+<?xml version='1.0'?><export><template><type>PDFMaker</type><templatename>Standard Layout</templatename><filename>$QUOTES_QUOTE_NO$_$#YYYY-MM-DD#$</filename><description></description><module>Quotes</module><settings><format>A4</format><orientation>portrait</orientation><margins><top>1.5</top><bottom>1.0</bottom><left>1.5</left><right>1.5</right></margins><decimals><point>,</point><decimals>2</decimals><thousands>sp</thousands></decimals></settings><header><![CDATA[<p style="text-align: center;">
+	$COMPANY_LOGO$</p>
+]]></header><body><![CDATA[<table align="center" border="0" cellpadding="5" cellspacing="3" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Subject%: </strong>$QUOTES_SUBJECT$</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Quote No%: $QUOTES_QUOTE_NO$</span></span></strong></td>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+		</tr>
+		<tr>
+			<td style="text-align: left; vertical-align: top;">
+				 </td>
+			<td style="text-align: left; vertical-align: top;">
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Assigned To%: $QUOTES_ASSIGNED_USER_ID$</span></span><br />
+					<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_LBL_LIST_PHONE%: $COMPANY_PHONE$<br />
+					%G_Emails%: $USER_EMAIL$</span></span></p>
+				<p>
+					 </p>
+				<p>
+					<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Valid Till%: $QUOTES_VALIDTILL$</span></span></strong></p>
+			</td>
+			<td style="text-align: left; vertical-align: top;">
+				<p>
+					<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Account Name%: $QUOTES_ACCOUNT_ID$</span></span></strong><br />
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$QUOTES_BILL_STREET$<br />
+					$QUOTES_BILL_CODE$ $QUOTES_BILL_CITY$ $QUOTES_BILL_STATE$<br />
+					$QUOTES_BILL_COUNTRY$</span></span></p>
+				<p>
+					<br />
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">[CUSTOMFUNCTION|its4you_if|$QUOTES_CONTACT_ID$|=|||%M_Contact Name%: $QUOTES_CONTACT_ID$|CUSTOMFUNCTION]</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top;">
+				 </td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$QUOTES_DESCRIPTION$</span></span></p>
+<table border="0" cellpadding="3" cellspacing="0" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>#</strong></span></span></td>
+			<td>
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Product Name%/%M_Service Name%</span></span></strong></td>
+			<td align="right">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_LIST_PRICE%</span></span></strong></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Quantity%</strong></span></span></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%G_discount%</strong></span></span></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%G_Price%</strong></span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_START#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTPOSITION$</span></span></td>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$PRODUCTTITLE$</strong><br />
+				$PRODUCTINVDESCRIPTION$<br />
+				<span style="font-size: 10px;"><em>$PRODUCTEDITDESCRIPTION$</em></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTLISTPRICE$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTQUANTITY$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTSTOTALAFTERDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_END#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_total net%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$TOTALWITHOUTVAT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_discount%</span></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$TOTALDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_TAX%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$VAT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:14px;"><span style="font-family: arial,helvetica,sans-serif;"><strong><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Total%</strong></span></strong></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:14px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$TOTAL$ $CURRENCYSYMBOL$</strong></span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">[CUSTOMFUNCTION|its4you_if|$QUOTES_TERMS_CONDITIONS$|=|||%M_LBL_TERMS_INFORMATION%:|CUSTOMFUNCTION] </span></span></strong><em><span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$QUOTES_TERMS_CONDITIONS$</span></span></em></p>
+<table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+				 </td>
+			<td align="center" style="width: 50%;">
+				<p>
+					<br />
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$</strong><br />
+					<em>$L_USER_FIRSTNAME$ $L_USER_LASTNAME$</em></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	 </p>
+]]></body><footer><![CDATA[<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td align="center" style="width: 32%;">
+				<p>
+					 </p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">- - - - - - - - - - - - - - - - - - - - - - - - - - - -<br />
+					%G_Signature%<br />
+					($QUOTES_ACCOUNT_ID$)</span></span></p>
+			</td>
+			<td style="width: 32%;">
+				 </td>
+			<td align="center">
+				 </td>
+		</tr>
+		<tr>
+			<td align="center" colspan="3">
+				<br />
+				<span style="font-size: 10px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$  - </strong>$COMPANY_ADDRESS$, $COMPANY_ZIP$ $COMPANY_CITY$ ($COMPANY_STATE$)</span></span><br />
+				<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">$COMPANY_WEBSITE$ - </span></span><span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_Phone%</span></span>: $COMPANY_PHONE$  -  <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_SEND_FAX_BUTTON% </span></span>: $COMPANY_FAX$ </span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p style="text-align: right;">
+	<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">##PAGE## / ##PAGES##</span></span></p>
+]]></footer></template><template><type>PDFMaker</type><templatename>Standard Layout</templatename><filename>$SALESORDER_DUEDATE$_$SALESORDER_SALESORDER_NO$</filename><description></description><module>SalesOrder</module><settings><format>A4</format><orientation>portrait</orientation><margins><top>1.5</top><bottom>1.0</bottom><left>1.5</left><right>1.5</right></margins><decimals><point>,</point><decimals>2</decimals><thousands>sp</thousands></decimals></settings><header><![CDATA[<p style="text-align: center;">
+	$COMPANY_LOGO$</p>
+]]></header><body><![CDATA[<table align="center" border="0" cellpadding="5" cellspacing="3" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Subject%: </strong>$SALESORDER_SUBJECT$</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_SalesOrder No%: $SALESORDER_SALESORDER_NO$<br />
+				%M_Due Date%: $SALESORDER_DUEDATE$</span></span></strong></td>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+		</tr>
+		<tr>
+			<td style="text-align: left; vertical-align: top;">
+				 </td>
+			<td style="text-align: left; vertical-align: top;">
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Assigned To%: $SALESORDER_ASSIGNED_USER_ID$</span></span><br />
+					<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_LBL_LIST_PHONE%: $COMPANY_PHONE$<br />
+					%G_Emails%: $USER_EMAIL$</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top;">
+				<p>
+					<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Account Name%: $SALESORDER_ACCOUNT_ID$</span></span></strong><br />
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$SALESORDER_BILL_STREET$<br />
+					$SALESORDER_BILL_CODE$ $SALESORDER_BILL_CITY$ $SALESORDER_BILL_STATE$<br />
+					$SALESORDER_BILL_COUNTRY$</span></span></p>
+				<p>
+					<br />
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">[CUSTOMFUNCTION|its4you_if|$SALESORDER_CONTACT_ID$|=|||%M_Contact Name%: $SALESORDER_CONTACT_ID$|CUSTOMFUNCTION]</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top;">
+				 </td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$SALESORDER_DESCRIPTION$</span></span></p>
+<table border="0" cellpadding="3" cellspacing="0" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>#</strong></span></span></td>
+			<td>
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Product Name%/%M_Service Name%</span></span></strong></td>
+			<td align="right">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_LIST_PRICE%</span></span></strong></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Quantity%</strong></span></span></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%G_discount%</strong></span></span></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%G_Price%</strong></span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_START#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTPOSITION$</span></span></td>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$PRODUCTTITLE$</strong><br />
+				$PRODUCTINVDESCRIPTION$<br />
+				<span style="font-size: 10px;"><em>$PRODUCTEDITDESCRIPTION$</em></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTLISTPRICE$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTQUANTITY$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTSTOTALAFTERDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_END#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_total net%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$TOTALWITHOUTVAT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_discount%</span></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$TOTALDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_TAX%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$VAT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="5" rowspan="1" style="text-align: right;">
+				<span style="font-size:14px;"><span style="font-family: arial,helvetica,sans-serif;"><strong><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Total%</strong></span></strong></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:14px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$TOTAL$ $CURRENCYSYMBOL$</strong></span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">[CUSTOMFUNCTION|its4you_if|$SALESORDER_TERMS_CONDITIONS$|=|||%M_LBL_TERMS_INFORMATION%:|CUSTOMFUNCTION] </span></span></strong><em><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$SALESORDER_TERMS_CONDITIONS$</span></span></em></p>
+<table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+				 </td>
+			<td align="center" style="width: 50%;">
+				<p>
+					<br />
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$</strong><br />
+					<em>$L_USER_FIRSTNAME$ $L_USER_LASTNAME$</em></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	 </p>
+]]></body><footer><![CDATA[<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td align="center" colspan="3">
+				<span style="font-size: 10px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$  - </strong>$COMPANY_ADDRESS$, $COMPANY_ZIP$ $COMPANY_CITY$ ($COMPANY_STATE$)</span></span><br />
+				<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">$COMPANY_WEBSITE$ - </span></span><span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_Phone%</span></span>: $COMPANY_PHONE$  -  <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_SEND_FAX_BUTTON% </span></span>: $COMPANY_FAX$ </span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p style="text-align: right;">
+	<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">##PAGE## / ##PAGES##</span></span></p>
+]]></footer></template><template><type>PDFMaker</type><templatename>Standard Layout</templatename><filename>$INVOICE_INVOICEDATE$_$INVOICE_INVOICE_NO$</filename><description></description><module>Invoice</module><settings><format>A4</format><orientation>portrait</orientation><margins><top>1.5</top><bottom>1.0</bottom><left>1.5</left><right>1.5</right></margins><decimals><point>,</point><decimals>2</decimals><thousands>sp</thousands></decimals></settings><header><![CDATA[<p style="text-align: center;">
+	$COMPANY_LOGO$</p>
+]]></header><body><![CDATA[<table align="center" border="0" cellpadding="5" cellspacing="3" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$</strong></span></span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<p>
+					<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Invoice No%: $INVOICE_INVOICE_NO$ / $INVOICE_INVOICEDATE$</span></span></strong></p>
+			</td>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+		</tr>
+		<tr>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">$COMPANY_ADDRESS$<br />
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">$COMPANY_ZIP$<strong> </strong></span></span></span>$COMPANY_CITY$ ($COMPANY_STATE$)</span></span></span>$COMPANY_WEBSITE$ </span></span></span><br />
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_Phone%: $COMPANY_PHONE$<br />
+				%G_LBL_SEND_FAX_BUTTON%: $COMPANY_FAX$<br />
+				<span style="font-family: arial,helvetica,sans-serif;">%G_LBL_ORGANIZATION_VAT% </span>$COMPANY_VAT_REGISTRATION_NUMBER$</span></span></span></td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$INVOICE_ACCOUNT_ID$</span></span></strong><br />
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$INVOICE_BILL_STREET$<br />
+				$INVOICE_BILL_CODE$ $INVOICE_BILL_CITY$ $INVOICE_BILL_STATE$<br />
+				$INVOICE_BILL_COUNTRY$</span></span></td>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$INVOICE_DESCRIPTION$</span></span></p>
+<table border="0" cellpadding="3" cellspacing="0" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>#</strong></span></span></td>
+			<td>
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Product Name%/%M_Service Name%</span></span></strong></td>
+			<td align="right">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_LIST_PRICE%</span></span></strong></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Quantity%</strong></span></span></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%G_discount%</strong></span></span></td>
+			<td align="right">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_TAX%</span></span></strong></td>
+			<td align="right">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%G_Price%</strong></span></span></td>
+		</tr>
+		<tr>
+			<td colspan="7">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_START#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td colspan="2">
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTPOSITION$</span></span></td>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$PRODUCTTITLE$</strong><br />
+				$PRODUCTINVDESCRIPTION$<br />
+				<span style="font-size: 10px;"><em>$PRODUCTEDITDESCRIPTION$</em></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTLISTPRICE$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTQUANTITY$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTVATPERCENT$ %</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTSTOTALAFTERDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="7">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_END#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td colspan="2">
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td colspan="6" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_total net%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$TOTALWITHOUTVAT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_discount%</span></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$TOTALDISCOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6" rowspan="1" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_TAX%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$VAT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_SHIPPING_AND_HANDLING_CHARGE%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$SHTAXAMOUNT$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6" style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_TAX_FOR_SHIPPING_AND_HANDLING%</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$SHTAXTOTAL$ $CURRENCYSYMBOL$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6" rowspan="1" style="text-align: right;">
+				<span style="font-size:14px;"><span style="font-family: arial,helvetica,sans-serif;"><strong><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Total%</strong></span></strong></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:14px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$TOTAL$ $CURRENCYSYMBOL$</strong></span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">[CUSTOMFUNCTION|its4you_if|$INVOICE_TERMS_CONDITIONS$|=|||%M_LBL_TERMS_INFORMATION%:|CUSTOMFUNCTION] </span></span></strong><em><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$INVOICE_TERMS_CONDITIONS$</span></span></em></p>
+]]></body><footer><![CDATA[<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td align="center" colspan="3">
+				<span style="font-size: 10px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$  - </strong>$COMPANY_ADDRESS$, $COMPANY_ZIP$ $COMPANY_CITY$ ($COMPANY_STATE$)</span></span><br />
+				<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">$COMPANY_WEBSITE$ - </span></span><span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_Phone%</span></span>: $COMPANY_PHONE$  -  <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_SEND_FAX_BUTTON% </span></span>: $COMPANY_FAX$ </span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p style="text-align: right;">
+	<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">##PAGE## / ##PAGES##</span></span></p>
+]]></footer></template><template><type>PDFMaker</type><templatename>Standard Layout</templatename><filename></filename><description></description><module>Ddt</module><settings><format>A4</format><orientation>portrait</orientation><margins><top>1.5</top><bottom>1.0</bottom><left>1.5</left><right>1.5</right></margins><decimals><point>,</point><decimals>2</decimals><thousands>sp</thousands></decimals></settings><header><![CDATA[<p style="text-align: center;">
+	$COMPANY_LOGO$</p>
+]]></header><body><![CDATA[<table align="center" border="0" cellpadding="5" cellspacing="3" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<p>
+					<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Ddt No%: $DDT_DDT_NO$</span></span></strong></p>
+			</td>
+			<td style="text-align: left; vertical-align: top; width: 45%;">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_TCDate%: $DDT_DDT_DATA$</span></span></strong></td>
+			<td style="text-align: left; vertical-align: top; width: 5%;">
+				 </td>
+		</tr>
+		<tr>
+			<td style="text-align: left; vertical-align: top;">
+				 </td>
+			<td style="text-align: left; vertical-align: top;">
+				<p>
+					<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$DDT_ACCOUNTID$</span></span></strong></p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><em>%G_LBL_BILLING_ADDRESS%</em></span></span></p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$R_ACCOUNTS_BILL_STREET$<br />
+					$R_ACCOUNTS_BILL_CODE$ $R_ACCOUNTS_BILL_CITY$ - $R_ACCOUNTS_BILL_STATE$</span></span></p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$R_ACCOUNTS_BILL_COUNTRY$</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top;">
+				<p>
+					 </p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;"><em>%G_Shipping Address%</em></span></span></p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$R_ACCOUNTS_SHIP_STREET$<br />
+					$R_ACCOUNTS_SHIP_CODE$ $R_ACCOUNTS_SHIP_CITY$ - $R_ACCOUNTS_SHIP_STATE$</span></span></p>
+				<p>
+					<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$R_ACCOUNTS_SHIP_COUNTRY$</span></span></p>
+			</td>
+			<td style="text-align: left; vertical-align: top;">
+				 </td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$DDT_DESCRIPTION$</span></span></p>
+<table border="0" cellpadding="3" cellspacing="0" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>#</strong></span></span></td>
+			<td>
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%M_Product Name%/%M_Service Name%</span></span></td>
+			<td align="right">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_LIST_PRICE%</span></span></strong></td>
+			<td align="right">
+				<strong><span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">%G_Usage Unit%</span></span></strong></td>
+			<td align="right" colspan="2" rowspan="1">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>%M_Quantity%</strong></span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_START#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTPOSITION$</span></span></td>
+			<td>
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$PRODUCTTITLE$</strong><br />
+				$PRODUCTINVDESCRIPTION$<br />
+				<span style="font-size: 10px;"><em>$PRODUCTEDITDESCRIPTION$</em></span></span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTLISTPRICE$ $CURRENCYSYMBOL$</span></span></td>
+			<td style="text-align: right;">
+				<span style="font-size:12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTUSAGEUNIT$</span></span></td>
+			<td colspan="2" rowspan="1" style="text-align: right;">
+				<span style="font-size: 12px;"><span style="font-family: arial,helvetica,sans-serif;">$PRODUCTQUANTITY$</span></span></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				#PRODUCTBLOC_END#</td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+			<td>
+				 </td>
+		</tr>
+		<tr>
+			<td colspan="4" rowspan="1">
+				 </td>
+			<td colspan="2" rowspan="1">
+				 </td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	 </p>
+<p>
+	 </p>
+]]></body><footer><![CDATA[<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<td align="center" colspan="3">
+				<span style="font-size: 10px;"><span style="font-family: arial,helvetica,sans-serif;"><strong>$COMPANY_NAME$  - </strong>$COMPANY_ADDRESS$, $COMPANY_ZIP$ $COMPANY_CITY$ ($COMPANY_STATE$)</span></span><br />
+				<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">$COMPANY_WEBSITE$ - </span></span><span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_Phone%</span></span>: $COMPANY_PHONE$  -  <span style="font-family: arial,helvetica,sans-serif;"><span style="font-family: arial,helvetica,sans-serif;">%G_LBL_SEND_FAX_BUTTON% </span></span>: $COMPANY_FAX$ </span></span></td>
+		</tr>
+	</tbody>
+</table>
+<p style="text-align: right;">
+	<span style="font-size:10px;"><span style="font-family: arial,helvetica,sans-serif;">##PAGE## / ##PAGES##</span></span></p>
+]]></footer></template><template><type>PDFMaker</type><templatename>Standard Layout</templatename><filename></filename><description></description><module>HelpDesk</module><settings><format>A4</format><orientation>portrait</orientation><margins><top>1.5</top><bottom>1.0</bottom><left>1.5</left><right>1.5</right></margins><decimals><point>,</point><decimals>2</decimals><thousands>sp</thousands></decimals></settings><header><![CDATA[<table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td rowspan="2" style="text-align:center; white-space:nowrap; width:255px">$COMPANY_LOGO$<br />
+			$COMPANY_ADDRESS$<span style="font-family:dejavu sans"><span style="font-size:11px"> - </span></span>$COMPANY_ZIP$<span style="font-family:dejavu sans"><span style="font-size:11px"> </span></span>$COMPANY_CITY$<span style="font-family:dejavu sans"><span style="font-size:11px"> (</span></span>$COMPANY_STATE$<span style="font-family:dejavu sans"><span style="font-size:11px">)<br />
+			Tel: </span></span>$COMPANY_PHONE$<span style="font-family:dejavu sans"><span style="font-size:11px">&nbsp;</span></span></td>
+			<td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td style="width:200px"><span style="font-size:10px"><span style="font-family:dejavu sans">DATA: ##DD.MM.YYYY##</span></span></td>
+		</tr>
+		<tr>
+			<td>
+			<p><span style="font-size:10px"><span style="font-family:dejavu sans">TECNICO/TUTOR:<br />
+			<strong><span style="font-size:12px">$L_USER_FIRSTNAME$ $L_USER_LASTNAME$</span></strong></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="text-align:center">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="text-align:center">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="text-align:center">
+			<p><span style="font-size:26px"><span style="font-family:dejavu sans">RAPPORTO DI INTERVENTO</span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="text-align:center">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+]]></header><body><![CDATA[<table align="left" border="0" cellpadding="0" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td>
+			<table style="border-collapse:collapse; border:1px solid #000; width:800px">
+				<tbody>
+					<tr>
+						<td colspan="4" style="background-color:rgb(221, 221, 221)"><span style="font-size:12px"><strong>Estremi del Committente/Utente</strong></span></td>
+					</tr>
+					<tr>
+						<td style="width:120px"><span style="font-size:12px">Cliente</span></td>
+						<td>$R_ACCOUNTS_ACCOUNTNAME$</td>
+						<td style="width:50px"><span style="font-size:12px">Telefono</span></td>
+						<td>$R_ACCOUNTS_PHONE$</td>
+					</tr>
+					<tr>
+						<td><span style="font-size:12px">Luogo</span></td>
+						<td colspan="3" rowspan="1">$R_ACCOUNTS_BILL_STREET$<span style="font-size:12px">, </span>$R_ACCOUNTS_BILL_CODE$<span style="font-size:12px">&nbsp;</span>$R_ACCOUNTS_BILL_CITY$&nbsp;$R_ACCOUNTS_BILL_COUNTRY$</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table align="left" border="0" cellpadding="3" cellspacing="0" style="border-collapse:collapse; border:1px solid #000; width:800px">
+				<tbody>
+					<tr>
+						<td style="background-color:rgb(221, 221, 221)"><span style="font-size:12px"><strong>OGGETTO DELL&#39;INTERVENTO</strong></span></td>
+					</tr>
+					<tr>
+						<td>
+						<p>$HELPDESK_TICKET_TITLE$</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table align="left" border="0" cellpadding="3" cellspacing="0" style="border-collapse:collapse; border:1px solid #000; width:800px">
+				<tbody>
+					<tr>
+						<td style="background-color:rgb(221, 221, 221)"><span style="font-size:12px"><strong>DESCRIZIONE DELL&#39;INTERVENTO</strong></span></td>
+					</tr>
+					<tr>
+						<td>
+						<p>$HELPDESK_DESCRIPTION$</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table align="left" border="0" cellpadding="3" cellspacing="0" style="border-collapse:collapse; border:1px solid #000; width:800px">
+				<tbody>
+					<tr>
+						<td style="background-color:rgb(221, 221, 221)"><span style="font-size:12px"><strong>SOLUZIONE DELL&#39;INTERVENTO</strong></span></td>
+					</tr>
+					<tr>
+						<td>
+						<p>$HELPDESK_SOLUTION$</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+]]></body><footer><![CDATA[<table align="center" cellpadding="5" cellspacing="0" style="border-collapse:collapse;border:1px solid #000;width:100%;table-layout:fixed">
+	<tbody>
+		<tr>
+			<td colspan="4" style="background-color:rgb(221, 221, 221)"><span style="font-size:12px"><strong>Convalida Committente</strong></span></td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top; width:40px"><span style="font-size:12px">Data</span></td>
+			<td style="vertical-align:top">
+			<p>&nbsp;</p>
+
+			<p>&nbsp;</p>
+
+			<p>&nbsp;</p>
+			</td>
+			<td style="vertical-align:top; width:40px"><span style="font-size:12px">Firma</span></td>
+			<td>
+			<p>$HELPDESK_SIGNATURE$</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+]]></footer></template></export>

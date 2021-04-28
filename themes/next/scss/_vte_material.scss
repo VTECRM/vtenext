@@ -1,0 +1,231 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Override some other variables */
+$material-font-path: 'fonts/material-design-icons';
+$material-google-font-path: 'fonts/material-icons';
+
+/* Include the material theme */
+@import 'material/_vtematerial';
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+	font-family: $font-family-base;
+	font-weight: 400;
+}
+
+.navbar-nav > li {
+	padding-bottom: 0px;
+	padding-top: 0px;
+	
+	&.shrink {
+		a {
+			padding-left: 2px;
+			padding-right: 2px;
+			padding-top: 2px !important;
+			
+			.userAvatar {
+				position: relative;
+				top: -1px;
+			}
+		}
+	}
+	
+	&.active {
+		color: $vte-submenu;
+	}
+}
+.navbar-nav > li > a, .navbar-brand {
+	padding-top: 6px !important; 
+	padding-bottom: 0 !important;
+	height: 34px;
+}
+.navbar {
+	min-height: 34px; // crmv@97692
+}
+
+.pagination {
+	@include vtecard();
+	padding: 6px;
+	
+	label {
+		margin-bottom: 0px;
+	}
+	.pagenumber {
+		width: 40px;
+		height: 20px;
+		display: inline-block;
+	}
+}
+
+div.radio-horiz {
+	display: inline-block;
+	
+	label {
+		padding-left: 30px;
+	}
+}
+
+/* Some additions */
+[class^="mdi-"], [class*="mdi-"] {
+	&.mdi-sm:before, &.mdi-sm:after {
+		font-size: 0.75em;
+		vertical-align: -10%;
+	}
+}
+
+.btn {
+	border-radius: $vte-btn-border-radius;
+	
+	& .vteicon, & .vteicon2, & .icon-module {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 24px;
+  	}
+}
+
+.btn-group {
+	box-shadow: none;
+}
+.btn-group, .btn-group-vertical {
+	border-radius: 30px;
+}
+
+.dropdown-menu {
+	background-color: $dropdown-bg;
+	> li > a {
+		color: $dropdown-link-color;
+	}
+}
+
+.dropdown-menu > li > a {
+	&:hover,
+	&:focus {
+		color: $dropdown-link-hover-color;
+		background-color: $dropdown-link-hover-bg;
+	}
+}
+
+.dropdown-menu > .active > a {
+	&,
+	&:hover,
+	&:focus {
+		color: $dropdown-link-active-color;
+		background-color: $dropdown-link-active-bg;
+	}
+}
+
+.modal-backdrop {
+	background: $vte-modal-backdrop-bg;
+}
+
+select.form-control {
+	color: $vte-text;
+	& option {
+		color: $vte-text;
+	}
+}
+
+.form-group .control-label {
+	color: $vte-field-label;
+}
+
+.checkbox input[type=checkbox]:checked + .checkbox-material .check, .checkbox-default input[type=checkbox]:checked + .checkbox-material .check {
+	color: $vte-checkbox-color;
+}
+
+.checkbox input[type=checkbox]:checked + .checkbox-material .check:before, .checkbox-default input[type=checkbox]:checked + .checkbox-material .check:before {
+	color: $vte-checkbox-color;
+}
+
+.radio label .checkcircle {
+	border: 2px solid $vte-radio-color;
+}
+
+.radio input[type=radio]:checked ~ .check {
+	background-color: $vte-radio-color;
+}
+
+.radio input[type=radio]:checked ~ .checkcircle {
+	border-color: $vte-radio-color;
+}
+
+.alert {
+	border-radius: $vte-box-border-radius;
+}
+
+@mixin materialInputs {
+	.dvtCellLabel, .cellLabel {
+		@extend .control-label;
+		color: $vte-field-label;
+	}
+	.dvtCellInfo,
+	.cellInfo,
+	.dvtCellInfoOn,
+	.dvtCellInfoM,
+	.dvtCellInfoMOn,
+	.dvtCellInfoOff {
+		@extend .form-group;
+		min-height: 25px;
+
+		& input,
+		& select {
+			height: 25px;
+		}
+
+		& select[multiple] {
+			height: auto;
+		}
+
+		& textarea {
+			height: auto;
+		}
+		
+		font-size: $vte_font_size;
+	}
+
+	.detailedViewTextBox,
+	.detailedViewTextBoxOn {
+		@extend .form-control;
+		font-size: $vte_font_size;
+	}
+}
+
+@if $vte-field-border == false {
+	@include materialInputs;
+}
+
+.popover, .tooltip {
+	.arrow, .tooltip-arrow {
+ 		display: block;
+	}
+	&.top .tooltip-arrow {
+		border-top-color: $popover-background;
+	}
+	&.top-left .tooltip-arrow {
+		border-top-color: $popover-background;
+	}
+	&.top-right .tooltip-arrow {
+		border-top-color: $popover-background;
+	}
+	&.right .tooltip-arrow {
+		border-right-color: $popover-background;
+	}
+	&.left .tooltip-arrow {
+		border-left-color: $popover-background;
+	}
+	&.bottom .tooltip-arrow {
+		border-bottom-color: $popover-background;
+	}
+	&.bottom-left .tooltip-arrow {
+		border-bottom-color: $popover-background;
+	}
+	&.bottom-right .tooltip-arrow {
+		border-bottom-color: $popover-background;
+	} 
+	& .tooltip-inner {
+		font-size: 14px;
+	}
+}

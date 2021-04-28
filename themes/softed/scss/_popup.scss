@@ -1,0 +1,147 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@98810 */
+/* crmv@98866 */
+
+.popup-link-record,
+.popup-area-settings {
+	height: 94%; /* leave space for top panel */
+	
+	#linkMsgMainTab {
+		width: 100%;
+		/*height: 100%;
+		position: absolute;*/
+		z-index: -10;
+	}
+	
+	#linkMsgLeftPane {
+		width: 20%;
+		min-width: 200px;
+		border-right: 1px solid $list-modules-border;
+		vertical-align: top;
+	}
+	
+	#linkMsgRightPane {
+		min-width: 400px;
+		vertical-align: top;
+		padding: 8px;
+	}
+	
+	#linkMsgRightPaneTop {
+		vertical-align: top;
+		padding-bottom: 2px;
+	}
+	
+	#linkMsgRightPaneBottom {
+		height: 20%;
+		max-height: 350px;
+		min-height: 100px;
+		padding-top: 2px;
+	}
+	
+	#linkMsgModTab {
+		width: 100%;
+	}
+	
+	.linkMsgModTd {
+		margin: 2px;
+		padding: 15px;
+		font-weight: 700;
+		cursor: pointer;
+		background-color: $list-modules-row-bg;
+		border-bottom: 1px solid $list-modules-row-border;
+	
+		& .vteicon, & .vteicon2, & .icon-module {
+			display: block;
+			float: left;
+			text-align: center;
+			color: $list-modules-row-icon-color;
+		}
+	}
+	
+	.linkMsgModTd:hover {
+		background-color: $list-modules-row-hover;
+	}
+	
+	.linkMsgModTdSelected {
+		background-color: $list-modules-row-selected;
+	}
+	
+	.popupLinkTitleRow {
+	}
+	
+	.popupLinkListTitleRow {
+	}
+	
+	.popupLinkListTitleCell {
+	}
+	
+	.popupLinkListDataRow {
+		cursor: pointer;
+		border-bottom: 1px solid #a0a0a0;
+		text-align: left;
+		height: 24px;
+	}
+	
+	.popupLinkListDataRow0 {
+		background-color: #f0f0f0;
+	}
+	
+	.popupLinkListDataRow1 {
+	}
+	
+	.popupLinkListDataRow:hover,
+	.popupLinkListDataRow.hovered {
+		background-color: #e0e0e0;
+	}
+	
+	.popupLinkListDataExtraRow {
+		padding: 6px;
+	}
+	
+	.popupLinkListDataExtraCell {
+		color: #606060;
+		border-bottom: 1px solid #d0d0d0;
+		padding-bottom: 6px !important;
+	}
+	
+	.popupLinkListDataCell {
+		cursor: pointer;
+	}
+	
+	.popupLinkTitle {
+		font-weight: 700;
+		padding: 4px;
+	}
+	
+	.popupLinkList {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
+	.popupLinkListLoading {
+	}
+	
+	.popupLinkListNoData {
+		width: 90%;
+		text-align: center;
+		padding: 10px;
+		font-style: italic;
+	}
+	
+	.navigationBtn {
+		cursor: pointer;
+	}
+	
+	#popupAttachDiv {
+		width: 100%;
+	}
+	
+	#popupMsgAttachTitle {
+		margin-bottom: 5px;
+		font-weight: 700;
+	}
+}

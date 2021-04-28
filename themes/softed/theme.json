@@ -1,0 +1,35 @@
+{
+	"name": "Softed",
+	"version": "3.1",
+	"description": "Main theme for VTE",
+	"author": "VTECRM",
+	
+	"includes": {
+		"css": [
+			{"active": true, "file":"vte_bootstrap.css", "media":"screen"},
+			{"active": true, "file":"ripples.min.css", "media":"screen"},
+			{"active": true, "file":"datetimepicker.css", "media":"screen"},
+			{"active": true, "file":"jquery.dropdown.css", "media":"screen"},
+			{"active": true, "file":"jquery-ui.css", "media":"screen"},
+			{"active": true, "file":"style.css", "media":"screen"},
+			{"active": true, "file":"style_print.css", "media":"print"}
+		],
+		"js": [
+			"js/bootstrap/bootstrap.min.js",
+			"js/bootstrap/bs_conflicts.js",
+			"js/arrive.min.js",
+			"js/moment-l18n.js",
+			"js/material/ripples.js",
+			"js/material/material.js",
+			"js/material/datetimepicker.js",
+			"js/jquery.dropdown.js",
+			"index.js"
+		]
+	},
+	
+	"body": {
+		"insert": [
+			"softed.tpl"
+		]
+	}
+}

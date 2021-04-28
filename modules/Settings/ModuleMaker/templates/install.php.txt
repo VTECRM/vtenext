@@ -1,0 +1,423 @@
+<?php
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@64542 crmv@105127 */
+
+/*@ DEL
+
+	This is a template file for the ModuleMaker
+	There are some special values in this file:
+	
+	1. Any comment starting with /*@ is treated as a special comment and the next characters
+	on that line specifies a command:
+		DEL: remove all the comment until the closing tag (which has the @ sign as well)
+		REPLACE: the comment is replaced with a standard comment, with some other text inside
+		
+	2. All the variables that begin with $TPL_ are replaced with other values/variables
+	
+@*/
+
+/* Automatic installation script */
+/* This file must be placed in the VTEROOT/storage/custom_modules folder */
+
+// security check
+if (php_sapi_name() != "cli" && !defined('MODULEMAKERSCRIPT')) {
+	throw new InstallException("You are not allowed to invoke this script in this way!");
+}
+
+$configInc = '../../config.inc.php';
+if (!is_readable($configInc)) throw new InstallException("File $configInc not found. Ensure this file is in the storage/custom_modules folder");
+
+/* Includes */
+require($configInc);
+chdir($root_directory);
+require('vteversion.php'); // crmv@181168
+
+require_once('include/utils/utils.php');
+require_once('modules/Update/Update.php');
+require_once('vtlib/Vtecrm/Utils.php');
+require_once('vtlib/Vtecrm/Field.php');
+require_once('vtlib/Vtecrm/Module.php');
+
+/* Globals */
+global $adb, $table_prefix, $vtlib_Utils_Log, $current_user;
+$vtlib_Utils_Log = true;
+
+// missing current_user, when invoking from CLI
+if (!isset($current_user)) {
+	$current_user = CRMEntity::getInstance('Users');
+	$current_user->id = 1;
+}
+
+/* Script class */
+$MMS = new ModuleMakerScript();
+
+/* Basic variables */
+$target_vte_version = $TPL_VTETARGETVERSION;
+$target_vte_revision = $TPL_VTETARGETREVISION;
+$module_files = $TPL_MODULEFILESDIR;
+$module_name = $TPL_MODULENAME;
+
+$module_mainfield = $TPL_MAINFIELD;
+$module_maintable = $TPL_MAINTABLE;
+$module_tableid = $TPL_TABLEID;
+$module_areaid = $TPL_AREAID;
+$module_is_inventory = $TPL_ISINVENTORY;
+
+$module_dest_dir = "modules/$module_name";
+
+$module_all_operations = $TPL_ALLOPERATIONS;
+
+/* Module variables */
+
+// the tables to be created
+$module_create_tables = $TPL_CREATETABLES;
+
+// the default sharing for the module
+$module_default_sharing = $TPL_DEFAULTSHARING;
+
+// the operations for the module
+$module_operations = $TPL_MODOPERATIONS;
+
+// the panels to create
+$module_panels = $TPL_PANELS;
+
+// the blocks to create
+$module_blocks = $TPL_BLOCKS;
+
+// the fields
+$module_fields = $TPL_FIELDS;
+
+// other modules fields
+$module_other_fields = $TPL_OTHERFIELDS;
+
+// the filters
+$module_filters = $TPL_FILTERS;
+
+// the sequence prefix (or empty if not used)
+$module_sequence = $TPL_SEQUENCEPREFIX;
+
+// relations NtoN
+$module_relations = $TPL_RELATIONS;
+
+// relations 1toN to existing fields
+$module_addrelations = $TPL_ADDRELATIONS;
+
+
+// labels
+$labels = $TPL_LANGUAGES;
+
+
+// ----------------- SCRIPT START -------------------
+
+
+// version check
+if ($enterprise_current_version != $target_vte_version || $enterprise_current_build != $target_vte_revision) {
+	$MMS->warn("This module has been created for a different VTE version (VTE $target_vte_version, revision $target_vte_revision). There is no guarantee that it will work as expected!");
+}
+
+// check if module is already installed
+if (is_dir($module_dest_dir)) {
+	throw new InstallException("There is already a folder called $module_dest_dir. Please, clean up manually the files");
+}
+
+if (isModuleInstalled($module_name)) {
+	throw new InstallException("The module $module_name seems to be already installed. Please do a full uninstall and try again");
+}
+
+// check destination directory
+if (!is_writable('modules')) {
+	throw new InstallException("The modules folder is not writable, please fix the permissions");
+}
+
+// check the source files
+if (!is_dir($module_files) || !is_readable($module_files)) {
+	throw new InstallException("The folder with the module files is not readable");
+}
+
+// copy the files
+$r = $MMS->rcopy($module_files, $module_dest_dir);
+if (!$r) throw new InstallException("Unable to copy the files in the destination folder $module_dest_dir");
+
+
+// check the module file
+if (!is_readable("modules/$module_name/{$module_name}.php")) {
+	throw new InstallException("The module file has not been found");
+}
+
+// create the tables
+if (is_array($module_create_tables)) {
+	foreach ($module_create_tables as $table=>$key) {
+		if(!Vtecrm_Utils::CheckTable($table)) {
+			Vtecrm_Utils::CreateTable($table,"$key I(19) PRIMARY",true);
+		}
+	}
+}
+
+// create and install module
+$newModule = new Vtecrm_Module();
+$newModule->name = $module_name;
+$newModule->isentitytype = true;
+$newModule->isinventory = (bool)$module_is_inventory;
+$newModule->basetable = $module_maintable;
+$newModule->entityidcolumn = $module_tableid;
+$newModule->entityidfield = $module_tableid;
+$tabid = $newModule->save();
+if (empty($tabid)) throw new InstallException("Unable to install the module properly");
+
+// trigger events
+Vtecrm_Module::fireEvent($newModule->name, Vtecrm_Module::EVENT_MODULE_POSTINSTALL);
+
+// initialize webservice
+Vtecrm_Webservice::initialize($newModule);
+
+// set Default sharing
+$newModule->setDefaultSharing($module_default_sharing ?: 'Private');
+
+// add it to the menu
+$menuInstance = Vtecrm_Menu::getInstance('Tools');
+$menuInstance->addModule($newModule);
+
+// enable module operations
+if (is_array($module_operations) && is_array($module_all_operations)) {
+	// crmv@104956
+	// remove quickcreate, since it's handled in a different way!
+	if (in_array('QuickCreate', $module_operations)) {
+		$k = array_search('QuickCreate', $module_operations);
+		unset($module_operations[$k]);
+		$module_operations = array_values($module_operations);
+		// insert into quickcreate table
+		if(Vtecrm_Utils::CheckTable($table_prefix.'_quickcreate')) {
+			// make a replace!
+			$adb->pquery("DELETE FROM {$table_prefix}_quickcreate WHERE tabid = ?", array($tabid));
+			$adb->pquery("INSERT INTO {$table_prefix}_quickcreate (tabid) VALUES (?)", array($tabid));
+			if (class_exists('Cache')) {
+				$cache = Cache::getInstance('getQuickCreateModules');
+				if ($cache) $cache->clear();
+			}
+		}
+	}
+	// crmv@104956e
+	$toDisable = array_diff($module_all_operations, $module_operations);
+	if (count($toDisable) > 0) $newModule->disableTools($toDisable);
+	if (count($module_operations) > 0) $newModule->enableTools($module_operations);
+}
+
+// module sequence numbering
+if (!empty($module_sequence) && is_array($module_fields)) {
+	foreach ($module_fields as $f) {
+		if ($f['uitype'] == 4) {
+			$entityModule = CRMEntity::getInstance($module_name);
+			$entityModule->setModuleSeqNumber('configure', $module_name, $module_sequence, 1);
+			break;
+		}
+	}
+}
+
+// insert it in the area
+if ($module_areaid > 0) {
+	require_once('modules/Area/Area.php');
+	$AManager = AreaManager::getInstance();
+	if (method_exists($AManager, 'insertModulesInArea')) {
+		$AManager->insertModulesInArea($module_areaid, -1, array($tabid));
+	} else {
+		$MMS->warn('The module was not inserted in the Area, since the method insertModulesInArea was not found');
+	}
+}
+
+// create the panels
+$blockRet = $MMS->createPanels($module_panels);
+
+// create the blocks
+$blockRet = $MMS->createBlocks($module_blocks);
+
+// create the fields
+$fieldRet = $MMS->createFields($module_fields);
+
+// other fields (for relations)
+if (is_array($module_other_fields)) {
+	$fieldRetOther = $MMS->createFields($module_other_fields);
+}
+
+// set the module identifier
+if (!empty($fieldRet[$module_mainfield])) {
+	$newModule->setEntityIdentifier($fieldRet[$module_mainfield]);
+} else {
+	$MMS->warn("The module identifier field $module_mainfield has not been created");
+}
+
+// create the filters
+$filterRet = $MMS->createFilters($module_filters);
+
+
+// relations NtoN (couple of related lists)
+if (is_array($module_relations)) {
+	foreach ($module_relations as $rel) {
+		$relinst = Vtecrm_Module::getInstance($rel['module']);
+		if ($relinst) {
+			// check the relation function
+			if (!empty($rel['function'])) {
+				$func = $rel['function'];
+			} elseif ($rel['module'] == 'Messages') {
+				$func = 'get_messages_list';
+			} elseif ($rel['module'] == 'Documents') {
+				$func = 'get_attachments';
+			} else {
+				$func = 'get_related_list';
+			}
+			// check the inverse relation function
+			if (!empty($rel['reverse_function'])) {
+				$func2 = $rel['reverse_function'];
+			} elseif ($rel['module'] == 'Documents') {
+				$func2 = 'get_documents_dependents_list';
+			} else {
+				$func2 = $func;
+			}
+			
+			// no inverse related for messages
+			if ($func == 'get_messages_list') {
+				$inverse = false;
+			} else {
+				$inverse = true;
+			}
+			
+			// create related lists
+			if ($inverse) $relinst->setRelatedList($newModule, $module_name, $rel['actions'], $func2);
+			$newModule->setRelatedList($relinst, $rel['module'], $rel['actions'], $func);
+		}
+	}
+}
+
+// relations 1toN with existing fields (eg: calendar)
+if (is_array($module_addrelations)) {
+	foreach ($module_addrelations as $rel) {
+		$relinst = Vtecrm_Module::getInstance($rel['module']);
+		if ($relinst) {
+			$label = $rel['module'];
+			if (!empty($rel['function'])) {
+				$func = $rel['function'];
+			} elseif ($rel['module'] == 'Calendar') {
+				$func = 'get_activities';
+			} else {
+				$func = 'get_dependents_list';
+			}
+			
+			if ($func == 'get_activities') {
+				$label = 'Activities';
+			}
+			
+			// set the related for this module
+			$newModule->setRelatedList($relinst, $label, $rel['actions'], $func);
+			
+			// add this module to the relation field
+			if ($rel['field']) {
+				$field = @Vtecrm_Field::getInstance($rel['field'], $relinst);
+				if ($field) {
+					$field->setRelatedModules(array($module_name));
+				}
+				// add it also for the other module
+				if ($func == 'get_activities') {
+					$relEvents = Vtecrm_Module::getInstance('Events');
+					if ($relEvents) {
+						$field = @Vtecrm_Field::getInstance($rel['field'], $relEvents);
+						if ($field) {
+							$field->setRelatedModules(array($module_name));
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+
+// other labels
+if (is_array($labels)) {
+	foreach ($labels as $module=>$modlang) {
+		foreach ($modlang as $lang=>$translist) {
+			foreach ($translist as $label=>$translabel) {
+				SDK::setLanguageEntry($module, $lang, $label, $translabel);
+			}
+		}
+	}
+}
+
+
+// ----------------------------------- CLASSES ---------------------------------------
+
+class InstallException extends Exception { }
+
+// some useful functions for the install
+class ModuleMakerScript {
+	
+	public $enableLog = true;
+	
+	public function warn($s) {
+		return $this->log('[WARNING] '.$s);
+	}
+	
+	public function log($s) {
+		if ($this->enableLog) echo $s."\n";
+	}
+	
+	// copies files and non-empty directories
+	public function rcopy($src, $dst) {
+		global $new_folder_storage_owner;
+		if (is_dir($src)) {
+			@mkdir($dst, 0755);
+			if (!empty($new_folder_storage_owner)) {
+				if ($new_folder_storage_owner['user'] != '') @chown($dst, $new_folder_storage_owner['user']);
+				if ($new_folder_storage_owner['group'] != '') @chgrp($dst, $new_folder_storage_owner['group']);
+			}
+			$files = scandir($src);
+			foreach ($files as $file) {
+				if ($file != "." && $file != "..") {
+					$r = $this->rcopy("$src/$file", "$dst/$file");
+					if (!$r) return $r;
+				}
+			}
+		} elseif (file_exists($src)) {
+			$r = copy($src, $dst);
+			if ($r) {
+				if ($new_folder_storage_owner['user'] != '') @chown($dst, $new_folder_storage_owner['user']);
+				if ($new_folder_storage_owner['group'] != '') @chgrp($dst, $new_folder_storage_owner['group']);
+			}
+			return $r;
+		}
+		return true;
+	}
+	
+	public function createPanels($panels) {
+		if (!class_exists('Update') || !method_exists(Update, 'create_panels')) {
+			throw new InstallException("The method Update::create_panels has not been found, please update the VTE");
+		}
+		return Update::create_panels($panels);
+	}
+	
+	public function createBlocks($blocks) {
+		if (!class_exists('Update') || !method_exists(Update, 'create_blocks')) {
+			throw new InstallException("The method Update::create_blocks has not been found, please update the VTE");
+		}
+		return Update::create_blocks($blocks);
+	}
+	
+	public function createFields($fields) {
+		if (!class_exists('Update') || !method_exists(Update, 'create_fields')) {
+			throw new InstallException("The method Update::create_fields has not been found, please update the VTE");
+		}
+		return Update::create_fields($fields);
+	}
+	
+	public function createFilters($filters) {
+		if (!class_exists('Update') || !method_exists(Update, 'create_filters')) {
+			throw new InstallException("The method Update::create_filters has not been found, please update the VTE");
+		}
+		return Update::create_filters($filters);
+	}
+	
+}
+

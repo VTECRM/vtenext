@@ -1,0 +1,11 @@
+{
+    "name": "vtecrm/vtesync",
+    "description": "Module to synchronize VTE with different systems",
+    "require": {
+		"league/oauth2-client": "^2.0",
+        "stevenmaguire/oauth2-salesforce": "*",
+        "mrjoops/oauth2-jira": "^0.2",
+        "hubspot/hubspot-php": "^2.0",
+        "flipboxdigital/oauth2-hubspot": "^1.0"
+    }
+}

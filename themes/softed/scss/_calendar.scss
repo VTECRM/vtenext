@@ -1,0 +1,107 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+.calendarViewButton, .todayButton {
+}
+
+.calendarViewButton {
+}
+
+#addEvent {
+	position: fixed;
+	margin: 0px auto;
+	z-index: 100;
+	width: 80%;
+	max-width: 1000px;
+	height: 560px;
+	padding: 5px;
+}
+
+#addEvent .active {
+	color: $black;
+}
+
+#addEvent .main-content {
+	position: relative;
+}
+
+#addEvent .field-container {
+	width: 100%;
+	margin: 0px auto;
+}
+
+#addEvent .nav-tabs {
+	background-color: $vte-tab-bg;
+	border: 0px none;
+}
+
+#addEvent .nav-tabs > li {
+	& > a {
+		padding: 6px 15px;
+	}
+
+	& > a,
+	& > a:hover,
+	& > a:focus {
+		color: $vte-tab-color !important;
+		font-weight: 700;
+		cursor: pointer;
+	}
+	
+	&.active {
+		border-bottom: 3px solid $vte-tab-selected-border;
+		padding-bottom: 0;
+		
+		& > a,
+		& > a:hover,
+		& > a:focus {
+			color: $vte-tab-selected-color !important;
+			font-weight: 700;
+			cursor: pointer;
+		}
+	}
+	
+	&:not(.active) {
+		& > a,
+		& > a:hover,
+		& > a:focus {
+			color: $vte-tab-disable-color !important;
+		}
+	}
+}
+
+#CalendarAll_list {
+	text-align: left;
+	padding: 3px 0px 2px 0px;
+	min-height: 150px;
+}
+
+#CalendarAll_list .invBubble .invRemoveIcon {
+	cursor: pointer;
+}
+
+@media(max-width:767px) {
+	#addEvent .content-left {
+		border-right: 0px none;
+	}	
+}
+
+@media(min-width:768px) {
+	#addEvent .content-left {
+		border-right: 0px none;
+	}
+}
+
+@media(min-width:992px) {
+	#addEvent .content-left {
+		border-right: 1px solid $separator-color;
+	}
+}
+
+@media(min-width:1200px) {
+	#addEvent .content-left {
+		border-right: 1px solid $separator-color;
+	}
+}

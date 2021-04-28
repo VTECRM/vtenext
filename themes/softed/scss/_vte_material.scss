@@ -1,0 +1,33 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Override some other variables */
+$material-font-path: 'fonts/material-design-icons';
+$material-google-font-path: 'fonts/material-icons';
+
+/* Include the material theme */
+@import 'material/_vtematerial';
+
+html, body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+	font-family: $font-family-base;
+	font-weight: 400;
+}
+
+/* Some additions */
+[class^="mdi-"], [class*="mdi-"] {
+	&.mdi-sm:before, &.mdi-sm:after {
+		font-size: 0.75em;
+		vertical-align: -10%;
+	}
+}
+
+.btn {
+	& .vteicon, & .vteicon2, & .icon-module {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 24px;
+	}
+}

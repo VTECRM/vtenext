@@ -1,0 +1,208 @@
+/* 
+================================================
+autosuggest, inquisitor style
+================================================
+*/
+
+div.autosuggest
+{
+	position: absolute;
+	background-position: top;
+	background-repeat: no-repeat;
+	padding: 0px 0 0 0;
+	z-index: 5001;	/* crmv@20094 */
+}
+
+/* IEXX compatinility */
+* html div.autosuggest {
+	padding-top:1px; 
+}
+
+/* Only IE7 compatibility */
+*+html div.autosuggest {
+	margin-top:12px;
+	padding:0px;
+}
+
+div.autosuggest div.as_header
+{
+	margin-top:5px;
+	position: relative;
+	height: 3px;
+	padding: 1px 0 0 0 ;
+	border-top:1px solid #95a5c6;
+	border-left:1px solid #95a5c6;
+	border-right:1px solid #95a5c6;
+	background-color:#ffffff;
+	background-position: top right;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+div.autosuggest div.as_footer
+{
+	position: relative;
+	height: 3px;
+	padding: 1px 0 0 0 ;
+	border-bottom:1px solid #95a5c6;
+	border-left:1px solid #95a5c6;
+	border-right:1px solid #95a5c6;
+	background-color:#ffffff;
+	background-position: top right;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+/* Only IE7 compatibility */
+*+html div.autosuggest div.as_header { margin-top:0px; }
+* html div.autosuggest div.as_header { margin-top:5px; }
+
+div.autosuggest div.as_footer
+{
+	/* border-bottom:1px solid #95a5c6; */
+}
+
+div.autosuggest div.as_header div.as_corner,
+div.autosuggest div.as_footer div.as_corner
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+div.autosuggest div.as_footer div.as_corner
+{
+	
+}
+div.autosuggest div.as_header div.as_bar,
+div.autosuggest div.as_footer div.as_bar
+{
+	height: 0px;
+	overflow: hidden;
+	background-color: #ffffff;
+}
+
+
+div.autosuggest ul
+{
+	list-style: none;
+	margin: 0 0 -4px 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #ffffff;
+	border-left:1px solid #95a5c6;
+	border-right:1px solid #95a5c6;
+}
+
+div.autosuggest ul li
+{
+	color: #5776ae;
+	padding: 0;
+	margin: 0 4px 4px;
+	text-align: left;
+}
+
+div.autosuggest ul li a
+{
+	color: #000000;
+	display: block;
+	text-decoration: none;
+	background-color: transparent;
+	position: relative;
+	padding: 0;
+	width: 100%;
+}
+div.autosuggest ul li a:hover
+{
+	background-color: #3b5998;
+	text-decoration:none;
+}
+div.autosuggest ul li.as_highlight a:hover
+{
+	background-color: #3b5998;
+	text-decoration:none;
+}
+
+div.autosuggest ul li a span
+{
+	display: block;
+	padding: 3px 6px;
+	font-weight: normal;
+}
+
+div.autosuggest ul li a span small
+{
+	font-weight: normal;
+	color: #999;
+}
+
+div.autosuggest ul li.as_highlight a span small
+{
+	color: #ccc;
+}
+
+div.autosuggest ul li.as_highlight a
+{
+	color: #fff;
+	background-color: #3b5998;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	text-decoration:none;
+}
+
+div.autosuggest ul li.as_highlight a span
+{
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+
+div.autosuggest ul li a .tl,
+div.autosuggest ul li a .tr
+{
+	background-image: transparent;
+	background-repeat: no-repeat;
+	width: 6px;
+	height: 6px;
+	position: absolute;
+	top: 0;
+	padding: 0;
+	margin: 0;
+}
+div.autosuggest ul li a .tr
+{
+	right: 0;
+}
+
+div.autosuggest ul li.as_highlight a .tl
+{
+	left: 0;
+	background-position: bottom left;
+}
+
+div.autosuggest ul li.as_highlight a .tr
+{
+	right: 0;
+	background-position: bottom right;
+}
+
+div.autosuggest ul li.as_warning
+{
+	font-weight: bold;
+	text-align: center;
+}
+
+div.autosuggest ul li.as_header
+{
+	font-weight: bold;
+	font-size:14px;
+	color:#FFFFFF;
+	background:#999;
+	padding-left:6px;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+div.autosuggest ul em
+{
+	font-style: normal;
+	font-weight:bold;
+	color: #000000;
+	background-color:#d8dfea;
+}

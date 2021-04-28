@@ -1,0 +1,84 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+// https://github.com/google/material-design-icons/blob/master/iconfont/codepoints
+
+@function icon-content($var) {
+	@return unquote("\"#{ $var }\"");
+}
+
+$material-var-business: \e0af;
+$material-var-vertical_align_bottom: \e258;
+$material-var-event: \e878;
+$material-var-person: \e7fd;
+$material-var-description: \e873;
+$material-var-warning: \e002;
+$material-var-perm_identity: \e8a6;
+$material-var-contact_mail: \e0d0;
+$material-var-euro_symbol: \e926;
+$material-var-import_contacts: \e0e0;
+$material-var-call_split: \e0b6;
+$material-var-widgets: \e1bd;
+$material-var-event_busy: \e615;
+$material-var-schedule: \e8b5;
+$material-var-update: \e923;
+$material-var-build: \e869;
+$material-var-group_add: \e7f0;
+$material-var-business_center: \eb3f;
+$material-var-local_shipping: \e558;
+$material-var-picture_as_pdf: \e415;
+$material-var-call: \e0b0;
+$material-var-home: \e88a;
+$material-var-delete: \e872;
+$material-var-email: \e0be;
+$material-var-rss_feed: \e0e5;
+$material-var-group: \e7ef;
+$material-var-help: \e887;
+$material-var-pie_chart: \e6c4;
+$material-var-trending_up: \e8e5;
+$material-var-memory: \e322; // crmv@215354
+
+$vte-material-icons: (
+	accounts: $material-var-business,
+	assets: $material-var-vertical_align_bottom,
+	calendar: $material-var-event,
+	contacts: $material-var-person,
+	ddt: $material-var-description,
+	helpdesk: $material-var-warning,
+	invoice: $material-var-description,
+	leads: $material-var-perm_identity, 
+	newsletters: $material-var-contact_mail,
+	potentials: $material-var-euro_symbol,
+	pricebooks: $material-var-import_contacts,
+	processes: $material-var-call_split,
+	products: $material-var-widgets,
+	projectmilestone: $material-var-event_busy,
+	projectplan: $material-var-schedule,
+	projecttask: $material-var-update,
+	services: $material-var-build,
+	targets: $material-var-group_add,
+	timecards: $material-var-business_center,
+	vendors: $material-var-local_shipping,
+	home: $material-var-home,
+	recyclebin: $material-var-delete,
+	messages: $material-var-email,
+	rss: $material-var-rss_feed,
+	employees: $material-var-group,
+	charts: $material-var-pie_chart,
+	campaigns: $material-var-trending_up,
+	klondikeai: $material-var-memory, // crmv@215354
+);
+
+// FontAwesome icon variables: font-awesome/font-awesome/_variables.scss
+
+$vte-fa-icons: (
+	quotes: $fa-var-calculator,
+	reports: $fa-var-table,
+	myfiles: $fa-var-files-o,
+	documents: $fa-var-file-text,
+	faq: $fa-var-question,
+	pbxmanager: $fa-var-phone,
+	pdfmaker: $fa-var-file-pdf-o,
+);

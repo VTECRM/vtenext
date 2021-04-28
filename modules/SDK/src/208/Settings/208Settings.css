@@ -1,0 +1,24 @@
+/* crmv@37679 */
+
+#encField_testFailed,
+#encField_noFields {
+	margin: 10px;
+	font-weight: 700;
+}
+#encField_DelForm_div {
+	display: none;
+	position: fixed;
+	width: 400px;
+	height: 200px;
+}
+#encField_DelForm_cont {
+	padding: 4px;
+}
+.detailedViewTextBox:disabled {
+	background-color: #e0e0e0;
+}
+.dvtCellLegend {
+	padding: 10px;
+	color: #404040;
+	font-style: italic;
+}

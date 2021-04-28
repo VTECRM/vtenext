@@ -1,0 +1,57 @@
+<?php
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
+ * SPDX-License-Identifier: AGPL-3.0-only  
+ ************************************/
+$mod_strings = array (
+'TITLE_VTECRM_SMS' => 'vteCRM Sms',
+'TITLE_COMPOSE_SMS' => 'Componi Sms',
+'LBL_CONF_EXTENSION_ERROR'=>'Il file selezionato ha una estensione non supportata, le estensioni riconosciute sono le seguenti:PDF,TIFF,PS',
+'LBL_SMSSELECT_INFO'=>'ha i seguenti campi Sms associati.Seleziona il campo Sms al quale deve essere spedito il sms',
+'LBL_NO_RECORDS' => 'Nessun record trovato',
+'LBL_NO_RCPTS_SMS_ERROR'=>'Nessun destinatario specificato',
+'LBL_CONF_SMSSERVER_ERROR'=>'Configura il server di sms seguendo il link nel pannello Impostazioni---> Server di sms in uscita',
+'LBL_SMSSELECT_INFO3'=>'Non hai i permessi di utilizzare i campi Sms del/dei record selezionato/i.',
+'LBL_PLEASE_ATTACH' => 'Seleziona un file valido e riprova!',
+'LBL_KINDLY_UPLOAD' => 'Configura la variabile <font color="red">upload_tmp_dir</font> nel file php.ini.',
+'LBL_EXCEED_MAX' => 'Il file selezionato eccede il massimo consentito dalla applicazione. Prova con un file piu` piccolo di ',
+'LBL_BYTES' => ' byte',
+'LBL_CHECK_USER_SMSID' => 'Controlla il campo sms dell`utente corrente.Dovrebbe essere un numero di sms valido per poter mandare un sms',
+'LBL_TO'=>'A:',
+'LBL_COMPOSE_SMS'=>'Componi Sms',
+'LBL_MODULE_NAME'=>'Sms',
+'LBL_FORWARD_BUTTON'=>'Inoltra',
+'LBL_LIST_RELATED_TO' => 'Collegato a',
+'LBL_LIST_DATE' => 'Data invio',
+'LBL_SUBJECT' => 'Descrizione breve',
+'LBL_DETAILVIEW_SMS'=>'Sms', 
+'LBL_COMPOSE'=>'Componi',
+'MESSAGE_SMS_COULD_NOT_BE_SEND_TO_THIS_SMSID' => 'Il sms non puo essere spedito a questo indirizzo sms',
+'MESSAGE_PLEASE_CHECK_THE_FROM_SMSID' => 'Controllare l`indirizzo sms del mittente',
+'MESSAGE_CHECK_SMS_SERVER_NAME' => 'Controlla le impostazioni del Server di Sms',
+'MESSAGE_SMS_COULD_NOT_BE_SEND' => 'L`sms non puo` essere inviato',
+'MESSAGE_PLEASE_CHECK_FROM_THE_SMSID' => 'Controllare il numero di telefono',
+'PLEASE_CHECK_THIS_SMSID' => 'Controllare questo numero di telefono',
+'EXTERNAL_RECEIVER'=>'Ricevitore Esterno',
+'Assigned To'=>'Assegnato a',
+'Subject'=>'Descrizione breve',
+'Attachment'=>'Allegato',
+'Document'=>'Documento(i)',
+'MESSAGE_NO_SUBJECT' => 'Non hai specificato nessuna descrizione breve per questo sms. Se vuoi inserirne una,scivila in questo box',
+'LBL_NO_SUBJECT' => '(Nessuna descrizione)',
+'LBL_SMSSELECT_INFO1'=>'I seguenti campi sms sono associati al(ai) record selezionato(i)',
+'LBL_SMSSELECT_INFO2'=>'Seleziona i campi sms ai quali mandare l`sms',
+'SELECT_SMS' => 'Seleziona numeri di Sms',
+'LBL_MULTIPLE' => 'Multiplo',
+'SINGLE_Sms'=>'Sms',
+'LBL_NO_RCPTS_EMAIL_ERROR'=>'Nessun destinatario specificato',
+'LBL_CONF_MAILSERVER_ERROR'=>'Prego configura il server di sms in uscita da -> Impostazioni---> Server Sms in Uscita',
+//crmv@16703
+'LBL_SMS_INFORMATION'=>'Informazioni Sms',
+'Description'=>'Testo',
+'MESSAGE_NO_DESCRIPTION'=>'Prego inserire il corpo del messaggio',
+//crmv@16703e
+'LBL_MESSAGE'=>'Messaggio',
+'LBL_CHARACTERS'=>'caratteri',
+);
+?>

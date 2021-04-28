@@ -1,0 +1,47 @@
+<?php
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
+ * SPDX-License-Identifier: AGPL-3.0-only  
+ ************************************/
+$mod_strings = array(
+	'Ddt'=>'Delivery Notes',
+	'LBL_CUSTOM_INFORMATION'=>'Custom Information',
+	'LBL_DDT_INFORMATION'=>'Delivery Note Information',
+	'LBL_DESCRIPTION_INFORMATION'=>'Description Information',
+	'LBL_TERMS_INFORMATION'=>'Terms & Conditions',
+	'LBL_RELATED_PRODUCTS'=>'Product Details',
+	'SINGLE_Ddt'=>'Delivery Note',
+	'Add Invoice'=>'Add Invoice',
+	'Customer No'=>'Customer No',
+	'--None--'=>'--None--',
+	'Ddt No'=>'Delivery Note No',
+	'Product Name'=>'Product Name',
+	'Service Name'=>'Service Name',
+	'Quantity'=>'Quantity',
+	'Data Ddt'=>'Delivery Note Date',
+	'Causale'=>'Reason',
+	'Trasporto'=>'Carriage',
+	'Condizione di Consegna'=>'Term of Delivery',
+	'Conto deposito'=>'Deposit account',
+	'Reso da conto deposito'=>'Returned goods sent for deposit account',
+	'Conto lavorazione'=>'Manufacturing purposes',
+	'Reso da conto lavorazione'=>'Returned goods sent for manufacturing purposes',
+	'Prestito d uso'=>'Loan for use',
+	'Reso da prestito d uso'=>'Returned goods sent for loan',
+	'Conto riparazione'=>'Returned for repair',
+	'Reso da conto riparazione'=>'Returned goods sent for repair',
+	'Conto manutenzione'=>'Maintenance service',
+	'Reso da conto manutenzione'=>'Returned goods sent for maintenance',
+	'Conto visione'=>'Free evaluation',
+	'Reso da conto visione'=>'Returned goods sent for evaluation',
+	'Omaggio'=>'Free',
+	'Campionario'=>'Sample case',
+	'Vendita'=>'Trade',
+	'Porto franco'=>'Carriage free',
+	'Porto assegnato'=>'Carriage forward',
+	'Franco magazzino venditore'=>'Ex-Works seller\'s warehouse',
+	'Franco magazzino compratore'=>' Ex-Works buyer\'s warehouse',
+	'Sub Total'=>'Total',
+	'Creator' => 'Creator',
+);
+?>

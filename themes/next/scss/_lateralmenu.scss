@@ -1,0 +1,450 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* crmv@119414 */
+
+/* Lateral Menu Settings */
+$lateral-width: 220px;
+$lateral-min-width: 60px;
+$module-list-top: 50px;
+
+/* Right Menu Settings */
+$right-menu-width: 60px;
+
+/* FastPanel Settings */
+$fast-panel-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+#leftPanel {
+	position: fixed;
+	width: $lateral-width;
+	min-height: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: $vte-lateral-menu-background;
+    overflow: hidden;
+    
+    & .vteLeftHeader {
+		position: relative;
+		width: $lateral-width;
+		height: $module-list-top;
+		background-color: $vte-lateral-menu-background;
+		color: $white;
+		text-align: center;
+	
+		& .toogleMenu {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			z-index: 100;
+
+			& .toggleImg {
+				opacity: 0;
+				display: none;
+			}
+
+			& .togglePin {
+				position: absolute;
+				right: 20px;
+				top: 15px;
+				opacity: 0.5;
+				color: $white;
+				
+				&.active {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	& .brandLogo {
+		position: relative;
+		width: 60%;
+	    line-height: $module-list-top;
+	    max-height: $module-list-top;
+	    height: $module-list-top;
+	    text-align: center;
+	    margin: 0px auto;
+	    
+	    img {
+	    	margin: 0px auto;
+		    height: $module-list-top;
+		    padding: 5px 0px;
+	    }
+	}
+    
+    & #moduleListContainer {
+    	width: $lateral-width;
+    }
+    
+    & .menuList {
+    	position: absolute;
+    	bottom: 0px;
+    	cursor: pointer;
+    }
+    
+    & .moduleList, & .menuList {
+		margin: 0px;
+		padding: 0px;
+		width: $lateral-width;
+		list-style-type: none;
+		
+		& li {
+			padding: 0px;
+		}
+		
+		& li a {
+			display: block;
+			padding: 15px 15px;
+			position: relative;
+			color: $vte-lateral-menu-item-text-color;
+			font-size: 16px;
+		}
+		
+		& li a i {
+			padding: 0px 3px;
+			display: inline;
+			color: $vte-lateral-menu-item-icon-color;
+		}
+		
+		& li.active a {
+			color: $white;
+			background-color: $vte-lateral-menu-active-item-background;
+		}
+		
+		& li a i.icon-module[data-first-letter]:after {
+			color: $vte-lateral-menu-item-icon-color;
+			font-size: 22px;
+		}
+		
+		& li.active a i, & li.active a i.icon-module[data-first-letter]:after {
+			color: $vte-lateral-menu-active-item-icon-color;
+		}
+		
+		& li a:hover {
+			background-color: $vte-lateral-menu-active-item-background;
+		}
+	}
+	
+	&[data-minified="enabled"] {
+		& .vteLeftHeader {
+			width: $lateral-min-width;
+
+			& .toogleMenu {
+				width: 100%;
+				height: 100%;
+				padding: 0px;
+
+				& .toggleImg {
+					position: relative;
+					opacity: 1;
+					display: inline;
+					top: 50%;
+
+					-webkit-transform: translateY(-50%);
+					-ms-transform: translateY(-50%);
+					transform: translateY(-50%);
+				}
+
+				& .togglePin {
+					opacity: 0;
+					display: none;
+				}
+			}
+		}
+		
+		& .brandLogo {
+			display: none;
+		}
+	}
+}
+
+#mainContainer {
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	margin: 0;
+	padding-left: $lateral-width;
+	padding-right: $right-menu-width;
+	
+	&[data-minified="enabled"] {
+		& #leftPanel {
+			width: $lateral-min-width;
+			
+			& .moduleList, & .menuList {
+				& li a .moduleText {
+					display: none;
+				}
+			}
+		}
+	}
+	
+	&[data-toggled="enabled"] {
+		padding-left: $lateral-min-width;
+		padding-right: $right-menu-width;
+	}
+}
+	
+#mainContent {
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	padding: 0;
+	padding-bottom: 20px;
+}
+
+#rightPanel {
+	position: fixed;
+	width: $right-menu-width;
+	min-height: 100%;
+	top: 0px;
+	right: 0px;
+	background-color: $vte-right-menu-background;
+	
+	& .menuList {
+		position: absolute;
+		width: 100%;
+		margin: 0px;
+		list-style-type: none;
+		padding: 0px 15px;
+		
+		& .menuListSection {
+			width: 100%;
+			margin: 0px;
+			padding: 0px;
+			list-style-type: none;
+			
+			& li {
+				text-align: center;
+				position: relative;
+				padding: 4px 0px;
+				
+				&.active, &:hover {
+					.vteicon, .vteicon2, .icon-module {
+						color: $vte-right-menu-active-icon-color;
+					}
+				}
+				
+				.vteicon, .vteicon2, .icon-module {
+					color: $vte-right-menu-icon-color;
+					font-size: 24px;
+				}
+				
+				& .vte-top-badge {
+					right: -10px;
+					background-color: $vte-right-menu-badge-background;
+				}
+			}
+		}
+		
+		& .divider {
+			padding: 0px;
+			margin: 5px auto;
+		}
+	}
+
+	& .vteRightHeader {
+		background-color: $vte-right-menu-background;
+		height: 50px;
+		line-height: 50px;
+		right: 0px;
+		width: $right-menu-width;
+		text-align: center;
+		
+		& .profileWrapper {
+			margin: 0px;
+			padding: 0px;
+			list-style-type: none;
+			height: 100%;
+			width: 100%;
+			z-index: 100;
+			position: relative;
+			
+			& .profileInner {
+				line-height: 50px;
+				z-index: 100;
+				
+				& .profile {
+					position: relative;
+					z-index: 9999;
+					width: 100%;
+					display: inline-block;
+					height: 100%;
+					line-height: 50px;
+					top: -4px;
+					padding: 12px;
+					background: $vte-right-menu-background;
+				}
+			}
+			
+			& .profileMenu {
+				position: absolute;
+				top: -1px;
+				padding: 0px;
+				list-style-type: none;
+				right: 70px;
+				width: 180px;
+				z-index: -900;
+				opacity: 0;
+				margin: 1px 0 0;
+				font-size: 14px;
+				text-align: left;
+				background-color: $vte-right-menu-profile-menu-background;
+				box-shadow: -5px 6px 12px rgba(0,0,0,0.175);
+				display: none;
+
+				& li {
+					padding: 0px;
+				}
+				
+				& li > a {
+					display: block;
+					font-size: 13px;
+					font-weight: 500;
+					padding: 15px 10px;
+					position: relative;
+					color: $vte-right-menu-profile-menu-color;
+					
+					.vteicon, .vteicon2, .icon-module {
+						color: $vte-right-menu-profile-menu-color;
+					}
+					  
+					&:hover {
+						color: $vte-right-menu-profile-menu-active-color;
+						background-color: $vte-right-menu-profile-active-background;
+						
+						.vteicon, .vteicon2, .icon-module {
+							color: $vte-right-menu-profile-menu-active-color;
+						}
+					}
+				}
+			}
+			
+			&.active {
+				& .profileMenu { 
+					right: $right-menu-width;
+					z-index: -900;
+					width: 180px;
+					opacity: 1;
+					display: block;
+				}
+				
+				& .profileInner .profile {
+					background-color: $vte-right-menu-profile-active-background;
+				}
+			}
+		}
+	}
+}
+
+.fastPanel {
+	position: fixed;
+	width: 0px;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	top: 0px;
+	right: -50px;
+	background-color: $vte-fastpanel-bg;
+	
+	-webkit-box-shadow: $fast-panel-shadow;
+	-moz-box-shadow: $fast-panel-shadow;
+	box-shadow: $fast-panel-shadow;
+	
+	.iframeCont, .ajaxCont, .ajaxSearchCont, .menuCont {
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		background-color: $vte-fastpanel-bg;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	.iframeCont {
+		& iframe {
+			width: 100%;
+			height: 100%;
+			outline: none;
+			border: 0px none;
+		}
+	}
+}
+
+#vte_footer {
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+	left: 0px;
+	background-color: transparent;
+}
+
+.buttonsList.buttonsListFixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-left: $lateral-width;
+	padding-right: $right-menu-width;
+	background-color: $vte-navbar-bg;
+	z-index: 20;
+	
+	&[data-minified="enabled"] {
+		padding-left: $lateral-min-width;
+	}
+	
+	border-bottom: 1px solid $vte-submenusep;
+	@include shadow-z-1();
+	
+	> li {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+.hide-menus {
+	& #mainContainer {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	& #mainContent {
+		padding-bottom: 0px;
+	}
+	
+	& .buttonsList.buttonsListFixed {
+		left: 0;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+$zlayers: (
+	"left_menu": 10000,
+	"right_menu": 10000,
+	"footer": 9000,
+	"fast_panel": 1000,
+);
+  
+@function z($layer) {
+	@if not map-has-key($zlayers, $layer) {
+		@warn "No layer found for `#{$layer}`";
+	}
+	@return map-get($zlayers, $layer);
+}
+
+#leftPanel {
+	z-index: z("left_menu");
+}
+
+#rightPanel {
+	z-index: z("right_menu");
+}
+
+.fastPanel {
+	z-index: z("fast_panel");
+}

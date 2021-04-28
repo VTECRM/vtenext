@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2012-04-11 16:02:11</exporttime>
+<name>Mobile</name>
+<label>Mobile</label>
+<parent></parent>
+<type>extension</type>
+<version>1.2</version>
+<dependencies>
+<vtenext_version>3.0</vtenext_version>
+</dependencies>
+<tables>
+</tables>
+<sdk>
+<popup_queries>
+</popup_queries>
+</sdk>
+</module>

@@ -1,0 +1,428 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+// prevent the underline when hovering links
+a:hover {
+	text-decoration: none;
+}
+
+/* In VTE there are still a lot of tables, keep the default padding */
+td {
+	padding: 2px;
+}
+
+table.lvtBg > tbody > tr > td {
+	padding: 0px;
+}
+
+div#contentwrap_ModCommentsDetailViewBlockCommentWidget > table > tbody > tr > td {
+	padding: 0px;
+}
+
+div.ModCommAnswerBox > table > tbody > tr > td {
+	padding: 0px;
+}
+
+div.checkbox span.checkbox-material span.check {
+	border: 1px solid $vte-text-title;
+	width: 18px;
+    height: 18px;
+}
+
+// crmv@109116
+#alert-dialog-content, #confirm-dialog-content {
+	// enable newlines in alerts
+	white-space: pre-wrap;
+}
+// crmv@109116e
+
+ul.pagination > li > a {
+	float: none;
+	margin-left: -5px;
+	border: none;
+}
+
+ul.pagination-sm > li > a {
+	font-size: 12px;
+}
+
+.breadcrumb {
+	margin: 0px;
+	margin-bottom: 20px;
+}
+
+.bootstrap-select {
+	margin: 0px;
+	
+	& button {
+		padding: 7px 20px; // crmv@172994
+		font-size: 13px;
+		text-transform: none;
+	}
+}
+
+/* crmv@158392 */
+
+.navbar.navbar.buttonsList {
+	background-color: $vte-navbar-bg;
+	
+	& .navbar-nav > li:not(last-child) {
+		margin-right: 5px;
+	}
+	
+	& .dropdown-menu {
+		li > a {
+			padding: 8px 16px;
+		
+			&:hover,
+			&:focus {
+				color: $dropdown-link-hover-color;
+				background-color: $dropdown-link-hover-bg;
+			}
+			
+			& .vteicon, & .vteicon2, & .icon-module {
+				vertical-align: middle;
+			}
+		}
+		.active > a {
+			background-color: $dropdown-link-active-bg;
+			color: $dropdown-link-active-color;
+		}
+	}
+}
+
+/* crmv@158392e */
+
+/* crmv@170412 */
+.modal-content {
+	&.modal-content-transparent {
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
+.modal-backdrop.backdrop-dark {
+	background: rgba(0, 0, 0, 0.8);
+}
+.modal-backdrop.backdrop-dark.in {
+	opacity: 1;
+}
+/* crmv@170412e */
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog,
+.modal.top .modal-dialog,
+.modal.bottom .modal-dialog {
+	position: fixed;
+	margin: auto;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+	width: 320px;
+	height: 100%;
+}
+
+.modal.top .modal-dialog,
+.modal.bottom .modal-dialog {
+	left: 60px;
+	width: calc(100% - 60px - 60px);
+	height: 320px;
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content,
+.modal.top .modal-content,
+.modal.bottom .modal-content {
+	height: 100%;
+	overflow-y: auto;
+	border-radius: 0;
+	border: none;
+}
+
+/* Left */
+.modal.left.fade .modal-dialog {
+	left: -380px;
+	-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+	        transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog {
+	left: 60px;
+}
+
+/* Right */
+.modal.right.fade .modal-dialog {
+	right: -380px;
+	-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+	        transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+	
+.modal.right.fade.in .modal-dialog {
+	right: 60px;
+}
+
+/* Top */
+.modal.top.fade .modal-dialog {
+	top: -320px;
+	-webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+	        transition: opacity 0.3s linear, top 0.3s ease-out;
+}
+	
+.modal.top.fade.in .modal-dialog {
+	top: 0;
+}
+
+/* Bottom */
+.modal.bottom.fade .modal-dialog {
+	bottom: -320px;
+	-webkit-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, bottom 0.3s ease-out;
+	        transition: opacity 0.3s linear, bottom 0.3s ease-out;
+}
+
+.modal.bottom.fade.in .modal-dialog {
+	bottom: 0;
+}
+
+.left-menu-active {
+	& .modal.left.fade .modal-dialog {
+		left: -540px;
+	}
+	
+	& .modal.left.fade.in .modal-dialog {
+		left: 220px;
+	}
+	
+	.modal.top .modal-dialog,
+	.modal.bottom .modal-dialog {
+		left: 220px;
+		width: calc(100% - 220px - 60px);
+	}
+}
+
+.vtetable {
+	@extend .table;
+	background-color: $vte-table-bg;
+	
+	& > tbody > tr {
+		background-color: $vte-table-row-bg;
+	}
+	
+	&:not(.vtetable-props) > tbody > tr:hover {
+		background-color: $vte-table-row-active-bg;
+	}
+
+	& > tbody > tr.sep1 > td {
+		background-color: $vte-table-row-bg;
+	}
+	
+	& > tbody > tr.sep2 > td {
+		background-color: $vte-table-row-active-bg;
+	}
+	
+	.checkbox {
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+	
+	& .bg-dark {
+		background-color: $vte-table-cell-bg-dark;
+	}
+	
+	& .bg-light {
+		background-color: $vte-table-cell-bg-light;
+	}
+	
+	& .color-dark {
+		color: $vte-table-cell-color-dark;
+		
+		& a {
+			color: $vte-table-cell-link-color-dark;
+			
+			&:hover {
+				color: $vte-table-cell-link-color-dark-hover;
+			}
+		}
+			
+		& .vteicon, 
+		& .vteicon2,
+		& .icon-module {
+			color: $vte-table-cell-link-color-dark;
+			
+			&:hover {
+				color: $vte-table-cell-link-color-dark-hover;
+			}
+		}
+	}
+	
+	& .color-light {
+		color: $vte-table-cell-color-light;
+		
+		& a {
+			color: $vte-table-cell-link-color-light;
+			
+			&:hover {
+				color: $vte-table-cell-link-color-light-hover;
+			}
+		}
+		
+		& .vteicon, 
+		& .vteicon2,
+		& .icon-module {
+			color: $vte-table-cell-link-color-light;
+			
+			&:hover {
+			color: $vte-table-cell-link-color-light-hover;
+			}
+		}
+	}
+	
+	&.vtetable-props {
+		& > thead > tr > th,
+		& > thead > tr > td,
+		& > tbody > tr > th,
+		& > tbody > tr > td,
+		& > tfoot > tr > th,
+		& > tfoot > tr > td
+		{
+			border-top: 1px solid $vte-table-props-border;
+		}
+
+		& > tbody > tr:first-child > th,
+		& > tbody > tr:first-child > td {
+			border-top: 0 none;
+		}
+		
+		& .cellLabel {
+			width: 20%;
+			vertical-align: top;
+			text-align: right;
+			padding: 5px;
+			padding-right: 10px;
+			font-weight: bold;
+		}
+		
+		& .cellText {
+			width: 80%;
+			vertical-align: top;
+			text-align: left;
+			padding: 5px;
+			padding-left: 10px;
+		}
+	}
+}
+
+.row-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	
+	& .col-header-left {
+		text-align: left;
+	}
+	
+	& .col-header-right {
+		text-align: right;
+	}
+}
+
+.col-header {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+	& .col-title {
+	    font-size: 16px;
+    	font-weight: bold;
+	}
+}
+
+mark,
+.mark {
+	background-color: $vte-mark-bg;
+	color: $vte-mark-color;
+}
+
+.radio,
+.checkbox {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+// crmv@187622
+.btn-group {
+	box-shadow: none;
+}
+.vte-btn-group {
+	@extend .btn-group;
+
+	& > .crmbutton, & > .crmButton {
+		@extend .btn;
+	}
+}
+// crmv@187622e
+
+select.form-control {
+	color: $vte-text;
+	& option {
+		color: $vte-text;
+	}
+}
+
+@mixin bootstrapInputs {
+	.dvtCellLabel, .cellLabel {
+		@extend .control-label;
+		color: $vte-field-label;
+		margin-left: 2px;
+	}
+	
+	.dvtCellInfo,
+	.cellInfo,
+	.dvtCellInfoOn,
+	.dvtCellInfoM,
+	.dvtCellInfoMOn,
+	.dvtCellInfoOff {
+		@extend .form-group;
+		margin-bottom: 0;
+		min-height: 28px;
+		font-size: $vte_font_size;
+	}
+
+	.fieldCont {
+		& .detailCellInfo {
+			padding: 5px 2px;
+		}
+	}
+
+	.detailedViewTextBox,
+	.detailedViewTextBoxOn {
+		@extend .form-control;
+		display: inline-block;
+		padding: 2px 8px;
+		font-size: $vte_font_size;
+		height: 28px;
+	}
+	select[multiple].detailedViewTextBox {
+		height: auto;
+	}
+	textarea.detailedViewTextBox {
+		height: auto;
+	}
+}
+
+@if $vte-field-border == true {
+	@include bootstrapInputs;
+}

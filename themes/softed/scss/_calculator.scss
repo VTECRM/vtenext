@@ -1,0 +1,72 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+/* Calculator */
+
+.calcResult {
+	width: 100%;
+	height: 25px;
+	background-color: $vte-help-box;
+	border-top: 1px solid $grey-400;
+	border-left: 0px;
+	border-right: 1px solid $grey-400;
+	border-bottom: 1px solid $grey-400;
+	font-size: 10px;
+	text-align: right;
+}
+
+.calcMem {
+	width: 100%;
+	height: 25px;
+	border-top: 1px solid $grey-400;
+	border-left: 1px solid $grey-400;
+	border-right: 0px;
+	border-bottom: 1px solid $grey-400;
+	background-color: $vte-help-box;
+	font-size: 10px;
+	color: #BBB;
+	text-align: left;
+}
+
+.calcBlackBtn, .calcGreyBtn, .calcBigBtn, .calcCancBtn, .calcMemBtn, .calcBackBtn {
+	border: none;
+	height: 20px;
+	font-size: 11px;
+	color: $white;
+	text-align:center;
+}
+
+.calcBackBtn {
+	background: url(../images/calc_back_btn.gif) no-repeat;
+	width:25px;
+}
+
+.calcBlackBtn {
+	background: url(../images/calc_black_btn.gif) no-repeat;
+	width:25px;
+}
+
+.calcGreyBtn {
+	background: url(../images/calc_grey_btn.gif) no-repeat;
+	width:25px;
+}
+
+.calcCancBtn {
+	background: url(../images/calc_canc_btn.gif) no-repeat;
+	width:25px;
+}
+
+.calcMemBtn {
+	background: url(../images/calc_mem_btn.gif) no-repeat;
+	width:25px;
+}
+
+#calc{
+	position:absolute;
+	left:100px;
+	top:100px;
+	background-color:$white;
+	width:185px;
+} 

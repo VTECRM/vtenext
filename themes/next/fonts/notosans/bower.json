@@ -1,0 +1,16 @@
+{
+  "name": "webfont-notosans",
+  "version": "0.1.0",
+  "authors": [
+    "James Harrison <james@jjlharrison.me.uk>"
+  ],
+  "description": "Google's Noto Sans webfont.",
+  "license": "Apache License 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

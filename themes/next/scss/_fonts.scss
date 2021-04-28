@@ -1,0 +1,64 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+@font-face { 
+	font-family: 'VTEFont';
+	src: url('fonts/roboto/regular/Roboto-Regular-webfont.eot');
+	src: url('fonts/roboto/regular/Roboto-Regular-webfont.eot?iefix') format('eot'),
+	url('fonts/roboto/regular/Roboto-Regular-webfont.woff') format('woff'),
+	url('fonts/roboto/regular/Roboto-Regular-webfont.ttf') format('truetype'),
+	url('fonts/roboto/regular/Roboto-Regular-webfont.svg#webfont') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'VTEFont';
+    src: url('fonts/roboto/bold/Roboto-Bold-webfont.eot');
+	src: url('fonts/roboto/bold/Roboto-Bold-webfont.eot?iefix') format('eot'),
+	url('fonts/roboto/bold/Roboto-Bold-webfont.woff') format('woff'),
+	url('fonts/roboto/bold/Roboto-Bold-webfont.ttf') format('truetype'),
+	url('fonts/roboto/bold/Roboto-Bold-webfont.svg#webfont') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'VTEFont';
+    src: url('fonts/roboto/italic/Roboto-Italic-webfont.eot');
+	src: url('fonts/roboto/italic/Roboto-Italic-webfont.eot?iefix') format('eot'),
+	url('fonts/roboto/italic/Roboto-Italic-webfont.woff') format('woff'),
+	url('fonts/roboto/italic/Roboto-Italic-webfont.ttf') format('truetype'),
+	url('fonts/roboto/italic/Roboto-Italic-webfont.svg#webfont') format('svg');
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('fonts/notosans/regular/NotoSans-Regular-webfont.eot');
+	src: url('fonts/notosans/regular/NotoSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+	url('fonts/notosans/regular/NotoSans-Regular-webfont.woff') format('woff'),
+	url('fonts/notosans/regular/NotoSans-Regular-webfont.ttf') format('truetype');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('fonts/notosans/bold/NotoSans-Bold-webfont.eot');
+	src: url('fonts/notosans/bold/NotoSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+	url('fonts/notosans/bold/NotoSans-Bold-webfont.woff') format('woff'),
+	url('fonts/notosans/bold/NotoSans-Bold-webfont.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	src: url('fonts/notosans/italic/NotoSans-Italic-webfont.eot');
+	src: url('fonts/notosans/italic/NotoSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+	url('fonts/notosans/italic/NotoSans-Italic-webfont.woff') format('woff'),
+	url('fonts/notosans/italic/NotoSans-Italic-webfont.ttf') format('truetype');
+	font-style: italic;
+}

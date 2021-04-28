@@ -1,0 +1,43 @@
+.eventbtn_image{
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	display: inline-block;
+}
+.eventbtn {
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	padding: 0px;
+	margin: 0px;
+	border: none;
+	border-top: 1px solid #c3c3c3;
+	border-bottom: 1px solid #c3c3c3;
+	background-color: #dddddd;
+	cursor: pointer;
+}
+.eventbtn_first {
+	border-left: 1px solid #c3c3c3;
+}
+.eventbtn_last {
+	border-right: 1px solid #c3c3c3;
+}
+.eventbtn:hover {
+	background-color: #f0f0f0;
+	border-color: #c0c0c0;
+}
+.eventbtn_active {
+	background-color: #c0c0c0;
+	border-color: #909090;
+}
+.redCircle {
+	border-radius:50%;
+	color:#FFF;
+	background:#FF0800;
+	z-index:10000000;
+}
+.ui-datepicker {
+  font-size: smaller;
+}

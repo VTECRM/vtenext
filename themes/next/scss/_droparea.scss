@@ -1,0 +1,128 @@
+/*************************************
+ * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com>
+ * SPDX-License-Identifier: AGPL-3.0-only
+ ************************************/
+
+// crmv@167019
+
+.droparea {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 100%;
+	display: table;
+	color: $grey-700;
+	background: rgba(255, 255, 255, 0.45);
+	transition: visibility 175ms, opacity 175ms;
+
+	& .droparea-text {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+		transition: font-size 175ms;
+		font-size: 42px;
+	}
+
+	&.dragover {
+		border: 3px dashed $grey-700;
+	}
+}
+
+.drop-area-support {
+	position: relative;
+	top: 2px;
+	border: 2px dotted $grey-400;
+	padding: 3px;
+	margin: 5px;
+}
+
+// crmv@176893
+
+.droparea-form {
+	& .folder-field-wrapper,
+	.assignee-field-wrapper {
+		position: relative;
+	}
+
+	& .folder-field-tools,
+	.assignee-field-tools {
+		position: absolute;
+		right: 0;
+		top: 5px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	& .add-folder-dropdown {
+		display: inline-block;
+	}
+
+	& .add-doc-folder-loader {
+		position: relative;
+		top: -9px;
+	}
+
+	& .add-folder-menu {
+		min-width: 300px;
+
+		& .add-folder {
+			position: relative;
+			padding: 10px;
+		}
+	}
+
+	.add-folder-loader {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.5);
+		z-index: 5;
+
+		& > .dataloader {
+			width: 60px;
+			height: 60px;
+		}
+	}
+
+	.ui-autocomplete {
+		max-width: 100%;
+		max-height: 300px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.field-with-tools {
+		padding-right: 80px;
+	}
+
+	& .checkboxes-wrapper .checkbox .checkbox-material {
+		top: -1px;
+	}
+
+	.assignee-toggle {
+		cursor: pointer;
+	}
+
+	.assignee-type {
+		& .vteicon,
+		& .vteicon2,
+		& .icon-module {
+			vertical-align: middle;
+		}
+
+		& .caret {
+			position: relative;
+			left: -6px;
+		}
+	}
+}
