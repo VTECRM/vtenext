@@ -3,8 +3,8 @@
  * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
  * SPDX-License-Identifier: AGPL-3.0-only  
  ************************************/
+/* crmv@130421 */
 
-/* crmv@35153 crmv@54179 crmv@103922 */
 
 // crmv@198545
 if (!isset($root_directory)) {
@@ -14,6 +14,7 @@ if (!isset($root_directory)) {
 require_once('include/utils/utils.php'); 
 // crmv@198545e
 
+//crmv@35153 crmv@69514 crmv@69892
 $installation_mode = false;
 if ($_REQUEST['morph_mode'] == 'installation' || VteSession::get('morph_mode') == 'installation') {
 	$installation_mode = true;
@@ -28,11 +29,11 @@ if ($_REQUEST['morph_mode'] == 'installation' || VteSession::get('morph_mode') =
 	
 	if ($enterprise_mode == 'VTENEXTCE') { // crmv@192073
 		// recalc application_unique_key
-		$application_unique_key = md5(time() . rand(1,9999999) . md5($root_directory));
+		$application_unique_key = md5(time() + rand(1,9999999) + md5($root_directory));
 		$configInc = file_get_contents('config.inc.php');
 		$configInc = preg_replace('/^\$application_unique_key.*$/m', "\$application_unique_key = '{$application_unique_key}';", $configInc);
 		if (is_writable('config.inc.php')) file_put_contents('config.inc.php', $configInc);
-		
+	
 		// recalc admin accesskey
 		require_once 'include/Webservices/Utils.php';
 		$accesskey = vtws_generateRandomAccessKey(16);
@@ -42,7 +43,6 @@ if ($_REQUEST['morph_mode'] == 'installation' || VteSession::get('morph_mode') =
 		$userfile = preg_replace("/'accesskey'\s*=>\s*[^,]+,/", "'accesskey'=>'{$accesskey}',", $userfile);
 		if (is_writable($priv_file)) file_put_contents($priv_file, $userfile);
 	} // crmv@192073
-	
 }
 $update_mode = false;
 if (file_exists('modules/Update/free_changes') && getUserName(1) == 'admin') {
@@ -50,23 +50,26 @@ if (file_exists('modules/Update/free_changes') && getUserName(1) == 'admin') {
 } elseif (getUserName(1) != 'admin') {
 	$username_free = getUserName(1);
 }
-if (isFreeVersion()) {
-	$morph_activation_message = '<b>'.$mod_strings['LBL_MORPHSUIT_BUSINESS_ACTIVATION'].'</b>';
-} else {
-	$morph_activation_message = $mod_strings['LBL_MORPHSUIT_TIME_EXPIRED'];
-}
-include('modules/Morphsuit/HeaderMorphsuit.php');
-$focus = CRMEntity::getInstance('Morphsuit');
+//crmv@35153e
 
 ($installation_mode) ? $path = '../../' : $path = '';
 
-$sectionTitle = $mod_strings['LBL_MORPHSUIT_ACTIVATION']." $enterprise_mode $enterprise_current_version";
+require_once('data/CRMEntity.php');
+require_once('modules/Morphsuit/Morphsuit.php');
+
+include('modules/Morphsuit/HeaderMorphsuit.php');
+$focus = new Morphsuit();
+
+$focusUsers = CRMEntity::getInstance('Users');
+$lbl_not_safety_password = sprintf(getTranslatedString('LBL_NOT_SAFETY_PASSWORD','Users'),$focusUsers->password_length_min);
+
+$sectionTitle = 'Administrator user activation';
 ?>
 
 <body>
 <div id="main-container" class="container">
 	<div class="row">
-		<div class="col-xs-offset-1 col-xs-10">
+		<div class="col-xs-offset-2 col-xs-8">
 			
 			<div id="content" class="col-xs-12">
 				<div id="content-cont" class="col-xs-12">
@@ -81,15 +84,12 @@ $sectionTitle = $mod_strings['LBL_MORPHSUIT_ACTIVATION']." $enterprise_mode $ent
 									<img src="<?php echo $path; ?>themes/logos/vtenext.png" />
 								</a>
 							</div>
-							<div class="col-xs-12 text-center content-padding">
-								<h4><?php echo $morph_activation_message.'<br />'.$mod_strings['LBL_MORPHSUIT_SITE_LOGIN']; ?>&nbsp;your VTECRM LTD Partner Account.</h4>
-							</div>
 						</div>
 						
 						<div id="config" class="col-xs-12">
 						
 							<div class="col-xs-12">
-								<div class="col-xs-8 col-xs-offset-2">
+								<div class="col-xs-12">
 								
 									<?php if ($installation_mode) { ?>
 									<form action="SendMorphsuit.php" method="post" id="MorphsuitForm">
@@ -105,66 +105,78 @@ $sectionTitle = $mod_strings['LBL_MORPHSUIT_ACTIVATION']." $enterprise_mode $ent
 									<table class="table borderless" id="Standard">
 											<tr>
 												<td align="left">
-													<label for="username_std">Username:</label>
+													<label for="username_std"><?php echo getTranslatedString('User Name','Users'); ?></label>
 													<div class="dvtCellInfo">
-														<input id="username_std" name="username_std" class="small detailedViewTextBox" value="" type="text" />
+														<input id="username_std" name="username_std" class="small detailedViewTextBox" value="admin" type="text" disabled="true" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<label for="username_std"><?php echo getTranslatedString('Email'); ?></label>
+													<div class="dvtCellInfoM">
+														<input id="email_std" name="email_std" class="small detailedViewTextBox" value="" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<label for="username_std"><?php echo getTranslatedString('First Name','Users'); ?></label>
+													<div class="dvtCellInfo">
+														<input id="first_name" name="first_name" class="small detailedViewTextBox" value="" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<label for="username_std"><?php echo getTranslatedString('Last Name','Users'); ?></label>
+													<div class="dvtCellInfo">
+														<input id="last_name" name="last_name" class="small detailedViewTextBox" value="" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<label for="username_std"><?php echo getTranslatedString('Company','Leads'); ?></label>
+													<div class="dvtCellInfo">
+														<input id="company" name="company" class="small detailedViewTextBox" value="" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<label for="username_std"><?php echo getTranslatedString('LBL_MORPH_NEWSLETTER_LANG','Morphsuit'); ?></label>
+													<div class="dvtCellInfo">
+														<select id="newsletter_lang" name="newsletter_lang" class="small detailedViewTextBox">
+															<option value="ENG" selected="">English</option>
+															<option value="ITA">Italian</option>
+															<option value="DEU">German</option>
+															<option value="DUT">Dutch</option>
+														</select>
 													</div>
 												</td>
 											</tr>
 											<tr>
 												<td align="left">
 													<label for="username_std">Password:</label>
-													<div class="dvtCellInfo">
+													<div class="dvtCellInfoM">
 														<input id="password_std" name="password_std" class="small detailedViewTextBox" value="" type="password" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left">
+													<label for="username_std"><?php echo getTranslatedString('Confirm Password','Users'); ?></label>
+													<div class="dvtCellInfoM">
+														<input id="confirm_password_std" name="confirm_password_std" value="" type="password" class="detailedViewTextBox" />
 													</div>
 												</td>
 											</tr>
 											<tr height="20px"><td align="center" colspan="2"></td></tr>
 											<tr>
-												<td align="left">
-													<label for="tipo_installazione"><?php echo $mod_strings['LBL_MORPHSUIT_INSTALLATION_TYPE']; ?>:</label>
-													<div class="dvtCellInfo">
-														<select id="tipo_installazione" name="tipo_installazione" class="small detailedViewTextBox">
-															<option value="produzione"><?php echo $mod_strings['LBL_MORPHSUIT_PROD']; ?></option>
-															<option value="test"><?php echo $mod_strings['LBL_MORPHSUIT_TEST']; ?></option>
-															<option value="demo"><?php echo $mod_strings['LBL_MORPHSUIT_DEMO']; ?></option>
-														</select>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td align="left">
-													<label for="durata_installazione"><?php echo $mod_strings['LBL_MORPHSUIT_INSTALLATION_LENGTH']; ?>:</label>
-													<div class="dvtCellInfo">
-														<select id="durata_installazione" name="durata_installazione" class="small detailedViewTextBox">
-															<option value="1 year"><?php echo $mod_strings['LBL_MORPHSUIT_1Y']; ?></option>
-															<option value="6 months"><?php echo $mod_strings['LBL_MORPHSUIT_6M']; ?></option>
-															<option value="30 days"><?php echo $mod_strings['LBL_MORPHSUIT_30D']; ?></option>
-															<option value="15 days"><?php echo $mod_strings['LBL_MORPHSUIT_15D']; ?></option>
-															<option value="1 day"><?php echo $mod_strings['LBL_MORPHSUIT_1D']; ?></option>
-														</select>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td align="left">
-													<label for="numero_utenti"><?php echo $mod_strings['LBL_MORPHSUIT_USER_NUMBER']; ?>:</label>
-													<div class="dvtCellInfo">
-														<select id="numero_utenti" name="numero_utenti" class="small detailedViewTextBox">
-															<option value="9"><?php echo $mod_strings['LBL_MORPHSUIT_USER_NUMBER_10']; ?></option>
-															<option value="19"><?php echo $mod_strings['LBL_MORPHSUIT_USER_NUMBER_20']; ?></option>
-															<option value="49"><?php echo $mod_strings['LBL_MORPHSUIT_USER_NUMBER_50']; ?></option>
-															<option value="99"><?php echo $mod_strings['LBL_MORPHSUIT_USER_NUMBER_100']; ?></option>
-															<option value=""><?php echo $mod_strings['LBL_MORPHSUIT_USER_NUMBER_UNLIMITED']; ?></option>
-														</select>
-													</div>
-												</td>
-											</tr>
-											<tr><td colspan="2">&nbsp;</td></tr>
-											<tr>
 												<td colspan="2" align="center">
 													<div class="dvtCellInfo">
-														<textarea class="small detailedViewTextBox" style="resize:vertical" readonly><?php echo getTranslatedString('LBL_PRIVACY_DESC','Settings'); ?></textarea>
+														<textarea class="small detailedViewTextBox" style="resize:vertical; height:90px" readonly><?php echo getTranslatedString('LBL_PRIVACY_DESC','Settings'); ?></textarea>
 													</div>
 												</td>
 											</tr>
@@ -185,7 +197,10 @@ $sectionTitle = $mod_strings['LBL_MORPHSUIT_ACTIVATION']." $enterprise_mode $ent
 									<?php if ($_REQUEST['type'] == 'time_expired') { ?>
 											<button type="button" onClick="zombieMorph();" class="crmbutton small delete"><?php echo getTranslatedString('LBL_ZOMBIE_MODE','Morphsuit'); ?></button>
 									<?php } ?>
+									<!--
 									<button type="button" onClick="if (validate()) submitStd();" class="crmbutton small edit btn-arrow-right"><?php echo $mod_strings['LBL_MORPHSUIT_NEXT']; ?></button>
+									-->
+									<input type="button" onClick="if (validateUser()) submitCreateUser();" class="crmbutton small save" value="<?php echo getTranslatedString('LBL_MORPHSUIT_REGISTER','Morphsuit'); ?>" />
 								</div>
 							</div>
 						</div>
@@ -205,67 +220,32 @@ $sectionTitle = $mod_strings['LBL_MORPHSUIT_ACTIVATION']." $enterprise_mode $ent
 </div>
 
 <script type="text/javascript">
-var currentTab;
-currentTab = 'Standard';
+// crmv@69514
 
-function validate() {
-	if (currentTab == 'Free') {
-		if (!emptyCheck('username_free','Username',getObj('username_free').type))
-			return false;
-		if (!emptyCheck('password_free','Password',getObj('password_free').type))
-			return false;
-		if (!emptyCheck('privacy_flag_free','<?php echo getTranslatedString('LBL_PRIVACY_FLAG','Settings'); ?> ',getObj('privacy_flag_free').type))
-			return false;
-		return true;
-	} else {
-		if (!emptyCheck('username_std','Username',getObj('username_std').type))
-			return false;
-		if (!emptyCheck('password_std','Password',getObj('password_std').type))
-			return false;
-		if (!emptyCheck('privacy_flag_std','<?php echo getTranslatedString('LBL_PRIVACY_FLAG','Settings'); ?> ',getObj('privacy_flag_std').type))
-			return false;
-		//login
-		pleaseWait('enable');
-		var url = '<?php echo $focus->vteFreeServer; ?>';
-		var params = {
-			'method' : 'checkUserCredentials'
-		};
-		jQuery.ajax({
-			url:'<?php echo $path; ?>modules/Morphsuit/MorphParam.php',type:'POST',data:{'value':getObj('username_std').value},async:false,
-			complete  : function(res, status) { params['username'] = res.responseText; }
-		});
-		jQuery.ajax({
-			url:'<?php echo $path; ?>modules/Morphsuit/MorphParam.php',type:'POST',data:{'value':getObj('password_std').value},async:false,
-			complete  : function(res, status) { params['password'] = res.responseText; }
-		});
-		var result = '';
-		jQuery.ajax({
-			url : url,
-			type: 'POST',
-			data: params,
-			complete  : function(res, status) {
-				if (status != 'success') {
-					alert('Connection with VTECRM Network failed ('+status+')');
-					pleaseWait('disable');
-					return false;
-				} else {
-					result = res.responseText;
-					if (result == false) {
-						alert('Login failed');
-						pleaseWait('disable');
-						return false;
-					} else {
-						getObj('vte_user_info').value = result;
-						document.forms['MorphsuitForm'].submit();
-					}
-				}
-			}
-		});
+var createUser = true;
+
+function validateUser() {
+	//if (!emptyCheck('last_name','Last Name',getObj('last_name').type)) return false;
+	if (!emptyCheck('email_std','Email',getObj('email_std').type)) return false;
+	if (!patternValidate('email_std','Email','email')) return false;
+	if (!emptyCheck('password_std','Password',getObj('password_std').type)) return false;
+	if (!emptyCheck('confirm_password_std','Password',getObj('confirm_password_std').type)) return false;
+	if (getObj('password_std').value != getObj('confirm_password_std').value) {
+		alert("<?php echo getTranslatedString('ERR_REENTER_PASSWORDS','Morphsuit'); ?>");
+		return false;
 	}
-}
-
-function submitStd() {
-	document.forms['MorphsuitForm'].submit();
+	var checkPasswValues = {'user_name':'admin','first_name':getObj('first_name').value,'last_name':getObj('last_name').value};
+	<?php if ($installation_mode) { ?>
+		var res = getFile('<?php echo $path; ?>modules/Users/CheckPasswordCriteria.php?record=&password='+getObj('password_std').value+'&row='+encodeURIComponent(JSON.stringify(checkPasswValues)));
+	<?php } else { ?>
+		var res = getFile('index.php?module=Users&action=UsersAjax&file=CheckPasswordCriteria&record=&password='+getObj('password_std').value+'&row='+encodeURIComponent(JSON.stringify(checkPasswValues)));
+	<?php } ?>
+	if (res == "no") {
+		alert('<?php echo $lbl_not_safety_password; ?>');
+		return false;
+	}
+	if (!emptyCheck('privacy_flag_std','<?php echo getTranslatedString('LBL_PRIVACY_FLAG','Settings'); ?> ',getObj('privacy_flag_std').type)) return false;
+	return true;
 }
 
 function success(response) {
@@ -274,21 +254,18 @@ function success(response) {
 	getObj('checkDataMorphsuit').style.top = '0px';
 }
 
-function zombieMorph() {
-	window.location.href = "index.php?module=Morphsuit&action=MorphsuitAjax&file=Zombie";
-}
-
-function submitFree() {
+function submitCreateUser() {
 	pleaseWait('enable');
 	
+	var params = 'tipo_installazione=Free&email='+getObj('email_std').value;
 	<?php if ($installation_mode) { ?>
-		var key = getFile('<?php echo $path; ?>modules/Morphsuit/SendMorphsuit.php?tipo_installazione=Free');
+		var key = getFile('<?php echo $path; ?>modules/Morphsuit/SendMorphsuit.php?'+params);
 	<?php } else { ?>
-		var key = getFile('index.php?module=Morphsuit&action=MorphsuitAjax&file=SendMorphsuit&tipo_installazione=Free');
+		var key = getFile('index.php?module=Morphsuit&action=MorphsuitAjax&file=SendMorphsuit&'+params);
 	<?php } ?>
 	var url = '<?php echo $focus->vteFreeServer; ?>';
 	var params = {
-		'method' : 'generateMorphsuit',
+		'method' : 'generateMorphsuitCommunityUser',
 		'revision' : '<?php echo $enterprise_current_build; ?>',
 		'subversion' : '<?php echo $enterprise_subversion; ?>',
 		<?php
@@ -303,15 +280,15 @@ function submitFree() {
 			echo "'id' : '{$saved_morphsuit_id}',";
 		}
 		?>
+		'first_name' : getObj('first_name').value,
+		'last_name' : getObj('last_name').value,
+		'company' : getObj('company').value,
+		'newsletter_lang' : jQuery('#newsletter_lang').val(),
 		'key' : key
 	};
 	jQuery.ajax({
-		url:'<?php echo $path; ?>modules/Morphsuit/MorphParam.php',type:'POST',data:{'value':getObj('username_free').value},async:false,
-		complete  : function(res, status) { params['username'] = res.responseText; }
-	});
-	jQuery.ajax({
-		url:'<?php echo $path; ?>modules/Morphsuit/MorphParam.php',type:'POST',data:{'value':getObj('password_free').value},async:false,
-		complete  : function(res, status) { params['password'] = res.responseText; }
+		url:'<?php echo $path; ?>modules/Morphsuit/MorphParam.php',type:'POST',data:{'value':getObj('email_std').value},async:false,
+		complete  : function(res, status) { params['email'] = res.responseText; }
 	});
 	var result = '';
 	jQuery.ajax({
@@ -319,70 +296,48 @@ function submitFree() {
 		type: 'POST',
 		data: params,
 		complete  : function(res, status) {
-			if (status != 'success') {
-				alert('Connection with VTECRM Network failed ('+status+')');
+			checkMorphsuit();
+		}
+	});
+}
+
+function checkMorphsuit(new_key, user_info) {
+	var user_info = {
+		'username' : getObj('username_std').value,
+		'password' : getObj('password_std').value,
+		'email' : getObj('email_std').value,
+		'last_name' : getObj('last_name').value,
+		'first_name' : getObj('first_name').value
+	};
+	<?php if ($installation_mode) { ?>
+		var url = '<?php echo $path; ?>modules/Morphsuit/CheckMorphsuit.php';
+	<?php } else { ?>
+		var url = 'index.php?module=Morphsuit&action=MorphsuitAjax&file=CheckMorphsuit';
+	<?php } ?>
+	var params = {
+		'user_info' : JSON.stringify(user_info)
+	};
+	jQuery.ajax({
+		url : url,
+		type: 'POST',
+		data: params,
+		complete  : function(res1, status1) {
+			var check = res1.responseText;
+			if (check != 'yes') {
+				//alert('VTECRM Network service fails to create your license (err 5)');
 				pleaseWait('disable');
-			} else {
-				result = res.responseText;
-				if (result == 'LOGIN_FAILED') {
-					alert('Login failed (err 1)');
-					pleaseWait('disable');
-				} else if (result == 'USER_NOT_IMPORTED') {
-					alert('Login failed (err 2)');
-					pleaseWait('disable');
-				} else if (result == 'VERSION_NOT_ACTIVABLE') {
-					alert('<?php echo addslashes($mod_strings['LBL_ERROR_VTE_FREE_NOT_ACTIVABLE']); ?>');
-					pleaseWait('disable');
-				} else if (result.indexOf('ERROR: The requested URL could not be retrieved')>-1) {
-					alert('Connection with VTECRM Network failed (err 3)');
-					pleaseWait('disable');
-				} else if (result == '') {
-					alert('VTECRM Network service fails to create your license (err 4)');
-					pleaseWait('disable');
+				window.location.href = "<?php echo $path; ?>index.php";
+			} else if (check == 'yes') {
+				var res1 = getFile('index.php?module=Morphsuit&action=MorphsuitAjax&file=CheckSMTP');
+				if (res1 != 'ok') {
+					if(confirm("<?php echo $mod_strings['LBL_ERROR_SMTP']; ?>")) {
+						window.location.href = "<?php echo $path; ?>index.php?module=Settings&action=EmailConfig&parenttab=Settings";
+						return true;
+					} else {
+						window.location.href = "<?php echo $path; ?>index.php";
+					}
 				} else {
-					result = eval('('+result+')');
-					var new_key = result['new_key'];
-					var user_info = {
-						'username' : getObj('username_free').value,
-						'password' : getObj('password_free').value,
-						'email' : result['email'],
-						'name' : result['name']
-					};
-					<?php if ($installation_mode) { ?>
-						var url1 = '<?php echo $path; ?>modules/Morphsuit/CheckMorphsuit.php';
-					<?php } else { ?>
-						var url1 = 'index.php?module=Morphsuit&action=MorphsuitAjax&file=CheckMorphsuit';
-					<?php } ?>
-					var params1 = {
-						'valida_chiave' : new_key,
-						'user_info' : JSON.stringify(user_info)
-					};
-					jQuery.ajax({
-						url : url1,
-						type: 'POST',
-						data: params1,
-						complete  : function(res1, status1) {
-							var check = res1.responseText;
-							if (check != 'yes') {
-								alert('VTECRM Network service fails to create your license (err 5)');
-							} else if (check == 'yes') {
-								var res1 = getFile('<?php echo $path; ?>index.php?module=Morphsuit&action=MorphsuitAjax&file=CheckSMTP');
-								if (res1 != 'ok') {
-									// crmv@99315
-									vteconfirm("<?php echo $mod_strings['LBL_ERROR_SMTP']; ?>", function(yes) {
-										if (yes) {
-											window.location.href = "<?php echo $path; ?>index.php?module=Settings&action=EmailConfig&parenttab=Settings";
-										} else {
-											window.location.href = "<?php echo $path; ?>index.php";
-										}
-									});
-									return;
-									// crmv@99315e
-								}
-							}
-							window.location.href = "<?php echo $path; ?>index.php";
-						}
-					});
+					window.location.href = "<?php echo $path; ?>index.php";
 				}
 			}
 		}
