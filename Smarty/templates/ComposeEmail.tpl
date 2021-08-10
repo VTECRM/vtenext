@@ -64,15 +64,15 @@
 <input type="hidden" name="hidden_toid" id="hidden_toid">
 <input type="hidden" name="draft_id" id="draft_id" value="{$DRAFTID}">
 {if !empty($smarty.request.message)}
-	<input type="hidden" name="message" value="{$smarty.request.message}">
-	<input type="hidden" name="message_mode" value="{$smarty.request.message_mode}">
+	<input type="hidden" name="message" value="{$smarty.request.message|@vtlib_purify}">{* crmv@211287 *}
+	<input type="hidden" name="message_mode" value="{$smarty.request.message_mode|@vtlib_purify}">{* crmv@211287 *}
 {/if}
 <input type="hidden" name="uploaddir" value="{$UPLOADIR}">
 {* crmv@2043m *}
 {if $smarty.request.reply_mail_converter neq ''}
-	<input type="hidden" name="reply_mail_converter" value="{$smarty.request.reply_mail_converter}">
-	<input type="hidden" name="reply_mail_converter_record" value="{$smarty.request.reply_mail_converter_record}">
-	<input type="hidden" name="reply_mail_user" value="{$smarty.request.reply_mail_user}">
+	<input type="hidden" name="reply_mail_converter" value="{$smarty.request.reply_mail_converter|@vtlib_purify}">{* crmv@211287 *}
+	<input type="hidden" name="reply_mail_converter_record" value="{$smarty.request.reply_mail_converter_record|@vtlib_purify}">{* crmv@211287 *}
+	<input type="hidden" name="reply_mail_user" value="{$smarty.request.reply_mail_user|@vtlib_purify}">{* crmv@211287 *}
 {/if}
 {* crmv@2043me *}
 {* crmv@62394 - activity tracking inputs *}
@@ -280,7 +280,6 @@
 												</td>
 											</tr>
 											<script type="text/javascript">checkAttachment('{$attach_files.url}', '{$attach_files.name}', '{$attach_files.contentid}', 'compose')</script> {* crmv@204525 *}
-
 											{* crmv@121575e *}
 								        {/foreach}
 										</table>
@@ -482,6 +481,14 @@ jQuery(document).ready(function() {ldelim}
 				});
 			},
 			FileUploaded: function(up, file, info) {
+				// crmv@228766
+				var response = JSON.parse(info.response);
+				if(response.hasOwnProperty('error')){
+					vtealert(response.error.message);
+					up.removeFile(file);
+				}
+				// crmv@228766e
+
 				// Called when a file has finished uploading
 				jQuery('.plupload_buttons').show();
 				jQuery('.plupload_upload_status').hide();
@@ -519,7 +526,7 @@ jQuery(document).ready(function() {ldelim}
 	jQuery.ajax({
 		url: 'index.php',
 		method: 'POST',
-		data: "module=Documents&action=DocumentsAjax&file=EmailFile&record={/literal}{$smarty.request.rec}{literal}",
+		data: "module=Documents&action=DocumentsAjax&file=EmailFile&record={/literal}{$smarty.request.rec|@vtlib_purify|escape:'quotes'}{literal}",//crmv@211287
 		success: function(result) {
 		}
 	});

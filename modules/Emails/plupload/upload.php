@@ -10,14 +10,37 @@
  * Contributing: http://www.plupload.com/contributing
  */
 
-// Settings
-$targetDir = 'storage/uploads_emails_'.$_REQUEST['dir'];	//crmv@2963m
+//crmv@228766
+if(!isset($root_directory)){
+	require('../../../config.inc.php');
+}
+chdir($root_directory);
+require_once('include/utils/utils.php');
+VteSession::start();
+if(!VteSession::hasKey('authenticated_user_id')) die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Not Authorized."}, "id" : "id"}');
+// crmv@228766e
 
+// Settings
+$targetDir = 'storage/uploads_emails_'.str_replace('../', '', $_REQUEST['dir']);//crmv@2963m crmv@228766
+
+// crmv@228766
+$tempRootDir = rtrim($root_directory, "/");
 // Create target dir
 if (!file_exists($targetDir)){
 	@mkdir($targetDir);
+	checkIfPathIsInStorage($targetDir, $tempRootDir);
+
 	@file_put_contents($targetDir."/index.html", "<html></html>\n"); // crmv@195947
+} else {
+	checkIfPathIsInStorage($targetDir, $tempRootDir);
 }
+
+function checkIfPathIsInStorage($path, $rootPath){
+	if (strpos(dirname(realpath($path)), $rootPath.'/storage') !== 0){
+		die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Bad dir."}, "id" : "id"}');
+	}
+}
+// crmv@228766e
 
 //crmv@81704
 if ($_REQUEST['ckeditor'] == 'true'){
@@ -60,7 +83,7 @@ if ($_REQUEST['ckeditor'] == 'true'){
 	}
 	echo Zend_Json::encode($response_arr);
 	exit;
-			
+
 }
 //crmv@81704 e
 
@@ -84,6 +107,13 @@ header("Pragma: no-cache");
 $chunk = isset($_REQUEST["chunk"]) ? $_REQUEST["chunk"] : 0;
 $chunks = isset($_REQUEST["chunks"]) ? $_REQUEST["chunks"] : 0;
 $fileName = isset($_REQUEST["name"]) ? $_REQUEST["name"] : '';
+
+// crmv@228766
+$ext = pathinfo($fileName, PATHINFO_EXTENSION);
+if (is_array($upload_badext) && in_array($ext, $upload_badext)){
+	die('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "File type not supported."}, "id" : "id"}');
+}
+// crmv@228766e
 
 // Clean the fileName for security reasons
 $fileName = preg_replace('/[^\w\._]+/', '', $fileName);
@@ -124,7 +154,7 @@ if (isset($_SERVER["HTTP_CONTENT_TYPE"]))
 
 if (isset($_SERVER["CONTENT_TYPE"]))
 	$contentType = $_SERVER["CONTENT_TYPE"];
-	
+
 // Handle non multipart uploads older WebKit versions didn't support multipart in HTML5
 if (strpos($contentType, "multipart") !== false) {
 	if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
@@ -137,7 +167,7 @@ if (strpos($contentType, "multipart") !== false) {
 			if ($in) {
 				while ($buff = fread($in, 4096))
 					fwrite($out, $buff);
-			// crmv@205309
+				// crmv@205309
 			} else {
 				header("HTTP/1.0 500 Internal Server Error");
 				die('{"jsonrpc" : "2.0", "error" : {"code": 101, "message": "Failed to open input stream."}, "id" : "id"}');
@@ -159,8 +189,8 @@ if (strpos($contentType, "multipart") !== false) {
 			}
 			// crmv@205309e
 		}
-			
-	// crmv@205309
+
+		// crmv@205309
 	} else {
 		header("HTTP/1.0 500 Internal Server Error");
 		die('{"jsonrpc" : "2.0", "error" : {"code": 103, "message": "Failed to move uploaded file."}, "id" : "id"}');
@@ -176,7 +206,7 @@ if (strpos($contentType, "multipart") !== false) {
 		if ($in) {
 			while ($buff = fread($in, 4096))
 				fwrite($out, $buff);
-		// crmv@205309
+			// crmv@205309
 		} else {
 			header("HTTP/1.0 500 Internal Server Error");
 			die('{"jsonrpc" : "2.0", "error" : {"code": 101, "message": "Failed to open input stream."}, "id" : "id"}');
@@ -185,7 +215,7 @@ if (strpos($contentType, "multipart") !== false) {
 
 		fclose($in);
 		fclose($out);
-	
+
 	} else {
 		// crmv@205309
 		// try to save in database
@@ -204,4 +234,3 @@ if (strpos($contentType, "multipart") !== false) {
 // Return JSON-RPC response
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
 //crmv@22123e
-?>
