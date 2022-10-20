@@ -22,7 +22,7 @@
 <script src="include/js/grapesjs/grapesjs-preset-newsletter.min.js"></script>
 <script src="include/js/grapesjs/grapesjs-image-manager.min.js"></script>	<!-- crmv@201352 -->
 <script src="{"include/js/general.js"|resourcever}"></script>
-<script src="modules/SDK/src/Grapes/Grapes.js"></script>
+<script src="{"modules/SDK/src/Grapes/Grapes.js"|resourcever}"></script>{* crmv@231245 *}
 
 <script type="text/javascript">
 	{if $ALL_VARIABLES}

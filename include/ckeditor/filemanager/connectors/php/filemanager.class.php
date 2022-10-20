@@ -232,6 +232,11 @@ private function isDir($dir) {
 			if(!in_array($size[2], array(1, 2, 3, 7, 8))) {
 				$this->error(sprintf($this->lang('UPLOAD_IMAGES_TYPE_JPEG_GIF_PNG')),true);
 			}
+			// crmv@261010_2
+			if (!in_array(strtolower(pathinfo($_FILES['newfile']['name'], PATHINFO_EXTENSION)), $this->config['images'])) {
+			    $this->error(sprintf($this->lang('UPLOAD_IMAGES_TYPE_JPEG_GIF_PNG')), true);
+			}
+			// crmv@261010_2e
 		}
 		$_FILES['newfile']['name'] = $this->cleanString($_FILES['newfile']['name'],array('.','-'));
 		if(!$this->config['upload']['overwrite']) {

@@ -143,6 +143,34 @@ VTE.GrapesEditor = VTE.GrapesEditor || {
 		//jQuery('.fa-bars').hide();	//remove Open Layer Manager
 
 		var blockManager = editor.BlockManager;
+		
+		// crmv@261314
+		editor.Components.addType('image-with-link', {
+			extend: 'link',
+			model: {
+				defaults: {
+					style: {
+						display: 'inline-block',
+						padding: '5px',
+						'min-height': '50px',
+						'min-width': '50px'
+					},
+					components: {
+						type: 'image',
+					}
+				}
+			}
+		});
+
+		blockManager.add('image-with-link', {
+			label: 'Image Link',
+			attributes: { class: 'fa fa-image' },
+			content: {
+				type: 'image-with-link'
+			}
+		});
+		// crmv@261314e
+
 		blockManager.add('olist', {
 			label: 'Ordered List',
 			attributes: {
@@ -207,20 +235,26 @@ VTE.GrapesEditor = VTE.GrapesEditor || {
 		}
 		// crmv@202326e
 		
-		//selezione in automatico del tab Settings al trascinamento di un link
+		// crmv@261314
 		editor.on('component:mount', function(model) {
-			if(model.is('link')){
-				editor.select(model);
-				const openBl = editor.Panels.getButton('views', 'open-tm');
-				openBl && openBl.set('active', 1)
-			}
+			editor.select(model);
 		});
 		
+		editor.on('component:selected', function(model) {
+			if (model.is('link') || model.is('image-with-link')) {
+				const openBl = editor.Panels.getButton('views', 'open-tm');
+				openBl && openBl.set('active', 1);
+			} else {
+				const openSmBtn = editor.Panels.getButton('views', 'open-sm');
+				openSmBtn && openSmBtn.set('active', 1);
+			}
+		});
+		// crmv@261314e
+
 		me.editor = editor;
 		
 		me.customizeEditor(editor);
 		me.loadAssets(me.images_uploaded);
-		
 	},
 	
 	checkEndpoint: function(){
@@ -418,10 +452,25 @@ VTE.GrapesEditor = VTE.GrapesEditor || {
 					attributes: {
 						title: 'Edit Code'
 					}
-				}
+				},
+				{
+					id: 'undo',
+					className: 'fa fa-undo',
+					attributes: { title: 'Undo' },
+					command: function() { 
+						editor.runCommand('core:undo');
+					}
+				},
+				{
+					id: 'redo',
+					className: 'fa fa-repeat',
+					attributes: { title: 'Redo' },
+					command: function() {
+						editor.runCommand('core:redo');
+					}
+				},
 			]
 		);
-
 	},
 
 	loadAssets: function(files){

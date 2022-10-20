@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
  * SPDX-License-Identifier: AGPL-3.0-only  
  ************************************/
+global $enterprise_mode;
 $mod_strings = array (
   'LBL_MODULE_NAME' => 'Utenti',
   'LBL_MODULE_TITLE' => 'Utenti: Home',
@@ -623,16 +624,19 @@ $mod_strings = array (
 'LBL_KEEP_ME_LOGGED_IN' => 'Resta collegato',
 'LBL_FORGOT_YOUR_PASSWORD' => 'Hai dimenticato la password?',
 'LBL_RECOVER_INTRO' => 'Inserisci il tuo nome utente.<br />Ti verrà inviata una mail con le istruzioni per impostare una nuova password.',
-'LBL_RECOVER_EMAIL_SUBJECT' => 'VTE Recupero password',
+'LBL_RECOVER_EMAIL_SUBJECT' => $enterprise_mode.' Recupero password',
 'LBL_RECOVER_EMAIL_BODY1' => 'È stata eseguita una richiesta di recupero password per il tuo account dall\'indirizzo ip %s.<br />Se hai eseguito tu questa richiesta clicca',
-'LBL_RECOVER_EMAIL_BODY2' => 'per proseguire ed immettere la nuova password.<br />Hai a disposizione 24 ore per terminare questo processo di recupero password. Passate le 24 ore dovrai ripetere la procedura dall\'inizio cliccando nuovamente il link "Hai dimenticato la password?" nella pagina di login.',
+'LBL_RECOVER_EMAIL_BODY2' => 'per proseguire ed immettere la nuova password.<br />Hai a disposizione 15 minuti per terminare questo processo di recupero password. Passati i 15 minuti dovrai ripetere la procedura dall\'inizio cliccando nuovamente il link "Hai dimenticato la password?" nella pagina di login.',
 'LBL_RECOVER_MAIL_SENT' => 'La mail con le istruzioni di reset password è stata inviata.',
 'LBL_RECOVER_MAIL_ERROR' => 'Non è stato possibile inviare la mail.<br />Contatta l\'amministratore e richiedi il cambio password.',
 'LBL_RECOVERY_SYSTEM1' => 'Benvenuto nel sistema di recupero password.<br />Se non sei l\'utente',
 'LBL_RECOVERY_SYSTEM2' => 'ti preghiamo di cliccare',
 'LBL_RECOVERY_SYSTEM3' => 'altrimenti compila i campi sottostanti con una nuova password che sostituirà la vecchia.',
+'LBL_RECOVERY_SYSTEM4' => 'altrimenti procedi per inserire la nuova password.',
 'LBL_RECOVERY_PASSWORD_SAVED' => 'La nuova password è stata salvata.',
 'LBL_RECOVERY_SESSION_EXPIRED' => 'Sessione scaduta. Ti preghiamo di ripetere la procedura di recupero password.',
+'LBL_RECOVERY_EMAIL_PASSWORD_SAVED' => 'La tua password è stata cambiata con successo dall\'indirizzo ip %s. Premere %s per il login.',
+'LBL_RECOVERY_TOO_MANY_ATTEMPTS' => 'Sei stato temporaneamente bloccato per troppi tentativi di recupero password. Riprova tra 1 ora.',
 //crmv@27589e	//crmv@27520e
 'LBL_SAVELOGIN_HELP' => 'Assicurati che il server abbia session.gc_maxlifetime = 2592000 nel php.ini per attivare la funzionalità.',
 //crmv@28327

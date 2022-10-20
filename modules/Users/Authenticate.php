@@ -133,10 +133,13 @@ else
 
 	// crmv@43592
 	if ($loadResult == 'EXPIRED') { // crmv@187476
-		// generate a token for the change password (1 hour only)
-		$key = getUserAuthtokenKey('password_recovery',$focus->id,3600);
-		header('Location: hub/rpwd.php?action=change_old_pwd&key='.$key); // crmv@192078
-		exit;
+	    // crmv@261010_1 generate a token for the change password
+	    require_once('modules/Users/RecoverPwd.php');
+	    $recoverPwd = new RecoverPwd();
+	    $key = getUserAuthtokenKey($recoverPwd->user_auth_token_type,$focus->id,$recoverPwd->user_auth_seconds_to_expire,true);
+	    // crmv@261010_1e
+	    header('Location: hub/rpwd.php?action=change_old_pwd&key='.$key); // crmv@192078
+	    exit;
 	}
 	// crmv@43592e
 

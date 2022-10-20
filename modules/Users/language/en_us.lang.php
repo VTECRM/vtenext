@@ -1,4 +1,5 @@
 <?php
+global $enterprise_mode;
 $mod_strings = array(
 	'LBL_MODULE_NAME'=>'Users',
 	'LBL_MODULE_TITLE'=>'Users: Home',
@@ -575,16 +576,19 @@ $mod_strings = array(
 	'LBL_KEEP_ME_LOGGED_IN'=>'Keep me logged in',
 	'LBL_FORGOT_YOUR_PASSWORD'=>'Forgot your password?',
 	'LBL_RECOVER_INTRO'=>'Please enter your user name.<br />You will receive an email with instructions on how to set a new password.',
-	'LBL_RECOVER_EMAIL_SUBJECT'=>'VTE Password recovery',
+    'LBL_RECOVER_EMAIL_SUBJECT'=>$enterprise_mode.' Password recovery',
 	'LBL_RECOVER_EMAIL_BODY1'=>'The password for your account was recovered from the ip %s.<br />To run this operation please click',
-	'LBL_RECOVER_EMAIL_BODY2'=>'to continue and enter the new password.<br />You have 24 hours to finish the password recovery process. Passed the 24 hours you will have to start by clicking again on the link "Forgot your password?" at the login page.',
+	'LBL_RECOVER_EMAIL_BODY2'=>'to continue and enter the new password.<br />You have 15 minutes to finish the password recovery process. Passed the 15 minutes you will have to start by clicking again on the link "Forgot your password?" at the login page.',
 	'LBL_RECOVER_MAIL_SENT'=>'The mail with the instructions on how to reset the password has been sent',
 	'LBL_RECOVER_MAIL_ERROR'=>'We are unable to send mail.<br />Contact the administrator and request a password change.',
 	'LBL_RECOVERY_SYSTEM1'=>'Welcome to the password recovery system.<br />If you are not the user',
 	'LBL_RECOVERY_SYSTEM2'=>'please click',
 	'LBL_RECOVERY_SYSTEM3'=>'or fill out the fields below to replace the old password.',
+    'LBL_RECOVERY_SYSTEM4' => 'or proceed to enter the new password.',
 	'LBL_RECOVERY_PASSWORD_SAVED'=>'New password saved.',
 	'LBL_RECOVERY_SESSION_EXPIRED'=>'Session timed out. Please repeat the password recovery process.',
+    'LBL_RECOVERY_EMAIL_PASSWORD_SAVED' => 'Your password was successfully changed from the ip %s. Click %s for login.',
+    'LBL_RECOVERY_TOO_MANY_ATTEMPTS' => 'You have been temporarily blocked for too many password recovery attempts. Try again in 1 hour.',
 	'LBL_SAVELOGIN_HELP'=>'Be sure that your server have session.gc_maxlifetime = 2592000 in php.ini file in order to activate this feature.',
 	'LBL_USER_BLOCKED'=>'The user is blocked because he/she has not been using the account for more then %s months. Please contact your  administrator to reactivate it.',
 	'LBL_PASSWORD_TO_BE_CHANGED'=>'Please change your password every %s months.',

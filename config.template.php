@@ -26,12 +26,12 @@ $PORTAL_URL = '_SITE_URL_/portal';
 
 // helpdesk support email id and support name (Example: 'support@vte.biz' and 'VTE Support')
 $HELPDESK_SUPPORT_EMAIL_ID = '_USER_SUPPORT_EMAIL_';
-$HELPDESK_SUPPORT_NAME = 'VTE Notification System';
+$HELPDESK_SUPPORT_NAME = $enterprise_mode.' Notification System'; // crmv@261010_1
 $HELPDESK_SUPPORT_EMAIL_REPLY_ID = $HELPDESK_SUPPORT_EMAIL_ID;
 
 //crmv@10488
 $REMINDER_EMAIL_ID ='_USER_SUPPORT_EMAIL_';
-$REMINDER_NAME = 'VTE Notification System';
+$REMINDER_NAME = $enterprise_mode.' Notification System'; // crmv@261010_1
 //crmv@10488 e\
 
 /* database configuration

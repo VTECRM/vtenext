@@ -50,6 +50,15 @@
 				border-bottom: 2px solid #d38600;
 				border-radius: 0; 
 			}
+			
+			.gjs-rte-action {
+				width: auto;
+				min-width: 25px;
+			}
+			
+			.gjs-rte-action svg {
+				width: 20px;
+			}
 
 			.template-vars-input {
 				background-color: white;

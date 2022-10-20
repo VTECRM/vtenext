@@ -943,6 +943,18 @@ class Users extends CRMEntity { //crmv@392267
 		global $metaLogs;
 		if ($metaLogs) $metaLogs->log($metaLogs::OPERATION_CHANGEUSERPWD, $this->id);
 		// crmv@90935e
+		
+		// crmv@261010_1
+		global $site_URL;
+		require_once('modules/Users/RecoverPwd.php');
+		$recoverPwd = new RecoverPwd();
+		
+		$link = "<a href='$site_URL'>".getTranslatedString('LBL_HERE','APP_STRINGS')."</a>";
+		$body = getTranslatedString('Dear','HelpDesk').' '.$this->column_fields['user_name'].',<br><br>';
+		$body .= sprintf(getTranslatedString('LBL_RECOVERY_EMAIL_PASSWORD_SAVED','Users'), getIP(), $link);
+		$body .= '<br><br>'.getTranslatedString("LBL_REGARDS",'HelpDesk').',<br>'.getTranslatedString("LBL_TEAM",'HelpDesk');
+		$recoverPwd->sendMail($this->column_fields['email1'], getTranslatedString('LBL_RECOVER_EMAIL_SUBJECT','Users'), $body);
+		// crmv@261010_1e
 
 		return true;
 	}

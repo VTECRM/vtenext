@@ -13,9 +13,9 @@
 	<link rel="stylesheet" type="text/css" href="themes/next/select2.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="themes/next/vte_materialize.css" media="screen" />
 
-	<script language="JAVASCRIPT" type="text/javascript" src="include/js/{$CURRENT_LANGUAGE}.lang.js"></script>
+	<script language="JAVASCRIPT" type="text/javascript" src="{"include/js/`$CURRENT_LANGUAGE`.lang.js"|resourcever}"></script>{* crmv@231245 *}
 	<script language="JavaScript" type="text/javascript" src="{$RELPATH}{"include/js/general.js"|resourcever}"></script>
-	<script language="JavaScript" type="text/javascript" src="{$RELPATH}modules/Campaigns/Campaigns.js|resourcever}"></script>
+	<script language="JavaScript" type="text/javascript" src="{$RELPATH}{"modules/Campaigns/Campaigns.js"|resourcever}"></script>{* crmv@231245 *}
 
 	<div id="nlw_templateEditCont">
 		<input type="hidden" id="nlw_templateEditId" value="{$TPL_ID}" />
