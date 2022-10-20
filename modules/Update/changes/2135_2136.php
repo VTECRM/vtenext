@@ -1,6 +1,9 @@
 <?php
 global $adb, $table_prefix;
 
+require_once('include/utils/FSUtils.php');
+folderDetete('cron/modules/com_vtiger_workflow');
+
 $customizations = SDK::getAllCustomizations();
 $words = [
     'com_vtiger_workflow',

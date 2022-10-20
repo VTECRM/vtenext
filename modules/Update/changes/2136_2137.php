@@ -2,6 +2,12 @@
 //update to change all sdk_language trans_label , vtiger strings to vte
 global $adb, $table_prefix;
 
+if (!function_exists('str_contains')) {
+    function str_contains($haystack, $needle) {
+        return $needle !== '' && mb_strpos($haystack, $needle) !== false;
+    }
+}
+
 $sql = "SELECT trans_label FROM sdk_language WHERE trans_label LIKE '%VTIGER%' ";
 // crmv@190493e
 $res = $adb->query($sql);
