@@ -7,6 +7,7 @@
 /* crmv@181161 crmv@182073 crmv@183486 */
 
 require_once('Update.php');
+require_once('modules/Emails/mail.php');
 
 class AutoUpdater {
 
