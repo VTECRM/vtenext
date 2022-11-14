@@ -94,9 +94,11 @@ class ModComments extends ModCommentsCore {
 		}
 		if ($commentWidgetCount) {
 			$modCommentsModule = Vtecrm_Module::getInstance('ModComments');
-			$modCommentsModule->addLink('HEADERSCRIPT', 'ModCommentsCommonHeaderScript', 'modules/ModComments/ModCommentsCommon.js');
-			$modCommentsRelatedToField = Vtecrm_Field::getInstance('related_to', $modCommentsModule);
-			$modCommentsRelatedToField->setRelatedModules($moduleNames);
+			if (is_object($modCommentsModule)) {
+				$modCommentsModule->addLink('HEADERSCRIPT', 'ModCommentsCommonHeaderScript', 'modules/ModComments/ModCommentsCommon.js');
+				$modCommentsRelatedToField = Vtecrm_Field::getInstance('related_to', $modCommentsModule);
+				$modCommentsRelatedToField->setRelatedModules($moduleNames);
+			}
 		}
 	}
 	

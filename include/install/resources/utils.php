@@ -135,7 +135,7 @@ class Installation_Utils {
 					$db_exist_status = true;
 					if(!$db_utf8_support) {
 						// Check if the database that we are going to use supports UTF-8
-						$db_utf8_support = check_db_utf8_support($conn);
+						$db_utf8_support = self::check_db_utf8_support($conn);
 					}
 				}
 				$conn->Close();
@@ -175,7 +175,7 @@ class Installation_Utils {
     //crmv@208173
     //Added to check database charset and $default_charset are set to UTF8.
     //If both are not set to be UTF-8, Then we will show an alert message.
-    function check_db_utf8_support($conn) {
+   static function check_db_utf8_support($conn) {
         global $db_type;
         //crmv@charset
         if($db_type !== 'mysql')
