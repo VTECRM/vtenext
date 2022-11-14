@@ -243,7 +243,7 @@ class MyNotes extends CRMEntity {
 					Array($currentModuleInstance->id, $module->id, 'get_related_list', $moduleName));
 				if ($check && $adb->num_rows($check) > 0) {
 					// do nothing
-				} else {					
+				} else if (is_object($currentModuleInstance) && method_exists($currentModuleInstance,'setRelatedList')){					
 					$currentModuleInstance->setRelatedList($module, $moduleName, Array('SELECT','ADD'), 'get_related_list');
 				}
 			}
