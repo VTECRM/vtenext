@@ -49,7 +49,7 @@ class Import_Utils {
 
 	public static function getImportFilePath($user) {
 		$importDirectory = self::getImportDirectory();
-		return $importDirectory. "IMPORT_".$user->id;
+		return $importDirectory. "IMPORT_".intval($user->id);  // crmv@341226
 	}
 
 
@@ -82,7 +82,7 @@ class Import_Utils {
 	public static function getDbTableName($user) {
 		$configReader = new ConfigReader('modules/Import/config.inc', 'ImportConfig');
 		$userImportTablePrefix = $configReader->getConfig('userImportTablePrefix');
-		return $userImportTablePrefix . $user->id;
+		return $userImportTablePrefix . intval($user->id);  // crmv@341226
 	}
 
 	public static function showErrorPage($errorMessage, $errorDetails=false, $customActions=false) {

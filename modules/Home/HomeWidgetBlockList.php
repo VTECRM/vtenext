@@ -19,6 +19,8 @@ require_once('include/home.php');
 
 $homeObj=new Homestuff;
 
+$widgetTypes = ['URL','SDKIframe','Iframe','Charts','Module','RSS','Default']; // crmv@345820
+
 Zend_Json::$useBuiltinEncoderDecoder = true;
 $widgetInfoList = Zend_Json::decode($_REQUEST['widgetInfoList']);
 $widgetHTML = array();
@@ -28,9 +30,21 @@ $smarty->assign("APP",$app_strings);
 $smarty->assign("THEME", $theme);
 $smarty->assign("IMAGE_PATH",$image_path);
 
+// crmv@345820
+$accessibleWidgets = [];
+$homedetails = $homeObj->getHomePageFrame();
+if (!empty($homedetails)) {
+	foreach($homedetails as $homedetail) {
+		$accessibleWidgets[] = $homedetail['Stuffid'];
+	}
+}
+// crmv@345820e
+
 foreach ($widgetInfoList as $widgetInfo) {
-	$widgetType = $widgetInfo['widgetType'];
-	$widgetId = $widgetInfo['widgetId'];
+	$widgetType = array_intersect([$widgetInfo['widgetType']], $widgetTypes)[0] ?? ''; // crmv@345820
+	$widgetId = intval($widgetInfo['widgetId']); // crmv@345820
+	if (!in_array($widgetId, $accessibleWidgets)) continue;	// crmv@345820
+
 	if($widgetType == 'URL'){
 		$url = $homeObj->getWidgetURL($widgetId);
 		if(strpos($url, "://") === false){
@@ -106,5 +120,7 @@ foreach ($widgetInfoList as $widgetInfo) {
 	$html .= $smarty->fetch("Home/HomeBlock.tpl");
 	$widgetHTML[$widgetId] = $html;
 }
+
+header('Content-Type: application/json'); // crmv@345820
 echo Zend_JSON::encode($widgetHTML);
 ?>

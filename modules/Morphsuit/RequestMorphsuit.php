@@ -29,7 +29,7 @@ if ($_REQUEST['morph_mode'] == 'installation' || VteSession::get('morph_mode') =
 	
 	if ($enterprise_mode == 'VTENEXTCE') { // crmv@192073
 		// recalc application_unique_key
-		$application_unique_key = md5(time() + rand(1,9999999) + md5($root_directory));
+		$application_unique_key = md5(time() . rand(1,9999999) . md5($root_directory));
 		$configInc = file_get_contents('config.inc.php');
 		$configInc = preg_replace('/^\$application_unique_key.*$/m', "\$application_unique_key = '{$application_unique_key}';", $configInc);
 		if (is_writable('config.inc.php')) file_put_contents('config.inc.php', $configInc);

@@ -1684,6 +1684,45 @@ class Users extends CRMEntity { //crmv@392267
 	// crmv@74560e
 
 
+	// crmv@341228
+	public function filterOrDenySave(): bool {
+		global $log, $current_user;
+		
+		if (php_sapi_name() === 'cli' || ($current_user && is_admin($current_user))) {
+			return true;
+		}
+		if ($this->mode != 'edit') {
+			$log->fatal("SECURITY: Non-Admin {$current_user->id} attempted to create a new user {$this->id}.");
+			return false;
+		}
+		if (!$current_user || $current_user->id != $this->id) {
+			$ulabel = $current_user ? "Non-Admin {$current_user->id}" : "Unset user";
+			$log->fatal("SECURITY: {$ulabel} attempted to change some settings for user {$this->id}.");
+			return false;
+		}
+		
+		$old = CRMEntity::getInstance('Users');	
+		$old->id = $this->id;
+		$old->mode = 'edit';
+		$old->retrieve_entity_info_no_html($this->id, 'Users');
+		
+		// require_once 'data/VTEntityDelta.php';
+		// $delta = new VTEntityDelta();
+		// $delta->setOldEntity('Users', $this->id, VTEntityData::fromCRMEntity($old));
+		// $delta->setNewEntity('Users', $this->id, VTEntityData::fromCRMEntity($this));
+		// $delta->computeDelta('Users', $this->id);
+		// $delta = $delta->getEntityDelta('Users', $this->id);
+		
+		// deny self changes and from upper roles
+		static $denied_fields = ['is_admin', 'roleid', 'user_name', 'email1', 'status', 'currency_id'];
+		
+		foreach ($denied_fields as $fname) {
+			$this->column_fields[$fname] = $old->column_fields[$fname];
+		}
+		return true;
+	}
+	// crmv@341228e
+	
 
 	/** Function to save the user information into the database
   	  * @param $module -- module name:: Type varchar

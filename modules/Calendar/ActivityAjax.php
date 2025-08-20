@@ -4,8 +4,10 @@
  * SPDX-License-Identifier: AGPL-3.0-only  
  ************************************/
 
+require_once('include/utils/utils.php');
 require_once("modules/Calendar/calendarLayout.php");
 require_once("modules/Calendar/Calendar.php");
+
 
 global $theme,$mod_strings,$app_strings, $current_language,$currentModule,$current_user;
 global $adb, $table_prefix;
@@ -178,7 +180,10 @@ if((isset($_REQUEST['type']) && $_REQUEST['type'] !='') || (isset($_REQUEST['n_t
 				echo constructTodoListView($todo_list,$calendar_arr,$subtab,$navigation_arr)."####".getTodoInfo($calendar_arr,'listcnt');
 			}
 		} elseif($type == 'view') {
-			require_once('modules/Calendar/'.$_REQUEST['file'].'.php');
+		    // crmv@345820
+		    $reqfile = preg_replace("/[^a-zA-Z0-9_\-\/]/", '', $_REQUEST['file']);
+			require_once("modules/Calendar/{$reqfile}.php");
+			// crmv@345820e
 		} else {
 			die("View option is not defined");
 		}

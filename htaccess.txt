@@ -1,26 +1,50 @@
-<IfModule mod_expires.c>
-	<FilesMatch "\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico)$">
-		ExpiresActive On
-		ExpiresDefault "access plus 10 years"
-	</FilesMatch>
-</IfModule>
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*\.(js|css))$ smartoptimizer/?$1
-	
-	<IfModule mod_expires.c>
-		RewriteCond %{REQUEST_FILENAME} -f
-		RewriteRule ^(.*\.(js|css|html?|xml|txt))$ smartoptimizer/?$1
-	</IfModule>
+# crmv@272658
+<Files "composer.*">
+	# disable access to composer files, to avoid library enumeration
+	Order Allow,Deny
+	Deny from all
+</Files>
 
-	<IfModule !mod_expires.c>
-		RewriteCond %{REQUEST_FILENAME} -f
-		RewriteRule ^(.*\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico))$ smartoptimizer/?$1
+# crmv@301301
+# disable the server signature for server generated pages
+# beware: this is not hiding the header "Server"
+ServerSignature Off
+
+# crmv@343310
+<IfModule mod_mime.c>
+	<IfModule mod_headers.c>
+		<FilesMatch "site.webmanifest$">
+			Header set Content-Type "application/manifest+json"
+		</FilesMatch>
 	</IfModule>
 </IfModule>
-<FilesMatch "\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico)$">
-	FileETag none
-</FilesMatch>
+# crmv@343310e
+
+# Enable this if you want to use smartoptimizer (can be buggy with some files)
+#
+# <IfModule mod_expires.c>
+# 	<FilesMatch "\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico)$">
+# 		ExpiresActive On
+# 		ExpiresDefault "access plus 10 years"
+# 	</FilesMatch>
+# </IfModule>
+# <IfModule mod_rewrite.c>
+# 	RewriteEngine On
+# 	
+# 	RewriteCond %{REQUEST_FILENAME} !-f
+# 	RewriteCond %{REQUEST_FILENAME} !-d
+# 	RewriteRule ^(.*\.(js|css))$ smartoptimizer/?$1
+# 	
+# 	<IfModule mod_expires.c>
+# 		RewriteCond %{REQUEST_FILENAME} -f
+# 		RewriteRule ^(.*\.(js|css|html?|xml|txt))$ smartoptimizer/?$1
+# 	</IfModule>
+# 
+# 	<IfModule !mod_expires.c>
+# 		RewriteCond %{REQUEST_FILENAME} -f
+# 		RewriteRule ^(.*\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico))$ smartoptimizer/?$1
+# 	</IfModule>
+# </IfModule>
+# <FilesMatch "\.(gif|jpg|jpeg|png|swf|css|js|html?|xml|txt|ico)$">
+# 	FileETag none
+# </FilesMatch>

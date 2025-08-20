@@ -19,15 +19,15 @@ if($_REQUEST['fax_error'] != '')
 }
 //added to select the module in combobox of compose-popup
 if(isset($_REQUEST['par_module']) && $_REQUEST['par_module']!=''){
-	$smarty->assign('select_module',$_REQUEST['par_module']);
+	$smarty->assign('select_module',RequestHandler::paramModule("par_module"));//crmv@211287
 }
 elseif(isset($_REQUEST['pmodule']) && $_REQUEST['pmodule']!='') {
-	$smarty->assign('select_module',$_REQUEST['pmodule']);	
+	$smarty->assign('select_module',RequestHandler::paramModule("pmodule"));//crmv@211287
 }
 
 if(isset($_REQUEST['record']) && $_REQUEST['record'] !='') 
 {
-	$focus->id = $_REQUEST['record'];
+	$focus->id = RequestHandler::paramInt("record");//crmv@211287
 	$focus->mode = 'edit';
 	$focus->retrieve_entity_info($_REQUEST['record'],"Fax");
 	if(isset($_REQUEST['forward']) && $_REQUEST['forward'] != '')
@@ -62,37 +62,54 @@ if($_REQUEST["internal_mailer"] == "true") {
 	$rec_type = $_REQUEST["type"];
 	$rec_id = $_REQUEST["rec_id"];
 	$fieldname = $_REQUEST["fieldname"];
+
+	//crmv@345820
+	function get_entity_fax($modulename, $fieldname, $id, $html = false) {
+		global $current_user;
+		$fail = '';
+		
+		if ($modulename == 'Users') {
+			if (!preg_match('/^phone/', $fieldname)) {
+				return $fail;
+			}
+		} elseif (isPermitted($modulename, 'DetailView', $id) !== 'yes') {
+			return $fail;
+		} elseif (!in_array(getFieldVisibilityPermission($modulename, $current_user->id, $fieldname), [0, '0'], true)) {
+			return $fail;
+		}
+		
+		$fieldinfo = FieldUtils::getField($modulename, $fieldname);
+		if (!$fieldinfo) {
+			return $fail;
+		}
+		$tablename = $fieldinfo['tablename'];
+		
+		switch ($modulename) {
+			case "Users":     $keycol = "id";             break;
+			case "Leads":     $keycol = "leadaddressid";  break;
+			case "Contacts":  $keycol = "contactid";      break;
+			case "Accounts":  $keycol = "accountid";      break;
+			case "Vendors":   $keycol = "vendorid";       break;
+			default:		  return $fail;
+		}
+		
+		return getSingleFieldValue($tablename, $fieldinfo['columnname'], $keycol, $id, $html) ?? $fail;
+	}
+	//crmv@345820e
 	
 	//added for getting list-ids to compose email popup from list view(Accounts,Contacts,Leads)
 	if(isset($_REQUEST['field_id']) && strlen($_REQUEST['field_id']) != 0) {
 	     if($_REQUEST['par_module'] == "Users")
 		$id_list = $_REQUEST['rec_id'].'@'.'-1|';
 	     else
-                $id_list = $_REQUEST['rec_id'].'@'.$_REQUEST['field_id'].'|';
+			 $id_list = RequestHandler::paramString("rec_id").'@'.RequestHandler::paramString("field_id").'|';//crmv@211287
              $smarty->assign("IDLISTS", $id_list);
         }
 	
 	if($rec_type == "record_id") {
 		$type = $_REQUEST['par_module'];
-		//check added for email link in user detail view
-		// crmv@64542
-		$modInstance = CRMEntity::getInstance($type);
-		if(substr($fieldname,0,2)=="cf")
-			$tablename = $modInstance->customFieldTable[0];
-		else
-			$tablename = $modInstance->table_name;
-		// crmv@64542e
-		if($type == "Users")
-			$q = "select $fieldname from $tablename where id=?";	
-		elseif($type == "Leads") 
-			$q = "select $fieldname from $tablename where leadaddressid=?";
-		elseif ($type == "Contacts")
-			$q = "select $fieldname from $tablename where contactid=?";
-		elseif ($type == "Accounts")
-			$q = "select $fieldname from $tablename where accountid=?";
-		elseif ($type == "Vendors")
-			$q = "select $fieldname from $tablename where vendorid=?";
-		$to_fax = $adb->query_result($adb->pquery($q, array($rec_id)),0,$fieldname);
+		$to_fax = get_entity_fax($type, $fieldname, $rec_id, true);  //crmv@345820
+
 	} elseif ($rec_type == "email_addy") {
 		$to_fax = $_REQUEST["email_addy"];
 	}
@@ -140,15 +157,15 @@ if (isset($_REQUEST['parent_type']))
 }
 if (isset($_REQUEST['filename']) && $_REQUEST['isDuplicate'] != 'true') 
 {
-        $focus->filename = $_REQUEST['filename'];
+        $focus->filename = RequestHandler::paramString("filename");
 }
 elseif (is_null($focus->parent_type)) 
 {
 	$focus->parent_type = $app_list_strings['record_type_default_key'];
 }
 
-$smarty->assign("ENTITY_ID", $_REQUEST["record"]);
-$smarty->assign("ENTITY_TYPE",$_REQUEST["fax_directing_module"]);
+$smarty->assign("ENTITY_ID", RequestHandler::paramInt("record"));//crmv@211287
+$smarty->assign("ENTITY_TYPE",RequestHandler::paramModule("fax_directing_module"));//crmv@211287
 $smarty->assign("OLD_ID", $old_id );
 //Display the FCKEditor or not? -- configure $FCKEDITOR_DISPLAY in config.php 
 $smarty->assign("FCKEDITOR_DISPLAY",$FCKEDITOR_DISPLAY);
