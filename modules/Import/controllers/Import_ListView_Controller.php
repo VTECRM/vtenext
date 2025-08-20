@@ -31,11 +31,11 @@ class Import_ListView_Controller {
 
 		$viewer = new Import_UI_Viewer();
 
-		$ownerId = $userInputObject->get('foruser');
+		$ownerId = intval($userInputObject->get('foruser'));  // crmv@341226
 		$owner = CRMEntity::getInstance('Users');
 		$owner->id = $ownerId;
 		$owner->retrieve_entity_info($ownerId, 'Users');
-		if(!is_admin($user) && $user->id != $owner->id) {
+		if (!is_admin($user) && $user->id !== $owner->id) {  // crmv@341226
 			$viewer->display('OperationNotPermitted.tpl', 'VteCore');
 			exit;
 		}

@@ -6,8 +6,8 @@
 $patch_version = '';
 $modified_database = '';
 $vte_legacy_version = '5.2.1';
-$enterprise_current_version = '20.04.2';
-$enterprise_current_build = '2216';
+$enterprise_current_version = '20.04.3';
+$enterprise_current_build = '2219';
 $enterprise_base_build = '2103'; // just to know where we started
 $enterprise_mode = 'VTENEXTCE';
 $enterprise_project = '';

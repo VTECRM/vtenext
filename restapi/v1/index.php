@@ -3,15 +3,45 @@
  * SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> 
  * SPDX-License-Identifier: AGPL-3.0-only  
  ************************************/
-/* crmv@170283 */
-header("Access-Control-Allow-Headers: content-type, accept, authorization");
-header("Access-Control-Allow-Methods: POST"); // GET, OPTIONS
-header("Access-Control-Allow-Origin: *");
+/* crmv@170283 crmv@255566 crmv@203130 */
 
 require('../../config.inc.php');
 chdir($root_directory);
+
+// crmv@246249
+require_once('include/MaintenanceMode.php');
+if (MaintenanceMode::check()) {
+	MaintenanceMode::displayRestApi();
+	exit();
+}
+// crmv@246249e
+
 require_once('include/utils/utils.php');
 SDK::getUtils();
+
+$allowHeaders = ['Authorization', 'Content-Type']; // crmv@341216
+
+$VP = VTEProperties::getInstance();
+if ($VP->get('performance.app_debug')) {
+	$allowHeaders = array_merge($allowHeaders, [
+		'Touch-Session-Id', 'Touch-Check-Time',
+		'Touch-Version-Id', 'X-App-Package',
+		'X-App-Version', 'X-Otp',
+	]);
+}
+
+header("Access-Control-Allow-Headers: " . implode(', ', $allowHeaders));
+header("Access-Control-Allow-Credentials: true"); // crmv@341216
+header("Access-Control-Allow-Methods: POST, OPTIONS"); // GET
+header("Access-Control-Allow-Origin: *");
+
+// crmv@341219
+header("X-Frame-Options: DENY"); // REST API are not frame-able by default
+header("X-Content-Type-Options: nosniff");
+header("Content-Security-Policy: frame-ancestors 'none'");
+// crmv@341219e
+
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') die();
 
 $contentType = '';
 if (function_exists('getallheaders')) {
@@ -77,13 +107,46 @@ use RestService\Server;
 require_once('include/RestApi/v1/VTERestApi.php');
 $restApi = VTERestApi::getInstance();
 
-$server = Server::create('/vtews', $restApi);
-// $server->setDebugMode(true); // prints the debug trace, line number and file if a exception has been thrown.
 
-$methods = $restApi->getMethods();
-if (!empty($methods)) {
-	foreach($methods as $row) {
-		$server->addPostRoute($row['rest_name'],$row['rest_name']);
+// crmv@341217
+global $adb, $root_directory;
+/** @var PearDatabase $adb */
+
+// must be always set to false, otherwise sensitive stack traces with vte path will be returned
+$adb->setDieOnError(false);
+
+// must be always set to false, otherwise uncaught errors will generate sensitive messages with the sql query and database info
+$adb->setExceptOnError(false);
+
+// this will also catch fatal errors and parse errors, also avoiding xdebug pages
+try {
+	$server = Server::create('/vtews', $restApi);
+	// $server->setDebugMode(true); // prints the debug trace, line number and file if a exception has been thrown.
+
+	$methods = $restApi->getMethods();
+	if (!empty($methods)) {
+		foreach($methods as $row) {
+			$server->addPostRoute($row['rest_name'],$row['rest_name']);
+		}
 	}
+	$server->run();
+	
+} catch (\Error $e) {
+	$strip = function($x) use (&$root_directory) { return str_replace($root_directory, '', $x); };
+	$err = [
+		'success' => false,
+		'error' => $e->getCode(),
+		'message' => $e->getMessage(),
+		'file' => $strip($e->getFile()),
+		// 'trace' => array_map($strip, $e->getTrace()),
+	];
+	
+	if (!$server) {
+		header("Content-Type: application/json; charset=UTF-8", true, 500);
+		echo Zend_Json::encode($err);
+		return;
+	}
+	
+	$server->getClient()->sendResponse('500', $err);
 }
-$server->run();
+// crmv@341217e

@@ -13,6 +13,12 @@ if ($_REQUEST['mode'] == 'save' && $_REQUEST['avatar'] != '') {
 	$focus->id = $record;
 	$focus->mode = 'edit';
 	$focus->column_fields['avatar'] = $_REQUEST['avatar'];
+	// crmv@341228
+	if (!$focus->filterOrDenySave()) {
+		RequestHandler::outputRedirect("index.php?module=Users&action=Logout");
+		exit;
+	}
+	// crmv@341228e
 	$focus->save("Users");
 	
 	echo "<script>

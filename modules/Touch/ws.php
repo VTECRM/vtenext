@@ -40,6 +40,13 @@ if (!isset($root_directory)) {
 	chdir($root_directory);
 }
 
+// crmv@345820
+if (strpos(getenv('SCRIPT_FILENAME'),$root_directory.'modules/Touch/ws.php') === false) {
+	header("HTTP/1.1 403 Forbidden");
+	exit();
+}
+// crmv@345820e
+
 global $current_user;
 
 require_once('modules/Touch/Touch.php');

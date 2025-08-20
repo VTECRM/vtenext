@@ -22,7 +22,7 @@ if ($res) {
 foreach($resultSet as $index => $value ){
     //can be edited, it is in this format in case you need to edit strings in other formats
     //può essere modificato, è in questo formato nel caso in cui sia necessario modificare le stringhe in altri formati
-    if (str_contains($value, 'vTiger')) {
+    if (strpos($value, 'vTiger') !== false) {
         $value2 = str_replace('vTiger',"vte",$value);
     }
     else{

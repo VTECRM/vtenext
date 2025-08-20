@@ -26,6 +26,9 @@ if ($theme === 'next') {
 }
 // crmv@187406e
 
-include("modules/Calendar/wdCalendar/$file.php");
+// crmv@345820
+$file = preg_replace("/[^a-zA-Z0-9_\-\/]/", '', $file);
+include("modules/Calendar/wdCalendar/{$file}.php");
+// crmv@345820e
 //crmv@17001e
 ?>

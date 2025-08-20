@@ -15,13 +15,21 @@ function vte_get_labels($username, $language, $module){
 		$language = $user->default_language;
 	}
 	
-	$query = "SELECT label,trans_label 
-				FROM sdk_language 
-				WHERE language = ? ";
-	if($module != ''){
-		$query .= " AND module = '$module' ";
+	// crmv@341207
+	$query = "
+		SELECT label,trans_label 
+		FROM sdk_language 
+		WHERE language = ?
+	";
+	$params = [$language];
+	
+	if ($module != '') {
+		$query .= " AND module = ? ";
+		$params[] = $module;
 	}
-	$res = $adb->pquery($query, array($language));
+	
+	$res = $adb->pquery($query, $params);
+	// crmv@341207e
 	
 	$labels = Array();
 	

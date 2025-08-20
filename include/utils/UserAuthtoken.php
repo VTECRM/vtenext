@@ -9,7 +9,7 @@ function getUserAuthtokenKey($type,$user_id,$seconds_to_expire, $securetoken = f
 	global $adb;
 	emptyUserAuthtokenKey($type,$user_id);
 	//crmv@29377
-	//genera un token più sicuro
+	//genera un token pi? sicuro
 	if ($securetoken){
 		$authToken = md5(crypt(strval(microtime(true)+(mt_rand(0, 10000) / 10.0)).strval($user_id).$type)); // crmv@179766
 	} else {
@@ -26,23 +26,25 @@ function getUserAuthtokenKey($type,$user_id,$seconds_to_expire, $securetoken = f
 	}
 }
 
-function validateUserAuthtokenKey($type,$key) {
+// crmv@341733: always check key as string, move check into query
+function validateUserAuthtokenKey($type, $key) {
 	global $adb;
 	$tmp = Zend_Json::decode(base64_decode($key));
 	$user_id = (int)$tmp['userid'];
-	$token = $tmp['token'];
-	$sql_d = "delete from vte_userauthtoken where type=? and userid=? and expiretime < ?";
-	$result_d = $adb->pquery($sql_d,array($type,$user_id,time()));
-	$sql = "select * from vte_userauthtoken where type=? and userid=? and expiretime >= ?";
-	$result = $adb->pquery($sql,array($type,$user_id,time()));
-	if($result != null && isset($result) && $adb->num_rows($result)>0){
-		$token_saved = $adb->query_result($result,0,'token');
-		if ($token_saved == $token) {
-			return $user_id;
-		}
+	$token = strval($tmp['token']);
+	
+	$sql_d = "delete from vte_userauthtoken where type = ? and userid = ? and expiretime < ?";
+	$result_d = $adb->pquery($sql_d, [$type, $user_id, time()]);
+	
+	$sql = "select * from vte_userauthtoken where type = ? and userid = ? and token = ? and expiretime >= ?";
+	$result = $adb->pquery($sql, [$type, $user_id, $token, time()]);
+	
+	if ($result && $adb->num_rows($result) > 0) {
+		return $user_id;
 	}
 	return false;
 }
+// crmv@341733e
 
 function emptyUserAuthtokenKey($type,$user_id) {
 	global $adb;

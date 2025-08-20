@@ -15,18 +15,7 @@ if($ajaxaction == "DETAILVIEW")
 	$tablename = $_REQUEST["tableName"];
 	$fieldname = $_REQUEST["fldName"];
 	
-	//crmv@74565
-	if(strtolower($current_user->is_admin) == 'off'  && $current_user->id != $crmid){
-		$log->fatal("SECURITY:Non-Admin ". $current_user->id . " attempted to change settings for user:". $crmid);
-		header("Location: index.php?module=Users&action=Logout");
-		exit;
-	}
-	if(strtolower($current_user->is_admin) == 'off'  && $fieldname == 'is_admin'){
-		$log->fatal("SECURITY:Non-Admin ". $current_user->id . " attempted to change is_admin settings for user: ". $crmid);
-		header("Location: index.php?module=Users&action=Logout");
-		exit;
-	}
-	//crmv@74565e
+	// crmv@341228: moved to Users::filterOrDenySave()
 	
 	$fieldvalue = utf8RawUrlDecode($_REQUEST["fieldValue"]); 
 	if($crmid != "")
@@ -48,9 +37,16 @@ if($ajaxaction == "DETAILVIEW")
 
         $modObj->id = $crmid;
         $modObj->mode = "edit";
-        $modObj->save($currentModule);
+	
+		// crmv@341228
+		if (!$modObj->filterOrDenySave()) {
+			RequestHandler::outputRedirect("index.php?module=Users&action=Logout"); // crmv@150748
+			exit;
+		}
+		$modObj->save($currentModule);
+		// crmv@341228e
         if($modObj->id != "") {
-            echo ":#:SUCCESS";
+			echo ":#:SUCCESS";
         } else {
             echo ":#:FAILURE";
         }

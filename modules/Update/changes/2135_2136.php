@@ -28,6 +28,10 @@ foreach($recDirs as $recDir){
 
 foreach($recData as $id => $files){
     foreach($files as $file){
+		//skip this one, since it's deleted after the update
+		if ($file == 'cron/modules/com_vtiger_workflow/com_vtiger_workflow.service.php') {
+			continue;
+		}
         $fileData = file_exists($file) ? file_get_contents($file) : false;
         if($fileData){
             foreach($words as $word){
