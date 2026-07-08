@@ -1,0 +1,85 @@
+name: vtenext
+
+services:
+
+  vtenext:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VTENEXT_BRANCH: main
+    image: vtenext-ce
+    container_name: vtenext_app
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-vtenext}
+      DB_USER: ${DB_USER:-vtenext}
+      DB_PASSWORD: ${DB_PASSWORD:-vtenext}
+      VTENEXT_ADMIN_PASS: ${VTENEXT_ADMIN_PASS:-admin}
+      VTENEXT_ADMIN_EMAIL: ${VTENEXT_ADMIN_EMAIL:-admin@vtenext.local}
+      VTENEXT_USER_PASS: ${VTENEXT_USER_PASS:-user}
+      VTENEXT_USER_EMAIL: ${VTENEXT_USER_EMAIL:-user@vtenext.local}
+    volumes:
+      - vtenext_upload:/var/www/html/upload
+      - vtenext_storage:/var/www/html/storage
+      - vtenext_logs:/var/www/html/logs
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - appnet
+
+  db:
+    image: mysql:8.0
+    container_name: vtenext_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_NAME:-vtenext}
+      MYSQL_USER: ${DB_USER:-vtenext}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-vtenext}
+    ports:
+      - "${DB_PORT_EXPOSED:-3306}:3306"
+    volumes:
+      - vtenext_db_data:/var/lib/mysql
+      - ./mysql.cnf:/etc/mysql/conf.d/vtenext.cnf:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - appnet
+
+  pma:
+    image: phpmyadmin:latest
+    container_name: vtenext_pma
+    restart: unless-stopped
+    ports:
+      - "${PMA_PORT:-8081}:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${DB_USER:-vtenext}
+      PMA_PASSWORD: ${DB_PASSWORD:-vtenext}
+      UPLOAD_LIMIT: 128M
+    depends_on:
+      - db
+    networks:
+      - appnet
+    profiles:
+      - tools
+
+volumes:
+  vtenext_db_data:
+  vtenext_upload:
+  vtenext_storage:
+  vtenext_logs:
+
+networks:
+  appnet:
+    driver: bridge
