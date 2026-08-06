@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b2741"/>
+      <stop offset=".48" stop-color="#39708e"/>
+      <stop offset="1" stop-color="#91b6bd"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5da5b0"/>
+      <stop offset="1" stop-color="#12354d"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1420" cy="210" r="112" fill="#f8d9a8" opacity=".78"/>
+  <path d="M0 670 300 355 530 620 785 290 1120 690 1430 350 1920 700V820H0Z" fill="#163f59"/>
+  <path d="M0 750 360 455 625 740 925 415 1230 760 1525 465 1920 725V845H0Z" fill="#245d72" opacity=".94"/>
+  <path d="M0 760 305 450 360 455 530 620 785 290 850 380 925 415 1120 690 1430 350 1510 450 1525 465 1920 725V825H0Z" fill="#d3e5df" opacity=".26"/>
+  <path d="M0 760H1920V1080H0Z" fill="url(#lake)"/>
+  <path d="M0 815c280-74 475 76 740 10s438-84 690 15 350 33 490-10v250H0Z" fill="#0b2c43" opacity=".22" filter="url(#blur)"/>
+  <path d="M0 915c260-80 510 58 760-10s450-64 680 12 320 52 480-8" fill="none" stroke="#c8eceb" stroke-opacity=".22" stroke-width="8"/>
+</svg>
